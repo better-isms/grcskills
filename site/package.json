@@ -12,7 +12,8 @@
     "build": "npm run content && next build && node scripts/postbuild.mjs",
     "serve": "node scripts/serve.mjs out 4321",
     "test": "node --test \"tests/*.test.mjs\"",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "seo:gate": "node scripts/seo-gate.mjs build out --config seo-gate.config.json --level L0P"
   },
   "dependencies": {
     "@vercel/analytics": "2.0.1",

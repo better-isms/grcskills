@@ -31,6 +31,32 @@ jobs:
       - name: Validator tests
         run: node --test tools/*.test.mjs
 
+  # SEO launch gate (founder-ops docs/runbooks/seo-standard.md R1): build the site and
+  # run the vendored gate on the static export, no network. Same-repository PRs only:
+  # building runs the candidate's site code, which fork PRs must never do. Outside
+  # content is gated by the next house PR or release build.
+  site-seo:
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: site
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: 22
+
+      - name: Build the site
+        run: npm ci --no-audit --no-fund && npm run build
+
+      - name: SEO gate (L0 and the policy gate)
+        run: node scripts/seo-gate.mjs build out --config seo-gate.config.json --level L0P
+
   # Fork PRs: the contributor controls every file in the candidate checkout,
   # including tools/. Nothing from it is executed. The validator comes from the
   # base SHA, checked out into a separate trusted directory, and reads the
