@@ -247,14 +247,32 @@ const titleFromRef = (raw, slug) => {
 };
 
 // repoRoot: the library checkout (contains skills/). Returns the content model.
-// "Where you decide" on skill pages: the skill's own Rules lines that keep a
-// call with a person (NEVER lines about approving, accepting, signing,
-// grading or acting for an owner, and MUST lines that route a call to one).
+// "Where you decide" on skill pages: only the skill's own Rules lines that keep
+// a decision or a sign-off with a person. A NEVER line qualifies when it is
+// about one of those calls: acting on someone's behalf, accepting a risk or
+// gap, marking something effective, approved or ready, approving, signing,
+// deciding or concluding, legal advice, finalising, sending, submitting,
+// publishing or contacting, or changing a live system or record. A MUST line
+// qualifies when it routes a call to a person. Quality-of-evidence rules
+// ("never rate X on Y alone") and data-handling rules are not decisions, even
+// when they mention approval or effectiveness.
 // Plain text from the skill body; the page renders it as text, never HTML.
-const DECIDE_NEVER = /\b(behalf|accept(?:s|ed|ance)?|approv\w*|sign(?:s|ed|er)?|signature|decide[sd]?|decision|conclud\w*|effective|finali[sz]e|legal advice|final determination|ready for launch|owners?|leadership|counsel|privacy lead|approver|auditor will|confirm\w*|rate|grade|classify|mark|let the|tell the reader|already in place|humans|reader's team|reader distributes|reader schedules|passed|exclude)\b/i;
-const DECIDE_MUST = /(\bto approve\b|\bapproval before\b|\breview before\b|\bconfirms it\b)/i;
+const DECIDE_NEVER = new RegExp([
+  String.raw`\bbehalf\b`,
+  String.raw`\baccept(?:s|ed)?\b(?!\s*")`,
+  String.raw`\bapprov(?:e|es|al)\b`,
+  String.raw`\b(?:mark|record)\w*\b[^;]*\b(?:as )?(?:effective|approved|accepted|having accepted|ready for launch)\b`,
+  String.raw`\b(?:acceptable or )?effective\b`,
+  String.raw`(?<![\w-])sign(?:s|ed)?\b|\bsignature\b`,
+  String.raw`\bdecid(?:e|es|ed)\b|\bdecision\b|\bconclu(?:de|sions)\b|\bfinal determination\b|\blegal advice\b|\bfinali[sz]e\b`,
+  String.raw`\b(?:send|sends|submit|upload|publish|publishes|contact|notify|page|book)\b|\bfile (?:a|any)\b|\bregister (?:a|the company)\b`,
+  String.raw`\b(?:change|edit|delete|disable|remove|rename|move|switch off|block|shut down|close|merge|revert|update|commit|trigger a test alert|write to production|start a restore|run a restore|touch live systems)\b`,
+].join('|'), 'i');
+// Rules about the quality of evidence, not about who decides.
+const QUALITY_RULE = /\b(?:on the strength of|alone|without (?:checking|reading|the evidence|the contract|naming|testing))\b|\bdelete or overwrite a superseded\b/i;
+const DECIDE_MUST = /(\bto approve\b|\bapproval before\b|\breview before\b|\bconfirms it\b|\broute\w*\b[^;]*\bto the (?:legal owner|privacy lead)\b|\bopen decision for\b|\bagree\b[^;]*\bwith the owner\b|\bwho confirmed\b)/i;
 // Data-handling rules (what to copy, name or open) are not decisions.
-const DATA_RULE = /^NEVER (open|copy|name|put|paste|include|read|fill in personal)\b/;
+const DATA_RULE = /^NEVER (open|copy|name|put|paste|include|read|fill in personal)\b|\boutside the reader's machine\b/;
 export const DECISIONS_MAX = 4;
 
 export function decisionRules(body) {
@@ -265,7 +283,7 @@ export function decisionRules(body) {
     if (/^- /.test(line)) items.push(line.slice(2).trim());
     else if (/^\s+\S/.test(line) && items.length) items[items.length - 1] += ` ${line.trim()}`;
   }
-  const never = items.filter((t) => /^NEVER /.test(t) && !DATA_RULE.test(t) && DECIDE_NEVER.test(t)).map((t) => `Never ${t.slice(6)}`);
+  const never = items.filter((t) => /^NEVER /.test(t) && !DATA_RULE.test(t) && !QUALITY_RULE.test(t) && DECIDE_NEVER.test(t)).map((t) => `Never ${t.slice(6)}`);
   const must = items.filter((t) => /^MUST /.test(t) && DECIDE_MUST.test(t)).map((t) => `Always ${t.slice(5)}`);
   return [...never, ...must].slice(0, DECISIONS_MAX);
 }

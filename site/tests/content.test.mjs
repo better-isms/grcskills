@@ -157,6 +157,37 @@ test('decisionRules keeps the rules that leave a call with a person, not data-ha
     'Always present the scope as a proposal for leadership to approve.',
   ]);
   assert.deepEqual(decisionRules('## Steps\n\n- NEVER sign.\n'), []);
+  // Review follow-up on PR #3: rules about the quality of evidence or data
+  // handling mention approval or effectiveness but leave no call with a person.
+  const quality = [
+    '## Rules', '',
+    '- NEVER ban a tool the company depends on without naming the approved alternative.',
+    '- NEVER mark a tool approved on the strength of vendor marketing alone.',
+    '- NEVER rate a row Evidenced on the strength of an interview or a policy alone.',
+    '- NEVER create, backdate, re-sign or alter evidence to fill a gap; record the gap instead.',
+    '- NEVER accept "the supplier handles it" as an exclusion without checking supplier oversight.',
+    '- NEVER let the auditee choose the sample items.',
+    '- NEVER exclude a control because it is not implemented yet.',
+    '- NEVER classify a system\'s legal risk level in this skill; leave it for the classification step.',
+    '- NEVER let an uncosted deferral pass as an acceptance.',
+    '- NEVER delete or overwrite a superseded version.',
+    '- NEVER send inventory content anywhere outside the reader\'s machine.',
+    '- MUST decide applicability per legal entity, citing the provision used.',
+  ].join('\n');
+  assert.deepEqual(decisionRules(quality), []);
+  // Each kind of call the block is for: accepting, marking effective,
+  // approving, signing, deciding, sending, changing systems, routing to a person.
+  const kinds = (line) => decisionRules(`## Rules\n\n- ${line}\n`);
+  for (const line of [
+    'NEVER close or accept a risk on an owner\'s behalf.',
+    'NEVER grade an exception as acceptable or effective; record the facts for the reader.',
+    'NEVER record the statement as approved; the approver named by the reader signs it.',
+    'NEVER fill in the decision, signature or date; those stay blank for the human signer.',
+    'NEVER conclude that a transfer may proceed; the exporter\'s privacy lead and counsel decide.',
+    'NEVER send briefs or invitations to staff; the reader distributes them.',
+    'NEVER change repository settings, branch rules, approvals or deploy permissions.',
+    'MUST route every prohibited or unclear result to the legal owner.',
+  ]) assert.equal(kinds(line).length, 1, line);
   const many = ['## Rules', '', ...Array.from({ length: 9 }, (_, i) => `- NEVER approve item ${i}.`)].join('\n');
   assert.equal(decisionRules(many).length, DECISIONS_MAX);
 });

@@ -119,10 +119,11 @@ test('skill pages: a "Where you decide" block from the skill\'s own rules, near 
     const block = html.match(/<section class="decide"[\s\S]*?<\/section>/)?.[0];
     assert.ok(block, `${s.slug}: decide block`);
     assert.ok(html.indexOf(block) < html.indexOf('class="skill-grid"'), `${s.slug}: block sits above the skill body`);
-    assert.ok(s.decisions.length >= 1, `${s.slug}: at least one rule keeps a call with a person`);
-    assert.ok(block.includes('Everything it writes is a draft for a person to review and sign.'), `${s.slug}: draft-only boundary`);
-    assert.equal((block.match(/<li>/g) ?? []).length, s.decisions.length + 1, `${s.slug}: one item per rule plus the boundary`);
+    assert.ok(block.includes('<p class="boundary">Everything it writes is a draft for a person to review and sign.</p>'), `${s.slug}: draft-only boundary, outside the rule list`);
+    assert.equal((block.match(/<li>/g) ?? []).length, s.decisions.length, `${s.slug}: one item per rule, nothing that is not from the skill`);
+    assert.equal(block.includes('From this skill&#x27;s rules: where you decide') || block.includes("From this skill's rules: where you decide"), s.decisions.length > 0, `${s.slug}: intro only above a list of the skill's rules`);
   }
+  assert.ok(content.skills.filter((s) => s.decisions.length).length >= 50, 'most skills have at least one rule that keeps a call with a person');
 });
 
 const decodeHtmlSafe = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -212,7 +213,9 @@ test('llms.txt and sitemap list every skill; llms.txt carries no descriptions', 
   assert.ok(run, 'llms.txt has the run-steps section');
   assert.ok(llms.indexOf('## If you were asked to run grc-setup-review') < llms.indexOf('## When to use'), 'run steps sit near the top');
   assert.ok(run.includes(`git clone --depth 1 --branch ${ref} https://github.com/better-isms/grcskills .grcskills`), `run steps clone the marketplace tag ${ref}`);
-  assert.ok(run.includes(`npx skills add better-isms/grcskills#${ref} --skill grc-setup-review`));
+  assert.doesNotMatch(run, /npx/, 'run steps install nothing beyond the one pinned clone the request consents to; npx stays under ## Install');
+  const install = llms.match(/## Install\n([\s\S]*?)\n## /)?.[1] ?? '';
+  assert.ok(install.includes(`npx skills add better-isms/grcskills#${ref} --skill <skill-name>`), 'npx lives under ## Install, pinned');
   for (const p of ['.grcskills/AGENTS.md', '.grcskills/skills/tristan-roth/grc-setup-review/SKILL.md', './grc-setup-review/']) assert.ok(run.includes(p), p);
   assert.deepEqual([...new Set(run.match(/v\d{4}\.\d{2}\.\d{2}(?:\.\d+)?/g))], [ref], 'one tag, the pinned one');
 });
