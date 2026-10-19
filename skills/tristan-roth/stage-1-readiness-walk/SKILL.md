@@ -21,7 +21,7 @@ Collect the exact set the auditor will receive: the folder, platform export or d
 
 ## Step 1: map the document set
 
-List every document in `document-map.csv`: path, title, version, approval record (who and when, as a role), last review, owner role, and the topic it serves. Then build the list of documented information the target framework expects from the reader's licensed copy or a framework lookup, and mark each as present, present but unapproved, or missing. Do not assume the list from memory; the expected set differs between frameworks and extensions.
+List every document in `document-map.csv`: path, title, version, approval record (who and when, as a role), last review, owner role, the topic it serves, and whether it goes to the auditor or stays internal. Mark the drafts the reader named as present but unapproved, and reconcile the pack against any evidence request in the booking confirmation; an auditor credits only what was sent. Then build the list of documented information the target framework expects from the reader's licensed copy or a framework lookup, and mark each as present, present but unapproved, or missing. Do not assume the list from memory; the expected set differs between frameworks and extensions.
 
 ## Step 2: read in the auditor's order
 
@@ -41,7 +41,7 @@ The cheapest findings come from documents that contradict each other. Check at l
 
 - Risk counts and ids match between the register, the treatment plan and the applicability statement.
 - Review periods, severity scales, retention periods and role names agree across documents.
-- Approval dates come before the audit and after the content they approve.
+- Approval dates come before the audit and after the content they approve; a register or policy edited after its recorded approval needs a new approval. Propose a freeze: everything in the pack approved before sending, and no version change between sending and the audit.
 - Implementation status claims match what the records show.
 - No template residue: placeholder brackets, another company's name, controls for a data centre or office the company does not have.
 
@@ -51,11 +51,11 @@ The cheapest findings come from documents that contradict each other. Check at l
 - **Likely finding**: a gap the auditor would raise but would not stop on.
 - **Polish**: wording, formatting, version labels.
 
-For each issue write the document, what an auditor would say, the fix, the owner role and the days needed. Order stoppers by lead time: an internal audit cannot be held, reported and reviewed in three days.
+For each issue write the document, what an auditor would say, the fix, the owner role and the days needed. Mark which audit stage each stopper threatens: scope and application contradictions tend to block the first stage, while an improvement loop that has not run usually blocks the second; confirm with the certification body's rules. Order stoppers by lead time: an internal audit cannot be held, reported and reviewed in three days.
 
 ## Step 5: write the walk
 
-Write `readiness-walk.md`: a go, go with fixes, or postpone recommendation with reasons; the stoppers; likely findings; polish; and the question list for the auditor's opening meeting. Ask before overwriting existing files.
+Write `readiness-walk.md`: a go, go with fixes, or postpone recommendation with reasons; the stoppers; likely findings; polish; and the question list for the auditor's opening meeting. Set a re-walk date after the stopper fixes fall due, to confirm the recommendation still stands. Ask before overwriting existing files.
 
 ## What good looks like
 
