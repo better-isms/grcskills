@@ -1,6 +1,6 @@
 # GRC Skills
 
-Open, task-level skills for AI agents doing governance, risk and compliance work: scope statements, statements of applicability, risk registers, audit prep and response, evidence, vendors, policies, privacy, AI governance, incidents and continuity.
+Open, task-level skills for AI agents doing governance, risk and compliance work: scope statements, statements of applicability, risk registers, audit prep and response, evidence, vendors, policies, privacy, AI systems, incidents and continuity.
 
 Every skill is a plain `SKILL.md` that any agent can read: Claude Code, Cursor, Codex and the other agents that load Agent Skills. Each one encodes how a practitioner does one job, what good output looks like, and where the agent must stop and hand the decision to a human. Skills draft; people review and sign.
 

@@ -32,7 +32,7 @@ export const CATEGORIES = {
   vendors: 'Vendors and third parties',
   policies: 'Policies and documentation',
   privacy: 'Privacy',
-  'ai-systems': 'AI governance',
+  'ai-systems': 'AI systems',
   'incidents-continuity': 'Incidents and continuity',
 };
 
