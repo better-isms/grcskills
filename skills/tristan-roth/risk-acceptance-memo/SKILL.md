@@ -26,13 +26,13 @@ Three situations look like acceptance and are not:
 
 - The work is planned but not done. That is a treatment action with an interim measure, not an acceptance.
 - Nobody has assessed the risk. Score it first with the method.
-- A control the company claims in a policy or a customer contract is not operating. Accepting the risk does not change what was promised; flag the contract or policy conflict to the reader before drafting.
+- A control the company claims in a policy or a customer contract is not operating. Accepting the risk does not change what was promised; flag the contract or policy conflict to the reader before drafting, and record the way out with an owner and a date: either the commitment changes (contract amendment, customer notice, policy edit) or the control is fixed.
 
 If the case is one of these, stop and say which.
 
 ## Step 2: confirm who may sign
 
-Look up the residual score in the method's acceptance ladder and name the role that may accept at that level. If the proposer is below that level, the memo goes to the higher role. Any impact-5 risk goes to leadership whatever its likelihood. For a financial entity under DORA, ICT risk acceptance sits inside a framework for which the management body is accountable (Article 5); make sure the memo reaches that body or the delegate its framework names.
+Check that the method defines acceptance criteria and state which one this case meets; a method without criteria is a finding to raise first. Look up the residual score in the method's acceptance ladder and name the role that may accept at that level. If the proposer is below that level, the memo goes to the higher role. Any impact-5 risk goes to leadership whatever its likelihood. For a financial entity under DORA, ICT risk acceptance sits inside a framework for which the management body is accountable (Article 5); make sure the memo reaches that body or the delegate its framework names.
 
 ## Step 3: write the memo
 
@@ -43,14 +43,14 @@ Keep it to one page so the signer reads all of it:
 3. **Options considered**: at least two treatments with their cost and effect on the score, and why each was not chosen. If no option was costed, the memo is not ready.
 4. **Rationale**: the business reason in plain words (cost out of proportion, system retiring, contract constraint).
 5. **Compensating measures**: what reduces the risk today, each with the record that shows it runs. A measure without evidence is listed as "claimed" and does not lower the score.
-6. **Conditions**: what must stay true for the acceptance to hold (for example, the legacy system stays off the internet, no new customer data is loaded).
+6. **Conditions**: what must stay true for the acceptance to hold (for example, the legacy system stays off the internet, no new customer data is loaded), each with the role that checks it and how often.
 7. **Expiry**: a review date, typically 6 to 12 months out, never open-ended.
 8. **Reopen triggers**: events that void the acceptance early, such as a related incident, a scope change or a broken condition.
 9. **Decision**: accept, accept with conditions, or decline; signer role, signature and decision date, left blank for the human.
 
 ## Step 4: log it and set the reminders
 
-Add the risk id, signer role, expiry and conditions to `acceptance-log.csv`. Tell the reader to add the expiry to the risk register and to whatever calendar or ticket system their team watches; the skill does not write to those systems.
+Before finalising, scan the log for other live acceptances on the same asset or cause; show any cluster to the signer, since five defensible acceptances on one system can add up to exposure nobody approved. Add the risk id, signer role, expiry and conditions to `acceptance-log.csv`. Tell the reader to mark the treatment plan row as retained with the memo id, and to check whether the applicability statement relies on a control this acceptance leaves unimplemented. Tell the reader to add the expiry to the risk register and to whatever calendar or ticket system their team watches; the skill does not write to those systems.
 
 ## What good looks like
 

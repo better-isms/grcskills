@@ -21,14 +21,14 @@ Read the policies in scope with their version and approval record. Then find wha
 
 ## Step 1: turn each policy into testable statements
 
-Extract every sentence that commits the company to something observable: who does what, how often, within what time, leaving which record. "System owners review access every quarter" is testable. "We take security seriously" is not; note it for the owner as wording to cut or sharpen. Give each statement an id such as `ACC-03`. A substantial policy usually yields 15 to 40 testable statements. Fewer than 10 means the policy is too vague to audit, which is a finding in itself. Add statements for the policy's own record too: approved by the stated approver, reviewed by its due date, published where staff can find it. An unapproved or overdue policy is a gap whatever the practice.
+Extract every sentence that commits the company to something observable: who does what, how often, within what time, leaving which record. "System owners review access every quarter" is testable. "We take security seriously" is not; note it for the owner as wording to cut or sharpen. Give each statement an id such as `ACC-03`. A substantial policy usually yields 15 to 40 testable statements. Fewer than 10 means the policy is too vague to audit, which is a finding in itself. Add statements for the policy's own record: approved, reviewed by its due date, published where staff find it. An unapproved or overdue policy is a gap whatever the practice.
 
 ## Step 2: find the evidence for each statement
 
 For each statement, find the record that would prove it and sample it:
 
 - Recurring activity: the last three or four occurrences (a quarterly review means the last year).
-- Event-driven activity: 5 to 10 items from the population (leavers, changes, new vendors, incidents), picked across the period, not the most recent five. Build the population from the source of truth (the HR leaver export, the deployment history, the payments ledger for vendors), not from the ticket queue: a leaver who never got a ticket never shows up in a ticket sample.
+- Event-driven activity: 5 to 10 items from the population (leavers, changes, new vendors, incidents), picked across the period, not the most recent five. Build the population from the source of truth (HR leaver export, deployment history, vendor payments), not the ticket queue: a leaver who never got a ticket never shows up in a ticket sample.
 - Configuration: the setting itself, read where it lives, not a screenshot in a folder.
 
 Record what you looked at, by path or system, and what you saw. Then classify:

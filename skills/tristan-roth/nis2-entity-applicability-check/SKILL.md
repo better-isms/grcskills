@@ -29,7 +29,7 @@ Compare each activity with the sectors and entity types in Annexes I and II of D
 
 ## Step 3: test size, the way the Directive counts it
 
-Article 2 of the Directive applies to entities that are at least medium-sized under the European Commission definition of micro, small and medium-sized enterprises (Recommendation 2003/361/EC). That definition counts headcount and financial figures and adds data from partner and linked enterprises. The common trap: a small subsidiary of a large group can be large for this test. Record the calculation with the figures: headcount, turnover and balance sheet for the entity, the partner and linked enterprise additions, the totals and the thresholds they were compared with, each with its source. Note whether the national law adjusts how group data is counted.
+Article 2 of the Directive applies to entities that are at least medium-sized under the European Commission definition of micro, small and medium-sized enterprises (Recommendation 2003/361/EC). That definition counts headcount and financial figures and adds data from partner and linked enterprises. The common trap: a small subsidiary of a large group can be large for this test. Record the calculation: entity figures, partner and linked additions, totals and the thresholds compared, each with its source. Note whether the national law adjusts how group data is counted.
 
 ## Step 4: test the size-independent cases
 
@@ -41,7 +41,7 @@ Apply Article 3 to each in-scope entity and state the result with the facts behi
 
 ## Step 6: decide jurisdiction and registration
 
-Apply Article 26: as a rule, the member state where the entity is established. Special rules exist for public electronic communications providers (where they provide services), public administration (the member state that set them up) and a list of digital providers (among them cloud, data centre, content delivery, managed and managed security services, online marketplaces, search engines, social networks and domain name services), which fall to the member state of their main establishment in the Union. Note registration duties under Article 3 and, for the listed digital providers, Article 27. Check each national registration process and its deadline in the national law, never from memory.
+Apply Article 26: as a rule, the member state where the entity is established. Special rules exist for public electronic communications providers (where they provide services), public administration (the member state that set them up) and a list of digital providers (among them cloud, data centre, managed and managed security services, and online platforms), which fall to the member state of their main establishment in the Union. Note registration duties under Article 3 and, for the listed digital providers, Article 27. Check each national registration process and its deadline in the national law, never from memory.
 
 ## Step 7: check sector-specific law
 

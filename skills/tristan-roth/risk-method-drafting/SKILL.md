@@ -38,15 +38,15 @@ For AI systems, add a dimension for effects on people affected by the system's o
 
 ## Step 3: set the scoring rule and the acceptance ladder
 
-Score = likelihood x impact, 1 to 25. Then propose bands and who may accept what, for example: up to 6 accepted by the risk owner with a note; 8 to 12 accepted by the owner's executive with a review date; 15 and above needs a treatment plan or a recorded leadership decision. Add one override: any risk with impact 5 goes to leadership whatever its likelihood, because a rare company-ending event is not a low risk. For a financial entity under DORA, check that the ladder places final accountability for ICT risk with the management body (Article 5) and that the stated tolerance links to the digital operational resilience strategy.
+Score = likelihood x impact, 1 to 25. Then propose bands and who may accept what, for example: up to 6 accepted by the risk owner with a note; 8 to 12 accepted by the owner's executive with a review date; 15 and above needs a treatment plan or a recorded leadership decision. Add one override: any risk with impact 5 goes to leadership whatever its likelihood, because a rare company-ending event is not a low risk. Write the result as a short acceptance criteria section: which conditions make a retained risk acceptable, who accepts at which band, and what evidence a retention decision needs. Name the treatment options every register row must choose from (reduce, avoid, share or transfer, retain), with retained risks routed to the acceptance process. For a financial entity under DORA, check that the ladder places final accountability for ICT risk with the management body (Article 5) and that the stated tolerance links to the digital operational resilience strategy.
 
 ## Step 4: write cadence and triggers
 
-State a full reassessment cadence (typically every 12 months) and the events that force a targeted reassessment: a major incident, a new product line or market, a new critical supplier, a large architecture change, an audit finding on the risk process. Name who runs the reassessment and where results are recorded.
+State a full reassessment cadence (typically every 12 months) and the events that force a targeted reassessment: a major incident, a new product line or market, a new critical supplier, a large architecture change, an audit finding on the risk process. Name who runs the reassessment and where results are recorded. Say what happens to existing scores when the method changes: which risks are rescored on adoption and when the rest follow, so old and new scores are never compared as equals. Give the method a version, a date and an approval block for the leadership role that signs it.
 
 ## Step 5: calibrate before anyone relies on it
 
-Pick five real risks of different kinds. Ask two people to score them independently with the draft method, record both scores in `calibration.md`, and discuss every gap of more than one level. Tighten the anchor that caused the gap. Repeat until the two scorers land within one level on all five.
+Pick five real risks of different kinds. Ask two people to score them independently with the draft method, record both scores in `calibration.md`, and discuss every gap of more than one level, with the evidence each scorer used. Tighten the anchor that caused the gap; where the gap came from missing evidence rather than a vague anchor, record it as a register quality issue instead of forcing agreement. Repeat until the two scorers land within one level on all five.
 
 ## What good looks like
 
