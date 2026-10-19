@@ -27,7 +27,7 @@ Start from the controls that operate per event or on a cycle, because those are 
 
 ## Step 2: build each population from the system of record
 
-For each population, write in its file: the source system, the exact query or report and its parameters (date range, filters), who ran it and when, the row count, and the fields. Prefer a system-generated export to any list a person typed; auditors test completeness and a typed list fails it. Reconcile one population against another where they should match: leavers in HR against accounts disabled in the identity provider; changes merged in code hosting against change tickets. Every unmatched item is either an explanation to write down now or a gap.
+For each population, write in its file: the source system, the exact query or report and its parameters (date range, filters), who ran it and when, the row count, and the fields. Prefer a system-generated export to any list a person typed; auditors test completeness and a typed list fails it. Reconcile one population against another where they should match: leavers in HR against accounts disabled in the identity provider; changes merged in code hosting against change tickets. Every unmatched item is either an explanation to write down now or a gap. A population can legitimately be empty (emergency changes often are): keep the query, the run date and the zero-count export, plus the configuration showing the path exists, because an unprovable "we had none" brings a follow-up request. Before marking a population ready, have someone other than the preparer re-run the query and confirm the same count; record the re-run in the file.
 
 ## Step 3: plan for the sample sizes auditors use
 
@@ -35,11 +35,11 @@ Auditors scale samples with how often a control runs and how many items exist; a
 
 ## Step 4: dry-run a sample
 
-Pick five items per population yourself at random (not the cleanest ones) and gather the evidence for each as the auditor would want it: the record itself, timestamped, showing the system and the identity of whoever approved or acted. Note for each item: evidence found, where, and anything missing. If two of five fail, the control has an operating problem; record it in `gaps.md` with an owner, because fixing evidence for five items does not fix the other items.
+Pick five items per population yourself at random (not the cleanest ones), plus the earliest item in the period (auditors test whether the control already operated at the start, especially in a first attestation period). Gather the evidence for each as the auditor would want it: the record itself, timestamped, showing the system and the identity of whoever approved or acted. Note for each item: evidence found, where, and anything missing. If two of five fail, the control has an operating problem; record it in `gaps.md` with an owner and send it to the company's corrective action process, because fixing evidence for five items does not fix the other items.
 
 ## Step 5: write the gaps and the readiness index
 
-`gaps.md` lists each population with missing exports, reconciliation breaks, failed dry-run items and controls with no record at all, each with an owner role and a proposed fix. `populations.md` shows every population as ready, ready with explanations, or not ready.
+`gaps.md` lists each population with missing exports, reconciliation breaks, failed dry-run items and controls with no record at all, each with an owner role and a proposed fix. `populations.md` shows every population as ready, ready with explanations, or not ready, and names the person who can pull the evidence for any selected item on the audit day.
 
 ## What good looks like
 

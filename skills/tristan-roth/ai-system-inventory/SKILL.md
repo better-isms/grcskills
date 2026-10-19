@@ -22,7 +22,7 @@ Read before asking: the vendor or procurement list, expense or card exports for 
 
 ## Step 1: agree what counts as an AI system
 
-Write the boundary test into `inventory-notes.md` before collecting anything. For the EU scope, use the definition in EU AI Act Art. 3(1) as the test: a machine-based system that infers from its input how to generate outputs such as predictions, content, recommendations or decisions, with some autonomy. Rule-based scoring written by hand usually falls outside; a model trained on data usually falls inside. Record borderline cases with the reasoning instead of dropping them; a reviewer can move a borderline entry out later, but a missing entry stays invisible.
+Write the boundary test into `inventory-notes.md` before collecting anything. For the EU scope, use the definition in EU AI Act Art. 3(1) as the test: a machine-based system that infers from its input how to generate outputs such as predictions, content, recommendations or decisions, with some autonomy. Check the current consolidated text, since the Act was amended in 2026, and record in the notes which version you relied on. Rule-based scoring written by hand usually falls outside; a model trained on data usually falls inside. Record borderline cases with the reasoning instead of dropping them; a reviewer can move a borderline entry out later, but a missing entry stays invisible.
 
 ## Step 2: discover from five sources
 
@@ -44,8 +44,8 @@ The unit is the use case, not the vendor. The same assistant used for drafting m
 - owner role (a business owner who can stop the use, not "IT")
 - build, buy, or embedded in another product; vendor and underlying model where known
 - the company's role: for the EU AI Act, provider or deployer (Art. 3 defines both; Art. 25 says when a deployer becomes a provider); for the management system, run a framework lookup on the role terms it uses
-- purpose and the decision or output it feeds, and who acts on it
-- data in: personal data categories, customer data, confidential data
+- purpose and the decision or output it feeds, and who acts on it; for customer-facing features, copy the company's own marketing or release-note wording, because that is what a regulator reads as the intended purpose
+- data in: personal data categories, customer data, confidential data; for built or fine-tuned models, where training data came from, any labelling vendor, and on what basis it was acquired
 - people affected: staff, customers, applicants, the public
 - level of autonomy: suggestion a human reviews, or output that acts without review
 - status: idea, pilot, production, retired; approved or discovered unapproved
@@ -57,7 +57,8 @@ The unit is the use case, not the vendor. The same assistant used for drafting m
 - Count entries by source. If everything came from procurement, engineering and shadow use were missed; go back to step 2.
 - Every unapproved discovery stays in the register, marked as such. Deleting it hides the risk without removing it.
 - Every owner role is a person who can approve or stop the use.
-- List questions per owner in `inventory-notes.md`, and propose how the register stays current: a check at vendor onboarding, at feature launch, and a sweep each quarter.
+- Reconcile both ways with the records of processing: every use case that touches personal data should appear there too, and a mismatch either way goes to the privacy owner.
+- List questions per owner in `inventory-notes.md`, and propose how the register stays current: a check at vendor onboarding, at feature launch, and a sweep each quarter that confirms each owner is still in post. Retired uses move to "retired" with a date instead of being deleted.
 
 ## What good looks like
 

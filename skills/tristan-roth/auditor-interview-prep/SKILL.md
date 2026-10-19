@@ -22,11 +22,11 @@ Read the audit plan or agenda, the control list or applicability statement with 
 
 ## Step 1: map roles to what the auditor will test
 
-For each interviewee role, list the processes they own or operate, the controls mapped to them, the risks they own, and any open finding in their area. Leadership gets questions on direction, resources, risk decisions and management review; process owners on how their process runs and how they know it works; engineers and operators on the real steps, the last time they did them and where the record is.
+For each interviewee role, list the processes they own or operate, the controls mapped to them, the risks they own, and any open finding in their area. Leadership gets questions on direction, resources, risk decisions and management review, and each executive should be able to name one decision from the last review and what changed because of it; process owners on how their process runs and how they know it works; engineers and operators on the real steps, the last time they did them and where the record is.
 
 ## Step 2: write the likely questions
 
-Write 8 to 12 questions per role, in the auditor's style: open, about the last real occurrence, and followed by "show me". Examples: "Walk me through the last person who left. Show me when their access was removed." "How do you decide whether a change needs approval? Show me an emergency change from this period." "What did leadership decide at the last review, and what happened next?" For framework-specific topics a role must speak to, run a framework lookup on what the auditor is likely to probe rather than inventing it.
+Write 8 to 12 questions per role, in the auditor's style: open, about the last real occurrence, and followed by "show me". Put the audit period at the top of every brief; the last occurrence the person names must fall inside the window the auditor samples from, or they should know why there was none. Examples: "Walk me through the last person who left. Show me when their access was removed." "How do you decide whether a change needs approval? Show me an emergency change from this period." "What did leadership decide at the last review, and what happened next?" For framework-specific topics a role must speak to, run a framework lookup on what the auditor is likely to probe rather than inventing it.
 
 ## Step 3: list the records each person opens
 
@@ -41,15 +41,16 @@ Every brief carries the same guidance:
 - When you do not know: say so, say who knows or where it is recorded, and offer to come back. A guess that contradicts a record is worse than "I will check".
 - When practice differs from the document, say what you actually do. The auditor will find the difference anyway; candour turns a possible finding into a conversation.
 - Do not speculate about other teams' processes.
+- Never create, backdate or tidy a record for the audit. A missing record is a finding to manage; a fabricated one ends trust in everything else.
 - If a finding is raised, ask what evidence the auditor saw; do not argue in the interview. Disputes go to the audit coordinator.
 
 ## Step 5: run a short mock interview
 
-For each role, script a 15-minute mock with four questions from the brief, asked by someone outside the person's team. Note where the person could not find a record or contradicted a document; those are items to fix before the audit, in the process or in the document, not in the script.
+For each role, script a 15-minute mock with four questions from the brief, asked by someone outside the person's team, and for an internal audit never by someone who runs the process being tested. Note where the person could not find a record or contradicted a document; those are items to fix before the audit, in the process or in the document, not in the script.
 
 ## Step 6: build the schedule
 
-`schedule.md` lists each session: role, time, topics, records to have open, the backup person if the interviewee is absent, and the coordinator who tracks auditor requests made during the session.
+`schedule.md` lists each session: role, time, topics, records to have open, the backup person if the interviewee is absent, and the coordinator who tracks auditor requests made during the session. The coordinator keeps a written request log (request, owner, due time) and reviews it at the end of each audit day; "can you send me that later" is the item most often lost.
 
 ## What good looks like
 

@@ -36,11 +36,11 @@ Answer each question from the documents first, citing section and document. Send
 - **Retention**: how long prompts, files and outputs are kept, including abuse-monitoring copies, and whether vendor staff can read them.
 - **Underlying model**: does the vendor run its own model or call another provider? If it calls another, that provider is a subprocessor; check its terms too. This is the most common blind spot.
 - **Subprocessors and location**: the full chain, where data is processed, and the transfer mechanism for any transfer outside the EEA (GDPR Chapter V, Art. 44 onwards).
-- **GDPR role**: processor under Art. 28 for your purposes; if the vendor uses data for its own purposes, such as training, it may act as a controller for that use, which needs its own basis.
-- **Model changes**: notice before a model version changes or is retired, version pinning, and how quality is checked after a change.
+- **GDPR role**: processor under Art. 28 for your purposes; if the vendor uses data for its own purposes, such as training, it may act as a controller for that use, which needs its own basis. Check the processing agreement's content, not just that one exists: the Art. 28(3) terms (documented instructions, confidentiality, security, subprocessor conditions, help with data subject requests, deletion or return at the end, audits), and notice of subprocessor changes with a right to object (Art. 28(2)). A vendor whose model provider can change between review and renewal makes that notice the clause that matters most.
+- **Model changes**: notice before a model version changes or is retired, or changes in a way that affects performance, version pinning, and how quality is checked after a change. If the company fine-tunes or rebrands the vendor's model, a vendor change can shift the company's own AI Act position.
 - **Security**: whether the audit report or certificate scope covers the AI feature, tenant isolation, admin controls (switch features off, restrict users, export logs), and protection against prompt injection for products that act or browse.
 - **Incidents**: notification time and content in the contract.
-- **AI Act position**: the vendor's own role and classification for its intended purpose, and, for a high-risk system, its instructions for use (Art. 13) so the company can meet its deployer duties.
+- **AI Act position**: the vendor's own role and classification for its intended purpose, and, for a high-risk system, its instructions for use (Art. 13) so the company can meet its deployer duties. In the deep tier, also ask for the EU declaration of conformity, the CE marking and the registration (Art. 47 to 49); a high-risk system without them passes the problem to the buyer.
 - **Output and liability**: ownership of outputs, indemnity for intellectual property claims, limits of liability.
 - **Exit**: export, deletion on termination with confirmation, and time to delete.
 
@@ -50,7 +50,7 @@ Confirm the protections apply to the account people will actually use. Business 
 
 ## Step 4: recommend and list conditions
 
-Write a recommendation: approve, approve with conditions, or do not approve. Conditions are concrete: switch off training in admin settings, restrict to amber data, sign the processing agreement, pin the model version, review again at renewal. Put unanswered points in the questions file, each with why it matters.
+Write a recommendation: approve, approve with conditions, or do not approve. Conditions are concrete: switch off training in admin settings, restrict to amber data, sign the processing agreement, pin the model version, review again at renewal. Put unanswered points in the questions file, each with why it matters. Record the result in the supplier register (tier, conditions, re-review date), so it counts as supplier management evidence instead of sitting in a standalone file.
 
 ## What good looks like
 

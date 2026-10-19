@@ -32,23 +32,23 @@ Decide and record, each with a reason:
 - **Roles the company plays**: building models, offering AI products or services, using AI built by others. Most companies play more than one; run a framework lookup on the role terms the standard uses and map each system to them.
 - **Organisational units, locations and lifecycle stages**: the teams that design, train, deploy, operate and retire the systems.
 
-Rule of thumb: a scope that leaves out an AI feature on the company's own website will be questioned by the first auditor and the first enterprise customer who reads both.
+Then reconcile the list line by line against the AI register and explain every gap; the certification auditor will test the scope against the register. Rule of thumb: a scope that leaves out an AI feature on the company's own website will be questioned by the first auditor and the first enterprise customer who reads both.
 
 ## Step 3: map interfaces and dependencies
 
-List what crosses the boundary: model and API providers, cloud hosting, data suppliers and labelling services, customers who supply data or fine-tune, and internal shared services. For each, note what the AI management system relies on it for and who manages the relationship. An AI product built on a third-party model depends on that provider's changes and terms; that dependency belongs in the scope document, not only in the vendor file.
+List what crosses the boundary: model and API providers, cloud hosting, data suppliers and labelling services, customers who supply data or fine-tune, and internal shared services. For each, note what the AI management system relies on it for and who manages the relationship. An AI product built on a third-party model depends on that provider's changes and terms; that dependency belongs in the scope document, not only in the vendor file. Two cross-references keep the documents consistent: systems that sit in both the security scope and this one (any AI that processes customer data) are named in both, and where a system's EU AI Act obligations sit with an upstream provider, the scope says so and points to the classification record.
 
 ## Step 4: reuse before building
 
-Make a two-column table in `scope.md`: processes shared with the security system (document control, internal audit, management review, corrective action, supplier management, incident management, competence records) and processes specific to AI (impact assessment, data provenance and quality, model change approval, performance and drift monitoring, use-case approval). Shared processes get an AI section, not a twin. A parallel system doubles the paperwork and halves the attention.
+Make a two-column table in `scope.md`: processes shared with the security system (document control, internal audit, management review, corrective action, supplier management, incident management, competence records) and processes specific to AI (impact assessment, data provenance and quality, model change approval, performance and drift monitoring, use-case approval). For the AI impact assessment, say whether it is new, adapted from the existing privacy impact assessment practice, or shared with the privacy programme; nobody should assume it already exists. Shared processes get an AI section, not a twin. A parallel system doubles the paperwork and halves the attention.
 
 ## Step 5: assign roles
 
-In `roles.md`, write a RACI for the AI-specific processes and for the boundary decisions: a leadership sponsor, an AI governance lead, an owner per AI system, data science or engineering lead, legal and privacy, security, and the internal auditor. Check two things: each AI system has one accountable owner who can stop it, and whoever audits the AI management system does not run it. In a small company that usually means borrowing the auditor from another function or outside.
+In `roles.md`, write a RACI for the AI-specific processes and for the boundary decisions, tied to the interested parties (customers, regulators, staff affected by AI) whose expectations each role serves: a leadership sponsor, an AI governance lead, an owner per AI system, data science or engineering lead, legal and privacy, security, and the internal auditor. Check two things: each AI system has one accountable owner who can stop it, and whoever audits the AI management system does not run it. In a small company that usually means borrowing the auditor from another function or outside.
 
 ## Step 6: draft the statement and the questions
 
-Write the scope statement as one paragraph a certification auditor and a customer can both read: the AI systems or product lines, the roles, the units and locations, and any exclusion with its reason. Run a framework lookup for what the standard expects the scope and context work to consider. List open questions for leadership in `open-questions.md`.
+Write the scope statement as one paragraph a certification auditor and a customer can both read: the AI systems or product lines, the roles, the units and locations, and any exclusion with its reason. Run a framework lookup for what the standard expects the scope and context work to consider. List open questions for leadership in `open-questions.md`, including an explicit include-or-exclude decision, with its reason, for every customer-visible AI feature if certification is planned.
 
 ## What good looks like
 
