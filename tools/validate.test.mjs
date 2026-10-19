@@ -487,7 +487,9 @@ test('CLI --changed mode passes for own files', () => {
 test('rules helper returns rule ids', () => assert.ok(Array.isArray(rules(makeRepo()))));
 
 // The one prompt has a single source, prompts/, which the site reads; README
-// carries the same text byte for byte, and the prompt pins the current release.
+// carries the same text byte for byte. The prompt carries no release tag: it
+// points to grcskills.com/llms.txt, which names the tag the marketplace pins
+// (the site's built llms.txt test checks that half).
 test('README carries the one prompt and the contribution prompt from prompts/', () => {
   const readme = fs.readFileSync(path.join(REPO, 'README.md'), 'utf8');
   for (const f of ['setup-review.txt', 'contribute.txt']) {
@@ -496,9 +498,8 @@ test('README carries the one prompt and the contribution prompt from prompts/', 
     assert.ok(readme.includes(`\n> ${text}\n`), `README.md quotes prompts/${f} exactly`);
   }
 });
-test('the one prompt pins the release tag the marketplace pins', () => {
-  const ref = JSON.parse(fs.readFileSync(path.join(REPO, '.claude-plugin', 'marketplace.json'), 'utf8')).plugins[0].source.ref;
+test('the one prompt carries no release tag and points to grcskills.com/llms.txt', () => {
   const prompt = fs.readFileSync(path.join(REPO, 'prompts', 'setup-review.txt'), 'utf8');
-  assert.ok(prompt.includes(`release ${ref} of https://github.com/${'better-isms/grcskills'}`), `prompt pins ${ref}`);
-  assert.equal(prompt.match(/v\d{4}\.\d{2}\.\d{2}(?:\.\d+)?/g)?.length, 1);
+  assert.doesNotMatch(prompt, /v?\d{4}\.\d{2}\.\d{2}/, 'no release tag or date in the prompt');
+  assert.match(prompt, /^Read grcskills\.com\/llms\.txt, then run the grc-setup-review skill /);
 });

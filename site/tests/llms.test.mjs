@@ -35,3 +35,12 @@ test('site loader and validator agree on the 1024 description cap', () => {
   assert.doesNotThrow(() => loadContent(repoWith(at(1024))));
   assert.throws(() => loadContent(repoWith(at(1025))), /description: 1025 characters/);
 });
+
+test('llms.txt opens with the grc-setup-review run steps, pinned to the given tag', () => {
+  const { skills } = loadContent(repoWith(skillMd({})));
+  const llms = buildLlms({ skills, tag: 'v2026.10.19.7' });
+  const run = llms.match(/## If you were asked to run grc-setup-review\n([\s\S]*?)\n## /)?.[1] ?? '';
+  assert.ok(run.includes('git clone --depth 1 --branch v2026.10.19.7 https://github.com/better-isms/grcskills .grcskills'));
+  assert.ok(run.includes('never from `main`'));
+  assert.ok(llms.indexOf('## If you were asked to run grc-setup-review') < llms.indexOf('## When to use'));
+});

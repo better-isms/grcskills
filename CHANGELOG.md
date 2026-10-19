@@ -11,7 +11,8 @@ Release tags are `vYYYY.MM.DD[.n]`. Installers and the Claude Code plugin consum
 - `templates/SKILL.md` renamed to `templates/SKILL.template.md`: the skills CLI listed it as a 61st skill. A new `stray-skill` validator rule rejects any SKILL.md outside a skill folder.
 - Stance: the agent does the legwork, the person makes the calls. Home H1 is now "Open GRC skills for AI agents." with the subline "Written the way experienced GRC people do the work. Your agent does the legwork. You make the calls."; "What comes back" reads as drafts for you to judge; README, banners, social preview, llms.txt and the contribute page (publish your method, under your name) follow.
 - Skill pages show a "Where you decide" block near the top, built from the skill's own rules that keep a call with a person, plus the draft-only boundary.
-- Every install pin (marketplace ref, the one prompt, README, AGENTS.md) moves to `v2026.10.19.1`. The README banner's prompt card now shows a tag-free excerpt so it never goes stale, and the dark banner is actually dark.
+- Every install pin (marketplace ref, README, AGENTS.md) moves to `v2026.10.19.1`. The dark banner is actually dark.
+- The one prompt carries no release tag: "Read grcskills.com/llms.txt, then run the grc-setup-review skill on my GRC setup: ...". llms.txt opens with the exact run steps, pinned to the release tag the marketplace pins, so the prompt, the banners and the social preview never go stale. A run of it through llms.txt on the sample company is in `assets/demo/e2e-llms/`.
 
 ## v2026.10.19
 

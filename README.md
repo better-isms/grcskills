@@ -20,17 +20,17 @@ Browse the library at **[grcskills.com](https://grcskills.com)**. All 60 skills 
 
 Paste this into your agent, in the folder that holds your compliance material:
 
-> Clone release v2026.10.19.1 of https://github.com/better-isms/grcskills (or use it if it is already installed), read its AGENTS.md, then run the grc-setup-review skill against my GRC setup: rank the 10 skills that would help me most, audit what is broken, duplicated or missing, and write a 30-day plan to files.
+> Read grcskills.com/llms.txt, then run the grc-setup-review skill on my GRC setup: rank the 10 skills that would help me most, list what is broken or missing, and write a 30-day plan.
 
-The agent reads every skill's description, looks at the policies, registers and exports it can reach (read-only), and writes `grc-setup-review/inventory.md`, `top-10.md`, `audit.md` and `30-day-plan.md` in your working folder.
+The prompt carries no version: [grcskills.com/llms.txt](https://grcskills.com/llms.txt) names the current release tag and the exact steps, so your agent clones that pinned release, reads every skill's description, looks at the policies, registers and exports it can reach (read-only), and writes `grc-setup-review/inventory.md`, `top-10.md`, `audit.md` and `30-day-plan.md` in your working folder.
 
 ![A replay of a real Claude Code run of the one prompt on a fictional company: it clones the release, reads AGENTS.md and the grc-setup-review skill, reads the company's policies and registers, writes four files, then shows the top 10 skills and the four weeks of the 30-day plan.](assets/demo/demo.gif)
 
-<sub>A real headless Claude Code run of the prompt above on a fictional company, replayed and sped up (the run took about 4 minutes). The sample folder, the condensed transcript and the four files it wrote are in [assets/demo/](assets/demo/).</sub>
+<sub>A real headless Claude Code run on a fictional company, replayed and sped up (the run took about 4 minutes), recorded with the earlier, tag-pinned wording of the prompt. The sample folder, the condensed transcript and the four files it wrote are in [assets/demo/](assets/demo/); a run of the prompt above through llms.txt is in [assets/demo/e2e-llms/](assets/demo/e2e-llms/).</sub>
 
 ## How it works
 
-1. Your agent clones the pinned release and reads [AGENTS.md](AGENTS.md), which routes it to install, run or submit.
+1. Your agent reads [llms.txt](https://grcskills.com/llms.txt), clones the release tag it names and reads [AGENTS.md](AGENTS.md), which routes it to install, run or submit.
 2. The [grc-setup-review](skills/tristan-roth/grc-setup-review/SKILL.md) skill reads only the frontmatter of all 60 skills, then your material, read-only.
 3. It ranks the 10 skills that fit your setup and writes the audit and a 30-day plan to files; each ranked skill then runs on its own when you ask.
 

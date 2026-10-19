@@ -18,7 +18,7 @@ import { heroCard, glyph, ico, toSvg, toPng } from './og-lib.mjs';
 
 const siteDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const repoRoot = path.resolve(siteDir, '..');
-const prompt = 'Clone github.com/better-isms/grcskills, read AGENTS.md, then run grc-setup-review on my GRC setup: rank the 10 skills that would help me most\u2026';
+const prompt = 'Read grcskills.com/llms.txt, then run grc-setup-review on my GRC setup\u2026';
 if (/v\d{4}\.\d{2}\.\d{2}/.test(prompt)) throw new Error('the committed banner prompt must not pin a release tag');
 const out = (rel, data) => {
   const file = path.join(repoRoot, rel);

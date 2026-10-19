@@ -207,6 +207,14 @@ test('llms.txt and sitemap list every skill; llms.txt carries no descriptions', 
     assert.ok(sitemap.includes(`<loc>https://grcskills.com/skill/${s.slug}/</loc>`));
   }
   assert.ok(llms.includes(content.meta.prompt));
+  const ref = JSON.parse(fs.readFileSync(path.join(site, '..', '.claude-plugin', 'marketplace.json'), 'utf8')).plugins[0].source.ref;
+  const run = llms.match(/## If you were asked to run grc-setup-review\n([\s\S]*?)\n## /)?.[1];
+  assert.ok(run, 'llms.txt has the run-steps section');
+  assert.ok(llms.indexOf('## If you were asked to run grc-setup-review') < llms.indexOf('## When to use'), 'run steps sit near the top');
+  assert.ok(run.includes(`git clone --depth 1 --branch ${ref} https://github.com/better-isms/grcskills .grcskills`), `run steps clone the marketplace tag ${ref}`);
+  assert.ok(run.includes(`npx skills add better-isms/grcskills#${ref} --skill grc-setup-review`));
+  for (const p of ['.grcskills/AGENTS.md', '.grcskills/skills/tristan-roth/grc-setup-review/SKILL.md', './grc-setup-review/']) assert.ok(run.includes(p), p);
+  assert.deepEqual([...new Set(run.match(/v\d{4}\.\d{2}\.\d{2}(?:\.\d+)?/g))], [ref], 'one tag, the pinned one');
 });
 
 test('author pages carry no email address', opts, () => {
