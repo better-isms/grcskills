@@ -51,6 +51,10 @@ export const PUBLIC_LAW = ['gdpr', 'nis2', 'dora', 'hipaa', 'eu-ai-act', 'cra'];
 
 export const MIN_WORDS = 450;
 export const MAX_WORDS = 1200;
+// Description length. 1024 is the Agent Skills format limit; the site loader
+// (site/scripts/content-lib.mjs) imports these so the two never disagree.
+export const DESCRIPTION_MIN = 100;
+export const DESCRIPTION_MAX = 1024;
 // ref=grcskills-<slug> must match ^[a-z0-9][a-z0-9:._-]{0,63}$, so the slug
 // gets 64 - "grcskills-".length characters.
 export const MAX_SLUG = 54;
@@ -137,6 +141,33 @@ const SENSITIVE_PATH = [
   /\.npmrc\b/, /\.pypirc\b/, /\.docker\/config\.json/, /\.kube\/config\b/,
   /\bfind-(?:generic|internet)-password\b/, /\bcredentials\.json\b/, /\bkeychain\b/i,
 ];
+// Imperatives that make the reader's agent send something off the machine or
+// change a governed system (a register, tracker, ticket, platform). Skills draft
+// inside ./<slug>/ and a named human sends or enters it. Matches only at the
+// start of a sentence or clause ("Send it to owners", "Enter the check in the
+// finding tracker", "Update the supplier register"), never third-person prose
+// ("the owner sends it"), and never when the rest of the sentence names a
+// local output file in backticks. "- NEVER" rule lines are exempt.
+const ACTION_START = String.raw`(?:^\s*(?:[-*]|\d+\.)?\s*(?:\*\*[^*]+\*\*:?\s*)?|[.;!?:,]\s+)(?:then\s+|and\s+)?`;
+const ACTION_OBJ = String.raw`(?:it|them|this|these|those|(?:the|a|an|each|every)\s+[\w'-]+(?:\s+[\w'-]+){0,3})`;
+const ACTION_SYS = String.raw`(?:register|tracker|system|tool|platform|ticket|portal|inbox|channel|wiki|repository)`;
+export const AGENT_ACTION = [
+  new RegExp(`${ACTION_START}(?:send|e-?mail|post|submit|upload|forward|publish)\\s+${ACTION_OBJ}\\s+(?:to|into|on|through|via)\\s+(?!the reader\\b|the user\\b|you\\b)`, 'i'),
+  new RegExp(`${ACTION_START}(?:enter|record|log|file)\\s+${ACTION_OBJ}\\s+(?:in|into|on)\\s+(?:the|their|each|its)\\s+(?:[\\w'-]+\\s+){0,3}${ACTION_SYS}\\b`, 'i'),
+  new RegExp(`${ACTION_START}update\\s+the\\s+(?:[\\w'-]+\\s+){0,3}${ACTION_SYS}\\b`, 'i'),
+];
+export function agentActionFinding(line) {
+  if (/^\s*[-*]\s+NEVER\b/.test(line)) return null;
+  for (const re of AGENT_ACTION) {
+    const m = line.match(re);
+    if (!m) continue;
+    const rest = line.slice(m.index + m[0].length).split(/(?<=[.;!?])\s/)[0];
+    if (rest.includes('`')) continue;
+    return m[0].replace(/^[\s.;!?:,*-]+/, '').trim();
+  }
+  return null;
+}
+
 const INJECTION = [
   /\bignore\s+(?:all\s+|any\s+)?(?:previous|prior|above|earlier|system)\s+(?:instructions|messages|prompts|rules)/i,
   /\bdisregard\s+(?:all\s+|any\s+|the\s+)?(?:previous|prior|above|system)\b/i,
@@ -399,6 +430,10 @@ export function validate(root, opts = {}) {
       if (!neverLine && SENSITIVE_PATH.some((re) => re.test(line))) {
         err(where, 'security-credentials', 'mentions a credential store (.ssh, .env, keychain...); allowed only on a "- NEVER" rule line');
       }
+      if (!isAuthor) {
+        const act = agentActionFinding(line);
+        if (act) err(where, 'agent-action', `"${act}" makes the agent send or change something outside ./<slug>/; draft it in the output and name the human role who sends or enters it`);
+      }
       if (INJECTION.some((re) => re.test(line))) err(where, 'security-injection', 'prompt-injection, reviewer-directed or safeguard-bypass text found; skills address the reader\'s agent only');
       for (const raw of line.match(URL_RE) ?? []) {
         const url = raw.replace(/[.,;:!?*_]+$/, '');
@@ -573,7 +608,7 @@ export function validate(root, opts = {}) {
     }
     if (!d.description) err(file, 'description', 'missing `description`');
     else if (typeof d.description !== 'string' || !/^Use this skill when\b/.test(d.description)) err(file, 'description', 'description must start with "Use this skill when"');
-    else if (d.description.length < 100 || d.description.length > 1024) err(file, 'description', `description is ${d.description.length} characters; write 100 to 1024, dense with the phrases a practitioner would say`);
+    else if (d.description.length < DESCRIPTION_MIN || d.description.length > DESCRIPTION_MAX) err(file, 'description', `description is ${d.description.length} characters; write ${DESCRIPTION_MIN} to ${DESCRIPTION_MAX}, dense with the phrases a practitioner would say`);
     if (!d.category) err(file, 'category', `missing \`category\`; one of: ${Object.keys(CATEGORIES).join(', ')}`);
     else if (!(d.category in CATEGORIES)) err(file, 'category', `\`${d.category}\` is not a category; one of: ${Object.keys(CATEGORIES).join(', ')}`);
     if (!Array.isArray(d.frameworks) || d.frameworks.length === 0) err(file, 'frameworks', `\`frameworks\` must be a non-empty list from: ${FRAMEWORKS.join(', ')}`);
