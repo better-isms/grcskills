@@ -1,0 +1,11 @@
+{
+  "canonical_origin": "https://grcskills.com",
+  "trailing_slash": "always",
+  "page_types": {
+    "/": "home",
+    "/skill/": "catalog-item",
+    "/category/": "catalog-hub",
+    "/framework/": "catalog-hub"
+  },
+  "twin_host": "www.grcskills.com"
+}
