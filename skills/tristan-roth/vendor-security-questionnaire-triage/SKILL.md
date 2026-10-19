@@ -47,15 +47,19 @@ For each of the deciding questions, mark the answer:
 - **Contradicted**: conflicts with the report, another answer or the supplier's public documentation.
 - **Evasive**: "industry standard", "as required by law", "upon request", or not applicable where it clearly applies.
 
+Check every claim about subprocessors, incident notice, data location and deletion at exit against the signed data processing agreement and the published subprocessor list: the contract is the strongest source of contradictions.
+
 A questionnaire where every answer is yes, including questions that do not fit the supplier's business, deserves less trust, not more.
 
 ## Step 4: turn gaps into follow-ups and options
 
 For each contradicted, evasive or asserted deciding answer, write: the risk to the company in one line; one follow-up question that can be answered with evidence, drafted in the follow-up list (`follow-up-questions.md`) for the business owner to send; and the fallback if the answer stays weak, such as a contract clause, a configuration on the company's side or limiting the data sent. Cite the page or section of the supplier document behind every finding.
 
+When answers come back, classify them again on the same scale and update the verdict. A question still unanswered at the deadline counts as evasive: silence is a finding.
+
 ## Step 5: propose a decision
 
-Propose one of: proceed; proceed with conditions (listed, each with an owner); or escalate to the risk owner with the residual risk stated. Write the one-page verdict (`triage.md`) with the proposal, the deciding questions and their status, the report checks and the findings.
+Propose one of: proceed; proceed with conditions (listed, each with an owner); or escalate to the risk owner with the residual risk stated. If the decision deadline leaves no time for the follow-up round or a bridge letter, say so and choose between conditions and escalation, so time running out does not become a silent yes. Set the next review date from the report period end or certificate expiry. Give each item in `our-obligations.md` an owner role and a date, and note where it already appears for another supplier so shared obligations are tracked once. Write the one-page verdict (`triage.md`) with the proposal, the deciding questions and their status, the report checks and the findings.
 
 If the output folder exists, ask before overwriting and offer a new subfolder instead.
 

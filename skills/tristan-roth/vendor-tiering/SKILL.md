@@ -32,7 +32,7 @@ Score each supplier on a three-level scale per axis and write one line of reason
 - **Access**: none, or access only to the supplier's own service (1); user-level access into company systems or networks (2); privileged access, access to production, source code or the ability to change what customers receive (3).
 - **Dependency**: replaceable within a week (1); replaceable within a month, or a key process degrades (2); critical, no fast alternative, outage stops revenue or a regulated service (3).
 
-Add flags that do not change the score but drive extra work: processes personal data on the company's behalf, supports a function a regulation treats as critical, located or accessed outside the company's jurisdiction.
+Add flags that do not change the score but drive extra work: processes personal data on the company's behalf, supports a function a regulation treats as critical, located or accessed outside the company's jurisdiction, and handles personal data or has privileged access with no signed agreement covering security and processing terms (an immediate action for the owner).
 
 ## Step 3: tier by the highest axis
 
@@ -46,11 +46,11 @@ Where a framework or regulation sets its own criteria for which suppliers need w
 
 ## Step 4: sanity-check the result
 
-In most companies tier 1 holds roughly 5 to 15 percent of suppliers. If half the list is tier 1, the axes are not being applied and assessment will collapse under its own weight; rescore with the owners. If a supplier the reader named as critical is not tier 1, one of the scores is wrong. Check for concentration: several tier 1 services on one provider is a risk worth one line in the method file.
+In most companies tier 1 holds roughly 5 to 15 percent of suppliers. If half the list is tier 1, the axes are not being applied and assessment will collapse under its own weight; rescore with the owners. If a supplier the reader named as critical is not tier 1, one of the scores is wrong. Check for concentration: several tier 1 services on one provider is a risk worth one line in the method file. If the company publishes a sub-processor list, compare it with the flagged rows: a sub-processor missing from the spreadsheet, or a personal data supplier missing from the published list, is a defect to raise.
 
 ## Step 5: write the outputs
 
-The supplier spreadsheet (`vendor-tiers.csv`): supplier legal entity, service, source, business owner role, the three scores with reasons, flags, tier, assessment depth, next review. The method note (`tiering-method.md`): the scales, the tier rule and the cycle per tier, short enough for an owner to apply alone. The owner questions (`questions-for-owners.md`): one block per owner with the scores they must confirm.
+The supplier spreadsheet (`vendor-tiers.csv`): supplier legal entity, service, source, business owner role, the three scores with reasons, flags, tier, assessment depth, last assessment date and method (report reviewed, questionnaire triaged, terms checked), next review. The method note (`tiering-method.md`): the scales, the tier rule and the cycle per tier, short enough for an owner to apply alone. Spell out what counts as a change that reopens a tier (new data category, wider access, new sub-processor, acquisition or breach at the supplier, use beyond the scored scope) and that the owner reports it. Propose an onboarding gate: no new tool receives company or customer data before it is scored and tiered. The owner questions (`questions-for-owners.md`): one block per owner with the scores they must confirm.
 
 If the output folder exists, ask before overwriting and offer a new subfolder instead.
 
