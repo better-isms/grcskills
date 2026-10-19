@@ -9,6 +9,14 @@ Release tags are `vYYYY.MM.DD[.n]`. Installers and the Claude Code plugin consum
 
 - A first-time outside author's pull request can pass CI: the validator no longer requires a new `skills/<author>/` folder in `.claude-plugin/plugin.json` (outside PRs may not touch that file). It prints a note instead, and `--release`, run by the release workflow on the tag, requires every author folder to be listed. Claude Code reads plugin skills one level below each listed folder, so `"./skills/"` alone would expose nothing.
 
+## v2026.10.19.2
+
+- llms.txt run steps keep only the pinned clone (no unpinned npx install).
+- "Where you decide" shows only rules where a person decides or signs off.
+- A first-time outside author's pull request can pass CI without touching the plugin manifest.
+- CHANGELOG wording fixed: the one prompt carries no tag; llms.txt pins the release.
+- Every install pin moves to `v2026.10.19.2`.
+
 ## v2026.10.19.1
 
 - New required frontmatter field `summary`: one plain line of at most 155 characters for people (search results, social cards, site cards). `description` stays the agent trigger. Written for all 60 skills; the validator, the template, AGENTS.md and the submit-skill interview carry the rule.
