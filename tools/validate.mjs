@@ -458,7 +458,7 @@ export function validate(root, opts = {}) {
   }
   if (!fs.existsSync(skillsDir)) {
     err('skills', 'layout', 'the skills/ directory is missing');
-    return { problems, stats };
+    return { problems, stats, notes };
   }
 
   // Text rules shared by every markdown file under skills/.

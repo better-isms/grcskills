@@ -272,7 +272,7 @@ const DECIDE_NEVER = new RegExp([
 const QUALITY_RULE = /\b(?:on the strength of|alone|without (?:checking|reading|the evidence|the contract|naming|testing))\b|\bdelete or overwrite a superseded\b/i;
 // Routing a call to a person. Also qualifies a NEVER line, such as
 // "...; route them to an acceptance decision".
-const DECIDE_MUST = /(\bto approve\b|\bapproval before\b|\breview before\b|\bconfirms it\b|\broute\w*\b[^;]*\bto (?:HR|legal|a reviewer|the legal owner|the privacy lead|an acceptance decision)\b|\bopen decision for\b|\bagree\b[^;]*\bwith the (?:owner|reader)\b|\braise\w*\b[^;]*\bto its owner\b|\bwho confirmed\b|\bauthority to accept\b)/i;
+const DECIDE_MUST = /(\bto approve\b|\bapproval before\b|\breview before\b|\bconfirms it\b|\broute\w*\b[^;]*\bto (?:HR|legal|a reviewer|the legal owner|the privacy lead|an acceptance decision)\b|\bopen decision for\b|\bagree\b[^;]*\bwith the (?:owner|reader)\b|\braise\w*\b[^;]*\bto its owner\b|\bwho confirmed\b|\bauthority to accept\b|\bthe reader's answer on\b[^;]*\bbefore\b|\bblank for (?:an|the) owner\b|\bitems the auditor will test\b)/i;
 // Data-handling rules (what to copy, name or open, or keeping files on the
 // machine) are not decisions. "Never present X as legal advice" alone is a
 // framing rule; it qualifies only when it names who decides.

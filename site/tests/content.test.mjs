@@ -200,6 +200,9 @@ test('decisionRules keeps the rules that leave a call with a person, not data-ha
     'NEVER rely on the small-organisation exemption without counsel\'s documented view.',
     'NEVER present the analysis as legal advice; unclear results go to the person accountable for legal decisions.',
     'NEVER present the memo as legal advice or a final determination; the legal owner confirms it.',
+    'NEVER pre-select the items the auditor will test or steer their selection.',
+    'MUST get the reader\'s answer on devices, AI tools and monitoring before drafting those sections.',
+    'MUST cite a source for every drafted answer and leave unsourced answers blank for an owner.',
   ]) assert.equal(kinds(line).length, 1, line);
   const many = ['## Rules', '', ...Array.from({ length: 9 }, (_, i) => `- NEVER approve item ${i}.`)].join('\n');
   assert.equal(decisionRules(many).length, DECISIONS_MAX);

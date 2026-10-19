@@ -342,6 +342,13 @@ test('author folder missing from plugin manifest: a note on a PR, an error at re
   assert.ok(pr.notes.some((n) => n.startsWith('skills/jane-doe/ is not in .claude-plugin/plugin.json')), pr.notes.join('\n'));
   expectRule(root, 'plugin-skills', { release: true });
 });
+test('CLI reports a checkout with no skills/ folder instead of crashing', () => {
+  const root = makeRepo();
+  fs.rmSync(path.join(root, 'skills'), { recursive: true });
+  const r = spawnSync(process.execPath, [CLI, root], { encoding: 'utf8' });
+  assert.equal(r.status, 1);
+  assert.doesNotMatch(r.stderr, /TypeError/);
+});
 test('a listed author folder that does not exist is rejected on a PR too', () => {
   const root = makeRepo();
   fs.writeFileSync(path.join(root, '.claude-plugin/plugin.json'), JSON.stringify({ name: 'grcskills', skills: ['./skills/jane-doe/', './skills/ghost/'], mcpServers: './plugin/.mcp.json' }));
