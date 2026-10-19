@@ -9,6 +9,7 @@ description: |
   apply, right". Tests every excluded control against scope, assets, activities, suppliers, risks
   and commitments, gives each a keep, rewrite, reverse or ask verdict, and writes a review table plus
   rewritten justifications for the owner to approve.
+summary: "A test of every exclusion in your statement of applicability, with rewritten justifications that hold up when an auditor challenges them."
 category: statement-of-applicability
 frameworks: [iso27001, iso27701, iso42001]
 tags: [soa, exclusions, justification, audit-readiness]

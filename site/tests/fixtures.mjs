@@ -13,12 +13,13 @@ companyDomain: example.com
 Test Author writes fixture skills for the site tests. The bio is long enough to be a bio and short enough to fit the cap.
 `;
 
-export const skillMd = ({ name = 'fixture-skill', title = 'Fixture skill', description, category = 'risk', frameworks = '[iso27001, general]', extra = '', body = 'A fixture body.' } = {}) => `---
+export const skillMd = ({ name = 'fixture-skill', title = 'Fixture skill', description, summary, category = 'risk', frameworks = '[iso27001, general]', extra = '', body = 'A fixture body.' } = {}) => `---
 name: ${name}
 title: ${title}
 description: |
   ${description ?? 'Use this skill when a test needs a fixture skill. It produces nothing but a rendered page for the site tests to inspect.'}
 category: ${category}
+summary: "${summary ?? 'A fixture skill that the site tests render and inspect.'}"
 frameworks: ${frameworks}
 ${extra}---
 

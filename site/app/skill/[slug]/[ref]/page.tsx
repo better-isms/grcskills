@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { getSkill, githubUrl, skills } from '@/lib/content';
+import { pageMeta } from '@/lib/seo';
 
 export const dynamicParams = false;
 // A static export needs at least one param set per dynamic segment; the
@@ -24,11 +25,13 @@ const find = async (params: Props['params']) => {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const f = await find(params);
   if (!f) return { title: 'Not found', robots: { index: false } };
-  return {
+  return pageMeta({
     title: `${f.r.title} (${f.s.title})`,
-    description: f.s.description,
-    alternates: { canonical: `/skill/${f.s.slug}/${f.r.slug}/` },
-  };
+    description: `Reference for the ${f.s.title} skill. ${f.s.summary}`,
+    path: `/skill/${f.s.slug}/${f.r.slug}/`,
+    image: f.s.image,
+    type: 'article',
+  });
 }
 
 export default async function ReferencePage({ params }: Props) {

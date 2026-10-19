@@ -9,6 +9,7 @@ description: |
   systems, roles, teams and lifecycle stages are in, maps interfaces and dependencies, reuses the
   processes the security system already runs, assigns roles with a RACI, and writes the scope
   statement, the roles file and the open questions for leadership.
+summary: "A scope statement for an AI management system: which AI systems, teams, roles and lifecycle stages it covers, built on the existing ISMS."
 category: ai-systems
 frameworks: [iso42001]
 tags: [ai-management-system, scope, roles, raci, ai-governance]

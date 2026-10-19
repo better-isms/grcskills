@@ -9,6 +9,7 @@ description: |
   proportionate identity check, the system search map, review and redaction, response templates per
   right, deadline tracking and a request log, written as a procedure the support and privacy teams
   can run.
+summary: "A working process for privacy requests: intake from any channel, a proportionate identity check, system searches and deadline tracking."
 category: privacy
 frameworks: [gdpr, iso27701]
 tags: [dsar, data-subject-rights, access-request, erasure, procedure]

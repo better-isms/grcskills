@@ -4,8 +4,10 @@ import { notFound } from 'next/navigation';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import InstallPicker from '@/components/InstallPicker';
 import JsonLd from '@/components/JsonLd';
-import { copilotUrl, frameworkLabel, getAuthor, getSkill, githubUrl, installCommands, meta, skills } from '@/lib/content';
+import Row from '@/components/Row';
+import { copilotUrl, frameworkLabel, getAuthor, getSkill, githubUrl, installCommands, meta, relatedTo, skills, toRow } from '@/lib/content';
 import { skillLd } from '@/lib/ld';
+import { pageMeta } from '@/lib/seo';
 
 export const dynamicParams = false;
 export const generateStaticParams = () => skills.map((s) => ({ slug: s.slug }));
@@ -15,12 +17,14 @@ type Props = { params: Promise<{ slug: string }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const s = getSkill((await params).slug);
   if (!s) return {};
-  return {
-    title: s.title,
-    description: s.description,
-    alternates: { canonical: `/skill/${s.slug}/` },
-    openGraph: { title: `${s.title} | grcskills`, description: s.description, url: `/skill/${s.slug}/`, type: 'article' },
-  };
+  return pageMeta({
+    title: `${s.title}: GRC agent skill`,
+    description: s.summary,
+    path: `/skill/${s.slug}/`,
+    image: s.image,
+    imageAlt: `${s.title}, a ${s.categoryLabel.toLowerCase()} skill on grcskills`,
+    type: 'article',
+  });
 }
 
 export default async function SkillPage({ params }: Props) {
@@ -28,12 +32,14 @@ export default async function SkillPage({ params }: Props) {
   if (!s) notFound();
   const author = getAuthor(s.author);
   const cmd = installCommands(s.slug);
+  const related = relatedTo(s);
   return (
     <div className="page">
       <Breadcrumbs items={[{ name: 'Skills', href: '/skills/' }, { name: s.categoryLabel, href: `/category/${s.category}/` }, { name: s.title, href: `/skill/${s.slug}/` }]} />
       <header className="page-head">
         <h1>{s.title}</h1>
-        <p className="lead lead-long">{s.description}</p>
+        <p className="lead">{s.summary}</p>
+        <p className="lead-long trigger"><span className="trigger-lbl">When your agent uses it.</span> {s.description}</p>
         <div className="meta-row">
           <Link className="tag" href={`/category/${s.category}/`}>{s.categoryLabel}</Link>
           <span className="sep" aria-hidden="true" />
@@ -85,6 +91,12 @@ export default async function SkillPage({ params }: Props) {
 
         <article className="prose" dangerouslySetInnerHTML={{ __html: s.html }} />
       </div>
+      {related.length > 0 && (
+        <section className="section related" aria-labelledby="related">
+          <h2 id="related">Related skills</h2>
+          <ul className="rows">{related.map((r) => <Row key={r.slug} r={toRow(r)} />)}</ul>
+        </section>
+      )}
       <JsonLd data={skillLd(s)} />
     </div>
   );

@@ -1,0 +1,7 @@
+vendor,service,data shared,contract,DPA signed,security review,region
+Cloud hosting provider,Infrastructure,Customer invoice data,Yes,Yes,None on file,EU
+Code hosting SaaS,Source code,Source code and secrets in CI,Yes,No,None on file,US
+Email delivery service,Transactional email,Customer contact names and emails,Yes,Yes,None on file,US
+CRM vendor,Sales pipeline,Prospect contact details,Yes,Unknown,None on file,US
+AI model API,Dispute email drafting,Invoice line items and supplier names,Click-through terms,No,None on file,US
+Payroll provider,Payroll,Employee personal data,Yes,Yes,None on file,UK

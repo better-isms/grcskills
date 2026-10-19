@@ -55,6 +55,10 @@ export const MAX_WORDS = 1200;
 // (site/scripts/content-lib.mjs) imports these so the two never disagree.
 export const DESCRIPTION_MIN = 100;
 export const DESCRIPTION_MAX = 1024;
+// Summary: the human-facing line (search snippet, social card, site cards).
+// 155 is what a search result shows; the description stays the agent trigger.
+export const SUMMARY_MIN = 40;
+export const SUMMARY_MAX = 155;
 // ref=grcskills-<slug> must match ^[a-z0-9][a-z0-9:._-]{0,63}$, so the slug
 // gets 64 - "grcskills-".length characters.
 export const MAX_SLUG = 54;
@@ -91,7 +95,7 @@ export const SETUP_PROMPT_SLUG = 'grc-setup-review';
 // "## Framework lookups", which must be the exact template.
 const COPILOT_MENTION = /isms\s*copilot|ismscopilot|\bcreate_conversation\b|\bsend_message\b|\bget_reply\b|\banswer_format\b|\bset_company_context\b/i;
 
-const SKILL_KEYS = new Set(['name', 'title', 'description', 'category', 'frameworks', 'tags', 'contributors']);
+const SKILL_KEYS = new Set(['name', 'title', 'description', 'summary', 'category', 'frameworks', 'tags', 'contributors']);
 const SYSTEM_KEYS = new Set(['name', 'description', 'metadata']);
 const AUTHOR_KEYS = new Set(['name', 'title', 'linkedinUrl', 'companyDomain']);
 
@@ -390,6 +394,47 @@ const isPlainObject = (v) => v !== null && typeof v === 'object' && !Array.isArr
 // Library validation
 // ---------------------------------------------------------------------------
 
+// `summary` is one plain line for people: what the reader gets, in at most
+// SUMMARY_MAX characters. Real YAML parsers (the skills CLI, agents) read the
+// same frontmatter, so a value with ": " or " #" must be quoted.
+export function summaryProblems(summary, raw = '') {
+  if (summary === undefined || summary === '') return [`missing \`summary\`; one plain line of ${SUMMARY_MIN} to ${SUMMARY_MAX} characters saying what the reader gets (search results and social cards show it)`];
+  if (typeof summary !== 'string') return ['`summary` must be one line of text'];
+  const out = [];
+  if (/[\r\n]/.test(summary)) out.push('`summary` must be one line');
+  if (summary.length < SUMMARY_MIN || summary.length > SUMMARY_MAX) out.push(`summary is ${summary.length} characters; write ${SUMMARY_MIN} to ${SUMMARY_MAX}`);
+  if (/^use this skill\b/i.test(summary)) out.push('summary is for people, not the agent trigger; start with what the reader gets (for example "A first risk register of ...")');
+  if (/[*_`#<>[\]]/.test(summary)) out.push('summary is plain text; no Markdown or HTML');
+  const line = raw.replace(/\r\n/g, '\n').match(/^summary:[ \t]+(.*)$/m)?.[1]?.trim() ?? '';
+  const quoted = /^"[^"]*"$/.test(line) || /^'[^']*'$/.test(line);
+  if (line && !quoted && (/: | #/.test(line) || /^[[{>|*&!%@`'"]/.test(line))) out.push('quote the summary ("...") so YAML parsers read it as one string');
+  return out;
+}
+
+// Every file named SKILL.md (any case) is a skill to the skills CLI, wherever
+// it sits. Only skills/<author>/<skill>/SKILL.md and skills/.system/<skill>/SKILL.md
+// may exist; the root case has its own rule (no-root-skill). Build output and
+// dependencies are skipped.
+const SKIP_DIRS = new Set(['.git', 'node_modules', '.next', '.generated']);
+const SKILL_PATH = /^skills\/(?:\.system|[a-z0-9]+(?:-[a-z0-9]+)*)\/[^/]+\/SKILL\.md$/;
+export function strayskillFiles(root) {
+  const found = [];
+  const visit = (dir) => {
+    for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
+      const full = path.join(dir, e.name);
+      const relPath = path.relative(root, full).split(path.sep).join('/');
+      if (e.isDirectory() && !e.isSymbolicLink()) {
+        if (SKIP_DIRS.has(e.name) || relPath === 'site/out') continue;
+        visit(full);
+      } else if (e.name.toLowerCase() === 'skill.md' && relPath.includes('/') && !SKILL_PATH.test(relPath)) {
+        found.push(relPath);
+      }
+    }
+  };
+  visit(root);
+  return found.sort();
+}
+
 export function validate(root, opts = {}) {
   const problems = [];
   const rel = (p) => path.relative(root, p) || '.';
@@ -405,6 +450,9 @@ export function validate(root, opts = {}) {
 
   if (fs.existsSync(path.join(root, 'SKILL.md'))) {
     err('SKILL.md', 'no-root-skill', 'a SKILL.md at the repo root makes `npx skills` treat the repo as one skill and hides the library; remove it');
+  }
+  for (const f of strayskillFiles(root)) {
+    err(f, 'stray-skill', 'a SKILL.md outside skills/<author>/<skill>/ or skills/.system/<skill>/ is installed by `npx skills` as an extra skill; rename it (templates use SKILL.template.md) or move it');
   }
   if (!fs.existsSync(skillsDir)) {
     err('skills', 'layout', 'the skills/ directory is missing');
@@ -579,7 +627,7 @@ export function validate(root, opts = {}) {
       err(f.full, 'layout', 'a skill folder holds SKILL.md and optional references/<kebab-name>.md files only (no scripts, no other files)');
     }
 
-    if (raw === null) { err(dir, 'layout', 'missing SKILL.md; start from templates/SKILL.md'); return; }
+    if (raw === null) { err(dir, 'layout', 'missing SKILL.md; copy templates/SKILL.template.md'); return; }
     if (!checkFrontmatterShape(file, fm)) { scanText(file, raw, { kind: 'skill', slug, frameworks }); return; }
     const d = fm.data;
 
@@ -609,6 +657,7 @@ export function validate(root, opts = {}) {
     if (!d.description) err(file, 'description', 'missing `description`');
     else if (typeof d.description !== 'string' || !/^Use this skill when\b/.test(d.description)) err(file, 'description', 'description must start with "Use this skill when"');
     else if (d.description.length < DESCRIPTION_MIN || d.description.length > DESCRIPTION_MAX) err(file, 'description', `description is ${d.description.length} characters; write ${DESCRIPTION_MIN} to ${DESCRIPTION_MAX}, dense with the phrases a practitioner would say`);
+    for (const msg of summaryProblems(d.summary, raw)) err(file, 'summary', msg);
     if (!d.category) err(file, 'category', `missing \`category\`; one of: ${Object.keys(CATEGORIES).join(', ')}`);
     else if (!(d.category in CATEGORIES)) err(file, 'category', `\`${d.category}\` is not a category; one of: ${Object.keys(CATEGORIES).join(', ')}`);
     if (!Array.isArray(d.frameworks) || d.frameworks.length === 0) err(file, 'frameworks', `\`frameworks\` must be a non-empty list from: ${FRAMEWORKS.join(', ')}`);

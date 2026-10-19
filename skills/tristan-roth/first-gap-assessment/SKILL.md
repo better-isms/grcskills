@@ -9,6 +9,7 @@ description: |
   from documents and records, rates each item by evidence rather than opinion, sizes every gap by
   effort and audit risk, and writes a gap register plus a prioritised summary with the long-lead
   items first.
+summary: "A first gap assessment against your chosen framework: what exists, rated by evidence, and a gap register with the long-lead items first."
 category: gap-readiness
 frameworks: [general, iso27001, soc2, hipaa, nis2, iso42001]
 tags: [gap-analysis, baseline, readiness, prioritisation]

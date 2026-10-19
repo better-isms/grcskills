@@ -9,6 +9,7 @@ description: |
   one-page decision record per risk: the risk and its score, the options considered with cost, why
   acceptance is reasonable, compensating measures with evidence, conditions, expiry and the
   triggers that reopen it, with a signature block for the person who holds the authority.
+summary: "A one-page risk acceptance record: the risk, options considered, compensating measures, conditions, expiry and a signature block for the right authority."
 category: risk
 frameworks: [general, iso27001, dora]
 tags: [risk-acceptance, risk-exception, decision-record, residual-risk]

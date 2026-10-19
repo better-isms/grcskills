@@ -8,6 +8,7 @@ description: |
   policy says quarterly but we never do it" or "align policies with how we work". Turns each policy
   into testable statements, samples the systems and records that show the practice, classifies every
   gap and proposes whether to fix the policy or the practice, with owners and priorities.
+summary: "A paper-versus-practice report: each policy turned into testable statements and checked against what the team actually does."
 category: policies
 frameworks: [general, iso27001, soc2]
 tags: [policy-review, gap-analysis, evidence, paper-vs-practice]

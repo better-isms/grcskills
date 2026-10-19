@@ -54,7 +54,7 @@ skills/<author-slug>/<skill-slug>/SKILL.md
 skills/<author-slug>/<skill-slug>/references/<topic>.md      (optional)
 ```
 
-Copy `templates/SKILL.md` and `templates/author.md`. Add your author folder to `skills` in `.claude-plugin/plugin.json` only if you are a maintainer; for outside contributors a maintainer does it.
+Copy `templates/SKILL.template.md` to `skills/<author-slug>/<skill-slug>/SKILL.md`, and `templates/author.md`. Add your author folder to `skills` in `.claude-plugin/plugin.json` only if you are a maintainer; for outside contributors a maintainer does it.
 
 ### SKILL.md frontmatter
 
@@ -64,6 +64,7 @@ name: <kebab-case, equal to the folder name, at most 54 characters, no ISO/AICPA
 title: <sentence case, no standards-body names>
 description: |
   Use this skill when <trigger>. <What it produces.> <Phrases a practitioner would say.>
+summary: "<one plain line, 40 to 155 characters, saying what the reader gets; for people, not the agent trigger>"
 category: <one of the 10 below>
 frameworks: [<one or more tags below>]
 tags: [<optional, up to 8 kebab-case words>]

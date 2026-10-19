@@ -9,6 +9,7 @@ description: |
   for scope, role, prohibited practices, the two high-risk routes, the narrow exemption, transparency
   duties and general-purpose models, and writes a reasoned classification record per system plus a
   summary table of resulting obligations to confirm with whoever owns legal interpretation.
+summary: "An EU AI Act classification for each AI system: scope, provider or deployer role, prohibited practice and high-risk tests, with the reasoning shown."
 category: ai-systems
 frameworks: [eu-ai-act]
 tags: [ai-act, risk-classification, high-risk-ai, annex-iii, ai-governance]

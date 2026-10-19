@@ -9,6 +9,7 @@ description: |
   actually reached production, reconciles it with tickets and pull requests, draws a recorded
   sample, tests approval, testing, segregation and emergency attributes, and writes the results and
   the exceptions as facts.
+summary: "A change management test before the auditor runs one: the production change population, sampled approvals and segregation of duties gaps."
 category: evidence
 frameworks: [soc2, iso27001]
 tags: [change-management, sampling, segregation-of-duties, ci-cd, pull-requests]

@@ -9,6 +9,7 @@ description: |
   model". Settles the company's role per processing activity and per AI system, decides
   applicability of the additional controls from those roles and the risk or impact assessments,
   and writes an extension to the applicability statement plus role and scope notes.
+summary: "Applicability decisions for privacy and AI controls, based on your role per processing activity and AI system, with justifications."
 category: statement-of-applicability
 frameworks: [iso27701, iso42001]
 tags: [soa, privacy, ai-management, controller, processor, applicability]

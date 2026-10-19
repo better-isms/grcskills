@@ -13,7 +13,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import MarkdownIt from 'markdown-it';
-import { parseFrontmatter, CATEGORIES, FRAMEWORKS, DESCRIPTION_MAX } from '../../tools/validate.mjs';
+import { parseFrontmatter, summaryProblems, CATEGORIES, FRAMEWORKS, DESCRIPTION_MAX, SUMMARY_MAX } from '../../tools/validate.mjs';
 
 export { CATEGORIES, FRAMEWORKS };
 
@@ -27,6 +27,7 @@ export const REPO_URL = `https://github.com/${REPO}`;
 export const CAPS = {
   title: 80,
   description: DESCRIPTION_MAX,
+  summary: SUMMARY_MAX,
   bio: 600,
   authorName: 80,
   authorTitle: 160,
@@ -64,7 +65,7 @@ export const RESERVED_SLUGS = new Set([
 ]);
 
 const KEBAB = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
-const SKILL_KEYS = new Set(['name', 'title', 'description', 'category', 'frameworks', 'tags', 'contributors']);
+const SKILL_KEYS = new Set(['name', 'title', 'description', 'summary', 'category', 'frameworks', 'tags', 'contributors']);
 const AUTHOR_KEYS = new Set(['name', 'title', 'linkedinUrl', 'companyDomain']);
 const LINKEDIN = /^https:\/\/(?:www\.)?linkedin\.com\/in\/[A-Za-z0-9_%-]+\/?$/;
 const DOMAIN = /^[a-z0-9][a-z0-9.-]*\.[a-z]{2,}$/;
@@ -189,6 +190,8 @@ export function validateSkillFrontmatter(d, { folder, where, authorSlugs }) {
   else if (d.name !== folder) problems.push(`${where}: name: "${d.name}" must equal the folder name "${folder}"`);
   checkText(problems, where, 'title', d.title, CAPS.title);
   checkText(problems, where, 'description', d.description, CAPS.description, { multiline: true });
+  checkText(problems, where, 'summary', d.summary, CAPS.summary);
+  if (isStr(d.summary)) for (const m of summaryProblems(d.summary)) problems.push(`${where}: summary: ${m}`);
   if (!Object.prototype.hasOwnProperty.call(CATEGORIES, d.category)) problems.push(`${where}: category: "${d.category}" is not one of ${Object.keys(CATEGORIES).join(', ')}`);
   if (!Array.isArray(d.frameworks) || d.frameworks.length === 0) problems.push(`${where}: frameworks: must be a non-empty list`);
   else for (const f of d.frameworks) if (!FRAMEWORKS.includes(f)) problems.push(`${where}: frameworks: unknown tag "${f}"`);
@@ -221,12 +224,20 @@ export function validateAuthor(d, bio, { where }) {
 const initials = (name) =>
   name.split(/\s+/).filter(Boolean).map((p) => p[0]).filter((c) => /[\p{L}\p{N}]/u.test(c)).slice(0, 2).join('').toUpperCase() || '?';
 
-export function summarize(description, max = 200) {
-  const one = description.replace(/\s+/g, ' ').trim();
-  if (one.length <= max) return one;
-  const cut = one.slice(0, max);
-  const at = cut.lastIndexOf(' ');
-  return `${cut.slice(0, at > 80 ? at : max).replace(/[\s,;:.]+$/, '')}…`;
+// Related skills: skills in the same category come first, then skills from
+// other categories; within each group, more shared framework tags rank higher
+// ("general" counts only for a skill with no more specific tag). Ties keep the
+// alphabetical title order. Pure, so the tests can call it.
+export function relatedSkills(skill, all, n = 4) {
+  const specific = (s) => s.frameworks.filter((f) => f !== 'general');
+  const mine = new Set(specific(skill).length ? specific(skill) : skill.frameworks);
+  return all
+    .filter((o) => o.slug !== skill.slug)
+    .map((o) => ({ o, score: (o.category === skill.category ? 10 : 0) + o.frameworks.filter((f) => mine.has(f)).length }))
+    .filter((x) => x.score > 0)
+    .sort((a, b) => b.score - a.score || a.o.title.localeCompare(b.o.title))
+    .slice(0, n)
+    .map((x) => x.o.slug);
 }
 
 const titleFromRef = (raw, slug) => {
@@ -321,7 +332,7 @@ export function loadContent(repoRoot, { gitRef = 'main' } = {}) {
         author,
         title: String(d.title ?? ''),
         description,
-        summary: summarize(description),
+        summary: isStr(d.summary) ? d.summary.trim() : '',
         category: String(d.category ?? ''),
         categoryLabel: CATEGORIES[d.category] ?? '',
         frameworks: Array.isArray(d.frameworks) ? d.frameworks : [],
@@ -340,6 +351,7 @@ export function loadContent(repoRoot, { gitRef = 'main' } = {}) {
   skills.sort((a, b) => a.title.localeCompare(b.title));
   const byAuthor = new Map(authors.map((a) => [a.slug, a]));
   for (const s of skills) byAuthor.get(s.author)?.skills.push(s.slug);
+  for (const s of skills) s.related = relatedSkills(s, skills);
 
   const categories = Object.entries(CATEGORIES).map(([slug, label]) => ({
     slug, label, count: skills.filter((s) => s.category === slug).length,

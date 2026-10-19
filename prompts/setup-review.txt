@@ -1,0 +1,1 @@
+Clone release v2026.10.19 of https://github.com/better-isms/grcskills (or use it if it is already installed), read its AGENTS.md, then run the grc-setup-review skill against my GRC setup: rank the 10 skills that would help me most, audit what is broken, duplicated or missing, and write a 30-day plan to files.

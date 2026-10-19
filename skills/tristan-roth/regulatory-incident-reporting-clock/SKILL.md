@@ -9,6 +9,7 @@ description: |
   regime and contract that may apply, builds one table of recipients and deadlines with the earliest
   first, drafts each notification for review, and records the reasoning for every decision not to
   notify.
+summary: "Notification deadlines for an incident across GDPR, NIS 2, DORA, HIPAA and contracts, counted from the awareness time, with draft notifications."
 category: incidents-continuity
 frameworks: [nis2, dora, gdpr, hipaa]
 tags: [breach-notification, incident-reporting, regulatory-deadlines, personal-data-breach]

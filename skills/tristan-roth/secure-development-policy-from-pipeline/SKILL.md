@@ -9,6 +9,7 @@ description: |
   CRA". Reads the repositories and pipeline definitions, inventories what is actually enforced
   (reviews, checks, scanners, deploy gates, dependency and secret controls), and writes a policy
   whose every "must" points to the place it is enforced, with gaps listed as decisions.
+summary: "A secure development policy that matches how code really ships, written from what your repositories and CI pipeline already enforce."
 category: policies
 frameworks: [iso27001, soc2, cra]
 tags: [secure-development, sdlc, ci-cd, code-review, change-management, sbom]

@@ -2,12 +2,13 @@ import type { Metadata } from 'next';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import CopyButton from '@/components/CopyButton';
 import { meta } from '@/lib/content';
+import { pageMeta } from '@/lib/seo';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: 'Contribute a skill',
-  description: 'Write down a GRC job you do well, with your own AI agent. It interviews you, drafts the skill in the library format and opens the pull request; you are credited as the author.',
-  alternates: { canonical: '/contribute/' },
-};
+  description: 'Write down a GRC job you do well, with your own AI agent. It interviews you, drafts the skill and opens the pull request; you are credited as the author.',
+  path: '/contribute/',
+});
 
 const repo = meta.repoUrl;
 

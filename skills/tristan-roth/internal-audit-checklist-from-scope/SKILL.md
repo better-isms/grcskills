@@ -10,6 +10,7 @@ description: |
   the company's policies and procedures into a test with a question, a record to inspect, a
   sample and a pass criterion, adds framework-specific checks through a lookup, and writes a
   checklist file the auditor fills in during fieldwork.
+summary: "A working internal audit checklist for one area, built from your own documents: a question, a record to inspect, a sample and a pass criterion per test."
 category: audit
 frameworks: [iso27001, iso42001, gdpr, nis2, dora]
 tags: [internal-audit, audit-checklist, sampling, fieldwork]

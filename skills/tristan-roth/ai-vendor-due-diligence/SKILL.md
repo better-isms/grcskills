@@ -9,6 +9,7 @@ description: |
   review to the use, reads the terms, data processing agreement and documentation before asking
   questions, checks training use, retention, model changes, subprocessors, transfers, security and
   exit, and writes an assessment with a recommendation plus the follow-up questions for the vendor.
+summary: "A due diligence review of one AI vendor or feature: training on your data, subprocessors, terms and the questions left to ask, sized to the use."
 category: ai-systems
 frameworks: [iso42001, gdpr, eu-ai-act]
 tags: [ai-vendor, due-diligence, third-party-risk, model-provider, dpa]

@@ -9,6 +9,7 @@ description: |
   "does our ISO 27001 ISMS cover DORA" or "audit our Article 6 framework". Confirms the entity type
   and whether the simplified regime applies, maps the entity's own documents and records against
   the ICT risk management articles, and writes a gap list with owners, evidence and priorities.
+summary: "A DORA ICT risk management check for financial entities: your documents and records mapped to the ICT risk articles, with an owned gap list."
 category: risk
 frameworks: [dora]
 tags: [ict-risk, operational-resilience, financial-entities, gap-analysis]

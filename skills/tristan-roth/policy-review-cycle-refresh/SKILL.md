@@ -8,6 +8,7 @@ description: |
   Collects what changed since each policy was last approved (incidents, findings, exceptions, new
   systems, law), proposes the edits per policy, separates editorial from substantive changes, drafts
   the version history and approval record, and plans the communication to staff.
+summary: "A policy review cycle that closes: changes since last approval, proposed edits, version history and the sign-off each policy needs."
 category: policies
 frameworks: [general, iso27001, soc2]
 tags: [policy-review, document-control, version-history, approval]

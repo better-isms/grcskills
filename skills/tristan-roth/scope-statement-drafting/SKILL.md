@@ -8,6 +8,7 @@ description: |
   our management system" or "the auditor says our scope is unclear". Drafts the scope statement with
   boundaries, interfaces, dependencies and justified exclusions, for a security, privacy or AI
   management system, and writes a statement file plus a boundary table of open questions.
+summary: "A management system scope statement with clear boundaries, interfaces, dependencies and justified exclusions an auditor can follow."
 category: gap-readiness
 frameworks: [iso27001, iso27701, iso42001]
 tags: [scope, boundaries, interfaces, certification, readiness]

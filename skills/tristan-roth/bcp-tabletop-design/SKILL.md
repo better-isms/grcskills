@@ -9,6 +9,7 @@ description: |
   three objectives, builds a realistic company-specific scenario with timed injects that force
   decisions, briefs the facilitator and observers, and writes the exercise plan, the injects, the
   observer sheet and a findings record that ends in owned actions.
+summary: "A tabletop exercise that tests your incident or continuity plan safely: two or three objectives, a realistic scenario, injects and an evidence record."
 category: incidents-continuity
 frameworks: [iso27001, soc2, dora, nis2]
 tags: [tabletop-exercise, business-continuity, crisis-management, incident-response, testing]

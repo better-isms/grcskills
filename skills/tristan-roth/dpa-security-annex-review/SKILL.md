@@ -9,6 +9,7 @@ description: |
   into single commitments, compares each one with what the company actually runs or with what the
   use case needs, and writes a line-by-line review, proposed redlines and a list of practice gaps
   for owners.
+summary: "A line-by-line review of a DPA security annex: each measure compared with what you really run, with the edits to propose before signing."
 category: vendors
 frameworks: [gdpr]
 tags: [dpa, toms, processor-contracts, security-annex]

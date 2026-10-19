@@ -36,7 +36,7 @@ Before drafting, ask "what else do you check that we have not covered?" until th
 
 ## Step 2: draft
 
-Copy `templates/SKILL.md` and, for a first submission, `templates/author.md`. Pick a kebab-case slug for the job (for example `vendor-offboarding-check`), with no standards-body names in it, and check that no folder of that name exists under `skills/*/`. Fill the frontmatter (name equal to the folder, title, a description that starts "Use this skill when", one category, framework tags). Write the body as a spine of 600 to 900 words: when it applies, inputs, steps, "What good looks like", the Framework lookups section pasted exactly from `AGENTS.md` with the slug substituted, and MUST and NEVER rules last. Put long rubrics and worked examples in `references/<topic>.md`.
+Copy `templates/SKILL.template.md` to `skills/<author-slug>/<skill-slug>/SKILL.md` and, for a first submission, `templates/author.md`. Pick a kebab-case slug for the job (for example `vendor-offboarding-check`), with no standards-body names in it, and check that no folder of that name exists under `skills/*/`. Fill the frontmatter (name equal to the folder, title, a description that starts "Use this skill when", a quoted one-line summary of at most 155 characters that tells a person what they get, one category, framework tags). Write the body as a spine of 600 to 900 words: when it applies, inputs, steps, "What good looks like", the Framework lookups section pasted exactly from `AGENTS.md` with the slug substituted, and MUST and NEVER rules last. Put long rubrics and worked examples in `references/<topic>.md`.
 
 ## Step 3: validate
 

@@ -9,6 +9,7 @@ description: |
   compares them with the published list, records purpose, data, locations and transfer basis for
   each, works out the customer notice duties from the signed agreements, and writes an updated
   register, a change list and a draft notice for review.
+summary: "An accurate subprocessor list: which suppliers really receive customer personal data, gaps against the published page and a change notice."
 category: vendors
 frameworks: [gdpr, iso27701]
 tags: [subprocessors, processor, data-transfers, customer-notice]

@@ -8,6 +8,7 @@ description: |
   evidence is just dashboard screenshots". Maps log coverage and retention per system, lists the
   alert rules that matter and where they go, traces real alerts end to end with timestamps, and
   writes an evidence pack with the gaps stated plainly.
+summary: "A logging and monitoring evidence pack: log coverage and retention per system, the alert rules that matter, and proof an alert was handled."
 category: evidence
 frameworks: [iso27001, soc2, nis2]
 tags: [logging, monitoring, alerting, siem, detection]

@@ -9,6 +9,7 @@ description: |
   incident". Drafts a plan sized to the company with roles and deputies, a severity scale, a contact
   tree with an out-of-band channel, one-page playbooks for the likely scenarios, evidence handling and
   a notification decision step, plus a one-page quick reference card.
+summary: "An incident response plan sized to your real team: roles and deputies, a severity scale, a contact tree and one-page playbooks for likely incidents."
 category: incidents-continuity
 frameworks: [iso27001, soc2, hipaa, nis2]
 tags: [incident-response, playbooks, contact-tree, evidence-handling, breach-notification]

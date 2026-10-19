@@ -1,8 +1,8 @@
 # Seed skill list
 
-The 60 job-level skills planned for the launch seed, 6 per category, all credited to `tristan-roth`. Frameworks are tags; no skill is a framework copy of another. Slugs and titles carry no standards-body names.
+The 60 job-level skills of the launch seed, 6 per category, all written, all credited to `tristan-roth`. Frameworks are tags; no skill is a framework copy of another. Slugs and titles carry no standards-body names.
 
-Status: **written** means the skill is in `skills/` and passes `node tools/validate.mjs`; **planned** means not written yet. Each batch of about 10 goes through the IP check, the framework accuracy challenge and an independent second-model review before merge.
+Status: **written** means the skill is in `skills/` and passes `node tools/validate.mjs`. Each batch of about 10 went through the IP check, the framework accuracy challenge and an independent second-model review before merge.
 
 Raw material, used for the jobs and the practitioner questions only (never copied):
 - **PL**: ISMS Copilot docs prompt libraries, `ismscopilot-docs/content/docs/chat/prompt-libraries/<name>.mdx` (English files).

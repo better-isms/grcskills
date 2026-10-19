@@ -29,7 +29,7 @@ body:
     id: skill-md
     attributes:
       label: SKILL.md
-      description: Full contents, frontmatter included (start from templates/SKILL.md and delete the template notes).
+      description: Full contents, frontmatter included (start from templates/SKILL.template.md and delete the template notes).
       render: markdown
     validations:
       required: true

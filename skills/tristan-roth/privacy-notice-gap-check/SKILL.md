@@ -9,6 +9,7 @@ description: |
   point, compares each notice with the processing record, the vendor list and what the site and
   product actually collect, classifies what is missing, wrong, vague or stale, and drafts a redline
   plus the practice fixes that a notice edit cannot solve.
+summary: "A gap check of your privacy notice against what you really collect, why, which vendors receive it and how long you keep it."
 category: privacy
 frameworks: [gdpr]
 tags: [privacy-notice, transparency, ropa, collection-points, cookies]

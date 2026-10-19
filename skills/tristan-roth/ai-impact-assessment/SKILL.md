@@ -9,6 +9,7 @@ description: |
   feature". Describes the system in its context, works through impacts on the people it affects with
   evidence, sizes them, proposes mitigations with measurable triggers, and writes one assessment
   ready for the system owner and an accountable executive to sign.
+summary: "An impact assessment for one AI system: who it could affect, how it could fail them, the safeguards in place and what is left for sign-off."
 category: ai-systems
 frameworks: [iso42001, eu-ai-act]
 tags: [ai-impact-assessment, fria, fairness, human-oversight, ai-governance]

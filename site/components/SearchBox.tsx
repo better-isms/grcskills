@@ -7,7 +7,8 @@ import type { RowData } from '@/lib/content';
 
 // Static index written at build time: /search-index.json (same origin, so the
 // CSP connect-src 'self' covers it). Loaded on first interaction.
-type Entry = { s: string; t: string; d: string; c: string; f: string[]; g: string[]; a: string };
+// d is the summary shown in the row; k is the agent trigger text, searched but not shown.
+type Entry = { s: string; t: string; d: string; k?: string; c: string; f: string[]; g: string[]; a: string };
 
 const toRow = (e: Entry): RowData => ({
   slug: e.s, title: e.t, summary: e.d, category: '', categoryLabel: e.c, frameworks: [], frameworkLabels: e.f, author: e.a,
@@ -32,7 +33,7 @@ export default function SearchBox({ initial, total }: { initial: RowData[]; tota
     const terms = q.toLowerCase().split(/\s+/).filter(Boolean);
     if (!terms.length || !index) return null;
     return index.filter((e) => {
-      const hay = [e.t, e.d, e.c, e.a, ...e.f, ...e.g, e.s].join(' ').toLowerCase();
+      const hay = [e.t, e.d, e.k ?? '', e.c, e.a, ...e.f, ...e.g, e.s].join(' ').toLowerCase();
       return terms.every((t) => hay.includes(t));
     });
   }, [q, index]);

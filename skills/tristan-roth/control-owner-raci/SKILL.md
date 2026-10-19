@@ -8,6 +8,7 @@ description: |
   accountable". Assigns one accountable role and the operators to every applicable control, checks
   workload and segregation of duties, sets a review cadence from how each control runs, and writes a
   RACI table plus a one-page brief per owner role.
+summary: "A RACI for every applicable control: one accountable role, the operators, a review cadence, and workload and segregation of duties checks."
 category: statement-of-applicability
 frameworks: [iso27001, soc2, general]
 tags: [raci, control-ownership, accountability, segregation-of-duties, governance]

@@ -1,0 +1,3 @@
+date,summary,severity,personal data involved,notified,actions
+Spring last year,Support engineer emailed a customer export to the wrong customer,Not set,Yes,No,Asked recipient to delete the file
+Autumn last year,Production outage after a failed database migration (5 hours),Not set,No,No,Rolled back the migration

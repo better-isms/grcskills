@@ -9,6 +9,7 @@ description: |
   register read-only and finds stale, duplicated, unowned, orphaned and mis-scored entries, risks
   missing given the company's own incidents and findings, and expired acceptances, then writes a
   findings file with a proposed fix per line for the owners to decide.
+summary: "A health check of your risk register: stale, duplicate, unowned and mis-scored risks found before the auditor or a new owner sees them."
 category: risk
 frameworks: [general, iso27001, soc2]
 tags: [risk-register, risk-review, data-quality, audit-prep]

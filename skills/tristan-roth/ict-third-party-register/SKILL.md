@@ -10,6 +10,7 @@ description: |
   to the functions it supports, collects the fields a supervisor will ask about, flags
   concentration, missing exit plans and contract gaps, and writes a working register with open
   questions for function owners.
+summary: "A DORA register of ICT third-party arrangements: providers mapped to contracts and functions, critical ones flagged, concentration shown."
 category: vendors
 frameworks: [dora]
 tags: [dora, register-of-information, ict-third-party-risk, outsourcing, concentration-risk]

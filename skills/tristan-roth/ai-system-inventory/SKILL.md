@@ -9,6 +9,7 @@ description: |
   procurement, single sign-on, code and teams, records one entry per use case with owner, purpose,
   data, affected people and the company's role, and writes a CSV register plus notes of borderline
   cases and open questions.
+summary: "An AI system register: what the company builds, buys and uses, found from procurement, single sign-on, code and teams, including shadow AI."
 category: ai-systems
 frameworks: [eu-ai-act, iso42001]
 tags: [ai-inventory, ai-register, shadow-ai, ai-governance]

@@ -9,6 +9,7 @@ description: |
   company's own words, maps each control to the framework references by bare identifier with an
   honest match strength, flags what only one framework asks for, and writes a control map plus an
   evidence plan where each artefact is collected once.
+summary: "One internal control set in your own words, mapped across your frameworks, so evidence is collected once and the unique gaps stand out."
 category: gap-readiness
 frameworks: [general, iso27001, soc2, nis2, nist-csf, gdpr]
 tags: [framework-mapping, crosswalk, unified-controls, evidence-reuse]

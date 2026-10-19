@@ -9,6 +9,7 @@ description: |
   directions that every treated risk points to controls and actions, and every applicable control
   traces back to a risk or obligation, then writes a traceability matrix and a list of orphans and
   contradictions with proposed fixes.
+summary: "A two-way trace between risk treatment and the statement of applicability: orphan controls, untreated risks and broken links."
 category: statement-of-applicability
 frameworks: [iso27001, iso42001]
 tags: [traceability, risk-treatment, soa, consistency]
