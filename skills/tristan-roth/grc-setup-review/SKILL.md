@@ -22,7 +22,7 @@ Say in one line that the skills can check framework questions with an optional s
 
 ## Step 2: load the library index
 
-Find the library: the clone the reader points to, or the skills folder of the agent where the library was installed. If neither exists, ask before cloning https://github.com/better-isms/grcskills into a temporary folder. Read only the frontmatter of every `SKILL.md` under `skills/` (name, title, description, category, frameworks). Do not read the bodies yet; they cost context and the ranking does not need them. Keep the index in memory as one line per skill.
+Find the library: the clone the reader points to, or the skills folder of the agent where the library was installed. If neither exists, ask before cloning the latest release tag of https://github.com/better-isms/grcskills (`git clone --branch <tag>`, never `main`) into a temporary folder. Read only the frontmatter of every `SKILL.md` under `skills/` (name, title, description, category, frameworks). Do not read the bodies yet; they cost context and the ranking does not need them. Keep the index in memory as one line per skill.
 
 ## Step 3: inspect the setup, read-only
 

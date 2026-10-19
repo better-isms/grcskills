@@ -18,9 +18,9 @@ The validator enforces what can be checked mechanically. Reviewers read every fi
 
 ## Supply chain
 
-- CI runs on `pull_request` (never `pull_request_target`) with `permissions: read-all`, no secrets, and actions pinned by commit SHA.
+- CI runs on `pull_request` only (never `pull_request_target`) with read-only permissions, no secrets, and actions pinned by commit SHA. Fork pull requests are checked by the validator from the base commit, held in a separate directory; no code from the fork runs.
 - Outside pull requests may only change `skills/<their-author>/`.
-- Installers consume release tags. The Claude Code plugin pins a tag, and its MCP entry holds only a public URL; sign-in happens at first use and can be declined.
+- Installers consume release tags. The release workflow runs only on a tag that is on `main`, re-runs the validator, builds a tarball of `skills/`, `plugin/` and `.claude-plugin/`, attaches it to the release and creates a build provenance attestation (`gh attestation verify <tarball> -R better-isms/grcskills`). The Claude Code plugin pins a tag, and its MCP entry holds only a public URL; sign-in happens at first use and can be declined.
 
 ## Reporting
 

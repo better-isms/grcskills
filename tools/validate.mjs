@@ -11,10 +11,15 @@
 //   <path>: <rule>: <message, including how to fix it>
 // Exit code 1 when any problem is found, 0 otherwise.
 //
+// Official control titles: tools/data/title-hashes.json (sha256 of normalized
+// titles, no plaintext) is committed and always loaded from this file's own
+// directory, never from the checkout being validated. See tools/data/README.md.
+//
 // Optional off-repo lists (never committed; one entry per line):
 //   GRCSKILLS_BLOCKLIST=<file>         names that must never appear (e.g. client names)
-//   GRCSKILLS_TITLE_DENYLIST=<file>    official control titles that must never appear
+//   GRCSKILLS_TITLE_DENYLIST=<file>    extra titles, hashed and added to the committed list
 
+import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -55,6 +60,11 @@ export const MAX_PR_FILES = 10;
 export const MAX_PR_BYTES = 60 * 1024;
 
 export const MCP_URL = 'https://account.ismscopilot.com/v1/account/mcp';
+export const MCP_SERVER_NAME = 'ismscopilot';
+export const REPO_SLUG = 'better-isms/grcskills';
+// Installers consume immutable release tags only (design doc, release and supply chain).
+export const RELEASE_REF = /^v\d{4}\.\d{2}\.\d{2}(?:\.\d+)?$/;
+export const TITLE_HASH_FILE = path.join(path.dirname(fileURLToPath(import.meta.url)), 'data', 'title-hashes.json');
 export const BOUNDARY_LINE =
   'drafts for a human to review and sign; this skill never marks a control effective';
 
@@ -153,7 +163,10 @@ const CONTROL_ID = [
   /\b(?:GV|ID|PR|DE|RS|RC)\.[A-Z]{2}(?:-\d{2})?\b/g, // CSF categories
 ];
 const ARTICLE_ID = /\bArt(?:icle|\.)\s*\d{1,3}\b/gi;
-const REQUIREMENT_WORD = /\b(?:requires?|required|shall|must|mandates?|mandatory|obliges?)\b/i;
+// Design doc D3 (widened after Codex r2 #4 and the scaffold review): requires,
+// required (covers "is/are required to"), shall, must, mandates, mandatory
+// (covers "is mandatory"), obliges, expected to, need(s) to, in accordance with.
+const REQUIREMENT_WORD = /\b(?:requires?|required|shall|must|mandates?|mandatory|obliges?|expected\s+to|needs?\s+to|in\s+accordance\s+with)\b/i;
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -251,21 +264,96 @@ function hostAllowed(url) {
   return PATH_SCOPED.some((p) => host === p.host && u.pathname.startsWith(p.prefix));
 }
 
-// Returns the requirement-phrasing findings in a block of text.
-export function requirementFindings(text, frameworks = []) {
+// Normalizes a whole document for the IP scans: whitespace runs (line breaks
+// included) become one space and markdown emphasis characters are dropped, so
+// a phrase split across lines or wrapped in ** still matches. lineAt[i] is the
+// 1-based source line of normalized character i.
+export function normalizeWithMap(text) {
+  let out = '';
+  const lineAt = [];
+  let line = 1;
+  let space = true;
+  for (const ch of text) {
+    if (ch === '\n') line++;
+    if (/\s/.test(ch)) {
+      if (!space) { out += ' '; lineAt.push(line); space = true; }
+      continue;
+    }
+    if (ch === '*' || ch === '_' || ch === '`' || ch === '~') continue;
+    out += ch;
+    for (let k = 0; k < ch.length; k++) lineAt.push(line);
+    space = false;
+  }
+  return { text: out, lineAt };
+}
+
+// Returns the requirement-phrasing findings in a document: { id, kind, line }.
+export function requirementFindings(raw, frameworks = []) {
+  const { text, lineAt } = normalizeWithMap(raw);
   const found = [];
+  const seen = new Set();
   const lawOk = frameworks.some((f) => PUBLIC_LAW.includes(f));
   const near = (idx, len) => REQUIREMENT_WORD.test(text.slice(Math.max(0, idx - 80), idx + len + 80));
+  const add = (m, kind) => {
+    const line = lineAt[m.index] ?? 1;
+    const key = `${line}:${m.index}:${kind}`;
+    if (!seen.has(key)) { seen.add(key); found.push({ id: m[0], kind, line }); }
+  };
   for (const re of CONTROL_ID) {
-    for (const m of text.matchAll(re)) if (near(m.index, m[0].length)) found.push({ id: m[0], kind: 'control' });
+    for (const m of text.matchAll(re)) if (near(m.index, m[0].length)) add(m, 'control');
   }
   if (!lawOk) {
-    for (const m of text.matchAll(ARTICLE_ID)) if (near(m.index, m[0].length)) found.push({ id: m[0], kind: 'article' });
+    for (const m of text.matchAll(ARTICLE_ID)) if (near(m.index, m[0].length)) add(m, 'article');
   }
   return found;
 }
 
+// ---- official-title denylist (hashed) ---------------------------------------
+// Titles and skill text are normalized the same way: NFKD, diacritics removed,
+// lowercase, every run of characters outside [a-z0-9] becomes one space. The
+// list holds sha256 hex digests of normalized titles (titles longer than the
+// max window are hashed on their first maxWindow words). Skill text is matched
+// on every window of minWindow to maxWindow words.
+export const normalizeTitle = (s) =>
+  String(s).normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+export const TITLE_WINDOW = { min: 3, max: 8 };
+export const hashTitle = (s) => {
+  const words = normalizeTitle(s).split(' ').filter(Boolean).slice(0, TITLE_WINDOW.max);
+  return crypto.createHash('sha256').update(words.join(' ')).digest('hex');
+};
+
+export function loadTitleHashes(file = TITLE_HASH_FILE) {
+  const data = JSON.parse(fs.readFileSync(file, 'utf8'));
+  if (data?.version !== 1 || !Array.isArray(data.hashes) || data.hashes.some((h) => !/^[0-9a-f]{64}$/.test(h))) {
+    throw new Error(`${file} is not a version 1 title hash list`);
+  }
+  return new Set(data.hashes);
+}
+
+// Returns the 1-based lines where a window of the text hashes to a listed title.
+export function titleFindings(raw, hashes) {
+  if (!hashes || hashes.size === 0) return [];
+  const tokens = [];
+  raw.split('\n').forEach((l, i) => {
+    for (const w of normalizeTitle(l).split(' ')) if (w) tokens.push({ w, line: i + 1 });
+  });
+  const lines = new Set();
+  for (let i = 0; i < tokens.length; i++) {
+    let gram = '';
+    for (let n = 1; n <= TITLE_WINDOW.max && i + n <= tokens.length; n++) {
+      gram = n === 1 ? tokens[i].w : `${gram} ${tokens[i + n - 1].w}`;
+      if (n < TITLE_WINDOW.min) continue;
+      if (hashes.has(crypto.createHash('sha256').update(gram).digest('hex'))) lines.add(tokens[i].line);
+    }
+  }
+  return [...lines].sort((a, b) => a - b);
+}
+
 const readList = (file) => (file ? fs.readFileSync(file, 'utf8').split('\n').map((s) => s.trim()).filter(Boolean) : []);
+const readJson = (file) => {
+  try { return { value: JSON.parse(fs.readFileSync(file, 'utf8')) }; } catch (e) { return { error: e.code === 'ENOENT' ? 'missing' : e.message }; }
+};
+const isPlainObject = (v) => v !== null && typeof v === 'object' && !Array.isArray(v);
 
 // ---------------------------------------------------------------------------
 // Library validation
@@ -277,7 +365,10 @@ export function validate(root, opts = {}) {
   const err = (p, rule, msg) => problems.push(`${path.isAbsolute(p) ? rel(p) : p}: ${rule}: ${msg}`);
 
   const blocklist = opts.blocklist ?? [];
-  const titleDenylist = opts.titleDenylist ?? [];
+  // The committed hashed list is always applied; opts.titleHashes replaces it
+  // (tests), opts.titleDenylist adds plaintext entries from an off-repo file.
+  const titleHashes = new Set(opts.titleHashes ?? loadTitleHashes());
+  for (const t of opts.titleDenylist ?? []) titleHashes.add(hashTitle(t));
   const skillsDir = path.join(root, 'skills');
   const stats = { skills: 0, authors: 0 };
 
@@ -329,20 +420,22 @@ export function validate(root, opts = {}) {
           err(where, 'copilot-mention', 'ISMS Copilot, its MCP and its tool names appear only in "## Framework lookups" (exact template) and are never required');
         }
       }
-      if (!isAuthor) {
-        for (const f of requirementFindings(line, ctx.frameworks ?? [])) {
-          err(where, 'ip-requirement-phrasing', f.kind === 'article'
-            ? `requirement wording next to ${f.id}; article citations need a public-law framework tag (${PUBLIC_LAW.join(', ')})`
-            : `requirement wording (requires, shall, must...) within 80 characters of ${f.id}; skills make no framework requirement assertions, point to "## Framework lookups" instead`);
-        }
-        for (const t of titleDenylist) {
-          if (line.toLowerCase().includes(t.toLowerCase())) err(where, 'ip-control-title', 'matches an official control title from the off-repo denylist; use the bare id or describe the practice in your own words');
-        }
-      }
       for (const name of blocklist) {
         if (line.toLowerCase().includes(name.toLowerCase())) err(where, 'no-client-names', 'matches an entry of the off-repo blocklist; remove the identifying name');
       }
     });
+    // IP scans run on the whole normalized document, so line breaks and
+    // markdown emphasis cannot split a phrase away from its control id.
+    if (!isAuthor) {
+      for (const f of requirementFindings(text, ctx.frameworks ?? [])) {
+        err(`${rel(file)}:${f.line}`, 'ip-requirement-phrasing', f.kind === 'article'
+          ? `requirement wording next to ${f.id}; article citations need a public-law framework tag (${PUBLIC_LAW.join(', ')})`
+          : `requirement wording (requires, shall, must, expected to, needs to, in accordance with...) within 80 characters of ${f.id}; skills make no framework requirement assertions, point to "## Framework lookups" instead`);
+      }
+      for (const line of titleFindings(text, titleHashes)) {
+        err(`${rel(file)}:${line}`, 'ip-control-title', 'matches an official control title from the hashed denylist (tools/data/title-hashes.json); use the bare id or describe the practice in your own words');
+      }
+    }
   }
 
   function checkFrontmatterShape(file, fm) {
@@ -526,31 +619,116 @@ export function validate(root, opts = {}) {
     }
   }
 
-  // ---- plugin manifest -----------------------------------------------------
-  const manifest = path.join(root, '.claude-plugin', 'plugin.json');
-  if (fs.existsSync(manifest)) {
-    let pj;
-    try { pj = JSON.parse(fs.readFileSync(manifest, 'utf8')); } catch (e) { err(manifest, 'plugin', `invalid JSON: ${e.message}`); }
-    if (pj) {
-      const listed = new Set([].concat(pj.skills ?? []).map((s) => String(s).replace(/\/+$/, '')));
+  // ---- plugin and marketplace manifests --------------------------------------
+  validatePlugin(root, authorSlugs, err);
+
+  return { problems, stats };
+}
+
+// ---------------------------------------------------------------------------
+// Plugin and marketplace manifests (exact schemas)
+// ---------------------------------------------------------------------------
+
+const PLUGIN_KEYS = new Set(['name', 'displayName', 'version', 'description', 'author', 'homepage', 'repository', 'license', 'keywords', 'skills', 'mcpServers']);
+const PERSON_KEYS = new Set(['name', 'url']);
+const MARKETPLACE_KEYS = new Set(['name', 'description', 'owner', 'plugins']);
+const MARKET_PLUGIN_KEYS = new Set(['name', 'description', 'source', 'category', 'tags']);
+const SOURCE_KEYS = ['source', 'repo', 'ref'];
+const MCP_SERVER_KEYS = ['type', 'url'];
+const MCP_PATH = './plugin/.mcp.json';
+
+function unknownKeys(obj, allowed) {
+  return Object.keys(obj).filter((k) => !allowed.has(k));
+}
+
+function validatePlugin(root, authorSlugs, err) {
+  const pluginFile = path.join(root, '.claude-plugin', 'plugin.json');
+  const marketFile = path.join(root, '.claude-plugin', 'marketplace.json');
+  const mcpFile = path.join(root, 'plugin', '.mcp.json');
+
+  // plugin.json
+  const pj = readJson(pluginFile);
+  if (pj.error) err(pluginFile, 'plugin', pj.error === 'missing' ? '.claude-plugin/plugin.json is required' : `invalid JSON: ${pj.error}`);
+  else if (!isPlainObject(pj.value)) err(pluginFile, 'plugin', 'must be a JSON object');
+  else {
+    const p = pj.value;
+    for (const k of unknownKeys(p, PLUGIN_KEYS)) err(pluginFile, 'plugin', `unknown key \`${k}\`; allowed: ${[...PLUGIN_KEYS].join(', ')}`);
+    if (p.name !== 'grcskills') err(pluginFile, 'plugin', '`name` must be "grcskills"');
+    for (const k of ['displayName', 'version', 'description', 'homepage', 'repository', 'license']) {
+      if (k in p && typeof p[k] !== 'string') err(pluginFile, 'plugin', `\`${k}\` must be a string`);
+    }
+    if ('keywords' in p && (!Array.isArray(p.keywords) || p.keywords.some((x) => typeof x !== 'string'))) err(pluginFile, 'plugin', '`keywords` must be a list of strings');
+    if ('author' in p) {
+      if (!isPlainObject(p.author)) err(pluginFile, 'plugin', '`author` must be an object with name and url');
+      else for (const k of unknownKeys(p.author, PERSON_KEYS)) err(pluginFile, 'plugin', `unknown key \`author.${k}\``);
+    }
+    if (!Array.isArray(p.skills) || p.skills.some((x) => typeof x !== 'string')) err(pluginFile, 'plugin-skills', '`skills` must be a list of "./skills/<author>/" paths');
+    else {
+      const listed = new Set(p.skills.map((x) => x.replace(/\/+$/, '')));
       for (const a of authorSlugs) {
-        if (!listed.has(`./skills/${a}`)) err(manifest, 'plugin-skills', `add "./skills/${a}/" to \`skills\` so the Claude Code plugin exposes this author's skills`);
+        if (!listed.has(`./skills/${a}`)) err(pluginFile, 'plugin-skills', `add "./skills/${a}/" to \`skills\` so the Claude Code plugin exposes this author's skills`);
       }
-      for (const s of listed) if (!fs.existsSync(path.join(root, s))) err(manifest, 'plugin-skills', `\`skills\` lists ${s}, which does not exist`);
-      if (typeof pj.mcpServers !== 'string') err(manifest, 'plugin-mcp', '`mcpServers` must be a path to plugin/.mcp.json');
-      else {
-        const mcpPath = path.join(root, pj.mcpServers);
-        let mcp;
-        try { mcp = JSON.parse(fs.readFileSync(mcpPath, 'utf8')); } catch (e) { err(manifest, 'plugin-mcp', `cannot read ${pj.mcpServers}: ${e.message}`); }
-        for (const [name, cfg] of Object.entries(mcp?.mcpServers ?? {})) {
-          if (cfg.url !== MCP_URL) err(mcpPath, 'plugin-mcp', `server "${name}" must point at ${MCP_URL} only`);
-          if (['headers', 'env', 'command', 'args', 'headersHelper'].some((k) => k in cfg)) err(mcpPath, 'plugin-mcp', `server "${name}" must carry no headers, env or command; OAuth happens at first use, never a token in the repo`);
+      for (const x of listed) {
+        if (!/^\.\/skills\/[a-z0-9]+(?:-[a-z0-9]+)*$/.test(x)) err(pluginFile, 'plugin-skills', `\`skills\` entry ${x} must be ./skills/<author-slug>/`);
+        else if (!fs.existsSync(path.join(root, x))) err(pluginFile, 'plugin-skills', `\`skills\` lists ${x}, which does not exist`);
+      }
+    }
+    if (p.mcpServers !== MCP_PATH) err(pluginFile, 'plugin-mcp', `\`mcpServers\` must be exactly "${MCP_PATH}"`);
+  }
+
+  // plugin/.mcp.json: exactly one server, the public ISMS Copilot URL, nothing else.
+  const mj = readJson(mcpFile);
+  if (mj.error) err(mcpFile, 'plugin-mcp', mj.error === 'missing' ? 'plugin/.mcp.json is required' : `invalid JSON: ${mj.error}`);
+  else if (!isPlainObject(mj.value)) err(mcpFile, 'plugin-mcp', 'must be a JSON object');
+  else {
+    const m = mj.value;
+    for (const k of Object.keys(m)) if (k !== 'mcpServers') err(mcpFile, 'plugin-mcp', `unknown key \`${k}\`; the file holds \`mcpServers\` only`);
+    const servers = m.mcpServers;
+    if (!isPlainObject(servers)) err(mcpFile, 'plugin-mcp', '`mcpServers` must be an object');
+    else {
+      const names = Object.keys(servers);
+      if (names.length !== 1 || names[0] !== MCP_SERVER_NAME) {
+        err(mcpFile, 'plugin-mcp', `\`mcpServers\` must hold exactly one server named "${MCP_SERVER_NAME}" (found: ${names.join(', ') || 'none'})`);
+      }
+      const cfg = servers[MCP_SERVER_NAME];
+      if (cfg !== undefined) {
+        if (!isPlainObject(cfg)) err(mcpFile, 'plugin-mcp', `server "${MCP_SERVER_NAME}" must be an object`);
+        else {
+          for (const k of Object.keys(cfg)) {
+            if (!MCP_SERVER_KEYS.includes(k)) err(mcpFile, 'plugin-mcp', `server "${MCP_SERVER_NAME}" carries \`${k}\`; only type and url are allowed (no headers, env or command; OAuth happens at first use, never a token in the repo)`);
+          }
+          if (cfg.type !== 'http') err(mcpFile, 'plugin-mcp', `server "${MCP_SERVER_NAME}" must have type "http"`);
+          if (cfg.url !== MCP_URL) err(mcpFile, 'plugin-mcp', `server "${MCP_SERVER_NAME}" must point at ${MCP_URL} only`);
         }
       }
     }
   }
 
-  return { problems, stats };
+  // .claude-plugin/marketplace.json: one plugin, sourced from this repo at a release tag.
+  const mk = readJson(marketFile);
+  if (mk.error) { err(marketFile, 'marketplace', mk.error === 'missing' ? '.claude-plugin/marketplace.json is required' : `invalid JSON: ${mk.error}`); return; }
+  if (!isPlainObject(mk.value)) { err(marketFile, 'marketplace', 'must be a JSON object'); return; }
+  const mkt = mk.value;
+  for (const k of unknownKeys(mkt, MARKETPLACE_KEYS)) err(marketFile, 'marketplace', `unknown key \`${k}\`; allowed: ${[...MARKETPLACE_KEYS].join(', ')}`);
+  if (mkt.name !== 'grcskills') err(marketFile, 'marketplace', '`name` must be "grcskills"');
+  if (!isPlainObject(mkt.owner)) err(marketFile, 'marketplace', '`owner` must be an object with name and url');
+  else for (const k of unknownKeys(mkt.owner, PERSON_KEYS)) err(marketFile, 'marketplace', `unknown key \`owner.${k}\``);
+  if (!Array.isArray(mkt.plugins) || mkt.plugins.length !== 1) { err(marketFile, 'marketplace', '`plugins` must list exactly one plugin, grcskills'); return; }
+  const entry = mkt.plugins[0];
+  if (!isPlainObject(entry)) { err(marketFile, 'marketplace', 'the plugin entry must be an object'); return; }
+  for (const k of unknownKeys(entry, MARKET_PLUGIN_KEYS)) err(marketFile, 'marketplace', `unknown key \`plugins[0].${k}\`; allowed: ${[...MARKET_PLUGIN_KEYS].join(', ')}`);
+  if (entry.name !== 'grcskills') err(marketFile, 'marketplace', '`plugins[0].name` must be "grcskills"');
+  const src = entry.source;
+  if (!isPlainObject(src)) { err(marketFile, 'marketplace-source', '`plugins[0].source` must be { source: "github", repo, ref }'); return; }
+  const srcKeys = Object.keys(src);
+  if (srcKeys.length !== SOURCE_KEYS.length || !SOURCE_KEYS.every((k) => srcKeys.includes(k))) {
+    err(marketFile, 'marketplace-source', `\`plugins[0].source\` must have exactly the keys ${SOURCE_KEYS.join(', ')}`);
+  }
+  if (src.source !== 'github') err(marketFile, 'marketplace-source', '`source.source` must be "github"');
+  if (src.repo !== REPO_SLUG) err(marketFile, 'marketplace-source', `\`source.repo\` must be "${REPO_SLUG}"`);
+  if (typeof src.ref !== 'string' || !RELEASE_REF.test(src.ref)) {
+    err(marketFile, 'marketplace-ref', `\`source.ref\` must be a release tag vYYYY.MM.DD or vYYYY.MM.DD.N (never a branch such as main); found ${JSON.stringify(src.ref)}`);
+  }
 }
 
 // ---------------------------------------------------------------------------
@@ -629,6 +807,7 @@ function main(argv) {
   const root = path.resolve(positional[0] ?? here);
   let blocklist = [];
   let titleDenylist = [];
+  let titleHashes;
   try {
     blocklist = readList(process.env.GRCSKILLS_BLOCKLIST);
     titleDenylist = readList(process.env.GRCSKILLS_TITLE_DENYLIST);
@@ -636,7 +815,13 @@ function main(argv) {
     console.error(`env: lists: cannot read an off-repo list (${e.message})`);
     return 1;
   }
-  const { problems, stats } = validate(root, { blocklist, titleDenylist });
+  try {
+    titleHashes = loadTitleHashes();
+  } catch (e) {
+    console.error(`tools/data/title-hashes.json: title-hashes: cannot load the committed title hash list (${e.message})`);
+    return 1;
+  }
+  const { problems, stats } = validate(root, { blocklist, titleDenylist, titleHashes });
   if (problems.length) {
     for (const p of problems) console.error(p);
     console.error(`\n${problems.length} problem${problems.length === 1 ? '' : 's'} found`);
@@ -646,5 +831,8 @@ function main(argv) {
   return 0;
 }
 
-const isMain = process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);
+// realpath on both sides: invoked through a symlinked path (macOS /var -> /private/var,
+// a symlinked checkout), a plain comparison would skip main() and exit 0 silently.
+const realOrSelf = (p) => { try { return fs.realpathSync(p); } catch { return path.resolve(p); } };
+const isMain = process.argv[1] && realOrSelf(process.argv[1]) === realOrSelf(fileURLToPath(import.meta.url));
 if (isMain) process.exit(main(process.argv.slice(2)));

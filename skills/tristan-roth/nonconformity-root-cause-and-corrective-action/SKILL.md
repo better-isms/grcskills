@@ -28,7 +28,7 @@ Write what was expected, what was found and the evidence, in the auditor's terms
 
 ## Step 2: separate correction from corrective action
 
-- **Correction** fixes the instance the auditor saw: revoke the leaver's account, approve the missing change, update the expired document. Do it now and keep the proof.
+- **Correction** fixes the instance the auditor saw: revoking the leaver's account, approving the missing change, updating the expired document. If the owner already made it, record what was done, by whom and the proof. If not, draft it as a proposed correction for the owner to approve and carry out promptly; the agent never makes it.
 - **Corrective action** removes the cause so the problem does not come back anywhere. Most rejected responses are a correction presented as a corrective action.
 
 ## Step 3: find the root cause
@@ -71,3 +71,4 @@ If ISMS Copilot is connected to your agent (MCP server `https://account.ismscopi
 - NEVER present a correction as the corrective action.
 - NEVER name "human error" as the root cause without the process cause behind it.
 - NEVER send the response to the auditor; the reader's team reviews, signs and sends it.
+- NEVER change a system, account, access right, ticket or document yourself, even to make a correction; record it or draft it for the owner's approval.

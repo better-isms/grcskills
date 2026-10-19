@@ -65,3 +65,4 @@ If ISMS Copilot is connected to your agent (MCP server `https://account.ismscopi
 - NEVER accept a risk on the owner's behalf or record a risk as accepted without a named human decision.
 - NEVER copy a generic threat catalogue in place of company-specific scenarios.
 - NEVER put personal data of individuals into the register; use roles.
+- NEVER change a system, account, ticket or document to treat a risk; propose the treatment and let its owner act.

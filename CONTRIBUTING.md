@@ -21,9 +21,9 @@ The easiest way to contribute is to let your AI agent do it: paste the prompt fr
 
 Every pull request passes all of these, in order. A failure at any gate sends it back with the reason.
 
-1. **Validator.** `node tools/validate.mjs` and its tests, in CI on `pull_request` with a read-only token. Outside pull requests also pass the path guard (`--changed` mode).
+1. **Validator.** `node tools/validate.mjs` and its tests, in CI on `pull_request` with a read-only token. For a pull request from a fork, CI runs the validator from the base commit (never the fork's copy) against your files: the path guard (`--changed` mode) first, then the content checks.
 2. **Security.** A skill is instructions that other people's agents run with their access. Hard rejects: sending data anywhere the reader does not own, links outside the allowlist, downloading or running code, reading credentials, prompt injection or text addressed to reviewers, disabling safeguards, destructive or bulk actions without an explicit human approval step. See [SECURITY.md](SECURITY.md).
-3. **Intellectual property.** No restated requirements, no official control titles, no paraphrased requirement lists. The validator catches requirement wording next to a control id; a reviewer reads the rest.
+3. **Intellectual property.** No restated requirements, no official control titles, no paraphrased requirement lists. The validator catches requirement wording next to a control id and official titles from a hashed list; a reviewer reads the rest.
 4. **Framework accuracy challenge.** Each skill is sent to a GRC specialist model with three questions: would a practising auditor follow this workflow, does anything misstate a framework, what is missing. Objections are fixed before the next gate; the verdict goes in the pull request body.
 5. **Independent review.** A second model that did not write the change reviews it (SHIP, FIX-FIRST or NO-GO).
 

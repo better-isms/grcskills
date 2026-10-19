@@ -9,7 +9,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
-import { validate, checkChanged, lookupTemplate, SETUP_PROMPT_URL } from './validate.mjs';
+import { validate, checkChanged, lookupTemplate, SETUP_PROMPT_URL, hashTitle, loadTitleHashes, titleFindings, requirementFindings, TITLE_HASH_FILE } from './validate.mjs';
 
 const REPO = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const CLI = path.join(REPO, 'tools', 'validate.mjs');
@@ -50,6 +50,12 @@ const AUTHOR_MD = [
   '',
 ].join('\n');
 
+const MARKETPLACE = {
+  name: 'grcskills',
+  owner: { name: 'Example', url: 'https://grcskills.com' },
+  plugins: [{ name: 'grcskills', description: 'x', source: { source: 'github', repo: 'better-isms/grcskills', ref: 'v2026.10.19' } }],
+};
+
 const created = [];
 process.on('exit', () => { for (const d of created) fs.rmSync(d, { recursive: true, force: true }); });
 
@@ -65,6 +71,7 @@ function makeRepo({ slug = 'sample-skill', skill, author = AUTHOR_MD, extra = {}
   write(`skills/jane-doe/${slug}/SKILL.md`, skill ?? skillMd(slug));
   if (plugin) {
     write('.claude-plugin/plugin.json', JSON.stringify({ name: 'grcskills', skills: ['./skills/jane-doe/'], mcpServers: './plugin/.mcp.json' }));
+    write('.claude-plugin/marketplace.json', JSON.stringify(MARKETPLACE));
     write('plugin/.mcp.json', JSON.stringify({ mcpServers: { ismscopilot: { type: 'http', url: 'https://account.ismscopilot.com/v1/account/mcp' } } }));
   }
   for (const [rel, content] of Object.entries(extra)) write(rel, content);
@@ -186,7 +193,68 @@ test('article citations with requirement wording pass for public law', () =>
   expectClean(makeRepo({ skill: skillMd('sample-skill', { frameworks: ['gdpr'], steps: `## Step 1: read\n\nArt. 33 requires notification within 72 hours. ${filler(30)}` }) })));
 test('article citations with requirement wording fail without a public-law tag', () =>
   expectRule(makeRepo({ skill: skillMd('sample-skill', { frameworks: ['iso27001'], steps: `## Step 1: read\n\nArt. 33 requires notification. ${filler(30)}` }) }), 'ip-requirement-phrasing'));
-test('off-repo control title denylist is enforced', () =>
+test('requirement wording "is expected to" near a control id is rejected', () =>
+  expectRule(makeRepo({ skill: skillMd('sample-skill', { frameworks: ['iso27001'], steps: `## Step 1: read\n\nA.5.15 is expected to cover access. ${filler(30)}` }) }), 'ip-requirement-phrasing'));
+for (const phrase of ['needs to', 'need to', 'are required to', 'is required to', 'is mandatory', 'in accordance with', 'shall', 'must', 'requires']) {
+  test(`requirement wording "${phrase}" near a control id is rejected`, () =>
+    assert.ok(requirementFindings(`For A.5.15 the team ${phrase} keep an access list.`, ['iso27001']).length > 0, phrase));
+}
+test('requirement wording split across lines is rejected', () =>
+  expectRule(makeRepo({ skill: skillMd('sample-skill', { frameworks: ['iso27001'], steps: `## Step 1: read\n\nControl A.5.15\nis expected\nto cover access. ${filler(30)}` }) }), 'ip-requirement-phrasing'));
+test('requirement wording split by markdown emphasis is rejected', () =>
+  expectRule(makeRepo({ skill: skillMd('sample-skill', { frameworks: ['soc2'], steps: `## Step 1: read\n\n**CC6.1** is **expected**\n**to** cover access. ${filler(30)}` }) }), 'ip-requirement-phrasing'));
+test('requirement findings map back to the source line of the id', () => {
+  const f = requirementFindings('one\n\ntwo A.5.15\nmust hold', ['iso27001']);
+  assert.equal(f[0].line, 3);
+});
+
+// ---- official-title denylist (hashed) ------------------------------------------------
+
+const FAKE_TITLES = new Set([hashTitle('Widget governance arrangement for gadgets')]);
+test('committed title hash list loads and is non-empty', () => {
+  const data = JSON.parse(fs.readFileSync(TITLE_HASH_FILE, 'utf8'));
+  assert.equal(data.version, 1);
+  assert.equal(loadTitleHashes().size, data.hashes.length);
+  assert.ok(data.hashes.length > 0);
+});
+test('committed title hash list holds digests only', () => {
+  const data = JSON.parse(fs.readFileSync(TITLE_HASH_FILE, 'utf8'));
+  for (const h of data.hashes) assert.match(h, /^[0-9a-f]{64}$/);
+});
+test('the CLI always applies the hash list next to the validator, with no env or flag', () => {
+  // Copy the validator into a temp tools/ dir whose data file lists a phrase of
+  // the fixture text: the CLI must fail on it without being told to look.
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'grcskills-cli-'));
+  created.push(dir);
+  fs.mkdirSync(path.join(dir, 'tools', 'data'), { recursive: true });
+  fs.copyFileSync(CLI, path.join(dir, 'tools', 'validate.mjs'));
+  fs.writeFileSync(path.join(dir, 'tools', 'data', 'title-hashes.json'), JSON.stringify({ version: 1, hashes: [hashTitle('Read the register and confirm')] }));
+  const r = spawnSync(process.execPath, [path.join(dir, 'tools', 'validate.mjs'), makeRepo()], { encoding: 'utf8', env: { PATH: process.env.PATH } });
+  assert.equal(r.status, 1);
+  assert.match(r.stderr, /: ip-control-title: /);
+});
+test('the CLI refuses to run without a readable hash list', () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'grcskills-cli-'));
+  created.push(dir);
+  fs.mkdirSync(path.join(dir, 'tools'), { recursive: true });
+  fs.copyFileSync(CLI, path.join(dir, 'tools', 'validate.mjs'));
+  const r = spawnSync(process.execPath, [path.join(dir, 'tools', 'validate.mjs'), makeRepo()], { encoding: 'utf8' });
+  assert.equal(r.status, 1);
+  assert.match(r.stderr, /title-hashes/);
+});
+test('hashed control title is rejected', () =>
+  expectRule(makeRepo({ skill: skillMd('sample-skill', { steps: `## Step 1: read\n\nCheck the Widget Governance Arrangement for Gadgets. ${filler(30)}` }) }), 'ip-control-title', { titleHashes: FAKE_TITLES }));
+test('hashed control title split across lines and punctuation is rejected', () =>
+  expectRule(makeRepo({ skill: skillMd('sample-skill', { steps: `## Step 1: read\n\nCheck the widget-governance\n**arrangement** for gadgets. ${filler(30)}` }) }), 'ip-control-title', { titleHashes: FAKE_TITLES }));
+test('near miss of a hashed title passes', () => {
+  assert.deepEqual(titleFindings('Check the widget governance arrangement for the gadgets.', FAKE_TITLES), []);
+  assert.deepEqual(titleFindings('Check the widget governance setup for gadgets.', FAKE_TITLES), []);
+});
+test('titles longer than the window match on their first eight words', () => {
+  const long = 'one two three four five six seven eight nine ten';
+  assert.deepEqual(titleFindings(`Intro.\n${long}`, new Set([hashTitle(long)])), [2]);
+});
+test('off-repo plaintext denylist entries are hashed and enforced', () =>
   expectRule(makeRepo({ skill: skillMd('sample-skill', { steps: `## Step 1: read\n\nCheck the Widget Governance Arrangement. ${filler(30)}` }) }), 'ip-control-title', { titleDenylist: ['widget governance arrangement'] }));
 
 // ---- author records ------------------------------------------------------------------
@@ -221,6 +289,61 @@ test('MCP config pointing elsewhere is rejected', () => {
   const root = makeRepo();
   fs.writeFileSync(path.join(root, 'plugin/.mcp.json'), JSON.stringify({ mcpServers: { x: { type: 'http', url: 'https://mcp.example.net/' } } }));
   expectRule(root, 'plugin-mcp');
+});
+const writeJson = (root, rel, obj) => fs.writeFileSync(path.join(root, rel), JSON.stringify(obj));
+const MCP_OK = { type: 'http', url: 'https://account.ismscopilot.com/v1/account/mcp' };
+for (const [label, mcp] of [
+  ['an empty server map', { mcpServers: {} }],
+  ['a second server', { mcpServers: { ismscopilot: MCP_OK, other: MCP_OK } }],
+  ['a server under another name', { mcpServers: { copilot: MCP_OK } }],
+  ['an extra server key', { mcpServers: { ismscopilot: { ...MCP_OK, timeout: 5 } } }],
+  ['a non-http type', { mcpServers: { ismscopilot: { ...MCP_OK, type: 'stdio' } } }],
+  ['an extra top-level key', { mcpServers: { ismscopilot: MCP_OK }, extra: true }],
+]) {
+  test(`MCP config with ${label} is rejected`, () => {
+    const root = makeRepo();
+    writeJson(root, 'plugin/.mcp.json', mcp);
+    expectRule(root, 'plugin-mcp');
+  });
+}
+for (const rel of ['.claude-plugin/plugin.json', '.claude-plugin/marketplace.json', 'plugin/.mcp.json']) {
+  test(`missing ${rel} is rejected`, () => {
+    const root = makeRepo();
+    fs.rmSync(path.join(root, rel));
+    assert.ok(validate(root).problems.some((p) => p.startsWith(rel)), rel);
+  });
+}
+test('unknown plugin.json key is rejected', () => {
+  const root = makeRepo();
+  writeJson(root, '.claude-plugin/plugin.json', { name: 'grcskills', skills: ['./skills/jane-doe/'], mcpServers: './plugin/.mcp.json', hooks: './x' });
+  expectRule(root, 'plugin');
+});
+test('plugin.json mcpServers must be the canonical path', () => {
+  const root = makeRepo();
+  writeJson(root, '.claude-plugin/plugin.json', { name: 'grcskills', skills: ['./skills/jane-doe/'], mcpServers: { ismscopilot: MCP_OK } });
+  expectRule(root, 'plugin-mcp');
+});
+for (const ref of ['main', 'v2026.10', '2026.10.19', 'v2026.10.19-rc1', 'refs/tags/v2026.10.19']) {
+  test(`marketplace ref "${ref}" is rejected`, () => {
+    const root = makeRepo();
+    writeJson(root, '.claude-plugin/marketplace.json', { ...MARKETPLACE, plugins: [{ ...MARKETPLACE.plugins[0], source: { ...MARKETPLACE.plugins[0].source, ref } }] });
+    expectRule(root, 'marketplace-ref');
+  });
+}
+test('marketplace ref with a same-day suffix passes', () => {
+  const root = makeRepo();
+  writeJson(root, '.claude-plugin/marketplace.json', { ...MARKETPLACE, plugins: [{ ...MARKETPLACE.plugins[0], source: { ...MARKETPLACE.plugins[0].source, ref: 'v2026.10.19.2' } }] });
+  expectClean(root);
+});
+test('marketplace sourcing another repo is rejected', () => {
+  const root = makeRepo();
+  writeJson(root, '.claude-plugin/marketplace.json', { ...MARKETPLACE, plugins: [{ ...MARKETPLACE.plugins[0], source: { ...MARKETPLACE.plugins[0].source, repo: 'someone/fork' } }] });
+  expectRule(root, 'marketplace-source');
+});
+test('marketplace with a second plugin is rejected', () => {
+  const root = makeRepo();
+  writeJson(root, '.claude-plugin/marketplace.json', { ...MARKETPLACE, plugins: [MARKETPLACE.plugins[0], { ...MARKETPLACE.plugins[0], name: 'extra' }] });
+  expectRule(root, 'marketplace');
 });
 
 // ---- outside-PR path guard ---------------------------------------------------------------

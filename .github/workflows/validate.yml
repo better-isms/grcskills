@@ -1,22 +1,24 @@
 name: validate
 
-# Runs on pull_request only, never pull_request_target: outside PRs get a
-# read-only token and no secrets. Actions are pinned by commit SHA.
+# Runs on pull_request only, never pull_request_target and never on push:
+# outside PRs get a read-only token and no secrets. Actions are pinned by commit SHA.
+# Release-time verification lives in release.yml (tag push only).
 on:
   pull_request:
-  push:
-    branches: [main]
 
-permissions: read-all
+permissions:
+  contents: read
 
 jobs:
-  validate:
+  # Same-repository PRs (maintainers and house agents): the candidate's own
+  # validator and its tests run, so changes to tools/ are tested by themselves.
+  same-repo:
+    if: github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
         with:
-          fetch-depth: 0
           persist-credentials: false
 
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
@@ -29,11 +31,42 @@ jobs:
       - name: Validator tests
         run: node --test tools/*.test.mjs
 
-      # Outside PRs (from a fork) may only change their own skills/<author>/ folder:
+  # Fork PRs: the contributor controls every file in the candidate checkout,
+  # including tools/. Nothing from it is executed. The validator comes from the
+  # base SHA, checked out into a separate trusted directory, and reads the
+  # candidate as data: path guard first, then the content checks.
+  fork:
+    if: github.event.pull_request.head.repo.full_name != github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Trusted validator (base SHA)
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          path: trusted
+          persist-credentials: false
+
+      - name: Candidate (contributor content, never executed)
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        with:
+          path: candidate
+          fetch-depth: 0
+          persist-credentials: false
+
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: 22
+
+      # Outside PRs may only change their own skills/<author>/ folder:
       # at most 10 files, 60 KB, markdown only, no symlinks.
-      - name: Outside-PR path guard
-        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository
+      - name: Outside-PR path guard (trusted validator)
         env:
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
         run: |
-          git diff --name-only --no-renames "$BASE_SHA"...HEAD | node tools/validate.mjs --changed -
+          set -euo pipefail
+          git -C candidate diff --name-only --no-renames "$BASE_SHA"...HEAD > changed-paths.txt
+          node trusted/tools/validate.mjs --changed - --root candidate < changed-paths.txt
+
+      - name: Library rules (trusted validator)
+        run: node trusted/tools/validate.mjs candidate

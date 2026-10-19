@@ -1,0 +1,104 @@
+name: release
+
+# Builds the immutable release that installers consume (design doc, release and
+# supply chain). Runs only on a release tag push, or by hand for an existing tag.
+# The tag must point at a commit on main, which carries the reviewed and
+# approved content; the validator and its tests at that commit run first.
+# Actions are pinned by commit SHA.
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing release tag to build (vYYYY.MM.DD or vYYYY.MM.DD.N)
+        required: true
+        type: string
+
+permissions: {}
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write # create the release
+      id-token: write # sign the provenance attestation
+      attestations: write # store the provenance attestation
+    env:
+      TAG: ${{ github.event_name == 'workflow_dispatch' && inputs.tag || github.ref_name }}
+    steps:
+      - name: Check the tag format
+        run: |
+          set -euo pipefail
+          if ! printf '%s' "$TAG" | grep -Eq '^v[0-9]{4}\.[0-9]{2}\.[0-9]{2}(\.[0-9]+)?$'; then
+            echo "::error::$TAG is not a release tag (vYYYY.MM.DD or vYYYY.MM.DD.N)"
+            exit 1
+          fi
+
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        with:
+          ref: refs/tags/${{ env.TAG }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Check the tag is on main
+        run: |
+          set -euo pipefail
+          git fetch --no-tags origin +refs/heads/main:refs/remotes/origin/main
+          TAG_SHA="$(git rev-parse "refs/tags/$TAG^{commit}")"
+          if ! git merge-base --is-ancestor "$TAG_SHA" origin/main; then
+            echo "::error::$TAG ($TAG_SHA) is not on main"
+            exit 1
+          fi
+          echo "TAG_SHA=$TAG_SHA" >> "$GITHUB_ENV"
+
+      - name: Check the marketplace pins this tag
+        run: |
+          set -euo pipefail
+          REF="$(jq -r '.plugins[0].source.ref' .claude-plugin/marketplace.json)"
+          if [ "$REF" != "$TAG" ]; then
+            echo "::error::.claude-plugin/marketplace.json pins $REF, not $TAG; bump it on main before tagging"
+            exit 1
+          fi
+
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: 22
+
+      # The tagged commit is on main, so its validator is the reviewed one.
+      - name: Library rules
+        run: node tools/validate.mjs
+
+      - name: Validator tests
+        run: node --test tools/*.test.mjs
+
+      - name: Build the release tarball
+        run: |
+          set -euo pipefail
+          OUT="grcskills-$TAG.tar.gz"
+          tar --sort=name --owner=0 --group=0 --numeric-owner \
+            --mtime="@$(git log -1 --format=%ct "$TAG_SHA")" \
+            -cf - skills plugin .claude-plugin | gzip -n > "$OUT"
+          sha256sum "$OUT" > "$OUT.sha256"
+          echo "OUT=$OUT" >> "$GITHUB_ENV"
+
+      - name: Attest build provenance
+        uses: actions/attest-build-provenance@4d101475d8b20a2381f78447822ac1eab6504dd8 # v4.2.2
+        with:
+          subject-path: ${{ env.OUT }}
+
+      - name: Create the GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh release create "$TAG" "$OUT" "$OUT.sha256" \
+            --repo "$GITHUB_REPOSITORY" \
+            --verify-tag \
+            --title "$TAG" \
+            --notes "grcskills $TAG (commit $TAG_SHA). Verify: gh attestation verify $OUT -R $GITHUB_REPOSITORY and gh release verify $TAG -R $GITHUB_REPOSITORY. See CHANGELOG.md."

@@ -14,18 +14,21 @@ This is the grcskills library: open, task-level GRC skills (Agent Skills format)
 
 ## Install
 
+Install from the current release tag, `v2026.10.19`, never from `main` (the integration branch). Releases are immutable and carry a build provenance attestation.
+
 ```bash
-npx skills add better-isms/grcskills                                  # whole library, interactive
-npx skills add better-isms/grcskills --skill <skill-name>             # one skill
-npx skills add better-isms/grcskills/skills/<author-slug>             # one author
-npx skills add better-isms/grcskills --list                           # list
+npx skills add better-isms/grcskills#v2026.10.19                                  # whole library, interactive
+npx skills add better-isms/grcskills#v2026.10.19 --skill <skill-name>             # one skill
+npx skills add better-isms/grcskills/skills/<author-slug>#v2026.10.19             # one author
+npx skills add better-isms/grcskills#v2026.10.19 --list                           # list
+git clone --branch v2026.10.19 https://github.com/better-isms/grcskills           # clone
 ```
 
-Target an agent with `-a claude-code`, `-a cursor`, `-a codex`. Claude Code users can also run `/plugin marketplace add better-isms/grcskills` then `/plugin install grcskills@grcskills`. Without a terminal, clone or download the skill folder and place it in the agent's skills directory.
+The `#<tag>` suffix makes the skills CLI clone that tag. Target an agent with `-a claude-code`, `-a cursor`, `-a codex`. Claude Code users can also run `/plugin marketplace add better-isms/grcskills` then `/plugin install grcskills@grcskills`; the plugin pins the release tag. Without a terminal, download the skill folder from the release and place it in the agent's skills directory.
 
 ## Run the whole library against a setup
 
-1. Make the library available: an install, or `git clone https://github.com/better-isms/grcskills` into a temporary folder (ask first).
+1. Make the library available: an install, or `git clone --branch v2026.10.19 https://github.com/better-isms/grcskills` into a temporary folder (ask first).
 2. Open `skills/tristan-roth/grc-setup-review/SKILL.md` and follow it. It reads only the frontmatter of every skill, inspects the user's compliance material read-only, ranks the top 10 skills with impact, effort and a cited reason, audits what is broken, duplicated or missing, and writes `grc-setup-review/*.md` in the user's working folder.
 3. To run any ranked skill, read its `SKILL.md` in full, then follow it. Each skill names the files it writes.
 
@@ -104,7 +107,7 @@ Each problem prints as `path: rule: message`; fix every line. Then fork, branch 
 
 ## What happens after
 
-CI runs the validator, its tests and the outside-PR path guard with a read-only token. Maintainers then run a security review, an IP review, a framework accuracy challenge and an independent second-model review. Outside pull requests are merged only with the founder's approval; findings from automated reviewers are advisory. Author profiles are published once identity is confirmed.
+CI runs with a read-only token. For a fork pull request it runs the validator from the base commit against the fork's files (path guard first, then content checks) and never executes code from the fork. Maintainers then run a security review, an IP review, a framework accuracy challenge and an independent second-model review. Outside pull requests are merged only with the founder's approval; findings from automated reviewers are advisory. Author profiles are published once identity is confirmed.
 
 ## For maintainer agents
 
