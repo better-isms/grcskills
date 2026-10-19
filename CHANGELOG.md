@@ -7,6 +7,8 @@ Release tags are `vYYYY.MM.DD[.n]`. Installers and the Claude Code plugin consum
 - llms.txt run steps: step 1 is the pinned clone only. The `npx skills add` alternative is gone from the steps (it fetched and ran an npm package the user's request did not cover); npx stays under `## Install`.
 - "Where you decide" lists only rules that keep a decision or sign-off with a person (accepting, marking effective, approving, signing, deciding, sending, changing systems, routing a call to a person); rules about the quality of evidence no longer appear. The intro reads "From this skill's rules: where you decide", and the draft-only boundary sits below the list. A skill with no such rule shows the boundary alone.
 
+- A first-time outside author's pull request can pass CI: the validator no longer requires a new `skills/<author>/` folder in `.claude-plugin/plugin.json` (outside PRs may not touch that file). It prints a note instead, and `--release`, run by the release workflow on the tag, requires every author folder to be listed. Claude Code reads plugin skills one level below each listed folder, so `"./skills/"` alone would expose nothing.
+
 ## v2026.10.19.1
 
 - New required frontmatter field `summary`: one plain line of at most 155 characters for people (search results, social cards, site cards). `description` stays the agent trigger. Written for all 60 skills; the validator, the template, AGENTS.md and the submit-skill interview carry the rule.

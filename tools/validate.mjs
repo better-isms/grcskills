@@ -3,6 +3,8 @@
 //
 //   node tools/validate.mjs                      validate the repo this file lives in
 //   node tools/validate.mjs <root>               validate another checkout (tests use this)
+//   node tools/validate.mjs --release [<root>]   also require every author folder in
+//                                                .claude-plugin/plugin.json (release.yml)
 //   node tools/validate.mjs --changed <paths...> [--author <slug>] [--root <dir>]
 //                                                outside-PR path guard (use "-" to read
 //                                                newline-separated paths from stdin)
@@ -446,6 +448,7 @@ export function validate(root, opts = {}) {
   for (const t of opts.titleDenylist ?? []) titleHashes.add(hashTitle(t));
   const skillsDir = path.join(root, 'skills');
   const stats = { skills: 0, authors: 0 };
+  const notes = [];
 
   if (fs.existsSync(path.join(root, 'SKILL.md'))) {
     err('SKILL.md', 'no-root-skill', 'a SKILL.md at the repo root makes `npx skills` treat the repo as one skill and hides the library; remove it');
@@ -703,9 +706,9 @@ export function validate(root, opts = {}) {
   }
 
   // ---- plugin and marketplace manifests --------------------------------------
-  validatePlugin(root, authorSlugs, err);
+  validatePlugin(root, authorSlugs, err, { release: opts.release === true, notes });
 
-  return { problems, stats };
+  return { problems, stats, notes };
 }
 
 // ---------------------------------------------------------------------------
@@ -724,7 +727,14 @@ function unknownKeys(obj, allowed) {
   return Object.keys(obj).filter((k) => !allowed.has(k));
 }
 
-function validatePlugin(root, authorSlugs, err) {
+// Claude Code reads plugin skills one level below each listed directory
+// (<dir>/<skill>/SKILL.md); "./skills/" and globs find nothing in this
+// two-level layout (checked with `claude plugin details`, 2.1.303). So each
+// author folder needs its own `skills` entry. Outside PRs may not touch
+// .claude-plugin/, so a pull request passes with an unlisted author (a note
+// says so) and the release gate (--release, run by release.yml on the tag)
+// requires every author folder to be listed before anything ships.
+function validatePlugin(root, authorSlugs, err, { release = false, notes = [] } = {}) {
   const pluginFile = path.join(root, '.claude-plugin', 'plugin.json');
   const marketFile = path.join(root, '.claude-plugin', 'marketplace.json');
   const mcpFile = path.join(root, 'plugin', '.mcp.json');
@@ -749,7 +759,9 @@ function validatePlugin(root, authorSlugs, err) {
     else {
       const listed = new Set(p.skills.map((x) => x.replace(/\/+$/, '')));
       for (const a of authorSlugs) {
-        if (!listed.has(`./skills/${a}`)) err(pluginFile, 'plugin-skills', `add "./skills/${a}/" to \`skills\` so the Claude Code plugin exposes this author's skills`);
+        if (listed.has(`./skills/${a}`)) continue;
+        if (release) err(pluginFile, 'plugin-skills', `add "./skills/${a}/" to \`skills\` so the Claude Code plugin exposes this author's skills (a maintainer does this before the release tag)`);
+        else notes.push(`skills/${a}/ is not in .claude-plugin/plugin.json yet; a maintainer adds it before the next release`);
       }
       for (const x of listed) {
         if (!/^\.\/skills\/[a-z0-9]+(?:-[a-z0-9]+)*$/.test(x)) err(pluginFile, 'plugin-skills', `\`skills\` entry ${x} must be ./skills/<author-slug>/`);
@@ -904,7 +916,8 @@ function main(argv) {
     console.error(`tools/data/title-hashes.json: title-hashes: cannot load the committed title hash list (${e.message})`);
     return 1;
   }
-  const { problems, stats } = validate(root, { blocklist, titleDenylist, titleHashes });
+  const { problems, stats, notes } = validate(root, { blocklist, titleDenylist, titleHashes, release: argv.includes('--release') });
+  for (const n of notes) console.log(`note: ${n}`);
   if (problems.length) {
     for (const p of problems) console.error(p);
     console.error(`\n${problems.length} problem${problems.length === 1 ? '' : 's'} found`);

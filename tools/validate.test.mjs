@@ -334,10 +334,39 @@ test('missing author.md is rejected', () => {
 
 // ---- plugin manifest -------------------------------------------------------------------
 
-test('author folder missing from plugin manifest is rejected', () => {
+test('author folder missing from plugin manifest: a note on a PR, an error at release', () => {
   const root = makeRepo();
   fs.writeFileSync(path.join(root, '.claude-plugin/plugin.json'), JSON.stringify({ name: 'grcskills', skills: [], mcpServers: './plugin/.mcp.json' }));
+  const pr = validate(root);
+  assert.deepEqual(pr.problems, [], pr.problems.join('\n'));
+  assert.ok(pr.notes.some((n) => n.startsWith('skills/jane-doe/ is not in .claude-plugin/plugin.json')), pr.notes.join('\n'));
+  expectRule(root, 'plugin-skills', { release: true });
+});
+test('a listed author folder that does not exist is rejected on a PR too', () => {
+  const root = makeRepo();
+  fs.writeFileSync(path.join(root, '.claude-plugin/plugin.json'), JSON.stringify({ name: 'grcskills', skills: ['./skills/jane-doe/', './skills/ghost/'], mcpServers: './plugin/.mcp.json' }));
   expectRule(root, 'plugin-skills');
+});
+// Independent review 2026-10-19: a first-time outside author could never pass
+// CI, because the manifest had to list the new folder and outside PRs may not
+// touch .claude-plugin/. Both fork-mode CI steps must pass with no manifest edit.
+test('fork mode: a new author folder and one skill pass with no manifest change; --release still asks for the listing', () => {
+  const root = makeRepo({
+    extra: {
+      'skills/new-author/author.md': AUTHOR_MD.replace('Jane Doe', 'Sam Roe').replace('jane-doe', 'sam-roe'),
+      'skills/new-author/new-skill/SKILL.md': skillMd('new-skill'),
+    },
+  });
+  const changed = 'skills/new-author/author.md\nskills/new-author/new-skill/SKILL.md\n';
+  const guard = spawnSync(process.execPath, [CLI, '--changed', '-', '--root', root], { input: changed, encoding: 'utf8' });
+  assert.equal(guard.status, 0, guard.stderr);
+  const lib = spawnSync(process.execPath, [CLI, root], { encoding: 'utf8' });
+  assert.equal(lib.status, 0, lib.stderr);
+  assert.match(lib.stdout, /^note: skills\/new-author\/ is not in \.claude-plugin\/plugin\.json yet/m);
+  assert.match(lib.stdout, /ok: 2 skills by 2 authors/);
+  const rel = spawnSync(process.execPath, [CLI, '--release', root], { encoding: 'utf8' });
+  assert.equal(rel.status, 1);
+  assert.match(rel.stderr, /plugin-skills: add "\.\/skills\/new-author\/"/);
 });
 test('MCP config carrying headers is rejected', () => {
   const root = makeRepo();
