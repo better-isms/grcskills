@@ -54,7 +54,7 @@ skills/<author-slug>/<skill-slug>/SKILL.md
 skills/<author-slug>/<skill-slug>/references/<topic>.md      (optional)
 ```
 
-Copy `templates/SKILL.template.md` to `skills/<author-slug>/<skill-slug>/SKILL.md`, and `templates/author.md`. Add your author folder to `skills` in `.claude-plugin/plugin.json` only if you are a maintainer; for outside contributors a maintainer does it.
+Copy `templates/SKILL.template.md` to `skills/<author-slug>/<skill-slug>/SKILL.md`, and `templates/author.md`. Add your author folder to `skills` in `.claude-plugin/plugin.json` only if you are a maintainer; for outside contributors a maintainer does it before the next release tag. A pull request passes without it (the validator prints a note); `node tools/validate.mjs --release`, run by the release workflow, requires every author folder to be listed.
 
 ### SKILL.md frontmatter
 

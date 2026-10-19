@@ -71,8 +71,10 @@ jobs:
           node-version: 22
 
       # The tagged commit is on main, so its validator is the reviewed one.
+      # --release: every author folder must be listed in plugin.json, which
+      # outside PRs cannot edit; a maintainer adds new authors before tagging.
       - name: Library rules
-        run: node tools/validate.mjs
+        run: node tools/validate.mjs --release
 
       - name: Validator tests
         run: node --test tools/*.test.mjs

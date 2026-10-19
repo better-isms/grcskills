@@ -55,11 +55,15 @@ export default async function SkillPage({ params }: Props) {
 
       <section className="decide" aria-labelledby="decide">
         <h2 id="decide">Where you decide</h2>
-        <p>Your agent does the legwork. These calls stay with you and your people; the skill tells the agent:</p>
-        <ul>
-          {s.decisions.map((d) => <li key={d}><RuleText text={d} /></li>)}
-          <li>Everything it writes is a draft for a person to review and sign.</li>
-        </ul>
+        {s.decisions.length > 0 && (
+          <>
+            <p>From this skill&apos;s rules: where you decide</p>
+            <ul>
+              {s.decisions.map((d) => <li key={d}><RuleText text={d} /></li>)}
+            </ul>
+          </>
+        )}
+        <p className="boundary">Everything it writes is a draft for a person to review and sign.</p>
       </section>
 
       <div className="skill-grid">

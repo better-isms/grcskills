@@ -134,7 +134,7 @@ export function buildLlms({ skills, tag }) {
     '',
     `The current release is \`${tag}\`. Install from that tag, never from \`main\`. The user's request to run grc-setup-review is the go-ahead for step 1 (a clone of that tag into \`.grcskills\`); ask before installing anything else or touching anything outside the working folder.`,
     '',
-    `1. Get the release into the user's working folder: \`git clone --depth 1 --branch ${tag} ${REPO_URL} .grcskills\`. If your agent manages skills, \`npx skills add ${REPO}#${tag} --skill grc-setup-review\` installs the skill; it still needs the whole library to rank, so clone as well.`,
+    `1. Get the release into the user's working folder: \`git clone --depth 1 --branch ${tag} ${REPO_URL} .grcskills\`.`,
     '2. Read `.grcskills/AGENTS.md`.',
     '3. Follow `.grcskills/skills/tristan-roth/grc-setup-review/SKILL.md` step by step.',
     "4. Read the user's files only: never edit, move or delete them, and never send them off the machine.",
