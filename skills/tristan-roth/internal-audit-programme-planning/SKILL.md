@@ -22,7 +22,7 @@ Read the scope statement, the list of processes and controls in scope (applicabi
 
 ## Step 1: list the audit areas
 
-Group the scope into 8 to 15 auditable areas a person can cover in half a day to two days each: governance and leadership, risk management, people (joiners, movers, leavers, training), access management, change and development, operations and monitoring, incident management, continuity and backup, suppliers, privacy processes, AI system lifecycle, physical sites. Keep the management system processes (document control, internal audit itself, corrective action, management review) as their own area; they are audited too.
+Group the scope into 8 to 15 auditable areas a person can cover in half a day to two days each: governance and leadership, risk management, people (joiners, movers, leavers, training), access management, change and development, operations and monitoring, incident management, continuity and backup, suppliers, privacy processes, AI system lifecycle, physical sites. Keep the management system processes (scope, leadership commitment, objectives, competence, document control, internal audit itself, corrective action, management review) as their own area; they are audited too. When several management system standards are in scope, add each one's own areas, such as privacy risk assessment or AI impact assessment.
 
 ## Step 2: rank each area by audit risk
 
@@ -37,15 +37,15 @@ Totals of 10 to 12 are audited at least yearly, or twice if a repeat finding is 
 
 ## Step 3: assign auditors and check independence
 
-Nobody audits their own work or a process they run. In a company of 15 to 50 people, the usual answers are cross-auditing between teams, a contracted auditor for areas where everyone is involved (often governance and security operations), or a mix. Record for each area: auditor role, why they are independent of it, and their competence (training, prior audits, framework knowledge). Where independence cannot be achieved inside, say so and propose the contracted option with an estimate of days.
+Nobody audits their own work or a process they run. In a company of 15 to 50 people, the usual answers are cross-auditing between teams, a contracted auditor for areas where everyone is involved (often governance and security operations), or a mix. Record for each area: auditor role, why they are independent of it, and their competence (training, prior audits, framework knowledge), with a pointer to the record that shows it; the certification auditor samples that trail. Where independence cannot be achieved inside, say so and propose the contracted option with an estimate of days.
 
 ## Step 4: schedule the calendar
 
-Place audits so that findings can be corrected before the external audit or the end of the examination period: finish the yearly round at least six to eight weeks before the external audit and before the management review that must read the results. Avoid release freezes, financial year end and peak seasons the reader names. For a readiness audit ahead of an attestation examination, test the controls over a sample of the period, not just their design. Allow 1 day of preparation and 0.5 day of reporting per audit day. Put the proposed dates, areas and auditor roles in the calendar spreadsheet (`calendar.csv`).
+Place audits so that findings can be corrected before the external audit or the end of the examination period: finish the yearly round at least six to eight weeks before the external audit and before the management review that must read the results. Avoid release freezes, financial year end and peak seasons the reader names. For a first certification, plan the internal audit round and the management review a full quarter before the main certification audit, so corrective actions show evidence that they work, not only that they closed. For a readiness audit ahead of an attestation examination, test the controls over a sample of the period, not just their design. A readiness review by a consultant is a separate deliverable; it does not replace the internal audit. Allow 1 day of preparation and 0.5 day of reporting per audit day. Put the proposed dates, areas and auditor roles in the calendar spreadsheet (`calendar.csv`).
 
 ## Step 5: write the programme
 
-The plan document (`programme.md`) states objectives, scope, criteria (the frameworks plus the company's own policies), the ranking method, auditor assignments with independence notes, reporting route (findings to the owner, summary to management review), how findings are tracked to closure, and what triggers an unplanned audit (a major incident, a significant change). The coverage spreadsheet (`coverage-matrix.csv`) lists every area and control group against the years of the cycle so gaps in coverage are visible at a glance.
+The plan document (`programme.md`) states objectives, scope, criteria (the frameworks plus the company's own policies), the ranking method, auditor assignments with independence notes, reporting route (findings to the owner, summary to management review), how findings are tracked to closure, and what triggers an unplanned audit (a major incident, a significant change). The coverage spreadsheet (`coverage-matrix.csv`) lists every area and control group against the years of the cycle, with one column per framework in scope and a fixed set of rows for the management system processes, so gaps in coverage are visible at a glance.
 
 ## What good looks like
 

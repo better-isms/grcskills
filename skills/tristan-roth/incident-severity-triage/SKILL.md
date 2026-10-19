@@ -22,7 +22,7 @@ Speed matters more than completeness here. Read the incident response plan and i
 
 ## Step 1: record the clock first
 
-Write the time of first detection and the time the company became aware that an incident probably occurred, in UTC, with who noticed and how. Several notification deadlines run from awareness, not from the end of the investigation. If the reader is unsure, record both candidate times and the reason; the reporting step decides which applies.
+Write the time of first detection and the time the company became aware that an incident probably occurred, in UTC, with who noticed and how. Several notification deadlines run from awareness, not from the end of the investigation. Awareness starts when someone in the company has a reasonable degree of certainty that an incident occurred, which can be the on-call engineer, not the security team's later confirmation. If the reader is unsure, record both candidate times and the reason; the reporting step decides which applies.
 
 ## Step 2: classify on business impact
 
@@ -48,13 +48,13 @@ If the normal channels may be compromised (mailbox takeover, chat account takeov
 
 ## Step 4: flag clocks and preserve evidence
 
-Separate from severity, add a line per regime and contract, each marked yes, no or unknown, with the fact that decides it: personal data affected (GDPR Art. 33 runs from awareness), a significant incident for an entity in NIS 2 scope (Art. 23), a major ICT-related incident for a financial entity under DORA (Art. 18 and 19), customer contract notification clauses, and the cyber insurance policy's notice condition. Anything other than "no" goes to the reporting clock step at once.
+Separate from severity, add a line per regime and contract, each marked yes, no or unknown, with the fact that decides it: personal data affected, and whose (for the company's own data GDPR Art. 33 runs from its awareness; as a processor for a customer's data, the duty is to tell that customer without undue delay, Art. 33(2)), a significant incident for an entity in NIS 2 scope (Art. 23, where the early warning is due within 24 hours of awareness, so a yes or unknown cannot wait for the investigation), a major ICT-related incident for a financial entity under DORA (Art. 18 and 19), customer contract notification clauses, and the cyber insurance policy's notice condition. Anything other than "no" goes to the reporting clock step at once.
 
 List the evidence to keep before anyone fixes anything: snapshots or images of affected machines before rebuild, logs that will roll over (check retention, some keep only days), mailbox audit records, cloud audit trails, the original phishing message with headers. Containment that destroys evidence is a decision for the incident lead, recorded with the reason.
 
 ## Step 5: keep the record running
 
-Append each new fact, decision and who made it, with a UTC time. Re-triage at least every few hours during a SEV1 or SEV2, and whenever scope changes. Record each downgrade with its reason.
+Append each new fact, decision and who made it, with a UTC time. Re-triage at least every few hours during a SEV1 or SEV2, and whenever scope changes. Record each downgrade with its reason. Write the record for its later readers too: for a personal data breach it feeds the breach documentation a controller keeps (GDPR Art. 33(5)) and the post-incident review. If the provisional scale was used, close the record with a note for the plan owner to create or reconcile the company's severity scale.
 
 ## What good looks like
 

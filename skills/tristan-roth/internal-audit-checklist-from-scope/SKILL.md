@@ -19,7 +19,7 @@ Use this for one process or area per run (access management, change, suppliers, 
 
 ## Inputs to gather
 
-Read the audit programme entry for the area, the policies and procedures that govern it, the risk register entries it treats, the controls mapped to it, the previous audit report and open findings for the area, and any incidents traced to it. Ask the reader in one message: the audit period (usually the last 6 to 12 months), the systems in scope, who owns and who operates the process, and how much fieldwork time is booked.
+Read the audit programme entry for the area, its governing policies and procedures, the risk register entries it treats, the controls mapped to it, the previous audit report and open findings, and any incidents traced to it. Ask the reader in one message: the audit period (usually the last 6 to 12 months), the systems in scope, who owns and who operates the process, who the auditor is and whether they own or run any part of it, and how much fieldwork time is booked. If so, record the arrangement and any compensating review at the top of the checklist.
 
 ## Step 1: extract the company's own commitments
 
@@ -35,14 +35,16 @@ For each test, fill in:
 
 - **Question** to ask the owner, open and about practice ("walk me through the last leaver"), not "do you follow the policy".
 - **Record** to inspect: the system report, ticket, log or signed document that proves it, with where it lives.
-- **Population and sample**: the full list the sample is drawn from, and the size. Rule of thumb for internal audit: under 10 items, test them all; 10 to 50, test 5 to 10; above 50, test 10 to 25, weighted to riskier items (privileged accounts, emergency changes, critical suppliers). Always include the most recent item and one item from the start of the period.
+- **Population and sample**: the full list the sample is drawn from, and the size. Rule of thumb for internal audit: under 10 items, test them all; 10 to 50, test 5 to 10; above 50, test 10 to 25, weighted to riskier items (privileged accounts, emergency changes, critical suppliers). Always include the most recent item and one item from the start of the period. If the booked time forces samples below this, write the smaller size and the reason as a scope limitation for the report.
 - **Pass criterion**: what the record has to show, taken from the commitment ("access removed within one working day of the leaving date in the HR system").
-- **Trace direction**: forward (from the trigger to the record, which tests the process happens) or backward (from the record to the trigger, which tests nothing happens without authorisation). Include both for access and change.
+- **Trace direction**: forward (from the trigger to the record, which tests the process happens) or backward (from the record to the trigger, which tests nothing happens without authorisation). Include both for access and change. Where inspection cannot show the control blocks anything, propose one or two re-performance tests (a removed account trying to sign in, an unapproved change in a test path) for the auditor to run with the owner told first; the agent never runs them.
 - **Result, evidence reference, finding grade**: left blank for fieldwork.
+
+End the checklist with a blank summary block for the auditor: tests performed, passed and failed, scope limitations, findings with grade and owner, and whether the area does what its own documents say. It becomes the audit report and the input to management review.
 
 ## Step 4: add the observations nobody writes down
 
-Add three standing tests to every checklist: does the process owner know the documented process (interview, not quiz), does what the system shows match what the document says, and were previous findings for this area closed with evidence that the fix worked.
+Add three standing tests to every checklist: does the process owner know the documented process (interview, not quiz), does what the system shows match what the document says, and were previous findings for this area closed with evidence that the fix worked. For a management system certification, add the management-loop tests: objectives defined and measured, this audit planned in the programme, findings routed to corrective action with a root cause, results reaching management review.
 
 ## Step 5: build the request list
 

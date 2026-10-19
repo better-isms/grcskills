@@ -18,7 +18,7 @@ Use this to write or rewrite the plan, not during a live incident (use the triag
 
 ## Inputs to gather
 
-Read the existing plan if any, past incident tickets and post-incident reviews, the risk register, the on-call setup, the vendor list, customer contracts and processing agreements with notification clauses, the cyber insurance policy, and any retainer with a forensics or managed security provider. Ask the reader, in one message: how many people are in engineering and IT, who can authorise shutting down production or spending on outside help at night, which regulations apply (personal data, health data, NIS 2 scope), and what went badly in the last real incident.
+Read the existing plan if any, past incident tickets and post-incident reviews, the risk register, the on-call setup, the vendor list, customer contracts and processing agreements with notification clauses, the cyber insurance policy, and any retainer with a forensics or managed security provider. Ask the reader, in one message: how many people are in engineering and IT, who can authorise shutting down production or spending on outside help at night, which regulations apply (personal data, health data, NIS 2 scope) and in which role (controller or processor; covered entity or business associate), and what went badly in the last real incident.
 
 ## Step 1: size the plan to the company
 
@@ -27,7 +27,7 @@ A 30-person company does not have a security operations centre and a crisis comm
 ## Step 2: define roles, severity and decisions
 
 - Roles: incident lead, technical lead, scribe, communications lead, legal and privacy contact, executive decision maker. One person may hold two roles in a small company, never incident lead and scribe at once.
-- Severity scale: four levels anchored on customer, data and operational impact, with the response time and call list per level. Reuse the scale from triage so both documents agree.
+- Severity scale: four levels anchored on customer, data and operational impact, with the response time and call list per level. Reuse the scale from triage so both documents agree. Any level that touches personal data, health data or services in NIS 2 scope opens the notification check at once, and the scribe's first task is to record the awareness time.
 - Decisions that need named authority: shutting down production, isolating a customer, engaging outside forensics, paying for anything, talking to press, contacting law enforcement. Write who decides each.
 
 ## Step 3: build the contact tree
@@ -40,11 +40,11 @@ Pick four to six scenarios from the risk register and past incidents, one guide 
 
 ## Step 5: evidence handling and notification
 
-Write how evidence is preserved before containment changes it: images or snapshots, log export before retention rolls over, a chain of custody log with who handled what and when. Then a notification decision step that points to the regimes and contracts that apply: GDPR Art. 33 and 34 for personal data breaches, NIS 2 Art. 23 for significant incidents of entities in scope, the HIPAA breach notification rule (45 CFR 164.400 to 414) for unsecured protected health information, and contract clauses. The plan names who makes each decision; the deadlines are worked out per incident with the reporting clock skill. Run a framework lookup for what each certification framework in scope looks for in the plan itself.
+Write how evidence is preserved before containment changes it: images or snapshots, log export before retention rolls over, a chain of custody log with who handled what and when. Then a notification decision step that points to the regimes and contracts that apply: GDPR Art. 33 and 34 for personal data breaches (as a processor for customer data, the duty is to tell each affected customer without undue delay, Art. 33(2), so listing affected customers is a first-hour task), NIS 2 Art. 23 for significant incidents of entities in scope (up to three submissions on separate clocks: early warning within 24 hours, notification within 72 hours, final report within one month of the notification, Art. 23(4)), the HIPAA breach notification rule (45 CFR 164.400 to 414) for unsecured protected health information (a business associate tells the covered entity, at the latest 60 days after discovery, 164.410), and contract clauses. The plan names who makes each decision; the deadlines are worked out per incident with the reporting clock skill. Run a framework lookup for what each certification framework in scope looks for in the plan itself.
 
 ## Step 6: testing and upkeep
 
-Set a cadence: a tabletop exercise at least once a year and after major changes, plan review after every SEV1 or SEV2 and at least annually, contact tree check each quarter. Name the plan owner.
+Set a cadence: a tabletop exercise at least once a year and after major changes, plan review after every SEV1 or SEV2 and at least annually, contact tree check each quarter. Every exercise and real incident ends with written lessons, each with an owner and date, fed into corrective actions. Name the plan owner and record each re-approval date.
 
 ## What good looks like
 

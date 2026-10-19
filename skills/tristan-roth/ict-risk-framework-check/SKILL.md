@@ -22,11 +22,11 @@ Read the entity's licence or authorisation type, group structure, the ICT risk m
 
 ## Step 1: settle applicability and proportionality
 
-Confirm the entity type falls within DORA's scope (Article 2) and record it. Check whether the entity qualifies for the simplified ICT risk management framework (Article 16); if it does, the check is run against that regime, not the full one. Note proportionality (Article 4): size, risk profile and the nature of services shape how much is expected. Where any of this is unclear, run a framework lookup or mark it for the entity's legal function. The regulatory technical standards add detail to the articles; run a framework lookup for that detail rather than inferring it.
+Confirm the entity type falls within DORA's scope (Article 2) and record it. DORA has applied since 17 January 2025 (Article 64), so every gap is a live obligation to remediate, not preparation. Check whether the entity is one of the categories listed for the simplified ICT risk management framework (Article 16); if it is, check against that regime, not the full one. Size alone does not move an entity there: a microenterprise stays under the full framework, with lighter duties in some articles (for example periodic rather than yearly review of the framework, no separate control function or internal audit of it). Note proportionality (Article 4): size, risk profile and the nature of services shape how much is expected. Where unclear, run a framework lookup or mark it for the entity's legal function. The regulatory technical standards on the ICT risk management framework (Commission Delegated Regulation (EU) 2024/1774) carry the operative detail for protection, detection and continuity; run a framework lookup for that detail rather than inferring it.
 
 ## Step 2: map evidence article by article
 
-Build the gap spreadsheet (`gap-register.csv`) with one row per topic below, and columns: article, topic, the entity's document or record that covers it, evidence it operates, gap, severity, proposed owner, proposed action.
+Build the gap spreadsheet (`gap-register.csv`) with one row per topic below, and columns: article, topic, the entity's document or record that covers it, evidence it operates, cadence and date last done, gap, severity, proposed owner, proposed action.
 
 - Article 5: the management body's role in ICT risk (approval, oversight, budget, its own ICT knowledge and training).
 - Article 6: the documented framework, its review cycle and review after major incidents, the control function and its independence, internal audit of the framework, the resilience strategy.
@@ -38,7 +38,7 @@ Build the gap spreadsheet (`gap-register.csv`) with one row per topic below, and
 - Article 13: learning from incidents and testing, awareness and training.
 - Article 14: crisis communication.
 
-For each row, prefer a record over a document: minutes showing the management body approved and discussed the framework beat a policy that says it will.
+For each row, prefer a record over a document: minutes showing the management body approved and discussed the framework beat a policy that says it will. Several duties recur, and supervisors test the rhythm, not one past occurrence: the yearly framework review and review after major incidents (Article 6(5)), the yearly legacy system assessment (Article 8(7)), yearly continuity plan testing (Article 11(6)), and the yearly report of senior ICT staff to the management body (Article 13(5)). Add three closing rows marked "assessed by its own check": the register of information (Article 28), incident reporting (Articles 17 to 23) and resilience testing (Articles 24 to 27), so the summary shows the whole perimeter.
 
 ## Step 3: reuse what already exists
 

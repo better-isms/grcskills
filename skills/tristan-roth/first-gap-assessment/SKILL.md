@@ -14,7 +14,7 @@ frameworks: [general, iso27001, soc2, hipaa, nis2, iso42001]
 tags: [gap-analysis, baseline, readiness, prioritisation]
 ---
 
-Use this once at the start of a programme, and again when the target framework or audit date changes. You get two files in a new folder, `./first-gap-assessment/`: a spreadsheet you can open in Excel with one row per framework item, saying how far the company is from it, how big the fix is and who should own it (`gap-register.csv`), and a two-page summary for leadership with the top ten gaps and the earliest realistic audit date (`gap-summary.md`). This skill drafts for a human to review and sign; this skill never marks a control effective. A gap rating is a planning estimate, not an audit opinion.
+Use this at the start of a programme, again when the target framework or audit date changes, and at least every six months while the programme runs. You get two files in a new folder, `./first-gap-assessment/`: a spreadsheet you can open in Excel with one row per framework item, saying how far the company is from it, how big the fix is and who should own it (`gap-register.csv`), and a two-page summary for leadership with the top ten gaps and the earliest realistic audit date (`gap-summary.md`). This skill drafts for a human to review and sign; this skill never marks a control effective. A gap rating is a planning estimate, not an audit opinion.
 
 ## Inputs to gather
 
@@ -24,11 +24,11 @@ Read first: policies and procedures, the risk register if any, asset and vendor 
 2. What is the target date, and who set it?
 3. Which products, teams and sites are in scope? If nobody knows, run a scope statement first.
 
-For a health data regime, settle the company's role first (covered entity, business associate or neither) and never read or copy protected health information while assessing. For NIS 2, settle whether the company is in scope and as which entity type before assessing measures.
+For a health data regime, settle the company's role first (covered entity, business associate or neither) and never read or copy protected health information while assessing. For NIS 2, settle whether the company is in scope and as which entity type before assessing measures; the measures are a legal obligation from the date the national law applies, so prioritise against that date, not a chosen audit date.
 
 ## Step 1: build the assessment list from the source, not from memory
 
-The rows of the register are the items of the target framework. Take them from the reader's licensed copy of the standard, the official legal text, the criteria document the reader holds, or the control list in their compliance platform. Use bare identifiers and the reader's own short description; never copy requirement text into the register. If no source is available, stop and ask the reader for one, or run a framework lookup per area. Add a row for every management or governance element as well as every control: companies fail first-time audits on the missing management loop (no internal review, no measured objectives) more often than on a missing technical control.
+The rows of the register are the items of the target framework. Take them from the reader's licensed copy of the standard, the official legal text, the criteria document the reader holds, or the control list in their compliance platform. Use bare identifiers and the reader's own short description; never copy requirement text into the register. If no source is available, stop and ask the reader for one, or run a framework lookup per area. Add a row for every management or governance element as well as every control: companies fail first-time audits on the missing management loop (no internal review, no measured objectives) more often than on a missing technical control. Give the risk assessment, the risk treatment plan with owners, and the statement of applicability with its justifications a row each: they are the first artefacts an auditor samples.
 
 ## Step 2: rate each row on evidence
 
@@ -38,7 +38,7 @@ Use five ratings, and cite a path for each:
 - **Practised, not evidenced**: people do it, nothing records it.
 - **Partial**: exists for some systems, teams or sites only; say which.
 - **Absent**: nothing exists.
-- **Not applicable**: no activity or asset of that kind in scope; give the fact.
+- **Not applicable**: no activity or asset of that kind inside the written scope statement; give the fact and point to the scope line it rests on.
 
 Interviews can move a row from Absent to Practised, never to Evidenced. When the material is silent, rate Absent and add a question for the owner.
 
@@ -48,7 +48,7 @@ For every row below Evidenced, record:
 
 - **Effort**: S (under two person-days with existing tools), M (two to ten days or a second team involved), L (new tool, budget, hire or policy decision).
 - **Audit risk**: High when the gap would stop or fail the audit (missing management loop, no risk assessment, scope not defined), Medium when it would likely become a finding, Low when it is a wording or polish issue.
-- **Lead time**: how long before the evidence can exist. A quarterly review needs at least one completed quarter; an attestation over a period needs the whole period; an internal audit and a management review need to have happened. These dates, not effort, usually set the earliest audit date.
+- **Lead time**: how long before the evidence can exist. A quarterly review needs at least one completed quarter; an attestation over a period needs the whole period; an internal audit and a management review need to have happened. These dates, not effort, usually set the earliest audit date. For a certification, the internal audit and management review come first and their actions need to be under way, so date the certification audit from them, not from the last document fixed.
 
 ## Step 4: prioritise and summarise
 
@@ -61,6 +61,7 @@ Sort by audit risk, then lead time (longest first), then effort. Group fixes tha
 - Long-lead items lead the summary. A plan that fixes forty documents first and starts the first quarterly review two weeks before the audit fails on dates, not on content.
 - Not applicable is rare and factual, never a way to shrink the work.
 - The summary gives leadership one honest date and the three decisions that would bring it forward.
+- Each re-run diffs the ratings against the last dated register. The diff is the progress evidence; an unchanged register six months in means the programme has stalled.
 
 ## Framework lookups
 

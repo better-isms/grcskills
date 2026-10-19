@@ -23,11 +23,11 @@ Read the contract repository, the supplier list or tiering, the accounts payable
 
 ## Step 1: build the population of ICT arrangements
 
-DORA Art. 28 asks financial entities to keep a register of information on all contractual arrangements for ICT services. Read "ICT service" widely: cloud and hosting, software and software as a service, data and market data feeds, managed security and network services, support and maintenance, and services from other companies in the same group. Intra-group providers and click-through online terms are the arrangements most often missed. One row per contractual arrangement, not per supplier: a provider with three contracts is three rows linked to one provider.
+DORA Art. 28(3) asks financial entities to keep a register of information on all contractual arrangements for ICT services, to report on new arrangements to the competent authority at least yearly, and to hand over the full register on request. DORA has applied since 17 January 2025, so this is a standing deliverable: a stale register is a finding in itself. Read "ICT service" widely: cloud and hosting, software and software as a service, data and market data feeds, managed security and network services, support and maintenance, and services from other companies in the same group. Intra-group providers and click-through online terms are the arrangements most often missed. One row per contractual arrangement, not per supplier: a provider with three contracts is three rows linked to one provider.
 
 ## Step 2: map arrangements to functions
 
-For each arrangement, list the business functions it supports. Propose, with one line of reasoning, whether each function is critical or important, using the entity's own assessment where it exists. The classification is the entity's decision; the agent proposes and flags disagreements with an existing assessment. Where a provider supports a critical or important function, trace the chain of subcontractors that effectively underpin the service, as far as the contract and the provider's documents show.
+For each arrangement, list the business functions it supports. Propose, with one line of reasoning, whether each function is critical or important, using the entity's own assessment where it exists. The classification is the entity's decision; the agent proposes and flags disagreements with an existing assessment. Where a provider supports a critical or important function, trace the chain of subcontractors that effectively underpin the service, as far as the contract and the provider's documents show. Where the contract is silent on whether and under which conditions the service may be subcontracted, that silence is a contract gap for legal review (Art. 30(2)(a)), not just an unknown.
 
 ## Step 3: collect the fields
 
@@ -35,14 +35,14 @@ For each arrangement collect: the contract reference, start, end and notice term
 
 ## Step 4: run quality checks
 
-- **Concentration**: several critical or important functions resting on one provider, or one provider's subcontractor. Write the concentration page (`concentration.md`) with each case and the functions at stake.
-- **Exit**: arrangements supporting critical or important functions without a documented, realistic exit plan.
+- **Concentration**: several critical or important functions resting on one provider, or one provider's subcontractor. Write the concentration page (`concentration.md`) with each case and the functions at stake. It is an input to the entity's own concentration risk assessment (Art. 29), which weighs substitutability, several arrangements with the same or closely connected providers, and subcontracting in third countries before a contract for a critical or important function is signed.
+- **Exit**: arrangements supporting critical or important functions without a documented, tested and periodically reviewed exit strategy (Art. 28(8)). Other arrangements need only a short exit note; do not list them as exit gaps.
 - **Contract terms**: DORA Art. 30 lists key contractual provisions for ICT arrangements; mark contracts the legal team should check against it, without concluding on compliance.
 - **Data quality**: missing identifiers, unknown locations, provider names that do not match legal entities, rows that are suppliers rather than arrangements.
 
 ## Step 5: write the outputs
 
-`register.csv`: the working register with the source of each field. `gaps.md`: missing fields, missing exit plans and contracts for legal review, each with an owner role. `questions-for-owners.md`: one block per function owner with the arrangements to confirm. Set a refresh trigger in the notes: any new, changed or ended ICT contract triggers a re-run, and the register owner applies the change within the cycle the entity defines.
+`register.csv`: the working register with the source of each field. `gaps.md`: missing fields, missing exit plans and contracts for legal review, each with an owner role. `questions-for-owners.md`: one block per function owner with the arrangements to confirm. Set a refresh trigger in the notes: any new, changed or ended ICT contract triggers a re-run, and the register owner applies the change within the cycle the entity defines. Where the entity has an ICT third-party risk strategy and policy (Art. 28(2)), draft the line for its owner that names the register owner role, the cadence and how contract changes reach them.
 
 If the output folder exists, ask before overwriting and offer a new subfolder instead.
 
