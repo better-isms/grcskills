@@ -36,23 +36,23 @@ Excluded sources: any Probo skill text, any internal audit skill or client engag
 
 | # | Slug | Title | Job | Frameworks | Source | Status |
 |---|---|---|---|---|---|---|
-| 13 | risk-method-drafting | Risk method drafting | Draft a risk method with likelihood and impact anchors in the company's own money and hours, and an acceptance threshold | iso27001, iso27701, iso42001, dora, general | PL iso-27001-risk-assessment-prompts | planned |
+| 13 | risk-method-drafting | Risk method drafting | Draft a risk method with likelihood and impact anchors in the company's own money and hours, and an acceptance threshold | iso27001, iso27701, iso42001, dora, general | PL iso-27001-risk-assessment-prompts | written |
 | 14 | risk-register-first-pass | Risk register first pass | Draft 20 to 40 company-specific risk scenarios, scored, owned and with proposed treatments | iso27001, soc2, nis2, dora, general | PL iso-27001-risk-assessment-prompts; UC risk-assessment-iso-27001, risk-assessment-nist-csf, risk-assessment-dora | written |
-| 15 | risk-treatment-plan-drafting | Risk treatment plan drafting | Turn treatment decisions into actions with owners, budgets, dates and the expected residual score | iso27001, soc2, general | PL iso-27001-risk-assessment-prompts | planned |
-| 16 | risk-acceptance-memo | Risk acceptance memo | Draft the one-page decision record a risk owner signs to accept a residual risk, with expiry and conditions | general, iso27001, dora | PL iso-27001-risk-assessment-prompts | planned |
-| 17 | risk-register-hygiene-review | Risk register hygiene review | Find stale, duplicated, unowned and mis-scored risks in an existing register and propose fixes | general, iso27001, soc2 | UC risk-assessment-iso-27001; PL iso-27001-audit-preparation-prompts | planned |
-| 18 | ict-risk-framework-check | ICT risk framework check | Check a financial entity's ICT risk management setup against its DORA obligations and list the gaps | dora | PL dora-compliance-prompt-library; UC risk-assessment-dora | planned |
+| 15 | risk-treatment-plan-drafting | Risk treatment plan drafting | Turn treatment decisions into actions with owners, budgets, dates and the expected residual score | iso27001, soc2, general | PL iso-27001-risk-assessment-prompts | written |
+| 16 | risk-acceptance-memo | Risk acceptance memo | Draft the one-page decision record a risk owner signs to accept a residual risk, with expiry and conditions | general, iso27001, dora | PL iso-27001-risk-assessment-prompts | written |
+| 17 | risk-register-hygiene-review | Risk register hygiene review | Find stale, duplicated, unowned and mis-scored risks in an existing register and propose fixes | general, iso27001, soc2 | UC risk-assessment-iso-27001; PL iso-27001-audit-preparation-prompts | written |
+| 18 | ict-risk-framework-check | ICT risk framework check | Check a financial entity's ICT risk management setup against its DORA obligations and list the gaps | dora | PL dora-compliance-prompt-library; UC risk-assessment-dora | written |
 
 ## audit (6)
 
 | # | Slug | Title | Job | Frameworks | Source | Status |
 |---|---|---|---|---|---|---|
-| 19 | internal-audit-programme-planning | Internal audit programme planning | Plan a risk-based internal audit programme across the cycle with auditor independence and coverage | iso27001, iso27701, iso42001, soc2 | UC internal-audits, internal-audit-iso-27001, internal-audit-soc-2 | planned |
-| 20 | internal-audit-checklist-from-scope | Internal audit checklist from scope | Build an audit checklist for one process from the company's own documents, with sample sizes and questions | iso27001, iso42001, gdpr, nis2, dora | UC internal-audit-iso-27001, internal-audit-gdpr, internal-audit-nis-2, internal-audit-dora, internal-audit-iso-42001 | planned |
-| 21 | auditor-sample-preparation | Auditor sample preparation | Prepare populations and sample-ready evidence for the samples an external auditor is likely to pull | iso27001, soc2, pci-dss | PL soc-2-audit-preparation-prompts, iso-27001-audit-preparation-prompts | planned |
-| 22 | auditor-interview-prep | Auditor interview prep | Brief process owners on what the auditor will ask, which records to show and how to answer what they do not know | iso27001, soc2, general | PL iso-27001-audit-preparation-prompts (auditor interview preparation) | planned |
+| 19 | internal-audit-programme-planning | Internal audit programme planning | Plan a risk-based internal audit programme across the cycle with auditor independence and coverage | iso27001, iso27701, iso42001, soc2 | UC internal-audits, internal-audit-iso-27001, internal-audit-soc-2 | written |
+| 20 | internal-audit-checklist-from-scope | Internal audit checklist from scope | Build an audit checklist for one process from the company's own documents, with sample sizes and questions | iso27001, iso42001, gdpr, nis2, dora | UC internal-audit-iso-27001, internal-audit-gdpr, internal-audit-nis-2, internal-audit-dora, internal-audit-iso-42001 | written |
+| 21 | auditor-sample-preparation | Auditor sample preparation | Prepare populations and sample-ready evidence for the samples an external auditor is likely to pull | iso27001, soc2, pci-dss | PL soc-2-audit-preparation-prompts, iso-27001-audit-preparation-prompts | written |
+| 22 | auditor-interview-prep | Auditor interview prep | Brief process owners on what the auditor will ask, which records to show and how to answer what they do not know | iso27001, soc2, general | PL iso-27001-audit-preparation-prompts (auditor interview preparation) | written |
 | 23 | nonconformity-root-cause-and-corrective-action | Nonconformity root cause and corrective action | Answer an audit finding with correction, root cause, extent check, actions and an effectiveness check | iso27001, iso27701, iso42001, soc2, general | PL iso-27001-audit-preparation-prompts (post-audit prompts) | written |
-| 24 | management-review-pack | Management review pack | Assemble the inputs, metrics and decisions leadership needs for the management review, and draft the minutes | iso27001, iso27701, iso42001 | PL iso-27001-audit-preparation-prompts (management system evidence) | planned |
+| 24 | management-review-pack | Management review pack | Assemble the inputs, metrics and decisions leadership needs for the management review, and draft the minutes | iso27001, iso27701, iso42001 | PL iso-27001-audit-preparation-prompts (management system evidence) | written |
 
 ## evidence (6)
 
@@ -126,12 +126,12 @@ Excluded sources: any Probo skill text, any internal audit skill or client engag
 |---|---|---|
 | gap-readiness | 6 | 1 |
 | statement-of-applicability | 6 | 0 |
-| risk | 6 | 1 |
-| audit | 6 | 1 |
+| risk | 6 | 6 |
+| audit | 6 | 6 |
 | evidence | 6 | 0 |
 | vendors | 6 | 0 |
 | policies | 6 | 0 |
 | privacy | 6 | 0 |
 | ai-systems | 6 | 0 |
 | incidents-continuity | 6 | 0 |
-| **Total** | **60** | **3** |
+| **Total** | **60** | **13** |
