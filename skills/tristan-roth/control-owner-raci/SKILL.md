@@ -13,7 +13,7 @@ frameworks: [iso27001, soc2, general]
 tags: [raci, control-ownership, accountability, segregation-of-duties, governance]
 ---
 
-Use this after the applicable controls are known (statement of applicability or control matrix), and again after a reorganisation or the departure of anyone who owns several controls. It produces `./control-owner-raci/raci.csv` and `./control-owner-raci/owner-briefs.md`. This skill drafts for a human to review and sign; this skill never marks a control effective. Owners accept their role; the agent only proposes it.
+Use this after the applicable controls are known (statement of applicability or control matrix), and again after a reorganisation, a change to which controls apply, the departure of anyone who owns several controls, or at the annual management review. It produces `./control-owner-raci/raci.csv` and `./control-owner-raci/owner-briefs.md`. This skill drafts for a human to review and sign; this skill never marks a control effective. Owners accept their role; the agent only proposes it.
 
 ## Inputs to gather
 
@@ -25,7 +25,7 @@ For each control, look for evidence of who performs it: the person by role who c
 
 ## Step 2: assign the four letters
 
-- **Accountable (A)**: exactly one role per control, someone who can decide, fund and answer for it. A team name is not an owner; a function head is.
+- **Accountable (A)**: exactly one role per control, someone who can decide, fund and answer for it, with the authority to stop a release, block a supplier or pause a process when the control fails. A team name is not an owner; a function head is.
 - **Responsible (R)**: the roles or suppliers that operate it. Several are fine.
 - **Consulted (C)**: roles whose input is needed before a decision (legal for retention, HR for disciplinary steps).
 - **Informed (I)**: roles that receive the output (leadership for metrics, the security lead for exceptions).
@@ -34,10 +34,10 @@ Use role names in the RACI. Keep any role-to-person list in a separate file the 
 
 ## Step 3: check load and segregation
 
-- Flag any role accountable for more than a third of all controls, and any role responsible for more than it can run in its stated hours. The usual fix is to move accountability for people, supplier and physical controls to the business functions that run them.
+- Flag any role accountable for more than a third of all controls, and any role responsible for more than it can run in its stated hours: estimate the monthly hours each cadence implies per role and flag anything above a threshold the reader sets. The usual fix is to move accountability for people, supplier and physical controls to the business functions that run them.
 - Flag any control where the same role performs and approves (grants access and reviews access, writes and approves the change, requests and approves payment to a supplier). Propose a second role, or a compensating review, for small teams.
 - Flag every role held by one person with no deputy; name a deputy role.
-- Where a supplier is responsible, the accountable role stays inside the company.
+- Where a supplier is responsible, the accountable role stays inside the company, and a named internal role monitors the supplier's operation through its reports, attestations or tickets.
 
 ## Step 4: set the review cadence
 
@@ -52,7 +52,7 @@ Raise the cadence for controls that treat the top risks or were the subject of a
 
 ## Step 5: write the outputs
 
-Write `raci.csv` with columns: control id, control description in the company's words, A, R, C, I, observed operator, cadence, next review, flags. Write `owner-briefs.md` with one section per accountable role: the controls they own, what each one produces, the cadence, and the three questions an auditor is likely to ask them. Ask before overwriting either file.
+Write `raci.csv` with columns: control id, control description in the company's words, A, R, C, I, observed operator, cadence, next review, flags. Write `owner-briefs.md` with one section per accountable role: the controls they own, what each one produces, the cadence, and the three questions an auditor is likely to ask them. Ask before overwriting either file. Record each owner's acceptance (an acknowledgement in the GRC tool, a signed brief or a logged email), because an assignment nobody can show was communicated does not survive an audit.
 
 ## What good looks like
 

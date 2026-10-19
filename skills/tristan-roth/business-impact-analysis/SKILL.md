@@ -22,11 +22,11 @@ Read the service catalogue or product list, customer contracts and service level
 
 ## Step 1: list services as the customer sees them
 
-List what customers pay for and what keeps the company running: the product, the customer support channel, billing and payments, payroll, sales tooling. Internal systems are dependencies, not services; a database is not a service, the checkout it supports is. For a financial entity under DORA, mark which services support critical or important functions, since much of its continuity work hangs on that list (Art. 11 sets out ICT business continuity, including a business impact analysis). For an entity in NIS 2 scope, business continuity, backup and crisis management sit among the measures in Art. 21(2)(c).
+List what customers pay for and what keeps the company running: the product, the customer support channel, billing and payments, payroll, sales tooling. Internal systems are dependencies, not services; a database is not a service, the checkout it supports is. For a financial entity under DORA, mark which services support critical or important functions, since much of its continuity work hangs on that list (Art. 11 sets out ICT business continuity, including a business impact analysis). A small entity on the simplified framework (Art. 16) still needs the analysis, in proportion. For an entity in NIS 2 scope, business continuity, backup and crisis management sit among the measures in Art. 21(2)(c).
 
 ## Step 2: price an outage over time
 
-For each service, estimate the impact at one hour, four hours, one day, three days and one week, in the company's own numbers: revenue lost or deferred, service credits and penalties from contracts, customers likely to leave, regulatory exposure, safety, and the work to catch up afterwards. Note peak periods separately; a payroll outage on the day before payday is a different event from one mid-month. The point where impact becomes unacceptable is the maximum tolerable downtime. Set the recovery time objective below it, with margin for the time it takes to decide to invoke the plan.
+For each service, estimate the impact at one hour, four hours, one day, three days and one week, in the company's own numbers: revenue lost or deferred, service credits and penalties from contracts, customers likely to leave, regulatory exposure, safety, and the work to catch up afterwards. Note peak periods separately; a payroll outage on the day before payday is a different event from one mid-month. The point where impact becomes unacceptable is the maximum tolerable downtime. Set the recovery time objective below it, and make the margin visible arithmetic: maximum tolerable downtime, minus the time to detect and decide to invoke the plan, minus the time to verify the recovery.
 
 ## Step 3: set the data loss objective
 
@@ -34,7 +34,7 @@ For each service, ask how much data the business can lose: can the last hour of 
 
 ## Step 4: map dependencies
 
-For each service list the systems, data stores, people, suppliers and locations it needs. Flag single points of failure: one engineer who knows the restore, one region, one supplier with no alternative. Supplier dependencies matter most for small companies running on cloud and software services; their recovery is your recovery.
+For each service list the systems, data stores, people, suppliers and locations it needs. Flag single points of failure: one engineer who knows the restore, one region, one supplier with no alternative. Supplier dependencies matter most for small companies running on cloud and software services; their recovery is your recovery. Add the channels the company uses to notify customers and authorities (status page, email provider, support tool) as dependencies of every critical service, because they can fail in the same incident.
 
 ## Step 5: compare required with achievable
 
@@ -42,7 +42,7 @@ For each service, put side by side: required recovery time and data loss, the ba
 
 ## Step 6: write it up
 
-Fill `bia.csv`: service, owner role, impact by time band, maximum tolerable downtime, recovery time objective, recovery point objective, dependencies, achievable recovery, gap, proposed option. In `bia-notes.md`, record the assumptions, who gave each number and the decisions needed. Run a framework lookup for what each framework in scope expects the analysis to record.
+Fill `bia.csv`: service, owner role, impact by time band, maximum tolerable downtime, invocation time, recovery time objective, recovery point objective, dependencies, achievable recovery time and achievable data loss as numbers from the last restore test and backup frequency, gap, proposed option. In `bia-notes.md`, record the assumptions, who gave each number, the decisions needed, the owner who triggers a re-review and its default date (twelve months is a sound default). Run a framework lookup for what each framework in scope expects the analysis to record.
 
 ## What good looks like
 

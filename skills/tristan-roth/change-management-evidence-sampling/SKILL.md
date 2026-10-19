@@ -22,11 +22,11 @@ Read the change management policy or procedure as written: what counts as a chan
 
 ## Step 1: build the population from production
 
-The population is every change that reached production in the period, taken from the production side: deploys, merges to the production branch, infrastructure applies and manual console changes. Do not start from the ticket system; a population built from tickets only contains changes that followed the process. Reconcile the sources: every deploy should map to a merged change, and every manual console change to a ticket. Unmatched items are the most interesting finding of the whole exercise; list them separately.
+The population is every change that reached production in the period, taken from the production side: deploys, merges to the production branch, infrastructure applies and manual console changes, plus the changes that reach production without a deploy: feature flag flips, schema changes applied outside the migration history, and hotfixes pushed directly by on-call engineers. Do not start from the ticket system; a population built from tickets only contains changes that followed the process. Reconcile the sources: every deploy should map to a merged change, and every manual console change to a ticket. Unmatched items are the most interesting finding of the whole exercise; list them separately.
 
 ## Step 2: draw a recorded sample
 
-As a practitioner's rule of thumb, not an auditing standard: for a few hundred changes, around 25 items gives a reasonable read; for fewer than 50, sample a larger share; for a handful, test them all. Draw most items at random and record the method (sorted list, random seed or the tool used) so anyone can redraw the same sample. Add a few risk-weighted picks on top: emergency changes, changes to access control or infrastructure, changes merged outside working hours, and changes by people with administrator rights. If the auditor has set a method or sample size, use theirs and run a framework lookup for anything the framework expects about it.
+As a practitioner's rule of thumb, not an auditing standard: for a few hundred changes, around 25 items gives a reasonable read; for fewer than 50, sample a larger share; for a handful, test them all. Draw most items at random and record the method (sorted list, random seed or the tool used) so anyone can redraw the same sample. Test the emergency population in full, with the time to retrospective approval measured against the policy window. Include the first changes of the period, because auditors check the control already operated at the start. Add a few risk-weighted picks on top: changes to access control or infrastructure, changes merged outside working hours, and changes by people with administrator rights. If the auditor has set a method or sample size, use theirs and run a framework lookup for anything the framework expects about it.
 
 ## Step 3: test each sampled change
 
@@ -41,7 +41,7 @@ For each item record yes, no or not applicable, with the link or record that sho
 
 ## Step 4: test the guardrails, not only the samples
 
-Read, without changing, the branch protection or repository rules for each production branch, who can bypass them, and the log of bypass events in the period. A rule that admins can override silently is only as good as the bypass log. Do the same for deploy permissions: list who can deploy to production and compare with the policy.
+Read, without changing, the branch protection or repository rules for each production branch, who can bypass them, and the log of bypass events in the period. A rule that admins can override silently is only as good as the bypass log; if bypass events are not logged at all, write that down as a fact rather than skipping the check. Do the same for deploy permissions: list who can deploy to production, compare with the policy, and reconcile the list against the HR leaver list and the role matrix.
 
 ## Step 5: write results and exceptions
 

@@ -18,7 +18,7 @@ Use this to design one discussion-based exercise and to record its findings afte
 
 ## Inputs to gather
 
-Read the incident response plan, the continuity and disaster recovery plans, the contact tree, the business impact analysis, the risk register, past incident reviews and the findings of the last exercise. Ask the reader, in one message: who must take part (and whether the executive who can authorise spending will attend), how long the session can be, what worried leadership most in the last year, and whether a key supplier or the insurer should join.
+Read the incident response plan, the continuity and disaster recovery plans, the contact tree, the business impact analysis, the risk register, past incident reviews and the findings of the last exercise. Ask the reader, in one message: who must take part (and whether the executive who can authorise spending will attend; if not, record that as a finding and check the plan's delegated authority), how long the session can be, what worried leadership most in the last year, and whether a key supplier or the insurer should join.
 
 ## Step 1: choose two or three objectives
 
@@ -35,7 +35,7 @@ Write six to ten injects in `injects.md`, each with a time in the scenario, the 
 - one inject that makes things worse (backups also encrypted, the supplier extends its estimate);
 - one that removes a person (the incident lead is unreachable);
 - one external pressure (a journalist, a large customer, an authority asking questions);
-- one that starts a regulatory or contractual clock, so the team must state the deadline and who owns it;
+- one that starts a regulatory or contractual clock, so the team must state the deadline and who owns it. List the candidate clocks in the plan beforehand: personal data breach notification (72 hours under GDPR where the company is controller), NIS 2 early warning and notification (24 and 72 hours, Art. 23) for entities in scope, DORA major incident reporting for financial entities, and customer contract notice terms. "We do not know which clock applies" is itself a finding;
 - one that tests a fact rather than an opinion: where is the offline copy of the recovery credentials, who can approve paying for outside forensics at night.
 
 An inject that only adds information without forcing a choice wastes time.
@@ -46,7 +46,7 @@ The facilitator runs the clock and the injects and does not take part in decisio
 
 ## Step 5: record findings and actions
 
-After the session, fill `findings.md` from the observer sheets: what worked, and each gap classified as plan, role, tool, supplier or knowledge. Turn gaps into owned, dated actions with the document each one updates. Record attendance by role, the scenario, objectives met or not, and the date of the next exercise with a different scenario. Run a framework lookup for what each framework in scope expects as testing frequency and test evidence; DORA (Art. 11 and Art. 24 onwards) and NIS 2 (Art. 21) both reach continuity testing for entities in their scope.
+After the session, fill `findings.md` from the observer sheets: what worked, and each gap classified as plan, role, tool, supplier or knowledge. Start by checking the actions from the last exercise: closed, or still open with a new date. Turn new gaps into owned, dated actions with the document each one updates, and send risk-relevant gaps to the risk register and the next management review. Record attendance by role, the scenario, objectives met or not, and the date of the next exercise with a different scenario. Keep the record under the company's document rules so the evidence survives the person who ran the session. Run a framework lookup for what each framework in scope expects as testing frequency and test evidence; DORA (Art. 11 and Art. 24 onwards) and NIS 2 (Art. 21) both reach continuity testing for entities in their scope.
 
 ## What good looks like
 
