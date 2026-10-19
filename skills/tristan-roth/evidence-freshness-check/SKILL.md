@@ -17,11 +17,11 @@ Run this four to eight weeks before fieldwork, early enough to fix gaps by runni
 
 ## Inputs to gather
 
-Read the evidence folder or the export from the compliance platform, the control list or applicability statement the evidence is filed against, and the policies, because they state the review cycles the company promised itself (quarterly access reviews, annual policy review, monthly vulnerability scans). Then ask the reader, in one message: the exact start and end of the audit period, whether the audit looks at a point in time or a period of operation, and where evidence lives that is not in the folder (ticketing, the identity provider, the CI system).
+Read the evidence folder or the export from the compliance platform, the control list or applicability statement the evidence is filed against, and the policies, because they state the review cycles the company promised itself (quarterly access reviews, annual policy review, monthly vulnerability scans). Then ask the reader, in one message: the exact start and end of the audit period, whether the audit looks at a point in time (currency on the date), a period of operation (occurrences across it) or a surveillance visit (the period since the last audit, plus the status of corrective actions), because each changes what "current" means, and where evidence lives that is not in the folder (ticketing, the identity provider, the CI system).
 
 ## Step 1: index every artefact
 
-One row per file or record: path, what it claims to show, the control or area it is filed against, the source system, the owner role, the content date and the period it covers. The content date is the date inside the artefact: the report header, the timestamp in a screenshot, the ticket creation and closure times, the signature date on an approval. The file modification date is not evidence; files get copied, renamed and re-exported, and the modification date then says nothing about when the activity happened. Where no date is visible inside the artefact, record "undated".
+One row per file or record: path, what it claims to show, the control or area it is filed against, the source system, the owner role, the content date and the period it covers. The content date is the date inside the artefact: the report header, the timestamp in a screenshot, the ticket creation and closure times, the signature date on an approval. The file modification date is not evidence; files get copied, renamed and re-exported, and the modification date then says nothing about when the activity happened. Where no date is visible inside the artefact, record "undated". Record the timezone where the artefact shows one; a screenshot with no visible clock or timezone, offered for a period, is easily discounted.
 
 ## Step 2: classify each item
 
@@ -38,7 +38,7 @@ Give each row one primary status:
 
 ## Step 3: check coverage of recurring activities
 
-For every activity with a cycle, count expected occurrences in the period against occurrences found. Quarterly access reviews over a twelve month period means four expected; three found is a gap on one named quarter, not a "mostly done". Do the same for backups checked, scans run, alerts triaged, training completed, supplier reviews and management meetings. Write the missing occurrences by name and month. Where the cycle is set by a framework rather than the company's own policy, run a framework lookup instead of assuming a frequency.
+For every activity with a cycle, count expected occurrences in the period against occurrences found. Quarterly access reviews over a twelve month period means four expected; three found is a gap on one named quarter, not a "mostly done". Do the same for backups checked, scans run, alerts triaged, training completed, supplier reviews, internal audits, risk assessment updates and management reviews with their minutes; the management system's own cycles are where one missing occurrence hurts most. Write the missing occurrences by name and month. Where the cycle is set by a framework rather than the company's own policy, run a framework lookup instead of assuming a frequency.
 
 ## Step 4: write the refresh list
 
@@ -48,7 +48,7 @@ Group open items by owner role. For each item propose one of three actions:
 - **Run now**: the activity did not happen for that occurrence; run it now, record it with today's date, and record the missed occurrence honestly as a gap with its cause.
 - **Explain**: the item is legitimately absent (no leavers that quarter, no major change); write the one-line explanation and the record that proves the absence.
 
-Write `freshness-report.md` with the counts per status, the coverage table, the refresh list per owner and the items that need a decision from the reader. If the output folder exists, ask before overwriting and offer a new subfolder instead.
+Write `freshness-report.md` with the counts per status, a coverage view per control (evidenced, missing or explained occurrences, the way the auditor samples), the refresh list per owner and the items that need a decision from the reader. Date each run of the index and compare it with the previous one: a gap found twice and still unowned is a systemic finding. If the output folder exists, ask before overwriting and offer a new subfolder instead.
 
 ## What good looks like
 

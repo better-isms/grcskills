@@ -13,7 +13,7 @@ frameworks: [iso27001, soc2, nis2, dora]
 tags: [evidence, request-list, audit-fieldwork, evidence-tracker]
 ---
 
-Use this the day the request list arrives, before anyone forwards it to the team. It writes `./evidence-request-list-builder/request-tracker.csv`, `owner-briefs.md` and `clarifications.md` in that folder. This skill drafts for a human to review and sign; this skill never marks a control effective. The auditor decides what is sufficient.
+Use this the day the request list arrives, before anyone forwards it to the team, and confirm receipt and the timeline with the auditor within one working day. It writes `./evidence-request-list-builder/request-tracker.csv`, `owner-briefs.md` and `clarifications.md` in that folder. This skill drafts for a human to review and sign; this skill never marks a control effective. The auditor decides what is sufficient.
 
 ## Inputs to gather
 
@@ -27,14 +27,15 @@ One row per request with: the auditor's reference and wording, copied unchanged;
 
 Split compound requests: "provide the access review and evidence that removals were actioned" is two artefacts with possibly two owners. Then mark each request:
 
-- **Population**: the auditor wants a complete list (all leavers in the period, all production changes, all incidents) to sample from. The deliverable is the full list plus the query or report that produced it, from the system of record. Pull leavers from HR, not from the identity provider; changes from what was deployed, not from tickets. A population built from the system that holds the control will hide its own failures.
+- **Population**: the auditor wants a complete list (all leavers in the period, all production changes, all incidents) to sample from. The deliverable is the full list plus the query or report that produced it, from the system of record. Pull leavers from HR, not from the identity provider; changes from what was deployed, not from tickets. A population built from the system that holds the control will hide its own failures. Where two systems could each hold the population, pull both and reconcile; the person who left in HR but is still active in the identity provider is what the auditor will find on a cross-check.
 - **Sample**: the auditor has picked items; each needs the specific records for that item.
 - **Standing document**: a policy, procedure, plan or register; check the version in force during the period.
 - **Walkthrough**: someone shows the process live; book the person and the system.
+- **As at a past date**: configuration as it stood on an earlier date. A re-export today cannot recreate it; the state has to come from change records, logs or configuration backups. Say what a current export proves before anyone sends a screenshot from today.
 
 ## Step 3: assign owners and back-schedule dates
 
-For each row name the owner role, the source system and the person who reviews before release. Set the internal due date at least five working days before the auditor's date for populations and three for single documents, so review and redaction fit. Owners with more than fifteen items will slip; rebalance or tell the reader early. Where the right artefact depends on what a framework expects for that area, run a framework lookup before assigning the task, so owners do not collect the wrong thing.
+For each row name the owner role, the source system and the person who reviews before release. Set the internal due date at least five working days before the auditor's date for populations and three for single documents, so review and redaction fit. Owners with more than fifteen items will slip; rebalance or tell the reader early. When no owner can be named because no process exists, record it as a control gap for corrective action and tell the reader; never let someone improvise an artefact. "We do not do this yet, here is the plan" survives an audit; an invented spreadsheet does not. Where the right artefact depends on what a framework expects for that area, run a framework lookup before assigning the task, so owners do not collect the wrong thing.
 
 ## Step 4: batch the clarifications
 
@@ -42,7 +43,7 @@ Collect every unclear request into `clarifications.md`, one question each, writt
 
 ## Step 5: set the release check
 
-Before any artefact goes to the auditor, check five things: it covers the requested period; it shows who did what and when; it answers the request as written; it carries no secrets, keys, passwords or tokens; and personal data is limited to what the auditor needs (names may be needed for a leaver sample, home addresses never are). Record the check in the tracker with the reviewer's role. Write `owner-briefs.md` with one section per owner: their rows, the exact artefact, the period, the due date and an example of a good submission.
+Before any artefact goes to the auditor, check five things: it covers the requested period; it shows who did what and when; it answers the request as written; it carries no secrets, keys, passwords or tokens; and personal data is limited to what the auditor needs (names may be needed for a leaver sample, home addresses never are). Record the check in the tracker with the reviewer's role. Mark requests from a regulator (a NIS 2 or DORA authority): they rest on supervisory powers, so their release check also goes through counsel or the data protection officer, and scope is agreed in writing before anything is redacted. During the response window, review the tracker daily so slippage shows while it can still be fixed. Write `owner-briefs.md` with one section per owner: their rows, the exact artefact, the period, the due date and an example of a good submission.
 
 If the output folder exists, ask before overwriting and offer a new subfolder instead.
 
