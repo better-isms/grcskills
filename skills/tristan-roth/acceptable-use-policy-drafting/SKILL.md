@@ -17,11 +17,11 @@ Use this when there is no acceptable use policy, or when the current one predate
 
 ## Inputs to gather
 
-Read before asking: the current policy or employee handbook section, device management reports (how many devices are managed, which operating systems), the single sign-on app list, expense or card records for software and AI subscriptions, the incident log (lost devices, phishing, data sent to the wrong place) and the data classification scheme if one exists. Then ask the reader, in one message: who uses personal phones or laptops for work today, which AI tools are approved or paid for, whether staff work from abroad, and whether the company monitors devices or traffic.
+Read before asking: the current policy or employee handbook section, device management reports (how many devices are managed, which operating systems), the single sign-on app list, a finance summary of software and AI subscriptions (ask for tool names and counts, not raw card records naming people), the incident log (lost devices, phishing, data sent to the wrong place) and the data classification scheme if one exists. Then ask the reader, in one message: who uses personal phones or laptops for work today, which AI tools are approved or paid for, whether staff work from abroad, and whether the company monitors devices or traffic.
 
 ## Step 1: find how people really work
 
-The policy fails if it forbids what the company depends on. Look for the gaps between the rules people are told and the tools they use: subscriptions to AI assistants paid on personal cards, personal phones used for sign-in approval, file sharing apps outside the managed list, a team that works from cafes. Write each one as a fact in `decisions.md`. A ban on something half the staff do daily turns into a policy nobody follows; give an approved route instead.
+The policy fails if it forbids what the company depends on. Look for the gaps between the rules people are told and the tools they use: subscriptions to AI assistants paid on personal cards, personal phones used for sign-in approval, file sharing apps outside the managed list, a team that works from cafes. Write each one as a fact in `decisions.md`, without naming individuals. A ban on something half the staff do daily turns into a policy nobody follows; give an approved route instead.
 
 ## Step 2: put the choices to the reader as decisions
 
@@ -35,9 +35,9 @@ List each choice with two or three options and a recommendation, and get the rea
 
 ## Step 3: draft in plain language
 
-Two to three pages. Write for the least technical person in the company: short sentences, "you" and "we", no acronyms without a gloss. Structure:
+Two to three pages. Write for the least technical person in the company: short sentences, "you" and "we", no acronyms without a gloss. Start with a document control block (owner, version, approver, approval date, next review date, twelve months is a sound default). Structure:
 
-1. Why this exists, in two sentences tied to what customers trust the company with.
+1. Why this exists, in two sentences tied to what customers trust the company with, and who it covers (employees, contractors, temporary staff), stating that company devices, accounts and data remain company property.
 2. Using company devices and accounts.
 3. Personal devices.
 4. AI tools, with three examples of fine use and three of not-fine use drawn from the company's real work ("summarising a public article is fine; pasting a customer's export into a personal chatbot account is not").
@@ -49,9 +49,11 @@ Two to three pages. Write for the least technical person in the company: short s
 
 Every rule is either a "do" or a "do not" a person can follow without asking. Rules that need judgment get one sentence of reasoning and a contact.
 
+In `decisions.md`, not in the staff-facing policy, record which of the company's controls or framework areas this policy supports (use the company's own control list, or a framework lookup), so the policy links back to the management system.
+
 ## Step 4: test it on readers
 
-Write five questions in `comprehension-check.md` that a person should answer correctly after one read ("You lost your work phone on the train. What do you do in the first hour?"). Suggest the reader tries them on two non-technical colleagues. Any question they miss points to a section to rewrite. Add a short acknowledgement text for onboarding and for each material change.
+Write five questions in `comprehension-check.md` that a person should answer correctly after one read ("You lost your work phone on the train. What do you do in the first hour?"). Suggest the reader tries them on two non-technical colleagues. Any question they miss points to a section to rewrite. Add a short acknowledgement text for onboarding and for each material change, and name where acknowledgements are recorded (who, when, which version), usually the HR system, so awareness evidence exists without a separate spreadsheet.
 
 ## What good looks like
 

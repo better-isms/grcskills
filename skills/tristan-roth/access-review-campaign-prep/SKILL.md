@@ -25,7 +25,7 @@ Include, at minimum: the identity provider itself, production infrastructure and
 
 ## Step 2: build and reconcile populations
 
-For each system, export every account with: account name, display name, role or permission level, created date, last login, and whether it is a person, a service or a shared account. Record the export time and the exact query or screen used, because the auditor will ask how you know the list was complete. Then match accounts to the HR list and pre-flag:
+For each system, export every account with: account name, display name, role or permission level, created date, last login, and whether it is a person, a service or a shared account. Include non-human access in the same population: API keys, personal access tokens, OAuth grants to third-party apps, service principals and SSH keys, each with an owner and a last-used date. An unowned token is the leaver of a SaaS estate. Record the export time and the exact query or screen used, because the auditor will ask how you know the list was complete. Then match accounts to the HR list and pre-flag:
 
 - **Leaver active**: the person left, the account is enabled. Highest priority.
 - **No match**: no HR record; external, test, or forgotten.
@@ -33,6 +33,8 @@ For each system, export every account with: account name, display name, role or 
 - **Service account without owner**: name an owner or plan its removal.
 - **Dormant**: no login for 90 days or the period the policy sets.
 - **Above role**: permission level higher than the role matrix allows.
+- **Mover**: role or team changed in HR since the last review; check the access against the new role, because movers keep the old team's rights.
+- **Break-glass**: emergency accounts are legitimate, but each use needs a recorded reason and the credential re-locked afterwards.
 
 ## Step 3: assign reviewers
 
@@ -40,11 +42,11 @@ The reviewer is the person who knows whether the access is still needed: the lin
 
 ## Step 4: define what a decision looks like
 
-Each line gets keep, remove or change, the reviewer's role, the decision date and, for any flagged line kept, a one-line reason. Record who reviewed which list, so completeness can be shown per reviewer. Prepare the reviewer instructions: what each flag means, the deadline, and what happens to lines not reviewed by the deadline (escalation to the reviewer's manager, not silent approval).
+Each line gets keep, remove or change, the reviewer's role, the decision date and, for any flagged line kept, a one-line reason. Record who reviewed which list, so completeness can be shown per reviewer: `campaign-plan.md` gets one sign-off line per reviewer (list, date, keep, remove and change counts), so the auditor does not have to reconstruct it from emails. Prepare the reviewer instructions: what each flag means, the deadline, and what happens to lines not reviewed by the deadline (escalation to the reviewer's manager, not silent approval).
 
 ## Step 5: plan the follow-up
 
-Every remove or change decision becomes a ticket with the system owner and a due date the policy sets. After that date, re-export the account list and compare: a decision recorded with the account still active is the most common access review exception auditors find. Track it in `follow-up-tracker.csv`: account, decision, ticket, removed (yes or no), re-export time. Write `campaign-plan.md` with scope, reviewers, timeline, flag counts per system and the re-export step.
+Every remove or change decision becomes a ticket with the system owner and a due date the policy sets. After that date, re-export the account list and compare: a decision recorded with the account still active is the most common access review exception auditors find. Track it in `follow-up-tracker.csv`: account, decision, ticket, removed (yes or no), re-export time. Write `campaign-plan.md` with scope, reviewers, timeline, flag counts per system and the re-export step. Keep the exports, decisions and re-exports for the retention period the company's document rules set; run a framework lookup if a regulation sets a longer one.
 
 If the output folder exists, ask before overwriting and offer a new subfolder instead.
 

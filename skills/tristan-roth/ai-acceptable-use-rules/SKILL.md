@@ -22,11 +22,11 @@ Read the AI register if one exists, the general acceptable use policy, the data 
 
 ## Step 1: start from real use
 
-List the tools people use and what for, team by team. A rule set written without this list either bans what everyone already does, which drives use underground, or misses the risky use. Ask two or three people per team; the honest answers come from asking what saves them time, not whether they break rules.
+List the tools people use and what for, team by team. A rule set written without this list either bans what everyone already does, which drives use underground, or misses the risky use. Ask two or three people per team; the honest answers come from asking what saves them time, not whether they break rules. Name the uses people forget to declare: meeting transcription bots, AI features switched on inside email, documents and the CRM, code completion in the editor, and browser assistant extensions.
 
 ## Step 2: set the approved tools list
 
-Put every tool in one of three states in `approved-tools.csv`, with the reason:
+Put every tool in one of three states in `approved-tools.csv`, with the reason, the checks behind it (data location, retention, subprocessors, breach notice in the terms) and a re-check date, because vendors change training and retention terms and a tool approved today can drift:
 
 - **Approved**: business account under terms the company signed, inputs not used for training, retention known, company sign-in, admin can remove users.
 - **Approved for public information only**: useful, but terms or controls are not good enough for anything internal.
@@ -49,12 +49,12 @@ Give two examples per colour from the company's own work.
 - The person who uses the output owns it. Check facts, figures, citations and legal statements before they leave the company.
 - Generated code goes through the same review and scanning as human code; check licences on large generated blocks.
 - No output goes to customers as professional advice without review. Where customers talk to an AI system, tell them; EU AI Act Art. 50 sets disclosure duties for some interactions and generated content.
-- AI is not the decision maker in hiring, promotion, performance or firing. Those uses fall in a high-risk area under the EU AI Act and go to HR and legal before any pilot.
+- AI is not the decision maker in hiring, promotion, performance or firing. Those uses fall in a high-risk area under the EU AI Act and go to HR and legal before any pilot, with a data protection impact assessment screened at the same time.
 - Agents and connectors that read drives, browse, run code or send messages get the least access that works, no personal credentials to production, and a human approval before anything is sent outside the company or deleted.
 
 ## Step 5: make asking easy, then train
 
-Write a request route for new tools with a target answer time of days, not months; slow approval is the main cause of shadow use. Add an exceptions process with an owner and an expiry. In `rollout-notes.md`, plan a short training per role with the traffic light and real examples; EU AI Act Art. 4 asks providers and deployers to take measures for staff AI literacy, and this training is the cheapest evidence of it. Run a framework lookup if an AI management standard is in scope, for what it expects the policy to cover.
+Write a request route for new tools with a target answer time of days, not months; slow approval is the main cause of shadow use. Add an exceptions process with an owner and an expiry. In `rollout-notes.md`, plan a short training per role with the traffic light and real examples; EU AI Act Art. 4 asks providers and deployers to take measures for staff AI literacy, and this training is the cheapest evidence of it. Run a framework lookup if an AI management standard is in scope, for what it expects the policy to cover, and note in `rollout-notes.md` which parts of the management system these rules and the tools list serve as evidence for.
 
 ## What good looks like
 

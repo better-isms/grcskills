@@ -26,7 +26,7 @@ Check territorial scope against Art. 2 and note any exclusion that may apply (mi
 
 ## Step 2: rule out prohibited practices
 
-Read each practice listed in Art. 5 and record for this system: not applicable, applicable, or unclear, with one line of reasoning each. Emotion recognition at work or in education, social scoring, untargeted scraping of facial images and manipulative techniques are the ones that catch ordinary companies. Any answer other than "not applicable" stops the classification and goes to the legal owner with the facts. Check the Commission guidelines on prohibited practices for the current interpretation.
+Read each practice listed in Art. 5 and record for this system: not applicable, applicable, or unclear, with one line of reasoning each. Emotion recognition at work or in education, social scoring, untargeted scraping of facial images and manipulative techniques are the ones that catch ordinary companies. Any answer other than "not applicable" stops the classification and goes to the legal owner with the facts. The 2026 amendment (the Digital Omnibus on AI) added a ban on systems that generate non-consensual intimate content, including child sexual abuse material and nudification, applying from December 2026; any image or video generation feature gets this check. Check the Commission guidelines on prohibited practices for the current interpretation.
 
 ## Step 3: test the two high-risk routes
 
@@ -37,7 +37,7 @@ Classify on intended purpose and context of use, never on the technology. A gene
 
 ## Step 4: test the narrow exemption honestly
 
-Art. 6(3) lets an Annex III system escape high-risk status when it does not pose a significant risk, for example because it performs a narrow procedural task, improves the result of a completed human activity, detects patterns without replacing human assessment, or performs a preparatory task. The exemption never applies when the system profiles natural persons. If the company relies on it as provider, Art. 6(4) asks for the assessment to be documented before the system is placed on the market, and Art. 49 covers registration. Write the argument for a hostile reader.
+Art. 6(3) lets an Annex III system escape high-risk status when it does not pose a significant risk, for example because it performs a narrow procedural task, improves the result of a completed human activity, detects patterns without replacing human assessment, or performs a preparatory task. The exemption never applies when the system profiles natural persons. If the company relies on it as provider, Art. 6(4) asks for the assessment to be documented before the system is placed on the market, and Art. 49 covers registration. Write the argument for a hostile reader, and test it against the Commission guidelines on high-risk classification.
 
 ## Step 5: transparency and general-purpose models
 
@@ -45,7 +45,7 @@ Check Art. 50 for every system, high-risk or not: systems that interact with peo
 
 ## Step 6: record the result and headline obligations
 
-For each system write: role, prohibited practice check, high-risk route and Annex point or the reason none applies, exemption reasoning, transparency duties, resulting tier, and the headline obligations by role, by article only (for example provider duties in Chapter III, deployer duties in Art. 26, fundamental rights impact assessment in Art. 27 for the deployers it names, AI literacy in Art. 4 for everyone). Add a line on application dates: they are phased and can be amended, so check the consolidated text when the record is used.
+For each system write: role, prohibited practice check, high-risk route and Annex point or the reason none applies, exemption reasoning, transparency duties, resulting tier, and the headline obligations by role, by article only (for example provider duties in Chapter III, deployer duties in Art. 26, including Art. 26(9), which links the provider's instructions to the deployer's data protection impact assessment, fundamental rights impact assessment in Art. 27 for the deployers it names, AI literacy in Art. 4 for everyone). Add the application date for each result: after the 2026 amendment, Annex III obligations apply from 2 December 2027 and the Annex I product route from 2 August 2028. Dates have moved once already, so check the consolidated text when the record is used.
 
 ## What good looks like
 

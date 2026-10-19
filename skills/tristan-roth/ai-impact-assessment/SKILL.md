@@ -22,7 +22,7 @@ Read the register entry and classification record, the design or product documen
 
 ## Step 1: decide which assessment this is
 
-Several assessments look alike and audiences differ. Say at the top which this document serves: the AI management system impact assessment (run a framework lookup for what the standard expects it to cover and record), a fundamental rights impact assessment under EU AI Act Art. 27 for the deployers that article names, a data protection impact assessment under GDPR Art. 35, or the company's own launch gate. One document can feed several if each section says which. Do not let the privacy assessment stand in for the others; it covers personal data, not unfair outcomes or safety.
+Several assessments look alike and audiences differ. Say at the top which this document serves: the AI management system impact assessment (run a framework lookup for what the standard expects it to cover and record), a fundamental rights impact assessment under EU AI Act Art. 27 for the deployers that article names, a data protection impact assessment under GDPR Art. 35, or the company's own launch gate. A fundamental rights impact assessment is done before first use and its result is notified to the market surveillance authority on the official template; without the notification it is incomplete. Expect a data protection impact assessment too whenever the system evaluates people with legal or similarly significant effects (GDPR Art. 35(3)(a)), which employment and credit uses almost always do. One document can feed several if each section says which. Do not let the privacy assessment stand in for the others; it covers personal data, not unfair outcomes or safety.
 
 ## Step 2: describe the system in context
 
@@ -30,10 +30,10 @@ Write half a page: intended purpose, reasonably foreseeable misuse, the people a
 
 ## Step 3: work through impacts with evidence
 
-For each category, record who is affected, how, the evidence, a severity and a likelihood:
+For each category, record who is affected, how, the evidence (with its provenance: test set, date, who ran it), a severity and a likelihood:
 
 - **Errors**: the error rate in each direction, and which direction costs more for which person. Rejecting a good applicant and approving a fraudulent claim are not symmetric.
-- **Unequal outcomes**: performance by group where the data allows; where it does not, say so and treat it as an open risk, not as no risk.
+- **Unequal outcomes**: performance by group where the data allows; where it does not, say so and treat it as an open risk, not as no risk. If testing needs special category data, check the conditions the amended AI Act sets for processing it to detect bias before collecting any.
 - **Transparency and contestability**: whether affected people know AI is involved and can get a human to look again.
 - **Privacy**: inference of sensitive traits, memorisation, reuse of inputs.
 - **Safety, wellbeing and economic access**: harm to health, jobs, credit, housing, education.
@@ -43,11 +43,11 @@ Severity weighs scale, reversibility and how vulnerable the group is. A small er
 
 ## Step 4: propose mitigations with triggers
 
-For each significant impact, propose a mitigation and how you will know it works: a threshold that routes uncertain cases to a person, a fallback when the model is unavailable, a notice to affected people, a contest channel with a response time, a monitoring metric with a value that triggers review, data or model changes. Then restate the residual impact. "Human in the loop" counts only when you name who reviews, how many items per hour, and what authority they have to overrule; a reviewer approving hundreds of items an hour is a rubber stamp.
+For each significant impact, propose a mitigation and how you will know it works: a threshold that routes uncertain cases to a person, a fallback when the model is unavailable, a notice to affected people, a contest channel with a response time, a monitoring metric with a value that triggers review, data or model changes. Then restate the residual impact, and say what happens when a metric trips: for a high-risk system the deployer informs the provider and suspends use where the risk warrants it (Art. 26(5)). "Human in the loop" counts only when you name who reviews, how many items per hour, and what authority they have to overrule; a reviewer approving hundreds of items an hour is a rubber stamp.
 
 ## Step 5: set reassessment triggers and route for sign-off
 
-List what reopens the assessment: a new model or version, a new population or country, a new purpose, a monitoring metric breaching its trigger, an incident or a pattern of complaints. Put open questions per owner in the questions file. Hand the draft to the system owner; the reader decides who signs.
+List what reopens the assessment: a new model or version, a new population or country, a new purpose, a monitoring metric breaching its trigger, an incident or a pattern of complaints. Put open questions per owner in the questions file. Hand the draft to the system owner; the reader decides who signs. Name where the signed record is kept and that it goes to the next management review.
 
 ## What good looks like
 
