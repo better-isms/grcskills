@@ -154,6 +154,11 @@ a.tag:hover { background: #e2e7ee; }
 .lead-long { font-size: 17px; max-width: 72ch; line-height: 1.6; }
 .meta-row .sep { width: 1px; height: 16px; background: var(--line-2); margin: 0 6px; }
 
+.decide { background: var(--card); border-radius: 24px; padding: 24px 28px; margin: -24px 0 40px; border-left: 4px solid var(--ink); max-width: 880px; }
+.decide h2 { font-size: 15px; font-weight: 500; letter-spacing: 0; margin: 0 0 6px; }
+.decide p { margin: 0 0 10px; font-size: 15px; color: var(--muted-2); }
+.decide ul { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 15.5px; line-height: 1.55; color: var(--ink-2); }
+.decide code { font-size: 0.92em; background: var(--code); border-radius: 6px; padding: 1px 5px; }
 .skill-grid { display: grid; grid-template-columns: minmax(0, 1fr) 380px; gap: 48px; align-items: start; }
 .aside { display: grid; gap: 16px; position: sticky; top: 24px; }
 .card { background: var(--card); border-radius: 24px; padding: 24px; }
@@ -254,6 +259,7 @@ a.tag:hover { background: #e2e7ee; }
   .sk { padding: 22px; }
   .page { padding-top: 16px; }
   .page-head { margin: 20px 0 36px; }
+  .decide { margin: -12px 0 24px; padding: 20px; }
   .page-head h1, .author-head h1 { font-size: 40px; }
   .skill-grid { grid-template-columns: minmax(0, 1fr); gap: 16px; }
   .aside { position: static; }

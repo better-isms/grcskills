@@ -247,6 +247,29 @@ const titleFromRef = (raw, slug) => {
 };
 
 // repoRoot: the library checkout (contains skills/). Returns the content model.
+// "Where you decide" on skill pages: the skill's own Rules lines that keep a
+// call with a person (NEVER lines about approving, accepting, signing,
+// grading or acting for an owner, and MUST lines that route a call to one).
+// Plain text from the skill body; the page renders it as text, never HTML.
+const DECIDE_NEVER = /\b(behalf|accept(?:s|ed|ance)?|approv\w*|sign(?:s|ed|er)?|signature|decide[sd]?|decision|conclud\w*|effective|finali[sz]e|legal advice|final determination|ready for launch|owners?|leadership|counsel|privacy lead|approver|auditor will|confirm\w*|rate|grade|classify|mark|let the|tell the reader|already in place|humans|reader's team|reader distributes|reader schedules|passed|exclude)\b/i;
+const DECIDE_MUST = /(\bto approve\b|\bapproval before\b|\breview before\b|\bconfirms it\b)/i;
+// Data-handling rules (what to copy, name or open) are not decisions.
+const DATA_RULE = /^NEVER (open|copy|name|put|paste|include|read|fill in personal)\b/;
+export const DECISIONS_MAX = 4;
+
+export function decisionRules(body) {
+  const m = body.match(/^## Rules[^\n]*\n([\s\S]*?)(?=^## |(?![\s\S]))/m);
+  if (!m) return [];
+  const items = [];
+  for (const line of m[1].split('\n')) {
+    if (/^- /.test(line)) items.push(line.slice(2).trim());
+    else if (/^\s+\S/.test(line) && items.length) items[items.length - 1] += ` ${line.trim()}`;
+  }
+  const never = items.filter((t) => /^NEVER /.test(t) && !DATA_RULE.test(t) && DECIDE_NEVER.test(t)).map((t) => `Never ${t.slice(6)}`);
+  const must = items.filter((t) => /^MUST /.test(t) && DECIDE_MUST.test(t)).map((t) => `Always ${t.slice(5)}`);
+  return [...never, ...must].slice(0, DECISIONS_MAX);
+}
+
 export function loadContent(repoRoot, { gitRef = 'main' } = {}) {
   const skillsDir = path.join(repoRoot, 'skills');
   const problems = [];
@@ -339,6 +362,7 @@ export function loadContent(repoRoot, { gitRef = 'main' } = {}) {
         tags: Array.isArray(d.tags) ? d.tags : [],
         contributors: Array.isArray(d.contributors) ? d.contributors : [],
         html: createRenderer(ctx)(fm.body),
+        decisions: decisionRules(fm.body),
         words: fm.body.split(/\s+/).filter(Boolean).length,
         references,
         repoPath: where,

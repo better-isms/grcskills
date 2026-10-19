@@ -14,6 +14,12 @@ export const generateStaticParams = () => skills.map((s) => ({ slug: s.slug }));
 
 type Props = { params: Promise<{ slug: string }> };
 
+// A rule line from the skill's Rules section, as text: `code` spans become
+// <code>, nothing else is interpreted.
+function RuleText({ text }: { text: string }) {
+  return <>{text.split('`').map((part, i) => (i % 2 ? <code key={i}>{part}</code> : part))}</>;
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const s = getSkill((await params).slug);
   if (!s) return {};
@@ -46,6 +52,15 @@ export default async function SkillPage({ params }: Props) {
           {s.frameworks.map((f) => <Link className="tag" key={f} href={`/framework/${f}/`}>{frameworkLabel(f)}</Link>)}
         </div>
       </header>
+
+      <section className="decide" aria-labelledby="decide">
+        <h2 id="decide">Where you decide</h2>
+        <p>Your agent does the legwork. These calls stay with you and your people; the skill tells the agent:</p>
+        <ul>
+          {s.decisions.map((d) => <li key={d}><RuleText text={d} /></li>)}
+          <li>Everything it writes is a draft for a person to review and sign.</li>
+        </ul>
+      </section>
 
       <div className="skill-grid">
         <aside className="aside" aria-label="Install and author">

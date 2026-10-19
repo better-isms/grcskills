@@ -5,9 +5,13 @@ import { meta } from './content';
 // Twitter set (title, description, url, site name, image) and a canonical.
 // Paths are relative; metadataBase in app/layout.tsx makes them absolute.
 export const SITE_NAME = 'grcskills';
+// The home H1 and its subline (founder decision 2026-10-19): the agent does
+// the legwork, the person keeps the judgment. The title tag follows the H1.
+export const HOME_H1 = 'Open GRC skills for AI agents.';
+export const HOME_SUBLINE = 'Written the way experienced GRC people do the work. Your agent does the legwork. You make the calls.';
 export const HOME_TITLE = 'grcskills: open GRC skills for AI agents';
 export const DEFAULT_IMAGE = '/og.png';
-export const HOME_DESCRIPTION = `Open GRC skills for AI agents: ${meta.count} Agent Skills for Claude Code, Codex and Cursor. Paste one prompt; your agent reviews your GRC setup and writes a 30-day plan.`;
+export const HOME_DESCRIPTION = `Open GRC skills for AI agents: ${meta.count} skills written the way experienced GRC people do the work. Your agent does the legwork. You make the calls.`;
 
 type PageMeta = {
   title: string;

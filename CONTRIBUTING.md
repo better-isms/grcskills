@@ -1,6 +1,6 @@
 # Contributing
 
-The easiest way to contribute is to let your AI agent do it: paste the prompt from the [README](README.md#contribute-your-skill-with-your-ai). It interviews you, drafts the skill in this format, validates it and opens the pull request. Everything below also works by hand. The file format is in [AGENTS.md](AGENTS.md).
+The easiest way to contribute is to let your AI agent do it: paste the prompt from the [README](README.md#publish-your-method-under-your-name). It interviews you, drafts the skill in this format, validates it and opens the pull request. Everything below also works by hand. The file format is in [AGENTS.md](AGENTS.md).
 
 ## The model
 

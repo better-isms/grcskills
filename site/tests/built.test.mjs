@@ -99,12 +99,32 @@ test('home: canonical, og:url, the works-with line and a WebSite node', opts, ()
   const html = read('index.html');
   assert.ok(html.includes('<link rel="canonical" href="https://grcskills.com/"/>'));
   assert.equal(meta(html, 'property', 'og:url'), 'https://grcskills.com/');
-  assert.ok(html.includes('One prompt. Your setup, reviewed.'), 'H1 unchanged');
+  assert.equal(decode(html.match(/<h1 id="h1">([^<]*)<\/h1>/)?.[1] ?? ''), 'Open GRC skills for AI agents.', 'home H1 (founder decision 2026-10-19)');
+  assert.ok(html.includes('Written the way experienced GRC people do the work. Your agent does the legwork. You make the calls.'), 'home subline');
+  for (const item of ['A ranked shortlist for you to judge', 'for you to confirm', 'A 30-day plan draft. You decide what goes in it.']) assert.ok(html.includes(item), `What comes back: ${item}`);
   assert.ok(html.includes('Agent Skills for Claude Code, Codex, Cursor and any agent that reads SKILL.md.'));
   const ld = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].flatMap((m) => [].concat(JSON.parse(m[1])));
   assert.ok(ld.some((n) => n['@type'] === 'WebSite' && n.url === 'https://grcskills.com/'));
   assert.ok(html.includes(decodeHtmlSafe(content.meta.prompt)), 'the prompt card shows prompts/setup-review.txt');
 });
+test('stance copy: no "practitioner methods" jargon; llms.txt says people decide; contribute frames publishing under your name', opts, () => {
+  for (const rel of ['index.html', 'contribute/index.html', 'llms.txt']) assert.doesNotMatch(read(rel), /practitioner methods?/i, rel);
+  assert.ok(read('llms.txt').includes('Skills support practitioners: they draft and prepare, people decide.'));
+  assert.ok(read('contribute/index.html').includes('Publish your method, under your name'));
+});
+
+test('skill pages: a "Where you decide" block from the skill\'s own rules, near the top', opts, () => {
+  for (const s of content.skills) {
+    const html = read(`skill/${s.slug}/index.html`);
+    const block = html.match(/<section class="decide"[\s\S]*?<\/section>/)?.[0];
+    assert.ok(block, `${s.slug}: decide block`);
+    assert.ok(html.indexOf(block) < html.indexOf('class="skill-grid"'), `${s.slug}: block sits above the skill body`);
+    assert.ok(s.decisions.length >= 1, `${s.slug}: at least one rule keeps a call with a person`);
+    assert.ok(block.includes('Everything it writes is a draft for a person to review and sign.'), `${s.slug}: draft-only boundary`);
+    assert.equal((block.match(/<li>/g) ?? []).length, s.decisions.length + 1, `${s.slug}: one item per rule plus the boundary`);
+  }
+});
+
 const decodeHtmlSafe = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
 test('skill pages: JSON-LD with summary, dates, image and the GitHub folder; four related skills', opts, () => {
@@ -187,6 +207,14 @@ test('llms.txt and sitemap list every skill; llms.txt carries no descriptions', 
     assert.ok(sitemap.includes(`<loc>https://grcskills.com/skill/${s.slug}/</loc>`));
   }
   assert.ok(llms.includes(content.meta.prompt));
+  const ref = JSON.parse(fs.readFileSync(path.join(site, '..', '.claude-plugin', 'marketplace.json'), 'utf8')).plugins[0].source.ref;
+  const run = llms.match(/## If you were asked to run grc-setup-review\n([\s\S]*?)\n## /)?.[1];
+  assert.ok(run, 'llms.txt has the run-steps section');
+  assert.ok(llms.indexOf('## If you were asked to run grc-setup-review') < llms.indexOf('## When to use'), 'run steps sit near the top');
+  assert.ok(run.includes(`git clone --depth 1 --branch ${ref} https://github.com/better-isms/grcskills .grcskills`), `run steps clone the marketplace tag ${ref}`);
+  assert.ok(run.includes(`npx skills add better-isms/grcskills#${ref} --skill grc-setup-review`));
+  for (const p of ['.grcskills/AGENTS.md', '.grcskills/skills/tristan-roth/grc-setup-review/SKILL.md', './grc-setup-review/']) assert.ok(run.includes(p), p);
+  assert.deepEqual([...new Set(run.match(/v\d{4}\.\d{2}\.\d{2}(?:\.\d+)?/g))], [ref], 'one tag, the pinned one');
 });
 
 test('author pages carry no email address', opts, () => {

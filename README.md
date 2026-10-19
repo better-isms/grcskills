@@ -1,16 +1,18 @@
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/banner-dark.svg">
   <source media="(prefers-color-scheme: light)" srcset="assets/banner-light.svg">
-  <img alt="grcskills, open GRC skills for AI agents. One prompt. Your setup, reviewed." src="assets/banner-light.svg" width="100%">
+  <img alt="grcskills. Open GRC skills for AI agents. It does the legwork. You make the calls." src="assets/banner-light.svg" width="100%">
 </picture>
 
-[![License: MIT](https://img.shields.io/badge/license-MIT-0f172a?style=flat-square)](LICENSE) [![Release v2026.10.19](https://img.shields.io/badge/release-v2026.10.19-0f172a?style=flat-square)](https://github.com/better-isms/grcskills/releases/tag/v2026.10.19) [![60 skills](https://img.shields.io/badge/skills-60-0f172a?style=flat-square)](https://grcskills.com/skills/) [![Agent Skills format](https://img.shields.io/badge/format-Agent%20Skills%20(SKILL.md)-0f172a?style=flat-square)](AGENTS.md) [![Works with Claude Code, Codex and Cursor](https://img.shields.io/badge/works%20with-Claude%20Code%20%7C%20Codex%20%7C%20Cursor-0f172a?style=flat-square)](#install) [![By ISMS Copilot](https://img.shields.io/badge/by-ISMS%20Copilot-0f172a?style=flat-square)](https://www.ismscopilot.com/mcp?ref=grcskills-readme)
+[![License: MIT](https://img.shields.io/badge/license-MIT-0f172a?style=flat-square)](LICENSE) [![Release v2026.10.19.1](https://img.shields.io/badge/release-v2026.10.19.1-0f172a?style=flat-square)](https://github.com/better-isms/grcskills/releases/tag/v2026.10.19.1) [![60 skills](https://img.shields.io/badge/skills-60-0f172a?style=flat-square)](https://grcskills.com/skills/) [![Agent Skills format](https://img.shields.io/badge/format-Agent%20Skills%20(SKILL.md)-0f172a?style=flat-square)](AGENTS.md) [![Works with Claude Code, Codex and Cursor](https://img.shields.io/badge/works%20with-Claude%20Code%20%7C%20Codex%20%7C%20Cursor-0f172a?style=flat-square)](#install) [![By ISMS Copilot](https://img.shields.io/badge/by-ISMS%20Copilot-0f172a?style=flat-square)](https://www.ismscopilot.com/mcp?ref=grcskills-readme)
 
-# grcskills
+# Open GRC skills for AI agents.
 
-Open, task-level skills for AI agents doing governance, risk and compliance work: scope statements, statements of applicability, risk registers, audit prep and response, evidence, vendors, policies, privacy, AI systems, incidents and continuity.
+Written the way experienced GRC people do the work. Your agent does the legwork. You make the calls.
 
-Every skill is a plain `SKILL.md` in the Agent Skills format, so Claude Code, Codex, Cursor and any agent that reads SKILL.md can use it. Each one encodes how a practitioner does one job, what good output looks like, and where the agent must stop and hand the decision to a human. Skills draft; people review and sign.
+Each skill writes down how an experienced person approaches one piece of governance, risk and compliance work: scope statements, statements of applicability, risk registers, audit prep and response, evidence, vendors, policies, privacy, AI systems, incidents and continuity. It takes the drafting, gathering and cross-checking off an expert's plate. Every judgment (scope, risk acceptance, what is effective, what to sign) stays with a person: each skill names where the agent must stop and hand the call back.
+
+Every skill is a plain `SKILL.md` in the Agent Skills format, so Claude Code, Codex, Cursor and any agent that reads SKILL.md can use it. Skills draft and prepare; people decide, review and sign.
 
 Browse the library at **[grcskills.com](https://grcskills.com)**. All 60 skills are listed in [SKILL-LIST.md](SKILL-LIST.md).
 
@@ -18,17 +20,17 @@ Browse the library at **[grcskills.com](https://grcskills.com)**. All 60 skills 
 
 Paste this into your agent, in the folder that holds your compliance material:
 
-> Clone release v2026.10.19 of https://github.com/better-isms/grcskills (or use it if it is already installed), read its AGENTS.md, then run the grc-setup-review skill against my GRC setup: rank the 10 skills that would help me most, audit what is broken, duplicated or missing, and write a 30-day plan to files.
+> Read grcskills.com/llms.txt, then run the grc-setup-review skill on my GRC setup: rank the 10 skills that would help me most, list what is broken or missing, and write a 30-day plan.
 
-The agent reads every skill's description, looks at the policies, registers and exports it can reach (read-only), and writes `grc-setup-review/inventory.md`, `top-10.md`, `audit.md` and `30-day-plan.md` in your working folder.
+The prompt carries no version: [grcskills.com/llms.txt](https://grcskills.com/llms.txt) names the current release tag and the exact steps, so your agent clones that pinned release, reads every skill's description, looks at the policies, registers and exports it can reach (read-only), and writes `grc-setup-review/inventory.md`, `top-10.md`, `audit.md` and `30-day-plan.md` in your working folder.
 
 ![A replay of a real Claude Code run of the one prompt on a fictional company: it clones the release, reads AGENTS.md and the grc-setup-review skill, reads the company's policies and registers, writes four files, then shows the top 10 skills and the four weeks of the 30-day plan.](assets/demo/demo.gif)
 
-<sub>A real headless Claude Code run of the prompt above on a fictional company, replayed and sped up (the run took about 4 minutes). The sample folder, the condensed transcript and the four files it wrote are in [assets/demo/](assets/demo/).</sub>
+<sub>A real headless Claude Code run on a fictional company, replayed and sped up (the run took about 4 minutes), recorded with the earlier, tag-pinned wording of the prompt. The sample folder, the condensed transcript and the four files it wrote are in [assets/demo/](assets/demo/); a run of the prompt above through llms.txt is in [assets/demo/e2e-llms/](assets/demo/e2e-llms/).</sub>
 
 ## How it works
 
-1. Your agent clones the pinned release and reads [AGENTS.md](AGENTS.md), which routes it to install, run or submit.
+1. Your agent reads [llms.txt](https://grcskills.com/llms.txt), clones the release tag it names and reads [AGENTS.md](AGENTS.md), which routes it to install, run or submit.
 2. The [grc-setup-review](skills/tristan-roth/grc-setup-review/SKILL.md) skill reads only the frontmatter of all 60 skills, then your material, read-only.
 3. It ranks the 10 skills that fit your setup and writes the audit and a 30-day plan to files; each ranked skill then runs on its own when you ask.
 
@@ -49,17 +51,17 @@ The agent reads every skill's description, looks at the policies, registers and 
 
 ## Install
 
-Every install path is pinned to a release tag (`v2026.10.19`). Releases are immutable and carry a build provenance attestation; `main` is the integration branch and is not an install source.
+Every install path is pinned to a release tag (`v2026.10.19.1`). Releases are immutable and carry a build provenance attestation; `main` is the integration branch and is not an install source.
 
 ```bash
 # the whole library, with an interactive picker (skills.sh)
-npx skills add better-isms/grcskills#v2026.10.19
+npx skills add better-isms/grcskills#v2026.10.19.1
 
 # one skill
-npx skills add better-isms/grcskills#v2026.10.19 --skill risk-register-first-pass
+npx skills add better-isms/grcskills#v2026.10.19.1 --skill risk-register-first-pass
 
 # see what is there
-npx skills add better-isms/grcskills#v2026.10.19 --list
+npx skills add better-isms/grcskills#v2026.10.19.1 --list
 ```
 
 The `#<tag>` suffix makes the skills CLI clone that tag instead of the default branch. Add `-a claude-code`, `-a cursor` or `-a codex` to target one agent.
@@ -67,7 +69,7 @@ The `#<tag>` suffix makes the skills CLI clone that tag instead of the default b
 **Clone** the release tag:
 
 ```bash
-git clone --branch v2026.10.19 https://github.com/better-isms/grcskills
+git clone --branch v2026.10.19.1 https://github.com/better-isms/grcskills
 ```
 
 **Claude Code plugin** (every skill plus the optional framework lookup server):
@@ -81,14 +83,15 @@ The plugin pins a release tag. Its MCP entry holds only a public URL; you sign i
 
 ## How the skills are built
 
-- **Job-level.** One practitioner task per skill (draft a scope statement, triage a vendor questionnaire, write a corrective action). Frameworks are tags, not separate skills.
+- **One piece of work per skill.** Drafting a scope statement, triaging a vendor questionnaire, preparing a corrective action: each is its own skill, with the steps an experienced person follows. Frameworks are tags, not separate skills.
 - **Judgment, not checklists.** Every skill has a "What good looks like" section: what an experienced practitioner notices first, the common mistake, the quality bar.
 - **No standards text.** Skills never restate what a standard requires and never quote official control titles. When a framework question comes up, the skill's "Framework lookups" section tells the agent to check the official text, or to ask a connected specialist.
-- **Safe to run.** Skills work with the reader's own files and tools. They never send data off the machine, download or run code, read credentials, or mark a control effective.
+- **You decide.** Every skill has hard rules that keep the calls with a person: it never accepts a risk, approves a document, marks a control effective or signs on anyone's behalf. grcskills.com shows them on each skill page under "Where you decide".
+- **Safe to run.** Skills work with the reader's own files and tools. They never send data off the machine, download or run code, or read credentials.
 
-## Contribute your skill, with your AI
+## Publish your method, under your name
 
-You do not need to know git. Paste this to your agent:
+Write down how you do one piece of GRC work and publish it as a skill with your name on it. You do not need to know git. Paste this to your agent:
 
 > Read https://github.com/better-isms/grcskills/blob/main/skills/.system/submit-skill/SKILL.md and follow it. Interview me about one GRC job I do well, including my thresholds, examples and the mistakes I see, draft it in the grcskills format, validate it, show me the files, and submit it as a pull request once I say yes.
 
