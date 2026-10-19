@@ -31,13 +31,13 @@ For each risk:
 - **Reduce**: at least one control id or treatment action is named. Each named control is included in the statement. The residual score is lower than the inherent score, and the reduction is credited only to controls whose status is implemented.
 - **Transfer**: the instrument is named (insurance policy, contract clause) and the controls that manage the counterparty are included.
 - **Avoid**: the decision record and the activity that stopped are named.
-- **Accept**: an acceptance record exists, signed by the owner role, within the acceptance threshold or with a leadership decision.
+- **Accept**: an acceptance record exists, signed by the owner role, within the acceptance threshold or with a leadership decision. The controls its residual score assumes are included and implemented, and no finding elsewhere in the matrix breaks one of its conditions.
 
 For the top ten risks by residual score, check depth: a serious risk treated by one preventive control and nothing that would detect failure is fragile. Note where a detective or recovery control is missing.
 
 ## Step 3: trace backward, from control to reason
 
-For each included control, find at least one reason: a risk id, an obligation id, a customer commitment or a recorded baseline decision. Controls with no reason are orphans. They are not automatically wrong (some practices are baseline), but each needs its reason written down. For each excluded control, check that no risk names it in its treatment; if one does, that is a contradiction.
+For each included control, find at least one reason: a risk id, an obligation id, a customer commitment or a recorded baseline decision. Controls with no reason are orphans. They are not automatically wrong (some practices are baseline), but each needs its reason written down. For each excluded control, check that no risk names it in its treatment (if one does, that is a contradiction) and that the reason for exclusion is recorded.
 
 ## Step 4: list the defects
 
@@ -47,6 +47,8 @@ Classify every problem found:
 - **Orphan control**: included, no reason recorded.
 - **Contradiction**: a risk names a control the statement excludes.
 - **Phantom credit**: the residual score assumes a control whose status is planned or in progress.
+- **Claimed, not evidenced**: status says implemented, but the evidence index has no entry for the control.
+- **Unjustified exclusion**: excluded, no reason recorded.
 - **Generic mapping**: the same two or three controls (a policy, awareness training, access control) mapped to most risks, which shows the mapping was not thought through.
 - **Ambiguous reference**: a prose mention that could mean several controls.
 
@@ -54,7 +56,7 @@ For an AI management system, also check that each significant finding of an AI i
 
 ## Step 5: write the outputs
 
-Write `traceability-matrix.csv` with one row per risk to control link: risk id, treatment, control id, control inclusion, control status, link source, defect type. Write `orphans.md` grouped by defect type, each with the proposed fix and the owner role who decides. Ask before overwriting either file.
+Write `traceability-matrix.csv`, headed by the versions and dates of the register, treatment plan and statement it was built from, with one row per risk to control link: risk id, treatment, control id, control inclusion, control status, link source, defect type. Write `orphans.md` grouped by defect type, each with the proposed fix and the owner role who decides. End it with the defects that block the next approval of the statement or belong in the next management review. Ask before overwriting either file.
 
 ## What good looks like
 

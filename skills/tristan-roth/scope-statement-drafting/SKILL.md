@@ -25,7 +25,7 @@ Read before asking: the org chart or team list, the product and service list, th
 
 ## Step 1: write the sentence the buyer will read
 
-Start from the end. Draft the one or two sentences that would appear on a certificate or in a trust page, for example "The information security management system supporting the development, operation and support of <product>, delivered from <locations> and hosted in <cloud regions>." If that sentence does not cover what the buyer from question 1 actually buys, the scope is wrong before it is written. A scope that excludes the product the customer uses is the most expensive mistake in this work, because it is found after the audit is paid for.
+Start from the end. Draft the one or two sentences that would appear on a certificate or in a trust page, for example "The information security management system supporting the development, operation and support of <product>, delivered from <locations> and hosted in <cloud regions>." Point to "locations as listed in the boundary table" rather than naming regions that will change within a year. The certification body issues the final wording; check the trust page against the certificate once issued. If that sentence does not cover what the buyer from question 1 actually buys, the scope is wrong before it is written. A scope that excludes the product the customer uses is the most expensive mistake in this work, because it is found after the audit is paid for.
 
 ## Step 2: draw the boundary on five axes
 
@@ -37,11 +37,11 @@ For each axis, list what is in and what is out, with the source document for eac
 - **Technology**: cloud accounts, production and staging environments, repositories, identity provider, endpoints, collaboration tools.
 - **Processes**: development, operations, support, HR onboarding and offboarding, procurement, finance where it touches customer data.
 
-For a privacy extension, add the processing activities in scope and the company's role for each (controller, processor or both). For an AI extension, add the AI systems in scope and the company's role for each (builds, supplies, deploys or uses). Rule of thumb: if a team can change production, read customer data or grant access to either, it is in scope whatever the org chart says.
+For a privacy extension, add the processing activities in scope and the company's role for each (controller, processor or both), taken from the record of processing rather than re-derived. For an AI extension, add the AI systems in scope from the AI system inventory and the company's role for each (builds, supplies, deploys or uses). Rule of thumb: if a team can change production, read customer data or grant access to either, it is in scope whatever the org chart says.
 
 ## Step 3: list interfaces and dependencies
 
-Every arrow that crosses the boundary is an interface: a group IT team that runs the identity provider, a shared HR service, an outsourced help desk, the cloud provider, a payment processor, a parent company that holds the domain names. For each, record what crosses (data, access, a service), who controls it, and the instrument that governs it (contract, internal service agreement, policy of the parent). An interface without an instrument becomes a risk in the register and a likely audit question.
+Every arrow that crosses the boundary is an interface: a group IT team that runs the identity provider, a shared HR service, an outsourced help desk, the cloud provider, a payment processor, a parent company that holds the domain names. For each, record what crosses (data, access, a service), who controls it, and the instrument that governs it (contract, internal service agreement, policy of the parent). An interface without an instrument becomes a risk in the register and a likely audit question; list those as risk candidates (what crosses, who controls it, the gap) so the register starts from them.
 
 ## Step 4: justify each exclusion, or drop it
 
@@ -55,7 +55,7 @@ Write each surviving exclusion as one line: what is excluded, the fact that make
 
 ## Step 5: assemble and hand over
 
-Write `scope-statement.md`: the certificate sentence, the five-axis summary, the interfaces, the exclusions and a short rationale tying scope to the business reason. Write `boundary-table.md` as a table (axis, item, in or out, reason, source) with an open-questions list per decision maker. If either file exists, ask before overwriting.
+Write `scope-statement.md`: the certificate sentence, the five-axis summary, the interfaces, the exclusions and a short rationale tying scope to the business reason. Write `boundary-table.md` as a table (axis, item, in or out, reason, source) with an open-questions list per decision maker. Add a version, a date and an approval block for leadership, plus a change rule: any later change to the boundary is re-approved and, once certified, notified to the certification body. If either file exists, ask before overwriting.
 
 ## What good looks like
 

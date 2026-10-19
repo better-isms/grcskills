@@ -31,7 +31,7 @@ For each entry, record a finding when:
 
 ## Step 2: check freshness
 
-Flag entries whose last review is older than the cadence the method states (often 12 months for the whole register, quarterly for top-band risks). Flag treatment actions past their due date with no status change, and acceptances past their expiry. Flag risks tied to systems or suppliers that no longer appear in the inventory or supplier list; those may be closed, or the inventory may be wrong.
+Flag entries whose last review is older than the cadence the method states (often 12 months for the whole register, quarterly for top-band risks). Flag treatment actions past their due date with no status change, acceptances past their expiry or with no expiry at all, and clusters of live acceptances on one asset or supplier whose combined exposure no single signer approved. Flag risks tied to systems or suppliers that no longer appear in the inventory or supplier list; those may be closed, or the inventory may be wrong. Propose a disposition for each: closed with a reason and date (the row kept, not deleted), re-linked to the surviving asset, or the inventory corrected.
 
 ## Step 3: check scoring
 
@@ -40,14 +40,14 @@ Compare scores against the method's anchors. Common faults, each a finding:
 - Residual score equal to or higher than inherent with no explanation, or lower with no control named.
 - Residual lowered by a control that has no evidence of running.
 - Clusters: more than half the risks on one score, which means anchors are not being used.
-- A risk scored with a scale the method no longer uses.
+- A risk scored with a scale the method no longer uses. Record the method version in force at review time so mixed-era scores get a rescoring plan.
 - Impact rated below what a recent incident on the same scenario actually cost.
 
 Pick the ten highest-impact entries and rescore them against the anchors in a separate column; show the difference, never overwrite the owner's score.
 
 ## Step 4: check completeness against the company's own history
 
-Every incident, near miss and audit or test finding should map to at least one risk. List each one that does not, with a draft scenario. Do the same for single points of failure visible in the supplier list and architecture (a sole hosting provider, one engineer holding the backup keys). This is where registers drift most: the business changes, the register does not.
+Every incident, near miss and audit or test finding should map to at least one risk. List each one that does not, with a draft scenario. Do the same for single points of failure visible in the supplier list and architecture (a sole hosting provider, one engineer holding the backup keys). This is where registers drift most: the business changes, the register does not. Check the other direction too: a completed treatment that added or dropped a control should show in the applicability statement.
 
 ## Step 5: find duplicates and merges
 
@@ -55,7 +55,7 @@ Group entries that share asset, threat and consequence. Propose a merge where th
 
 ## Step 6: summarise for the owners
 
-In `summary.md`, give counts by finding type, the five findings that would worry an auditor or a board most, and a list of questions grouped by owner so the clean-up is a short series of decisions. Estimate the effort: most registers of 30 to 60 risks clean up in two to four owner sessions of an hour.
+In `summary.md`, give counts by finding type, the five findings that would worry an auditor or a board most (including whether top risks, overdue treatments and expired acceptances reached the last management review), and a list of questions grouped by owner so the clean-up is a short series of decisions. Estimate the effort: most registers of 30 to 60 risks clean up in two to four owner sessions of an hour.
 
 ## What good looks like
 
