@@ -1,0 +1,12 @@
+/node_modules/
+/.next/
+/out/
+/.generated/
+next-env.d.ts
+*.tsbuildinfo
+# written by scripts/build-content.mjs at build time
+/public/llms.txt
+/public/sitemap.xml
+/public/robots.txt
+/public/build.json
+/public/search-index.json
