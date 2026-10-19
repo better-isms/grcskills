@@ -4,7 +4,6 @@
   "page_types": {
     "/": "home",
     "/skill/": "catalog-item",
-    "/skills/": "catalog-hub",
     "/category/": "catalog-hub",
     "/framework/": "catalog-hub"
   },
