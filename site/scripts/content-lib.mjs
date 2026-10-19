@@ -270,9 +270,11 @@ const DECIDE_NEVER = new RegExp([
 ].join('|'), 'i');
 // Rules about the quality of evidence, not about who decides.
 const QUALITY_RULE = /\b(?:on the strength of|alone|without (?:checking|reading|the evidence|the contract|naming|testing))\b|\bdelete or overwrite a superseded\b/i;
-const DECIDE_MUST = /(\bto approve\b|\bapproval before\b|\breview before\b|\bconfirms it\b|\broute\w*\b[^;]*\bto the (?:legal owner|privacy lead)\b|\bopen decision for\b|\bagree\b[^;]*\bwith the owner\b|\bwho confirmed\b)/i;
+// Routing a call to a person. Also qualifies a NEVER line, such as
+// "...; route them to an acceptance decision".
+const DECIDE_MUST = /(\bto approve\b|\bapproval before\b|\breview before\b|\bconfirms it\b|\broute\w*\b[^;]*\bto (?:HR|legal|a reviewer|the legal owner|the privacy lead|an acceptance decision)\b|\bopen decision for\b|\bagree\b[^;]*\bwith the (?:owner|reader)\b|\braise\w*\b[^;]*\bto its owner\b|\bwho confirmed\b)/i;
 // Data-handling rules (what to copy, name or open) are not decisions.
-const DATA_RULE = /^NEVER (open|copy|name|put|paste|include|read|fill in personal)\b|\boutside the reader's machine\b/;
+const DATA_RULE = /^NEVER (open|copy|name|put (?:names|personal|a requester's)|paste|include|read|fill in personal)\b|\boutside the reader's machine\b/;
 export const DECISIONS_MAX = 4;
 
 export function decisionRules(body) {
@@ -283,7 +285,7 @@ export function decisionRules(body) {
     if (/^- /.test(line)) items.push(line.slice(2).trim());
     else if (/^\s+\S/.test(line) && items.length) items[items.length - 1] += ` ${line.trim()}`;
   }
-  const never = items.filter((t) => /^NEVER /.test(t) && !DATA_RULE.test(t) && !QUALITY_RULE.test(t) && DECIDE_NEVER.test(t)).map((t) => `Never ${t.slice(6)}`);
+  const never = items.filter((t) => /^NEVER /.test(t) && !DATA_RULE.test(t) && !QUALITY_RULE.test(t) && (DECIDE_NEVER.test(t) || DECIDE_MUST.test(t))).map((t) => `Never ${t.slice(6)}`);
   const must = items.filter((t) => /^MUST /.test(t) && DECIDE_MUST.test(t)).map((t) => `Always ${t.slice(5)}`);
   return [...never, ...must].slice(0, DECISIONS_MAX);
 }

@@ -172,6 +172,7 @@ test('decisionRules keeps the rules that leave a call with a person, not data-ha
     '- NEVER let an uncosted deferral pass as an acceptance.',
     '- NEVER delete or overwrite a superseded version.',
     '- NEVER send inventory content anywhere outside the reader\'s machine.',
+    '- NEVER put personal data of individuals into the register; use roles.',
     '- MUST decide applicability per legal entity, citing the provision used.',
   ].join('\n');
   assert.deepEqual(decisionRules(quality), []);
@@ -187,6 +188,11 @@ test('decisionRules keeps the rules that leave a call with a person, not data-ha
     'NEVER send briefs or invitations to staff; the reader distributes them.',
     'NEVER change repository settings, branch rules, approvals or deploy permissions.',
     'MUST route every prohibited or unclear result to the legal owner.',
+    'MUST route monitoring and disciplinary wording to HR or legal for review.',
+    'MUST route every flagged line to a reviewer who is not the account holder.',
+    'MUST agree the scoring method with the reader before scoring any risk.',
+    'MUST raise every contradicted control to its owner role as the first item in the gap list.',
+    'NEVER put risks the owner wants to accept into the treatment plan; route them to an acceptance decision.',
   ]) assert.equal(kinds(line).length, 1, line);
   const many = ['## Rules', '', ...Array.from({ length: 9 }, (_, i) => `- NEVER approve item ${i}.`)].join('\n');
   assert.equal(decisionRules(many).length, DECISIONS_MAX);
