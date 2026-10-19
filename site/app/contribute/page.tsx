@@ -6,7 +6,7 @@ import { pageMeta } from '@/lib/seo';
 
 export const metadata: Metadata = pageMeta({
   title: 'Contribute a skill',
-  description: 'Write down a GRC job you do well, with your own AI agent. It interviews you, drafts the skill and opens the pull request; you are credited as the author.',
+  description: 'Publish how you do a piece of GRC work, under your name. Your AI agent interviews you, writes the skill and opens the pull request; you are its author.',
   path: '/contribute/',
 });
 
@@ -17,8 +17,8 @@ export default function Contribute() {
     <div className="page">
       <Breadcrumbs items={[{ name: 'Contribute', href: '/contribute/' }]} />
       <header className="page-head">
-        <h1>Contribute a skill, with your AI</h1>
-        <p className="lead">You do not need to know git. Paste this into your agent and answer its questions about one GRC job you do well.</p>
+        <h1>Publish your method, under your name</h1>
+        <p className="lead">Write down how you do one piece of GRC work, the way you would teach it, and publish it as a skill with your name on it. You do not need to know git: paste this into your agent and answer its questions.</p>
       </header>
 
       <div className="pcard">
@@ -37,7 +37,7 @@ export default function Contribute() {
         <div>
           <h2 id="how">What your agent does</h2>
           <ol className="steps">
-            <li><b>Interviews you</b><span>Your thresholds, examples and the mistakes you see, for one job.</span></li>
+            <li><b>Interviews you</b><span>Your thresholds, examples, the mistakes you see, and the calls that must stay with a person.</span></li>
             <li><b>Drafts the skill</b><span>One SKILL.md in the library format, with a &ldquo;What good looks like&rdquo; section and hard rules.</span></li>
             <li><b>Validates it</b><span>Runs <code>node tools/validate.mjs</code> and fixes every line it reports.</span></li>
             <li><b>Opens the pull request</b><span>Only after you say yes. Without git, it files a &ldquo;Submit a skill&rdquo; issue instead.</span></li>

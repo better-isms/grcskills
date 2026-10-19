@@ -14,21 +14,21 @@ This is the grcskills library: open, task-level GRC skills (Agent Skills format)
 
 ## Install
 
-Install from the current release tag, `v2026.10.19`, never from `main` (the integration branch). Releases are immutable and carry a build provenance attestation.
+Install from the current release tag, `v2026.10.19.1`, never from `main` (the integration branch). Releases are immutable and carry a build provenance attestation.
 
 ```bash
-npx skills add better-isms/grcskills#v2026.10.19                                  # whole library, interactive
-npx skills add better-isms/grcskills#v2026.10.19 --skill <skill-name>             # one skill
-npx skills add better-isms/grcskills/skills/<author-slug>#v2026.10.19             # one author
-npx skills add better-isms/grcskills#v2026.10.19 --list                           # list
-git clone --branch v2026.10.19 https://github.com/better-isms/grcskills           # clone
+npx skills add better-isms/grcskills#v2026.10.19.1                                  # whole library, interactive
+npx skills add better-isms/grcskills#v2026.10.19.1 --skill <skill-name>             # one skill
+npx skills add better-isms/grcskills/skills/<author-slug>#v2026.10.19.1             # one author
+npx skills add better-isms/grcskills#v2026.10.19.1 --list                           # list
+git clone --branch v2026.10.19.1 https://github.com/better-isms/grcskills           # clone
 ```
 
 The `#<tag>` suffix makes the skills CLI clone that tag. Target an agent with `-a claude-code`, `-a cursor`, `-a codex`. Claude Code users can also run `/plugin marketplace add better-isms/grcskills` then `/plugin install grcskills@grcskills`; the plugin pins the release tag. Without a terminal, download the skill folder from the release and place it in the agent's skills directory.
 
 ## Run the whole library against a setup
 
-1. Make the library available: an install, or `git clone --branch v2026.10.19 https://github.com/better-isms/grcskills` into a temporary folder (ask first).
+1. Make the library available: an install, or `git clone --branch v2026.10.19.1 https://github.com/better-isms/grcskills` into a temporary folder (ask first).
 2. Open `skills/tristan-roth/grc-setup-review/SKILL.md` and follow it. It reads only the frontmatter of every skill, inspects the user's compliance material read-only, ranks the top 10 skills with impact, effort and a cited reason, audits what is broken, duplicated or missing, and writes `grc-setup-review/*.md` in the user's working folder.
 3. To run any ranked skill, read its `SKILL.md` in full, then follow it. Each skill names the files it writes.
 

@@ -5,14 +5,14 @@ import JsonLd from '@/components/JsonLd';
 import SearchBox from '@/components/SearchBox';
 import SkillCard from '@/components/SkillCard';
 import { categories, featuredSkill, meta, SITE_URL, skills, toRow } from '@/lib/content';
-import { HOME_DESCRIPTION, HOME_TITLE, pageMeta } from '@/lib/seo';
+import { HOME_DESCRIPTION, HOME_H1, HOME_SUBLINE, HOME_TITLE, pageMeta } from '@/lib/seo';
 
 export const metadata: Metadata = pageMeta({
   title: HOME_TITLE,
   description: HOME_DESCRIPTION,
   path: '/',
   absoluteTitle: true,
-  imageAlt: 'grcskills: one prompt, your setup reviewed',
+  imageAlt: 'grcskills: open GRC skills for AI agents. It does the legwork. You make the calls.',
 });
 
 export default function Home() {
@@ -22,10 +22,8 @@ export default function Home() {
     <>
       <section className="hero" aria-labelledby="h1">
         <div>
-          <h1 id="h1">One prompt. Your setup, reviewed.</h1>
-          <p className="lead">
-            Open GRC skills for AI agents. Paste the prompt into your agent; it runs {n} practitioner skills against your files and writes a 30-day plan.
-          </p>
+          <h1 id="h1">{HOME_H1}</h1>
+          <p className="lead">{HOME_SUBLINE}</p>
           <p className="works">Agent Skills for Claude Code, Codex, Cursor and any agent that reads SKILL.md.</p>
         </div>
         <div className="pcard">
@@ -45,9 +43,9 @@ export default function Home() {
         <div>
           <h2 id="back">What comes back</h2>
           <ul className="outs">
-            <li>The ten skills that fit your setup, ranked<span>Picked from {n} skills across ten kinds of GRC work.</span></li>
-            <li>What looks broken, duplicated or missing<span>Read from your repo, policy folder and the exports your agent can open.</span></li>
-            <li>A 30-day plan, written to a file<span>Drafts for you to review. Nothing is marked done for you.</span></li>
+            <li>A ranked shortlist for you to judge<span>The ten skills that look most useful for your setup, picked from {n} across ten kinds of GRC work.</span></li>
+            <li>What looks broken, duplicated or missing, for you to confirm<span>Read from your repo, policy folder and the exports your agent can open.</span></li>
+            <li>A 30-day plan draft. You decide what goes in it.<span>Written to a file. Nothing is marked done for you.</span></li>
           </ul>
         </div>
         {featured && <SkillCard skill={featured} />}
@@ -56,7 +54,7 @@ export default function Home() {
       <section className="section find" aria-labelledby="find">
         <div className="find-intro">
           <h2 id="find">Find a skill</h2>
-          <p>Each skill is one job a practitioner does, with the steps, the quality bar and the files it writes.</p>
+          <p>Each skill is the steps an experienced GRC person follows for one piece of work: the quality bar, the files it writes, and where you decide.</p>
           <Link className="b2" href="/skills/">All {n} skills</Link>
         </div>
         <SearchBox initial={skills.slice(0, 6).map(toRow)} total={n} />
@@ -82,8 +80,8 @@ export default function Home() {
 
       <section className="section close" aria-labelledby="contrib">
         <div>
-          <h2 id="contrib">Know a job well? Write it down with your AI.</h2>
-          <p>Your agent interviews you, drafts the skill in the library format and opens the pull request. You are credited as the author.</p>
+          <h2 id="contrib">Publish how you do the work, under your name.</h2>
+          <p>Your agent interviews you, writes your method down in the library format and opens the pull request. The skill carries your name as its author.</p>
         </div>
         <Link className="b2" href="/contribute/">How to contribute</Link>
       </section>
@@ -106,7 +104,7 @@ export default function Home() {
             '@type': 'CollectionPage',
             name: 'grcskills',
             url: `${SITE_URL}/`,
-            description: `Open GRC skills for AI agents: ${n} practitioner skills.`,
+            description: `Open GRC skills for AI agents: ${n} skills written the way experienced GRC people do the work.`,
             isPartOf: { '@id': `${SITE_URL}/#website` },
             image: `${SITE_URL}/og.png`,
             ...(meta.dateModified ? { dateModified: meta.dateModified } : {}),

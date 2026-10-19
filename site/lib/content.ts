@@ -16,6 +16,7 @@ export type Skill = {
   tags: string[];
   contributors: string[];
   html: string;
+  decisions: string[];
   words: number;
   references: Reference[];
   repoPath: string;

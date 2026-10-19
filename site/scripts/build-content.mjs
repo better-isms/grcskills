@@ -128,11 +128,11 @@ export function buildLlms({ skills, tag }) {
   return [
     '# grcskills',
     '',
-    `> Open GRC skills for AI agents: ${skills.length} practitioner skills in the Agent Skills format (one SKILL.md each) for governance, risk and compliance work. MIT licensed, by ISMS Copilot.`,
+    `> Open GRC skills for AI agents: ${skills.length} skills in the Agent Skills format (one SKILL.md each) for governance, risk and compliance work, written the way experienced GRC people do the work. Skills support practitioners: they draft and prepare, people decide. MIT licensed, by ISMS Copilot.`,
     '',
     '## When to use',
     '',
-    'Use these skills when a user asks you to do GRC work on their own files: scope statements, statements of applicability, risk registers, audit prep and response, evidence, vendors, policies, privacy, AI systems, incidents and continuity. Each skill is one practitioner job with steps, a quality bar and the files it writes. Every skill drafts for a human to review and sign; no skill marks a control effective, accepts a risk or sends data off the machine. Skills contain no text from any standard. If you do not know where to start, run grc-setup-review: it ranks the skills that fit the setup and writes a 30-day plan.',
+    'Use these skills when a user asks you to do GRC work on their own files: scope statements, statements of applicability, risk registers, audit prep and response, evidence, vendors, policies, privacy, AI systems, incidents and continuity. Each skill holds the steps an experienced person follows for one piece of work, a quality bar and the files it writes. Every skill drafts for a human to review and sign; no skill marks a control effective, accepts a risk or sends data off the machine. Skills contain no text from any standard. If you do not know where to start, run grc-setup-review: it ranks the skills that fit the setup and writes a 30-day plan.',
     '',
     '## The one prompt',
     '',

@@ -29,7 +29,7 @@ function loadFonts() {
 
 export const THEMES = {
   light: { bg: '#eef1f5', ink: '#0f172a', muted: '#64748b', card: '#ffffff', cardInk: '#0f172a', chip: '#e2e7ee', shadow: '0 30px 60px -40px rgba(15,23,42,.35)' },
-  dark: { bg: '#0f172a', ink: '#eef1f5', muted: '#94a3b8', card: '#1e293b', cardInk: '#e2e8f0', chip: '#334155', shadow: '0 30px 60px -40px rgba(0,0,0,.6)' },
+  dark: { bg: '#0d1118', ink: '#e8edf5', muted: '#8b96a8', card: '#151b25', cardInk: '#e8edf5', chip: '#232b38', shadow: '0 30px 60px -40px rgba(0,0,0,.8)' },
 };
 
 // Minimal element builder for satori: h(style, ...children).
@@ -48,15 +48,21 @@ export function toPng(svg, width) {
 
 const wordmark = (t, size = 30) => h({ fontWeight: 500, fontSize: size, letterSpacing: '-0.03em', color: t.ink }, 'grcskills');
 
-// Home, social preview and README banner: wordmark, noun, H1, prompt card.
-export function heroCard({ prompt, theme = 'light', width = 1200, height = 630, h1Size = 92, promptChars = 150 }) {
+// Home, social preview and README banner: wordmark, H1, the stance line,
+// prompt card (founder decision 2026-10-19: the agent does the legwork, the
+// person makes the calls).
+export function heroCard({ prompt, theme = 'light', width = 1200, height = 630, h1Size = 80, promptChars = 150 }) {
   const t = THEMES[theme];
   const pad = Math.round(width * 0.06);
   const short = prompt.length > promptChars ? `${prompt.slice(0, prompt.lastIndexOf(' ', promptChars))}...` : prompt;
   return h(
     { width, height, background: t.bg, color: t.ink, fontFamily: 'Inter Tight', flexDirection: 'column', padding: `${Math.round(pad * 0.8)}px ${pad}px`, justifyContent: 'space-between' },
-    h({ justifyContent: 'space-between', alignItems: 'baseline' }, wordmark(t), h({ fontSize: 20, color: t.muted }, 'Open GRC skills for AI agents')),
-    h({ fontWeight: 300, fontSize: h1Size, lineHeight: 1.0, letterSpacing: '-0.045em', maxWidth: Math.round(width * 0.8) }, 'One prompt. Your setup, reviewed.'),
+    h({ justifyContent: 'space-between', alignItems: 'baseline' }, wordmark(t), h({ fontSize: 20, color: t.muted }, 'grcskills.com')),
+    h(
+      { flexDirection: 'column' },
+      h({ fontWeight: 300, fontSize: h1Size, lineHeight: 1.0, letterSpacing: '-0.045em', maxWidth: Math.round(width * 0.86) }, 'Open GRC skills for AI agents.'),
+      h({ fontSize: Math.round(h1Size * 0.36), color: t.muted, marginTop: Math.round(h1Size * 0.28), letterSpacing: '-0.01em' }, 'It does the legwork. You make the calls.'),
+    ),
     h(
       { flexDirection: 'column', background: t.card, borderRadius: 28, padding: '28px 36px', boxShadow: t.shadow },
       h({ fontSize: 17, color: t.muted, marginBottom: 10 }, 'The prompt'),

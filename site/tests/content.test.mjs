@@ -2,7 +2,7 @@
 // the build (design doc "Site rendering boundary", acceptance I15).
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { loadContent, ContentError, isAllowedHref, CAPS, relatedSkills } from '../scripts/content-lib.mjs';
+import { loadContent, ContentError, isAllowedHref, CAPS, relatedSkills, decisionRules, DECISIONS_MAX } from '../scripts/content-lib.mjs';
 import { CATEGORY_INTROS, FRAMEWORK_INTROS } from '../scripts/intros.mjs';
 import { firstSentence } from '../lib/text.ts';
 import { repoWith, skillMd, AUTHOR } from './fixtures.mjs';
@@ -137,4 +137,26 @@ test('intros: two or three sentences, first sentence fits a meta description, no
     assert.ok(firstSentence(v).length <= 160, `${k}: first sentence is ${firstSentence(v).length} characters`);
     assert.ok(!v.includes('\u2014'), `${k}: em dash`);
   }
+});
+
+test('decisionRules keeps the rules that leave a call with a person, not data-handling rules', () => {
+  const body = [
+    '## Steps', '', '- NEVER accept a risk here; this is not the Rules section.', '',
+    '## Rules', '',
+    '- MUST cite a source for every row.',
+    '- MUST present the scope as a proposal for leadership to approve.',
+    '- NEVER accept a risk on the owner\'s behalf.',
+    '- NEVER copy personal data into the register; use roles.',
+    '- NEVER mark a control as effective; the reader\'s people decide that.',
+    '  Wrapped continuation.',
+    '', '## Framework lookups', '', '- NEVER approve anything in this later section.',
+  ].join('\n');
+  assert.deepEqual(decisionRules(body), [
+    'Never accept a risk on the owner\'s behalf.',
+    'Never mark a control as effective; the reader\'s people decide that. Wrapped continuation.',
+    'Always present the scope as a proposal for leadership to approve.',
+  ]);
+  assert.deepEqual(decisionRules('## Steps\n\n- NEVER sign.\n'), []);
+  const many = ['## Rules', '', ...Array.from({ length: 9 }, (_, i) => `- NEVER approve item ${i}.`)].join('\n');
+  assert.equal(decisionRules(many).length, DECISIONS_MAX);
 });
