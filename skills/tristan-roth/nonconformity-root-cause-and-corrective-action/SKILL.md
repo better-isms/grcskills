@@ -18,7 +18,9 @@ Use this for each finding on its own; batch only findings that clearly share a c
 
 ## Inputs to gather
 
-The finding exactly as the auditor wrote it (grade, requirement reference, evidence the auditor saw, the sample), the audit report section around it, and the documents and records the finding names. Ask the reader who owns the process, whether the auditor gave a response deadline, and whether the same area had findings before. Previous findings on the same process change the analysis: a repeat finding means the last corrective action did not work.
+The finding exactly as the auditor wrote it (grade, requirement reference, evidence the auditor saw, the sample), the audit report section around it, and the documents and records the finding names. Ask the reader who owns the process, whether the auditor gave a response deadline, and whether the same area had findings before. Previous findings on the same process change the analysis: a repeat finding means the last corrective action did not work, so Step 3 must explain why it failed, and why its effectiveness check did not catch the failure.
+
+Check the grade first. A major finding usually carries a response window and follow-up rules set by the certification body; escalate it to the accountable manager the same day. An observation or opportunity for improvement needs a considered accept or decline with a reason, not a root cause analysis and an action plan the team then has to deliver.
 
 ## Step 1: restate the finding in one line
 
@@ -37,6 +39,7 @@ Ask "why" until the answer is something the company controls and can change, usu
 - **Process exists, not followed**: check whether it is known, practical and resourced before blaming people.
 - **Process followed, does not work**: the design is wrong; redesign and test it.
 - **Trigger missing**: the process is fine but nothing starts it (no ticket on a leaver, no reminder on a review date). Fix: automate or attach the trigger.
+- **Management system cause**: the problem sits above the process, such as unclear ownership, an internal audit that samples too little, or objectives nobody set. Fix: raise it for the management review rather than writing another procedure.
 
 "Human error" and "lack of awareness" are never a root cause on their own; ask why the process allowed one person's slip to reach the auditor.
 
@@ -46,7 +49,7 @@ Look for the cause in sibling processes, systems and sites: if one leaver kept a
 
 ## Step 5: write the action plan and effectiveness check
 
-For each action: description, owner role, due date agreed with the owner, the record it produces. Then define effectiveness: what evidence, sampled when, will show the problem has not recurred (for example, all leavers in the next quarter removed within the agreed time, checked by sample at the next internal audit). Run a framework lookup for what the framework expects in a corrective action response and for the deadline conventions of the certification body, instead of assuming.
+For each action: description, owner role, due date agreed with the owner, the record it produces. Then define effectiveness: what evidence, sampled when, will show the problem has not recurred (for example, all leavers in the next quarter removed within the agreed time, checked by sample at the next internal audit). Enter the check in the finding tracker with an owner role and a due date; if the problem recurs, the finding reopens instead of waiting for the next external audit. Run a framework lookup for what the framework expects in a corrective action response and for the deadline conventions of the certification body, instead of assuming.
 
 ## What good looks like
 

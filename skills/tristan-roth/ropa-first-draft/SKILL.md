@@ -28,7 +28,7 @@ A processing activity is a purpose with its data, people and systems: "payroll",
 
 Article 30 of the GDPR sets out what the record covers; use it as the backbone and add the columns the rest of the programme needs. Per activity:
 
-- Purpose in one plain sentence, owner role, and whether the company is controller, joint controller or processor for it.
+- Purpose in one plain sentence, owner role, and whether the company is controller, joint controller or processor for it. A joint controller row points to its Article 26 arrangement, or the missing arrangement becomes an open question.
 - Data subject categories and personal data categories. Flag special category data (Article 9) and criminal offence data (Article 10) in their own column.
 - Proposed legal basis under Article 6, and for special category data the Article 9 condition. Where the proposal is legitimate interests, add a line to the notes: a balancing test is needed. Consent is rarely the right basis for employee data, because of the imbalance between employer and employee.
 - Source of the data (the person, the customer, a third party, public sources).
@@ -45,10 +45,11 @@ If the company processes personal data for customers (a software provider hostin
 
 - Every vendor in the vendor list that touches personal data appears as a recipient somewhere; every recipient has an agreement. List mismatches.
 - Every purpose in the privacy notice appears in the record and the reverse. List mismatches for a privacy notice gap check.
-- Activities with special category data, large-scale monitoring, profiling or new technology go on a list of DPIA screening candidates.
-- Write the open questions per owner role in `ropa-notes.md`, so confirmation is a short session per team.
+- Every transfer marked "unknown" becomes an open question with an owner and a date; no transfer should continue past the review without a documented mechanism.
+- Activities with special category data, large-scale monitoring, profiling or new technology go on a list of DPIA screening candidates, each with the trigger that put it there, so the privacy lead's decision is documented.
+- Write the open questions per owner role in `ropa-notes.md`, so confirmation is a short session per team. Name the role that maintains the record and a review date per team; the supervisory authority can ask for it at any time.
 
-The general exemption for organisations under 250 employees is narrow: it does not apply when processing is more than occasional, carries risk or involves special category data. Do not rely on it without counsel's view.
+The general exemption for organisations under 250 employees is narrow: it does not apply when processing is more than occasional, carries risk, or involves special category data or criminal offence data. Do not rely on it without counsel's view.
 
 ## What good looks like
 

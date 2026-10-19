@@ -22,11 +22,11 @@ Read the risk register, the risk method (scales, acceptance threshold, who appro
 
 ## Step 1: select the risks that need a plan
 
-Take every risk above the acceptance threshold and every risk whose owner chose reduce, avoid or transfer. Risks the owner wants to accept go to a separate list for an acceptance memo; they do not belong in this plan. If a risk has no treatment decision yet, list it in `plan-notes.md` as a question for its owner rather than inventing one.
+Take every risk above the acceptance threshold and every risk whose owner chose reduce, avoid or transfer. Risks the owner wants to accept go to a separate list for an acceptance memo, each with the approver the risk method requires at its score; flag any acceptance an owner made above their authority. They do not belong in this plan. If a risk has no treatment decision yet, list it in `plan-notes.md` as a question for its owner rather than inventing one.
 
 ## Step 2: write actions, not control names
 
-For each risk, write one to four actions. An action is a change someone can finish: "enforce hardware keys for the 12 production admin accounts", not "implement access control". Each line carries: risk id, action, owner role, contributors, estimated effort in person-days, cash cost, dependency on other actions, target date, the record that proves completion (a config export, a signed contract, a ticket closed with a test result), and the control in the reader's control set that the action strengthens. Where the reader wants the control mapped to a framework, run a framework lookup instead of assuming the mapping.
+For each risk, write one to four actions. An action is a change someone can finish: "enforce hardware keys for the 12 production admin accounts", not "implement access control". Each line carries: risk id, action, owner role, contributors, estimated effort in person-days, cash cost, dependency on other actions, target date, the record that proves completion (a config export, a signed contract, a ticket closed with a test result), the control in the reader's control set that the action strengthens, whether the applicability statement needs an update when it completes, and any open audit finding the action closes. Where the reader wants the control mapped to a framework, run a framework lookup instead of assuming the mapping.
 
 Rules of thumb that keep the plan real:
 
@@ -37,7 +37,7 @@ Rules of thumb that keep the plan real:
 
 ## Step 3: state the expected residual score and why
 
-For each risk, estimate residual likelihood and impact after all its actions are done, and write one line on which part of the scenario each action changes. An action that reduces likelihood should name the step of the scenario it breaks. If the expected residual is still above the threshold, flag it: the owner will need a further action or an acceptance decision.
+For each risk, estimate residual likelihood and impact after all its actions are done, and write one line on which part of the scenario each action changes. An action that reduces likelihood should name the step of the scenario it breaks. If the expected residual is still above the threshold, flag it: the owner will need a further action or an acceptance decision. The expected residual moves into the register only when the record proving the action exists, never on the target date or on plan approval.
 
 ## Step 4: cover the gap while the work runs
 
@@ -45,7 +45,7 @@ For each risk scored in the top band, add an interim measure that applies now: t
 
 ## Step 5: sequence, total and hand over
 
-Order actions by risk reduction per person-day, then by dependency. Total effort and cash per quarter and compare them with the capacity and budget the reader gave. If the plan does not fit, show the cut line in `plan-notes.md` and list what falls below it with the risk that stays open. Add a status column (not started, in progress, done with record, blocked) and a review cadence, typically monthly for top-band risks and quarterly for the rest.
+Order actions by risk reduction per person-day, then by dependency. Put the actions that must land before any customer or audit date first, and flag those that cannot make it. Total effort and cash per quarter and compare them with the capacity and budget the reader gave. If the plan does not fit, show the cut line in `plan-notes.md` and list what falls below it with the risk that stays open. Add a status column (not started, in progress, done with record, blocked) and a review cadence, typically monthly for top-band risks and quarterly for the rest.
 
 ## What good looks like
 

@@ -21,7 +21,7 @@ Read the policy set with each document's version, owner, approver and last appro
 
 ## Step 1: build the review register
 
-One row per policy: id, title, current version, owner role, approver role, last approval, review due, and status (due, overdue, not due). Flag documents with no approval record at all; for an auditor those are drafts, whatever their file name says. Flag owners who have left or changed role; the first fix is a new owner, not new text.
+One row per policy: id, title, current version, owner role, approver role, last approval, review due, the evidence window considered (last approval to this review), the version staff last acknowledged, and status (due, overdue, not due, proposed for withdrawal). Flag documents with no approval record at all; for an auditor those are drafts, whatever their file name says. Flag owners who have left or changed role; the first fix is a new owner, not new text. Do the same for approvers: where the approver role is vacant or no longer senior enough, propose an interim approver to be named and minuted, or the cycle stalls. Flag policies staff acknowledged at an older version than the one now in force. Propose withdrawal, with the last version archived and the approver's sign-off, for a policy whose subject no longer exists, instead of carrying it as a permanent "no change" row.
 
 ## Step 2: collect the triggers per policy
 
@@ -51,7 +51,7 @@ For each policy, draft the version history entry (version, summary of change in 
 
 ## Step 5: plan communication
 
-In `communication-plan.md`, list per substantive change: who is affected, what changes for them in at most three bullets, the channel, and whether a new acknowledgement is needed. Editorial changes need no announcement. Changes affecting behaviour (a new reporting deadline, a new approval step) need one, plus an update to onboarding material.
+In `communication-plan.md`, list per substantive change: who is affected, what changes for them in at most three bullets, the channel, and whether a new acknowledgement is needed. Editorial changes need no announcement. Changes affecting behaviour (a new reporting deadline, a new approval step) need one, plus an update to onboarding material, and they feed the awareness or training plan as an input. Keep the plan: it is the record that people were told.
 
 ## What good looks like
 

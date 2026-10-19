@@ -22,7 +22,7 @@ Read the system and application inventory, architecture and integration diagrams
 
 ## Step 1: define what counts
 
-Write down, for this company, the health data categories in scope (clinical, billing and insurance, identifiers linked to care, sensitive categories such as mental health or substance use treatment) and which identifiers make data identifiable. Note what the company treats as de-identified and how: HIPAA recognises two methods under 45 CFR 164.514(b), removal of a defined list of identifiers or an expert determination. Data that is only "masked" or "anonymised" by internal convention stays in scope until one of those methods is shown.
+Write down, for this company, the health data categories in scope (clinical, billing and insurance, identifiers linked to care, sensitive categories such as mental health or substance use treatment) and which identifiers make data identifiable. Note what the company treats as de-identified and how: HIPAA recognises two methods under 45 CFR 164.514(b), removal of a defined list of identifiers or an expert determination. Data that is only "masked" or "anonymised" by internal convention stays in scope until one of those methods is shown. Teams often miss dates and ages over 89 on the identifier list, and a re-identification code must not be derived from the identifiers (164.514(c)). Flag any flow carrying records from a federally assisted substance use disorder program: 42 CFR Part 2 adds stricter consent and redisclosure rules, so counsel reviews those flows.
 
 ## Step 2: trace each flow through five stages
 
@@ -34,17 +34,17 @@ For each product or business process, follow the data:
 4. **Leaves**: disclosures to business associates, payers, other providers, public health or research, and tracking technologies on patient-facing pages. Check current HHS guidance on tracking technologies before concluding on those.
 5. **Ends**: retention, deletion, device and media disposal, return or destruction of data when a vendor contract ends.
 
-Record each system or flow in `phi-inventory.csv`: id, stage, system or flow, data categories, volume (records or patients, an order of magnitude is enough), owner role, location (hosting region, device, paper), and whether it is a source of truth or a copy.
+Record each system or flow in `phi-inventory.csv`: id, stage, system or flow, data categories, volume (records or patients, an order of magnitude is enough), owner role, location (hosting region, device, paper), whether it is a source of truth or a copy, and on whose behalf the data is held (the company's own patients, or a named covered entity client when the company is a business associate, whose agreement then limits what it may do with the data).
 
 ## Step 3: record the safeguards per flow
 
 For each row, record what protects it, with the evidence path:
 
 - Access: who can reach it, how access is granted and reviewed, whether the access is the minimum necessary for the role.
-- Encryption at rest and in transit.
+- Encryption at rest and in transit. Mark data in a store or flow without qualifying encryption as unsecured (45 CFR 164.402); that is where a loss becomes a notifiable breach.
 - Audit logging: whether access to this store is logged and someone looks at the logs.
 - Integrity and backup: whether changes are tracked and restores tested.
-- External flows: the business associate agreement in place, or the reason none is needed. A cloud provider that stores health data is generally a business associate even when it cannot read the data; the conduit exception covers mere transmission and is narrow.
+- External flows: the business associate agreement in place, or the reason none is needed; for a business associate, the subcontractor agreements that flow the same terms down. For disclosures outside treatment, payment and operations (research, public health, legal requests), name the log that supports an accounting of disclosures (45 CFR 164.528). A cloud provider that stores health data is generally a business associate even when it cannot read the data; the conduit exception covers mere transmission and is narrow.
 
 Mark any safeguard without evidence as "claimed, not evidenced". Where a specific HIPAA safeguard question matters (whether an implementation specification is required or addressable for this flow, for example), run a framework lookup instead of guessing.
 

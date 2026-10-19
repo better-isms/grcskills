@@ -25,24 +25,25 @@ If the company already has a risk method, use it as written and note where it is
 
 - Likelihood 1 to 5, each level anchored to a frequency the team can recognise (1 = not expected in five years, 3 = about once a year, 5 = several times a year).
 - Impact 1 to 5, each level anchored to the company's own numbers: revenue or contract value at risk, hours of downtime, number of people whose data is involved, regulatory exposure.
-- Risk score = likelihood x impact. An acceptance threshold the leadership agrees, for example 8 or below may be accepted by the owner, above 8 needs a treatment plan or a recorded leadership decision.
+- Risk score = likelihood x impact. An acceptance threshold the leadership agrees, for example 8 or below may be accepted by the owner, above 8 needs a treatment plan or a recorded leadership decision. State the acceptance criteria in words too (what makes a retained risk tolerable, which impact dimension dominates) and mark them for leadership approval.
+- Reassessment: the full register every 12 months, and a targeted pass after a major incident, a new critical supplier or a scope change.
 
 Anchors in money and hours are what make two people score the same risk the same way. A method without anchors produces a register where everything is a 3.
 
 ## Step 2: draft scenarios, not topics
 
-Write each risk as one sentence: "If <threat> exploits <weakness> in <asset or process>, then <consequence for this company>." Source them from the material, in this order: incidents and near misses (they already happened), audit and test findings, single points of failure in the architecture and supplier list, people and process gaps (joiners and leavers, shared accounts, one engineer who knows the backups), then legal and contractual exposure. Aim for 20 to 40 risks for a company of 20 to 300 people. Merge duplicates; split a risk when two parts have different owners.
+Write each risk as one sentence: "If <threat> exploits <weakness> in <asset or process>, then <consequence for this company>." Source them from the material, in this order: incidents and near misses (they already happened), audit and test findings, single points of failure in the architecture and supplier list, people and process gaps (joiners and leavers, shared accounts, one engineer who knows the backups), then legal and contractual exposure. Add at least one scenario from a current threat source (a sector advisory, a vendor's security bulletin), cited, so the register is not built only from the past. Aim for 20 to 40 risks for a company of 20 to 300 people. Merge duplicates; split a risk when two parts have different owners.
 
 ## Step 3: score, link controls, propose treatment
 
-For each risk fill: id, scenario, asset or process, owner role, existing controls with the path to evidence that they run, inherent likelihood and impact, residual likelihood and impact after existing controls, proposed treatment (reduce, avoid, transfer, accept), proposed action and a review cadence. Mark every existing control without evidence as "claimed, not evidenced"; the residual score assumes it does not work until someone shows it does. Where a framework expects specific risk criteria or links to a control set, run a framework lookup instead of guessing.
+For each risk fill: id, scenario, asset or process, owner role, existing controls with the path to evidence that they run, inherent likelihood and impact, residual likelihood and impact after existing controls, proposed treatment (reduce, avoid, transfer, accept), proposed action, whether the action adds or changes a control (so the applicability statement can follow) and a review cadence. Mark every existing control without evidence as "claimed, not evidenced"; the residual score assumes it does not work until someone shows it does. Where a framework expects specific risk criteria or links to a control set, run a framework lookup instead of guessing.
 
 ## Step 4: sanity checks before handing over
 
 - Look at the score distribution. If more than half the risks share one score, the anchors are not being used; rescore the cluster with the reader.
 - Check every owner role is someone who can approve money or change a process, not "IT" or "security" by default.
 - Check the top five against the reader's answer about what would hurt most. If they do not overlap, one of them is wrong; ask which.
-- List open questions per owner in `risk-notes.md`, so the review meeting is a series of decisions, not a reading session.
+- List open questions per owner in `risk-notes.md`, so the review meeting is a series of decisions, not a reading session. End the notes with an empty approval block (owner roles, date, decisions taken) so the first pass closes with a recorded sign-off.
 
 ## What good looks like
 

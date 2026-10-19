@@ -17,7 +17,7 @@ Use this six to ten weeks before an external audit, and at each internal audit o
 
 ## Inputs to gather
 
-Read: the statement of applicability, the treatment plan, the evidence index or compliance platform export, policies and procedures, and the records the agent can reach (ticket exports, review records, logs exported by the reader, training records, supplier assessments). Ask the reader for the audit period the next audit will cover and which systems are the source of truth for people, assets and changes.
+Read: the statement of applicability, the treatment plan, the evidence index or compliance platform export, policies and procedures, and the records the agent can reach (ticket exports, review records, logs exported by the reader, training records, supplier assessments). Ask the reader for the audit period the next audit will cover and which systems are the source of truth for people, assets and changes. Write the period's start and end dates in the notes; a record outside them supports nothing.
 
 ## Step 1: list the claims
 
@@ -34,7 +34,7 @@ The type sets what evidence proves it:
 
 ## Step 3: sample and grade the evidence
 
-Sample sizes that hold up for a first pass: for recurring controls, every run in the audit period up to the last four; for event-driven controls, five from the population, chosen across the period and not from the last week; for configured controls, the current export plus one check that the population is complete (every laptop, every production account). Grade each control:
+Sample sizes that hold up for a first pass: for recurring controls, every run in the audit period up to the last four; for event-driven controls, five from the population, chosen across the period and not from the last week; for configured controls, the current export plus one check that the population is complete (every laptop, every production account), and the mechanism that keeps the setting true (drift alert, enforced policy, periodic re-export); without one, the control is supported only as of the export date. Where a population is smaller than the sample, test all of it. An empty population needs a check that it really was empty: no leaver records is fine in a year with no leavers, and untested if the HR export shows departures. Grade each control:
 
 - **Supported**: records exist for the sample, are dated in the period, cover the population and show the practice ran.
 - **Design only**: a policy or procedure exists, no operating record.
@@ -45,11 +45,11 @@ Sample sizes that hold up for a first pass: for recurring controls, every run in
 
 ## Step 4: propose the status
 
-The proposed status follows the weakest grade in the sample. Supported keeps implemented; design only or stale becomes implemented, evidence pending or in progress with an action; missing becomes planned or in progress; contradicted becomes in progress with a correction raised to the owner at once. For each change, write one line on why, with the record paths. Where the standard's expectations on what the status column means matter, run a framework lookup rather than assuming.
+The proposed status follows the weakest grade in the sample. Supported keeps implemented; design only or stale becomes implemented, evidence pending or in progress with an action; missing becomes planned or in progress; contradicted becomes in progress with a correction raised to the owner at once. For each change, write one line on why, with the record paths, and mark that the statement needs updating, so the approver changes the governed document before the audit. Where the standard's expectations on what the status column means matter, run a framework lookup rather than assuming.
 
 ## Step 5: write the gap list
 
-Write `evidence-gaps.md` grouped by owner role: control id, what is missing, the exact artefact that would close it, and how long before it can exist (a quarterly control needs a quarter). Put contradictions first; they are likely audit findings and may be incidents. Ask before overwriting either file.
+Write `evidence-gaps.md` grouped by owner role: control id, what is missing, the exact artefact that would close it, and how long before it can exist (a quarterly control needs a quarter). Put contradictions first; they are likely audit findings and may be incidents. Then rank by how likely the auditor is to sample the control: controls tied to top risks, recent incidents or customer claims come before low-traffic ones. Ask before overwriting either file.
 
 ## What good looks like
 

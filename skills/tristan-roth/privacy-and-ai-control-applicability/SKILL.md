@@ -22,9 +22,9 @@ For privacy: the records of processing activities, customer contracts and data p
 
 ## Step 1: settle roles, activity by activity
 
-**Privacy.** For each processing activity, decide whether the company determines why and how the data is processed (controller), processes it only on a customer's instructions (processor), or both across different activities. Base each decision on the contract and on what actually happens, not on the label the company prefers. Patterns to check: every employer is a controller for staff data; marketing lists, product analytics and support tooling are usually controller activities even for a company that sells a processor service; using customer data to improve the product moves that use towards controller.
+**Privacy.** For each processing activity, decide whether the company determines why and how the data is processed (controller), processes it only on a customer's instructions (processor), decides jointly with a partner (joint controller, which needs a GDPR Article 26 arrangement), or holds different roles across different activities. Base each decision on the contract and on what actually happens, not on the label the company prefers. Patterns to check: every employer is a controller for staff data; marketing lists, product analytics and support tooling are usually controller activities even for a company that sells a processor service; using customer data to improve the product moves that use towards controller.
 
-**AI.** For each AI system, record what the company does with it: develops or trains a model, builds a system on a third-party model (prompts, retrieval, tools, fine-tuning), supplies AI components to others, or uses an AI tool internally. One company often holds several roles across systems. Building a product feature on a hosted model is more than use.
+**AI.** For each AI system, record what the company does with it: develops or trains a model, builds a system on a third-party model (prompts, retrieval, tools, fine-tuning), supplies AI components to others, or uses an AI tool internally. One company often holds several roles across systems. Building a product feature on a hosted model is more than use. Where the EU AI Act may apply, record the likely provider or deployer classification per system as a flag for the legal owner, not a determination.
 
 Write the role table in `role-and-scope-notes.md` with the source for each decision.
 
@@ -34,7 +34,7 @@ Which additional controls are candidates depends on the roles from step 1. Run a
 
 ## Step 3: decide each control
 
-For each candidate control record: control id (bare identifier), included or excluded, the role and the activity or AI system that drives it, the risk or impact assessment id, the obligation or commitment id where a law or contract is the reason, implementation status, evidence path and owner role. Exclude only on a fact about roles or activities ("no AI system is trained or fine-tuned by the company; all models are used through vendor APIs without customer data in training; see the AI inventory and vendor terms"). Revisit triggers belong in every exclusion.
+For each candidate control record: control id (bare identifier), included or excluded, the role and the activity or AI system that drives it, the risk or impact assessment id, the obligation or commitment id where a law or contract is the reason, implementation status, evidence path and owner role. Exclude only on a fact about roles or activities ("no AI system is trained or fine-tuned by the company; all models are used through vendor APIs without customer data in training; see the AI inventory and vendor terms"). Every exclusion carries a revisit trigger that names its signal (a contract renewal, a new model vendor, a roadmap event, an annual re-check) and the role that watches for it. Flag, outside the control list, obligations the role table triggers: whether the company needs a data protection officer (GDPR Article 37) and which activities transfer data outside the EU and need Chapter V safeguards.
 
 ## Step 4: connect to the security statement
 
@@ -42,7 +42,7 @@ Many additional controls are delivered by practices the security statement alrea
 
 ## Step 5: write the extension
 
-Write `soa-extension.csv` in the same column layout as the security statement plus three columns: extension, role, activity or system. Add the open role questions, the controls awaiting a fact, and the approver role to the notes. Ask before overwriting either file.
+Write `soa-extension.csv` in the same column layout as the security statement plus three columns: extension, role, activity or system. Add the open role questions, the controls awaiting a fact, and the approver role to the notes. An extension also adds management system elements that are not controls (for AI, impact assessment, objectives and responsibilities, for example); run a framework lookup and list them separately for the approver, since the control flow will not surface them. Ask before overwriting either file.
 
 ## What good looks like
 

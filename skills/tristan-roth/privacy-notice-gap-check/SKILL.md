@@ -22,11 +22,11 @@ Read every notice in use: the website and product privacy notice, the cookie not
 
 ## Step 1: map the collection points
 
-List every place personal data enters the company: account sign-up, contact and demo forms, newsletter, checkout, product telemetry, support channels, job applications, events, data received from customers, partners or data providers. For each, note who the people are, whether data comes from them directly or from another source, which notice covers it, and how the notice is surfaced (a link at the point of collection, or buried in a footer). Data obtained from someone other than the person falls under Article 14 of the GDPR rather than Article 13, which brings the source of the data and the timing of the information into play; mark those points clearly, because they are the most often forgotten.
+List every place personal data enters the company: account sign-up, contact and demo forms, newsletter, checkout, product telemetry, support channels, job applications, events, data received from customers, partners or data providers. For each, note who the people are, whether data comes from them directly or from another source, which notice covers it, and how the notice is surfaced (a link at the point of collection, or buried in a footer). Data obtained from someone other than the person falls under Article 14 of the GDPR rather than Article 13, which brings the source of the data and the timing of the information into play; mark those points clearly, because they are the most often forgotten. Check the timing too: Article 14(3) sets a reasonable period of at most one month after obtaining the data, earlier at the first communication or disclosure, and Article 14(5) holds the narrow exemptions. Note any collection point that may reach children, and the national consent age under Article 8 that applies there.
 
 ## Step 2: check what the site and product really collect
 
-Notices fail most often on what nobody wrote down. With the reader, open the public site and the product in a browser and use its developer tools to list cookies, local storage and third-party requests on first load, before any consent choice, and again after accepting and after refusing. Compare with the cookie notice and the vendor list. Trackers that fire before consent are a practice problem, not a wording problem; route them to the consent tool owner.
+Notices fail most often on what nobody wrote down. With the reader, open the public site and the product in a browser and use its developer tools to list cookies, local storage and third-party requests on first load, before any consent choice, and again after accepting and after refusing. Compare with the cookie notice and the vendor list. Trackers that fire before consent are a practice problem, not a wording problem; route them to the consent tool owner. Check the consent tool as a record too: choices are logged, refusing is as easy as accepting, and withdrawal is as easy as giving consent (Article 7(3)). Non-essential cookies need consent under the ePrivacy rules whatever legal basis the notice claims.
 
 ## Step 3: build the gap matrix
 
@@ -38,11 +38,11 @@ Rows are processing activities from the record and collection points from Step 1
 - **Vague**: present but not informative ("trusted partners", "as long as necessary", "to improve our services").
 - **Stale**: describes vendors, products or purposes that no longer exist.
 
-Also check readability against Article 12: concise, plain language, easy to find. A notice that needs a lawyer to parse fails even when every item is present.
+Also check readability against Article 12: concise, plain language, easy to find. A notice that needs a lawyer to parse fails even when every item is present. Check that each rights channel the notice names works: with the privacy lead's go-ahead, send a test request through it and record whether it reached an owner who could answer within the one month Article 12(3) allows.
 
 ## Step 4: decide the fix and draft the redline
 
-For each gap, decide which side moves. If the processing should not happen as it does (no legal basis, trackers before consent, a vendor without an agreement), the fix is the practice; list it for the owner and do not paper over it in the notice. Otherwise, draft the notice change in `notice-redline.md` as old text, new text and the gap it closes. Prefer a layered notice: a short first layer at each collection point and the full notice one click away. Keep retention specific (a period and its trigger), name recipient categories precisely, and state the transfer safeguard actually in the contracts.
+For each gap, decide which side moves. If the processing should not happen as it does (no legal basis, trackers before consent, a vendor without an agreement), the fix is the practice; list it for the owner and do not paper over it in the notice. Otherwise, draft the notice change in `notice-redline.md` as old text, new text and the gap it closes. Prefer a layered notice: a short first layer at each collection point and the full notice one click away. Keep retention specific (a period and its trigger), name recipient categories precisely, and state the transfer safeguard actually in the contracts. Give the redline a proposed version number and effective date, and note where the version in force today will be archived, so anyone can later compare the notice at the time of processing with the record.
 
 ## What good looks like
 

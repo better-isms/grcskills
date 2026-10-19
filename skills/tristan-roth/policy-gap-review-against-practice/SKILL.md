@@ -21,14 +21,14 @@ Read the policies in scope with their version and approval record. Then find wha
 
 ## Step 1: turn each policy into testable statements
 
-Extract every sentence that commits the company to something observable: who does what, how often, within what time, leaving which record. "System owners review access every quarter" is testable. "We take security seriously" is not; note it for the owner as wording to cut or sharpen. Give each statement an id such as `ACC-03`. A substantial policy usually yields 15 to 40 testable statements. Fewer than 10 means the policy is too vague to audit, which is a finding in itself.
+Extract every sentence that commits the company to something observable: who does what, how often, within what time, leaving which record. "System owners review access every quarter" is testable. "We take security seriously" is not; note it for the owner as wording to cut or sharpen. Give each statement an id such as `ACC-03`. A substantial policy usually yields 15 to 40 testable statements. Fewer than 10 means the policy is too vague to audit, which is a finding in itself. Add statements for the policy's own record: approved, reviewed by its due date, published where staff find it. An unapproved or overdue policy is a gap whatever the practice.
 
 ## Step 2: find the evidence for each statement
 
 For each statement, find the record that would prove it and sample it:
 
 - Recurring activity: the last three or four occurrences (a quarterly review means the last year).
-- Event-driven activity: 5 to 10 items from the population (leavers, changes, new vendors, incidents), picked across the period, not the most recent five.
+- Event-driven activity: 5 to 10 items from the population (leavers, changes, new vendors, incidents), picked across the period, not the most recent five. Build the population from the source of truth (HR leaver export, deployment history, vendor payments), not the ticket queue: a leaver who never got a ticket never shows up in a ticket sample.
 - Configuration: the setting itself, read where it lives, not a screenshot in a folder.
 
 Record what you looked at, by path or system, and what you saw. Then classify:
@@ -52,7 +52,7 @@ Where a framework expects a particular policy element or frequency, run a framew
 
 ## Step 4: write the outputs
 
-`gap-table.md`: one row per statement with the id, the policy text quoted exactly, the evidence examined and sample, the classification, the proposed side to fix and the owner role.
+`gap-table.md`: a header with the review date, the evidence window and the policy versions tested, then one row per statement with the id, the policy text quoted exactly, the evidence examined and sample, the classification, the proposed side to fix, the owner role, and an empty decision column (accepted, rejected or deferred, with the owner's reason). Add a short section listing contradictions found between policies, such as two review frequencies for the same activity or two definitions of sensitive data. Accepted practice fixes go into the finding or corrective action tracker so the next audit can verify closure.
 
 `fix-list.md`: grouped by owner, each fix written as an action someone can start tomorrow ("change the access policy sentence on review frequency to every six months for low-risk systems", "create a recurring ticket for the backup restore test with the report attached"), with effort S, M or L. Order the list: weaker practice on high-risk or contractual commitments first, then missing records, then text corrections. End with the "not observable" list so the owner knows what to bring to the review meeting.
 

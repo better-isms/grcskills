@@ -30,21 +30,21 @@ For each framework, record the reference by bare identifier only, taken from the
 
 - **Covers**: the control, as operated, fully supports the reference. Use only after reading both texts.
 - **Partial**: supports it with a stated difference (scope, frequency, a missing element). Write the difference.
-- **Contributes**: helps but is not enough alone.
+- **Contributes**: helps but is not enough alone. Where several controls contribute to one reference, judge whether the combination covers it, record that judgement, and name one control as the owner of the reference.
 
 Do not copy requirement text into the map. One control usually maps to one to five references per framework; a control mapped to twenty is too broad to sample.
 
 ## Step 3: find what does not overlap
 
-List, per framework, the items no internal control covers yet, and the items unique to one framework. Typical examples are legal notification deadlines that exist only in a regulation, report sections specific to an attestation, management-system elements specific to a certification, and outcome-level items in a voluntary framework that the company chose to target. For public law in scope, cite the article when it helps the owner find it, for example GDPR Article 30 for records of processing, GDPR Article 32 for security of processing, GDPR Article 33 for breach notification to the authority, NIS 2 Article 21 for risk management measures and NIS 2 Article 23 for incident reporting. Each gap becomes a new internal control or an action, not a framework-specific side process.
+List, per framework, the items no internal control covers yet, and the items unique to one framework. Typical examples are legal notification deadlines that exist only in a regulation, report sections specific to an attestation, management-system elements specific to a certification, and outcome-level items in a voluntary framework that the company chose to target. For public law in scope, cite the article when it helps the owner find it, for example GDPR Article 30 for records of processing, GDPR Article 32 for security of processing, GDPR Article 33 for breach notification to the authority, NIS 2 Article 21 for risk management measures and NIS 2 Article 23 for incident reporting. Each gap becomes a new internal control or an action, not a framework-specific side process, with a due date set by the nearest audit or legal deadline. Where a certification expects an applicability statement, a framework item with no internal control needs either a new control or a recorded reason for excluding it.
 
 ## Step 4: plan evidence once
 
-Write `evidence-plan.csv` with one row per artefact: artefact, internal control ids, every framework reference it supports, owner role, collection frequency, retention, and the period each audit samples. Use the most demanding frequency and the longest audit period among the mapped frameworks, so one collection serves all audits. Flag artefacts where frameworks pull in different directions (one wants a quarterly review, another an annual one; one audit period ends in a different month) and propose one schedule.
+Write `evidence-plan.csv` with one row per artefact: artefact, internal control ids, every framework reference it supports, owner role, collection frequency, retention, and the period each audit samples. Use the most demanding frequency and the longest audit period among the mapped frameworks, so one collection serves all audits. Flag artefacts where frameworks pull in different directions (one wants a quarterly review, another an annual one; one audit period ends in a different month) and propose one schedule. Check the format too: if one auditor accepts a screenshot and another wants the system record or ticket, collect the stronger format once.
 
 ## Step 5: write the notes
 
-Write `mapping-notes.md`: the sources used for each framework, the count of controls and references, the coverage per framework (covers, partial, none), the unique items, and the decisions the reader needs to make. Ask before overwriting any file.
+Write `mapping-notes.md`: the sources used for each framework with their edition or version and the date of any lookup (a map silently rots when a framework is revised), the count of controls and references, the coverage per framework (covers, partial, none), the unique items, and the decisions the reader needs to make. Ask before overwriting any file.
 
 ## What good looks like
 
