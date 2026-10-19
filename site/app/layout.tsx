@@ -3,6 +3,7 @@ import { Inter_Tight, JetBrains_Mono } from 'next/font/google';
 import Link from 'next/link';
 import { Analytics } from '@vercel/analytics/next';
 import { COPILOT_FOOTER_URL, meta, SITE_URL } from '@/lib/content';
+import { HOME_DESCRIPTION, HOME_TITLE, pageMeta } from '@/lib/seo';
 import './globals.css';
 
 // next/font downloads the files at build time and serves them from this
@@ -13,19 +14,20 @@ const mono = JetBrains_Mono({ subsets: ['latin'], weight: ['400'], variable: '--
 // Cookieless Vercel Web Analytics, off unless the build sets the flag.
 const ANALYTICS = process.env.NEXT_PUBLIC_GRCSKILLS_ANALYTICS === '1';
 
-const DESCRIPTION = `Open GRC skills for AI agents. Paste the prompt into your agent; it runs ${meta.count} practitioner skills against your files and writes a 30-day plan.`;
+// Defaults for every page; each page sets its own title, description, canonical
+// and image through pageMeta().
+// No canonical or og:url here: a page that does not set its own must not
+// inherit the home page's.
+const base = pageMeta({ title: HOME_TITLE, description: HOME_DESCRIPTION, path: '/', absoluteTitle: true, imageAlt: 'grcskills: one prompt, your setup reviewed' });
+const { url: _url, ...openGraph } = (base.openGraph ?? {}) as Record<string, unknown>;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: { default: 'Open GRC skills for AI agents | grcskills', template: '%s | grcskills' },
-  description: DESCRIPTION,
-  openGraph: {
-    type: 'website',
-    siteName: 'grcskills',
-    images: [{ url: '/og.png', width: 1200, height: 630, alt: 'grcskills: one prompt, your setup reviewed' }],
-  },
-  twitter: { card: 'summary_large_image' },
-  icons: { icon: '/favicon.svg' },
+  ...base,
+  openGraph,
+  title: { default: HOME_TITLE, template: '%s | grcskills' },
+  alternates: undefined,
+  icons: { icon: [{ url: '/favicon.ico', sizes: '32x32' }, { url: '/favicon.svg', type: 'image/svg+xml' }] },
   other: { 'grcskills-build': meta.sha, 'grcskills-tag': meta.tag },
 };
 

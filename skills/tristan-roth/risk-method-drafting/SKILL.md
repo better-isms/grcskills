@@ -9,6 +9,7 @@ description: |
   repeatable", "risk matrix for our ISMS". Drafts a short method with likelihood and impact anchors
   in the company's own money, hours and records, a scoring rule, an acceptance threshold with an
   authority ladder, reassessment triggers, and a calibration test on five sample risks.
+summary: "A risk assessment method you can repeat: likelihood and impact scales, risk appetite, acceptance criteria and who may accept what."
 category: risk
 frameworks: [iso27001, iso27701, iso42001, dora, general]
 tags: [risk-method, risk-criteria, risk-appetite, risk-acceptance, scoring]

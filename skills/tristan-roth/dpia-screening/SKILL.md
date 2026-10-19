@@ -9,6 +9,7 @@ description: |
   processing with numbers, tests it against the GDPR cases, the supervisory authority's list and
   the EDPB-endorsed criteria, reaches a reasoned outcome (required, recommended, not required) with
   a re-screen trigger, and keeps a screening log for accountability.
+summary: "A documented DPIA screening for a feature, vendor or AI use: the processing described with numbers, the high-risk tests and a recorded decision."
 category: privacy
 frameworks: [gdpr, iso27701]
 tags: [dpia, screening, high-risk-processing, privacy-by-design]

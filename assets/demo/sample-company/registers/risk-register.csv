@@ -1,0 +1,9 @@
+id,risk,owner,likelihood (1-5),impact (1-5),score,treatment,status,last reviewed
+R1,Ransomware encrypts production database,CTO,3,5,15,Backups,Open,Q1 last year
+R2,Laptop stolen with customer data,,2,4,8,,Open,Q1 last year
+R3,Phishing,IT,4,3,12,Training,Open,Q1 last year
+R4,Cloud region outage,CTO,2,5,10,Accept,Accepted,Q1 last year
+R5,Employee leaves with access,,3,3,9,Access reviews,Open,Q1 last year
+R6,Phishing emails lead to credential theft,Head of Engineering,4,4,16,MFA,Open,Q1 last year
+R7,Key supplier goes out of business,,1,3,3,,Open,Q1 last year
+R8,Developer pushes secrets to the repository,CTO,3,4,12,Secret scanning (planned),Open,Q1 last year

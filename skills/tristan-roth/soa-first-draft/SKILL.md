@@ -9,6 +9,7 @@ description: |
   framework with the inclusion decision, the risk or obligation behind it, an implementation status
   taken from records, an evidence pointer and an owner role, and writes a CSV statement plus notes
   of open decisions.
+summary: "A first statement of applicability from your risk treatment plan: one row per control with the inclusion decision, reason and status."
 category: statement-of-applicability
 frameworks: [iso27001]
 tags: [soa, applicability, risk-treatment, control-selection]

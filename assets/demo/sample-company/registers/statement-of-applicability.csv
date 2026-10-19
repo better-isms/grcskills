@@ -1,0 +1,9 @@
+control ref,applicable,status,justification,evidence
+A.5.1,Yes,Implemented,Policy set exists,policies/information-security-policy.md
+A.5.15,Yes,Implemented,Access control policy,policies/access-control-policy.md
+A.5.19,Yes,Implemented,,
+A.5.24,Yes,Implemented,Incident response plan,policies/incident-response-plan.md
+A.6.3,Yes,Partially implemented,Onboarding training only,
+A.7.4,No,Not applicable,We are fully remote,
+A.8.13,Yes,Implemented,Cloud backups,
+A.8.15,Yes,Planned,,

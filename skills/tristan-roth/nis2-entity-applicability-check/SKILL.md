@@ -8,6 +8,7 @@ description: |
   for us". Works through sector, size, the size-independent cases, entity type, jurisdiction and
   sector-specific law, entity by entity and member state by member state, and writes a reasoned
   applicability memo with the facts each conclusion rests on and what follows from it.
+summary: "A reasoned answer on whether NIS 2 applies: sector, size, entity type, jurisdiction and registration, worked through entity by entity."
 category: gap-readiness
 frameworks: [nis2]
 tags: [applicability, scoping, essential-entity, important-entity, jurisdiction]

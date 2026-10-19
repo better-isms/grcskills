@@ -9,6 +9,7 @@ description: |
   drafts the top-level policy and the topic policies in testable language that reflects what the
   company does, flags commitments that need a decision, and prepares the approval and communication
   record for leadership.
+summary: "An information security policy set sized to your company: the top-level policy plus the few topic policies you need, each with an owner."
 category: policies
 frameworks: [iso27001, soc2, hipaa, gdpr]
 tags: [policy-drafting, information-security-policy, policy-set, governance]

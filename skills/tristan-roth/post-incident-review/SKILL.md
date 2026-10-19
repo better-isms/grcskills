@@ -9,6 +9,7 @@ description: |
   meeting, runs a blameless discussion, finds the contributing factors, and turns them into a few
   owned, dated actions linked to updates of the risk register, controls, playbooks and supplier
   records, then writes the review and an action tracker.
+summary: "A blameless post-incident review: a timeline built from records, contributing factors, and owned actions that change something."
 category: incidents-continuity
 frameworks: [general, iso27001, soc2]
 tags: [post-mortem, lessons-learned, blameless, continual-improvement, incident-response]

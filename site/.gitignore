@@ -10,3 +10,5 @@ next-env.d.ts
 /public/robots.txt
 /public/build.json
 /public/search-index.json
+/public/og.png
+/public/og/

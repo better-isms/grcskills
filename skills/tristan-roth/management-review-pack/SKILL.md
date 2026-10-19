@@ -9,6 +9,7 @@ description: |
   reads". Assembles the facts leadership needs from the registers, audits, incidents and metrics,
   frames each agenda item as a decision with options, checks coverage against the framework with
   a lookup, and drafts the pre-read, the agenda and minutes with a decision and action log.
+summary: "A management review pack leadership will read: the facts from registers, audits and incidents, decisions framed with options, and draft minutes."
 category: audit
 frameworks: [iso27001, iso27701, iso42001]
 tags: [management-review, leadership, metrics, minutes, decisions]

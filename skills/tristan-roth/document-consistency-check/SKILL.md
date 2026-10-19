@@ -9,6 +9,7 @@ description: |
   audit". Extracts the checkable facts from every document (periods, deadlines, scales, roles,
   labels, references), finds contradictions, naming drift and broken references, proposes which
   document owns each fact, and drafts a glossary and a fix list for the owners.
+summary: "A contradiction report across policies, procedures, plans and registers: mismatched retention periods, severity scales, owners and cadences."
 category: policies
 frameworks: [general]
 tags: [consistency, documentation, retention, severity, glossary]

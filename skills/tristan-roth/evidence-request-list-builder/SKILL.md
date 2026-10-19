@@ -8,6 +8,7 @@ description: |
   two weeks to send everything". Normalises each request into owned, dated tasks naming the exact
   artefact, period and source system, separates population requests from sample requests, batches
   the clarification questions, and writes a tracker plus one brief per owner.
+summary: "An evidence tracker built from the auditor's request list: owned, dated tasks naming the exact artefact, period and source system."
 category: evidence
 frameworks: [iso27001, soc2, nis2, dora]
 tags: [evidence, request-list, audit-fieldwork, evidence-tracker]

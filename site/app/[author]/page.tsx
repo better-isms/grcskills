@@ -5,6 +5,7 @@ import JsonLd from '@/components/JsonLd';
 import Row from '@/components/Row';
 import { authors, getAuthor, skillsByAuthor, toRow } from '@/lib/content';
 import { personLd } from '@/lib/ld';
+import { pageMeta } from '@/lib/seo';
 
 export const dynamicParams = false;
 export const generateStaticParams = () => authors.filter((a) => a.skills.length > 0).map((a) => ({ author: a.slug }));
@@ -14,7 +15,7 @@ type Props = { params: Promise<{ author: string }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const a = getAuthor((await params).author);
   if (!a) return {};
-  return { title: a.name, description: `${a.name}, ${a.title}. Author of ${a.skills.length} GRC ${a.skills.length === 1 ? 'skill' : 'skills'} on grcskills.`, alternates: { canonical: `/${a.slug}/` } };
+  return pageMeta({ title: a.name, description: `${a.name}, ${a.title}. Author of ${a.skills.length} GRC ${a.skills.length === 1 ? 'skill' : 'skills'} on grcskills.`, path: `/${a.slug}/`, type: 'profile' });
 }
 
 export default async function AuthorPage({ params }: Props) {

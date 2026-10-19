@@ -5,6 +5,7 @@ description: |
   Use this skill when <the trigger: an audit date, a new vendor, an incident, a review cycle>.
   <What it produces: the file, register, memo or decision.> <One or two more sentences dense
   with the phrases a practitioner would say when they need this.>
+summary: "<One plain line of at most 155 characters for people: what the reader gets.>"
 category: gap-readiness
 frameworks: [general]
 tags: [one-word, another-word]
@@ -14,6 +15,9 @@ tags: [one-word, another-word]
 Template notes (delete this comment block in your copy):
 - `name` equals the folder name: skills/<your-author-slug>/<your-skill-slug>/SKILL.md.
   Kebab-case, at most 54 characters, no standards-body names (ISO, AICPA, PCI, NIST, SOC 2).
+- `description` is for agents: it starts "Use this skill when" and carries the trigger phrases.
+  `summary` is for people: one plain line, 40 to 155 characters, that says what the reader gets
+  (search results, social cards and the site's skill cards show it). Keep it in double quotes.
 - `category`: one of gap-readiness, statement-of-applicability, risk, audit, evidence, vendors,
   policies, privacy, ai-systems, incidents-continuity.
 - `frameworks`: one or more of iso27001, iso27701, iso42001, soc2, pci-dss, gdpr, nis2, dora,

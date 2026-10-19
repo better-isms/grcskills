@@ -9,6 +9,7 @@ description: |
   and certificate scope against the service in use, sorts answers into evidenced, asserted,
   contradicted and evasive, lists the obligations the report puts back on the customer, and writes
   a triage note with follow-up questions and a proposed decision for the owner.
+summary: "A triage of a supplier's questionnaire, report or certificate: scope checked against the service you buy, gaps and the follow-up questions."
 category: vendors
 frameworks: [general, iso27001, soc2, gdpr]
 tags: [vendor-risk, due-diligence, security-questionnaire, assurance-reports]

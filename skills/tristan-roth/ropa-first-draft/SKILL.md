@@ -9,6 +9,7 @@ description: |
   from systems, vendors and team interviews, with purposes, data and subject categories, proposed
   legal bases, recipients, transfers and concrete retention, plus a separate processor record when
   the company processes data for customers, and a notes file of open questions per owner.
+summary: "A first record of processing activities, organised by activity rather than by tool, drafted from systems, vendors and team interviews."
 category: privacy
 frameworks: [gdpr, iso27701]
 tags: [ropa, records-of-processing, data-mapping, legal-basis, retention]

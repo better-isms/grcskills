@@ -9,6 +9,7 @@ description: |
   the customer's view, prices an outage over time in the company's own money and obligations, sets
   recovery time and data loss objectives, maps dependencies, and compares each objective with what
   backups, restore tests, suppliers and people actually allow, listing the gaps for a decision.
+summary: "Recovery objectives you can defend: services seen from the customer, outage cost over time, and RTO and RPO checked against what backups allow."
 category: incidents-continuity
 frameworks: [iso27001, dora, nis2, general]
 tags: [business-continuity, bia, rto, rpo, disaster-recovery, resilience]

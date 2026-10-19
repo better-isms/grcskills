@@ -3,14 +3,16 @@ import JsonLd from './JsonLd';
 import Row from './Row';
 import { SITE_URL, toRow, type Skill } from '@/lib/content';
 
-export default function ListPage({ title, lead, crumbs, list, path }: { title: string; lead: React.ReactNode; crumbs: Crumb[]; list: Skill[]; path: string }) {
+export default function ListPage({ title, lead, intro, crumbs, list, path, listHeading }: { title: string; lead: React.ReactNode; intro?: string; crumbs: Crumb[]; list: Skill[]; path: string; listHeading?: string }) {
   return (
     <div className="page">
       <Breadcrumbs items={crumbs} />
       <header className="page-head">
         <h1>{title}</h1>
         <p className="lead">{lead}</p>
+        {intro && <p className="intro">{intro}</p>}
       </header>
+      {listHeading && <h2 className="list-h">{listHeading}</h2>}
       {list.length ? (
         <ul className="rows">{list.map((s) => <Row key={s.slug} r={toRow(s)} />)}</ul>
       ) : (
@@ -22,6 +24,7 @@ export default function ListPage({ title, lead, crumbs, list, path }: { title: s
           '@type': 'CollectionPage',
           name: `${title} | grcskills`,
           url: `${SITE_URL}${path}`,
+          ...(intro ? { description: intro } : {}),
           mainEntity: {
             '@type': 'ItemList',
             numberOfItems: list.length,

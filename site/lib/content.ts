@@ -19,6 +19,10 @@ export type Skill = {
   words: number;
   references: Reference[];
   repoPath: string;
+  related: string[];
+  dateModified: string | null;
+  datePublished: string | null;
+  image: string;
 };
 export type Author = {
   slug: string;
@@ -30,13 +34,15 @@ export type Author = {
   bioHtml: string;
   initials: string;
   skills: string[];
+  dateModified: string | null;
 };
-export type Category = { slug: string; label: string; count: number };
-export type Framework = { tag: string; label: string; count: number };
+export type Category = { slug: string; label: string; count: number; intro: string; dateModified: string | null };
+export type Framework = { tag: string; label: string; count: number; intro: string; indexable: boolean; dateModified: string | null };
 export type Meta = {
   sha: string;
   tag: string;
   builtAt: string;
+  dateModified: string | null;
   count: number;
   prompt: string;
   contributePrompt: string;
@@ -75,9 +81,11 @@ export const featuredSkill = () => getSkill(FEATURED_SLUG) ?? skills[0];
 export const copilotUrl = (slug: string) => `https://www.ismscopilot.com/mcp?ref=grcskills-${slug}`;
 export const COPILOT_FOOTER_URL = 'https://www.ismscopilot.com/?ref=grcskills-footer';
 export const githubUrl = (repoPath: string) => `${meta.repoUrl}/blob/${meta.tag}/${repoPath}`;
+export const githubFolderUrl = (repoPath: string) => `${meta.repoUrl}/tree/${meta.tag}/${repoPath.replace(/\/SKILL\.md$/, '')}`;
+export const relatedTo = (s: Skill) => s.related.map(getSkill).filter((x): x is Skill => Boolean(x));
 
 export const installCommands = (slug: string) => ({
-  npx: `npx skills add ${meta.repo} --skill ${slug}`,
+  npx: `npx skills add ${meta.repo}#${meta.tag} --skill ${slug}`,
   plugin: `/plugin marketplace add ${meta.repo}\n/plugin install grcskills@grcskills`,
   clone: `git clone --branch ${meta.tag} ${meta.repoUrl}`,
 });

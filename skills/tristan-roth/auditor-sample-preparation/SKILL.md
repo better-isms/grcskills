@@ -10,6 +10,7 @@ description: |
   populations an auditor is likely to sample, builds each from the system of record with the
   query that produced it, checks completeness and the evidence behind a dry-run sample, and
   writes a readiness file per population plus a list of gaps to fix before fieldwork.
+summary: "The populations an auditor is likely to sample, built from the system of record and dry-run checked, with the gaps to fix before fieldwork."
 category: audit
 frameworks: [iso27001, soc2, pci-dss]
 tags: [audit-sampling, populations, evidence, fieldwork, readiness]

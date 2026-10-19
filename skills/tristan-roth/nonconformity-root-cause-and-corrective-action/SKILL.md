@@ -9,6 +9,7 @@ description: |
   corrective action, runs a root cause analysis that stops at a cause the company controls, checks
   for the same problem elsewhere, and drafts a response with actions, owners, dates and the evidence
   that will prove effectiveness at the next audit.
+summary: "A corrective action plan an auditor will accept: correction separated from corrective action, a real root cause and an effectiveness check."
 category: audit
 frameworks: [iso27001, iso27701, iso42001, soc2, general]
 tags: [nonconformity, corrective-action, root-cause, capa, audit-response]

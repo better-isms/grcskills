@@ -9,7 +9,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
-import { validate, checkChanged, lookupTemplate, SETUP_PROMPT_URL, hashTitle, loadTitleHashes, titleFindings, requirementFindings, TITLE_HASH_FILE, DESCRIPTION_MAX, agentActionFinding } from './validate.mjs';
+import { validate, checkChanged, lookupTemplate, SETUP_PROMPT_URL, hashTitle, loadTitleHashes, titleFindings, requirementFindings, TITLE_HASH_FILE, DESCRIPTION_MAX, SUMMARY_MAX, summaryProblems, agentActionFinding, strayskillFiles } from './validate.mjs';
 
 const REPO = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const CLI = path.join(REPO, 'tools', 'validate.mjs');
@@ -25,6 +25,7 @@ function skillMd(slug, o = {}) {
     `title: ${o.title ?? 'Sample practitioner skill'}`,
     'description: |',
     `  ${o.description ?? 'Use this skill when a team needs a sample practitioner workflow for tests, with enough words to pass the description length check.'}`,
+    ...(o.summaryLine !== undefined ? (o.summaryLine === null ? [] : [o.summaryLine]) : [`summary: "${o.summary ?? 'A sample practitioner workflow that the validator tests can load and check.'}"`]),
     `category: ${o.category ?? 'risk'}`,
     `frameworks: [${(o.frameworks ?? ['general']).join(', ')}]`,
     ...(o.extraFrontmatter ?? []),
@@ -97,6 +98,14 @@ test('valid fixture passes', () => expectClean(makeRepo()));
 // ---- layout and frontmatter -------------------------------------------------
 
 test('root SKILL.md is rejected', () => expectRule(makeRepo({ extra: { 'SKILL.md': 'x' } }), 'no-root-skill'));
+test('a SKILL.md outside skills/<author>/<skill>/ is rejected (the skills CLI would install it)', () => {
+  expectRule(makeRepo({ extra: { 'templates/SKILL.md': 'x' } }), 'stray-skill');
+  expectRule(makeRepo({ extra: { 'docs/examples/skill.md': 'x' } }), 'stray-skill');
+  expectRule(makeRepo({ extra: { 'skills/jane-doe/sample-skill/references/SKILL.md': 'x' } }), 'stray-skill');
+});
+test('a renamed template and SKILL.md files in skipped build folders pass', () =>
+  expectClean(makeRepo({ extra: { 'templates/SKILL.template.md': 'x', 'site/node_modules/pkg/SKILL.md': 'x', 'site/out/x/SKILL.md': 'x' } })));
+test('the repository has no SKILL.md outside skills/', () => assert.deepEqual(strayskillFiles(REPO), []));
 test('name must equal folder', () => expectRule(makeRepo({ skill: skillMd('sample-skill', { name: 'other-name' }) }), 'name'));
 test('description must start with "Use this skill when"', () =>
   expectRule(makeRepo({ skill: skillMd('sample-skill', { description: 'Helps teams with a sample workflow used in tests, long enough to pass the length check for descriptions.' }) }), 'description'));
@@ -104,6 +113,31 @@ const descOfLength = (n) => { const head = 'Use this skill when '; return head +
 test('description cap is the Agent Skills limit, 1024', () => assert.equal(DESCRIPTION_MAX, 1024));
 test('a 1024-character description passes', () => expectClean(makeRepo({ skill: skillMd('sample-skill', { description: descOfLength(1024) }) })));
 test('a 1025-character description is rejected', () => expectRule(makeRepo({ skill: skillMd('sample-skill', { description: descOfLength(1025) }) }), 'description'));
+test('summary cap is 155 characters', () => assert.equal(SUMMARY_MAX, 155));
+const sumOfLength = (n) => `A sample ${'x'.repeat(n - 'A sample '.length)}`;
+test('a 155-character summary passes', () => expectClean(makeRepo({ skill: skillMd('sample-skill', { summary: sumOfLength(155) }) })));
+test('a 156-character summary is rejected', () => expectRule(makeRepo({ skill: skillMd('sample-skill', { summary: sumOfLength(156) }) }), 'summary'));
+test('a missing summary is rejected', () => expectRule(makeRepo({ skill: skillMd('sample-skill', { summaryLine: null }) }), 'summary'));
+test('a summary that repeats the agent trigger is rejected', () =>
+  expectRule(makeRepo({ skill: skillMd('sample-skill', { summary: 'Use this skill when a team needs a sample practitioner workflow.' }) }), 'summary'));
+test('a summary with Markdown is rejected', () => assert.ok(summaryProblems('A **bold** sample summary that is long enough to pass the floor.').length));
+test('an unquoted summary with ": " is rejected (YAML parsers would fail)', () =>
+  expectRule(makeRepo({ skill: skillMd('sample-skill', { summaryLine: 'summary: A sample workflow: the steps, the checks and the files it writes.' }) }), 'summary'));
+test('an unquoted summary is rejected even without YAML-sensitive characters', () =>
+  expectRule(makeRepo({ skill: skillMd('sample-skill', { summaryLine: 'summary: A sample workflow with the steps, the checks and the files it writes.' }) }), 'summary'));
+test('a single-quoted summary is rejected (the contract is double quotes)', () =>
+  expectRule(makeRepo({ skill: skillMd('sample-skill', { summaryLine: "summary: 'A sample workflow with the steps, the checks and the files it writes.'" }) }), 'summary'));
+test('every library skill has a quoted summary within the cap', () => {
+  for (const author of fs.readdirSync(path.join(REPO, 'skills')).filter((d) => !d.startsWith('.'))) {
+    for (const slug of fs.readdirSync(path.join(REPO, 'skills', author))) {
+      const f = path.join(REPO, 'skills', author, slug, 'SKILL.md');
+      if (!fs.existsSync(f)) continue;
+      const m = fs.readFileSync(f, 'utf8').match(/^summary: "([^"]*)"$/m);
+      assert.ok(m, `${slug}: summary line`);
+      assert.ok(m[1].length <= SUMMARY_MAX, `${slug}: ${m[1].length} characters`);
+    }
+  }
+});
 test('unknown category is rejected', () => expectRule(makeRepo({ skill: skillMd('sample-skill', { category: 'marketing' }) }), 'category'));
 test('unknown framework tag is rejected', () => expectRule(makeRepo({ skill: skillMd('sample-skill', { frameworks: ['iso27001', 'iso9001'] }) }), 'frameworks'));
 test('unknown frontmatter key is rejected', () => expectRule(makeRepo({ skill: skillMd('sample-skill', { extraFrontmatter: ['prefix: true'] }) }), 'frontmatter'));
@@ -451,3 +485,20 @@ test('CLI --changed mode passes for own files', () => {
 
 // Keep the helper referenced so linters do not flag it.
 test('rules helper returns rule ids', () => assert.ok(Array.isArray(rules(makeRepo()))));
+
+// The one prompt has a single source, prompts/, which the site reads; README
+// carries the same text byte for byte, and the prompt pins the current release.
+test('README carries the one prompt and the contribution prompt from prompts/', () => {
+  const readme = fs.readFileSync(path.join(REPO, 'README.md'), 'utf8');
+  for (const f of ['setup-review.txt', 'contribute.txt']) {
+    const text = fs.readFileSync(path.join(REPO, 'prompts', f), 'utf8').trim();
+    assert.ok(!text.includes('\n'), `${f} is one line`);
+    assert.ok(readme.includes(`\n> ${text}\n`), `README.md quotes prompts/${f} exactly`);
+  }
+});
+test('the one prompt pins the release tag the marketplace pins', () => {
+  const ref = JSON.parse(fs.readFileSync(path.join(REPO, '.claude-plugin', 'marketplace.json'), 'utf8')).plugins[0].source.ref;
+  const prompt = fs.readFileSync(path.join(REPO, 'prompts', 'setup-review.txt'), 'utf8');
+  assert.ok(prompt.includes(`release ${ref} of https://github.com/${'better-isms/grcskills'}`), `prompt pins ${ref}`);
+  assert.equal(prompt.match(/v\d{4}\.\d{2}\.\d{2}(?:\.\d+)?/g)?.length, 1);
+});

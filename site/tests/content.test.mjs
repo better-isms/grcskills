@@ -2,7 +2,9 @@
 // the build (design doc "Site rendering boundary", acceptance I15).
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { loadContent, ContentError, isAllowedHref, CAPS } from '../scripts/content-lib.mjs';
+import { loadContent, ContentError, isAllowedHref, CAPS, relatedSkills } from '../scripts/content-lib.mjs';
+import { CATEGORY_INTROS, FRAMEWORK_INTROS } from '../scripts/intros.mjs';
+import { firstSentence } from '../lib/text.ts';
 import { repoWith, skillMd, AUTHOR } from './fixtures.mjs';
 
 const render = (body, opts = {}) => loadContent(repoWith(skillMd({ body }), opts)).skills[0];
@@ -43,12 +45,12 @@ test('javascript:, data:, vbscript:, http: and protocol-relative links lose thei
 });
 
 test('https links survive with rel=nofollow; relative links resolve to site or GitHub', () => {
-  const s = render('[law](https://eur-lex.europa.eu/eli/reg/2016/679/oj)\n\n[ref](references/rubric.md)\n\n[tpl](../../../templates/SKILL.md)', {
+  const s = render('[law](https://eur-lex.europa.eu/eli/reg/2016/679/oj)\n\n[ref](references/rubric.md)\n\n[tpl](../../../templates/SKILL.template.md)', {
     refs: { rubric: '# Scoring rubric\n\nBody.' },
   });
   assert.match(s.html, /href="https:\/\/eur-lex\.europa\.eu\/eli\/reg\/2016\/679\/oj" rel="nofollow noopener noreferrer"/);
   assert.match(s.html, /href="\/skill\/fixture-skill\/rubric\/"/);
-  assert.match(s.html, /href="https:\/\/github\.com\/better-isms\/grcskills\/blob\/main\/templates\/SKILL\.md"/);
+  assert.match(s.html, /href="https:\/\/github\.com\/better-isms\/grcskills\/blob\/main\/templates\/SKILL\.template\.md"/);
   assert.equal(s.references[0].title, 'Scoring rubric');
   assert.doesNotMatch(s.references[0].html, /<h1/);
 });
@@ -109,4 +111,30 @@ test('a bidi override in the title fails the build', () => {
 
 test('an author slug that shadows a site route fails the build', () => {
   fails(repoWith(skillMd(), { slug: 'skills' }), /reserved/);
+});
+
+test('summary: required, at most 155 characters, never the agent trigger', () => {
+  assert.equal(CAPS.summary, 155);
+  assert.equal(loadContent(repoWith(skillMd({ summary: `A ${'x'.repeat(153)}` }))).skills[0].summary.length, 155);
+  fails(repoWith(skillMd({ summary: `A ${'x'.repeat(154)}` })), /summary: 156 characters, cap is 155/);
+  fails(repoWith(skillMd({ summary: 'Use this skill when a test needs a fixture skill for pages.' })), /summary: summary is for people/);
+  fails(repoWith(skillMd().replace(/^summary: .*\n/m, '')), /summary: missing/);
+});
+
+test('related skills: same category first, then shared frameworks, never itself', () => {
+  const mk = (slug, category, frameworks) => ({ slug, title: slug, category, frameworks });
+  const all = [mk('a', 'risk', ['iso27001']), mk('b', 'risk', ['soc2']), mk('c', 'audit', ['iso27001']), mk('d', 'audit', ['gdpr']), mk('e', 'risk', ['iso27001', 'general'])];
+  assert.deepEqual(relatedSkills(all[0], all), ['e', 'b', 'c']);
+  assert.deepEqual(relatedSkills(all[3], all), ['c']);
+  assert.deepEqual(relatedSkills(mk('z', 'privacy', ['hipaa']), all), []);
+  assert.equal(relatedSkills(all[0], all, 1).length, 1);
+});
+
+test('intros: two or three sentences, first sentence fits a meta description, no em dash', () => {
+  for (const [k, v] of Object.entries({ ...CATEGORY_INTROS, ...FRAMEWORK_INTROS })) {
+    const n = v.split(/(?<=[.!?])\s+(?=[A-Z])/).length;
+    assert.ok(n >= 2 && n <= 3, `${k}: ${n} sentences`);
+    assert.ok(firstSentence(v).length <= 160, `${k}: first sentence is ${firstSentence(v).length} characters`);
+    assert.ok(!v.includes('\u2014'), `${k}: em dash`);
+  }
 });

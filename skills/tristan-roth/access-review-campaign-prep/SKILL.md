@@ -8,6 +8,7 @@ description: |
   managers" or "our last review was a rubber stamp". Picks the systems in scope, builds account
   populations reconciled against HR, pre-flags leavers, orphans, shared and dormant accounts,
   assigns independent reviewers, defines the decisions to record, and plans the removal follow-up.
+summary: "A ready-to-run access review: systems in scope, account lists reconciled against HR, pre-flagged leavers and admins, and review sheets for managers."
 category: evidence
 frameworks: [iso27001, soc2, hipaa, pci-dss]
 tags: [access-review, user-recertification, joiners-leavers, privileged-access]

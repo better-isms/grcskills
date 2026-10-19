@@ -8,6 +8,7 @@ description: |
   "turn our incidents and findings into risks". Drafts 20 to 40 company-specific risk scenarios from
   the material the agent can reach, scores them against an agreed method, proposes owners and
   treatments, and writes a CSV register plus a notes file of assumptions and questions for owners.
+summary: "A first risk register of 20 to 40 company-specific scenarios, drafted from your own material, with owners and scores to confirm."
 category: risk
 frameworks: [iso27001, soc2, nis2, dora, general]
 tags: [risk-assessment, risk-register, risk-treatment]

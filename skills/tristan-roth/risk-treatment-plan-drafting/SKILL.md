@@ -9,6 +9,7 @@ description: |
   transfer decision into dated actions with an owner, budget, dependency and the record that will
   prove it was done, states the expected residual score and why, and adds interim measures for
   risks that stay high while the work runs. Writes a CSV plan and a short notes file.
+summary: "A risk treatment plan people can execute: dated actions with owners, budget and expected residual risk for each treatment decision."
 category: risk
 frameworks: [iso27001, soc2, general]
 tags: [risk-treatment, treatment-plan, roadmap, residual-risk]

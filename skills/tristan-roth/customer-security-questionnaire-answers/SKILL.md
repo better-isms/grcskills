@@ -9,6 +9,7 @@ description: |
   Drafts every answer from the company's own documents with a source and a confidence level, flags
   answers without evidence and answers that create commitments, checks consistency with past
   answers, and writes an answer sheet plus a list of items for owners to confirm.
+summary: "Draft answers to a customer security questionnaire, each backed by your own documents, with the answers you cannot support flagged for review."
 category: vendors
 frameworks: [general, soc2, iso27001, gdpr]
 tags: [security-questionnaire, sales-security, trust, due-diligence]

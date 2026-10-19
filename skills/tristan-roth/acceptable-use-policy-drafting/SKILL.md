@@ -8,6 +8,7 @@ description: |
   actually read". Finds how people really work (devices, apps, AI tools, travel), puts the choices
   to the reader as decisions, drafts a short plain-language policy with concrete do and do not
   examples, and adds a comprehension check and an acknowledgement text for onboarding.
+summary: "An acceptable use policy staff will actually read, built from how people really use devices, apps, AI tools and remote work."
 category: policies
 frameworks: [general, iso27001, soc2]
 tags: [acceptable-use, ai-usage, byod, remote-work, awareness]

@@ -9,6 +9,7 @@ description: |
   can reach (repo, policy folder, registers, platform exports), ranks the 10 skills that would help
   most with impact, effort and evidence for each, audits what is broken, duplicated or missing, and
   writes a 30-day plan to files in a grc-setup-review folder. Read-only on everything else.
+summary: "The 10 grcskills that fit your setup, an audit of what is broken, duplicated or missing, and a 30-day plan, written to files."
 category: gap-readiness
 frameworks: [general, iso27001, soc2, gdpr, nis2, dora, iso42001, eu-ai-act]
 tags: [onboarding, prioritisation, planning, readiness]

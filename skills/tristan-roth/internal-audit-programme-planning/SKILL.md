@@ -9,6 +9,7 @@ description: |
   audit first". Ranks audit areas by risk, change and past findings, sets how often each is
   audited across the cycle, assigns auditors who are independent of what they audit, sizes the
   effort, and writes a programme, a coverage matrix and a calendar for leadership to approve.
+summary: "An internal audit programme for the cycle: areas ranked by risk and change, a schedule, and who can audit with enough independence."
 category: audit
 frameworks: [iso27001, iso27701, iso42001, soc2]
 tags: [internal-audit, audit-programme, audit-planning, independence]

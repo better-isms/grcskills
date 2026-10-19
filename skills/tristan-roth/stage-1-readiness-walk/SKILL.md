@@ -8,6 +8,7 @@ description: |
   1" or "what would stop the audit". Walks the documentation set the way a certification auditor
   reads it, checks that documents agree with each other and with the records, and writes a list of
   stoppers, likely findings and polish items with an owner and a fix for each.
+summary: "A mock stage 1 review: your documentation read the way a certification auditor reads it, with the issues that would stop the audit."
 category: gap-readiness
 frameworks: [iso27001, iso27701, iso42001]
 tags: [stage-1, readiness, documentation-review, certification, mock-audit]

@@ -9,6 +9,7 @@ description: |
   scale in minutes, decides who is called and how fast, flags any regulatory or contractual clock,
   lists the evidence to preserve, and starts a timestamped triage record that is revisited as facts
   change.
+summary: "A severity call in minutes while an incident is live: classification on your own scale, who to wake up, notification triggers and a started log."
 category: incidents-continuity
 frameworks: [general, iso27001, soc2, nis2, dora]
 tags: [incident-response, severity, triage, escalation, on-call]

@@ -9,6 +9,7 @@ description: |
   audit". Builds a one-page brief per role: what the auditor is likely to ask, the records that
   person should be able to open, the honest way to answer what they do not know, and a short
   mock interview, plus an interview schedule with the evidence each session needs.
+summary: "One-page interview briefs per role, likely auditor questions and mock interviews, so process owners and engineers answer from real records."
 category: audit
 frameworks: [iso27001, soc2, general]
 tags: [audit-interviews, audit-prep, briefing, mock-audit]

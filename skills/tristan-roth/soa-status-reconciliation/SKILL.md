@@ -8,6 +8,7 @@ description: |
   check" or "the auditor found a control marked implemented with no records". Samples the records
   behind every control marked implemented, grades the evidence, proposes a corrected status for each
   row and writes a reconciliation table plus an evidence gap list with owners.
+summary: "A reconciliation of the implemented column in your statement of applicability against sampled records, with every unsupported status flagged."
 category: statement-of-applicability
 frameworks: [iso27001]
 tags: [soa, implementation-status, evidence, reconciliation, audit-readiness]

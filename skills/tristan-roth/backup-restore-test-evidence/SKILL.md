@@ -8,6 +8,7 @@ description: |
   test" or "document the backup restore for the audit". Picks what to restore, writes a test plan
   with success criteria set before the test, records timings against the recovery objectives, and
   produces a signed-off test record with the issues found and their owners.
+summary: "A restore test plan with success criteria set in advance, then a write-up that proves backups recover within your RTO and RPO."
 category: evidence
 frameworks: [iso27001, soc2, dora, hipaa]
 tags: [backup, restore-test, disaster-recovery, rto, rpo]

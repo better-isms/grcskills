@@ -5,6 +5,8 @@
 //   public/llms.txt                when-to-use preamble, install, one line per skill
 //   public/sitemap.xml, robots.txt
 //   public/build.json              build commit SHA and release tag (release check I13)
+//   public/og.png, public/og/**    Open Graph cards (scripts/og-lib.mjs), one per skill,
+//                                  category and framework page
 //
 // Usage: node scripts/build-content.mjs [--repo <library root>]
 // Env:   GRCSKILLS_BUILD_SHA (else VERCEL_GIT_COMMIT_SHA, else git HEAD)
@@ -15,17 +17,23 @@ import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { loadContent, ContentError, SITE_URL, REPO, REPO_URL, FRAMEWORK_LABELS, CATEGORIES, FRAMEWORKS } from './content-lib.mjs';
+import { CATEGORY_INTROS, FRAMEWORK_INTROS } from './intros.mjs';
+import { heroCard, skillCard, listCard, toSvg, toPng } from './og-lib.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const siteDir = path.resolve(here, '..');
 const argRepo = process.argv.indexOf('--repo');
 const repoRoot = path.resolve(argRepo > -1 ? process.argv[argRepo + 1] : path.join(siteDir, '..'));
 
-export const PROMPT =
-  'Clone https://github.com/better-isms/grcskills and read every SKILL.md. Then run the grc-setup-review skill on this workspace: rank the 10 skills that fit my GRC setup, list what looks broken, duplicated or missing, and write a 30-day plan to a file.';
+// The one prompt and the contribution prompt live in prompts/ at the repo root;
+// README.md carries the same text (tools/validate.test.mjs checks it).
+const readPrompt = (name) => fs.readFileSync(path.join(repoRoot, 'prompts', name), 'utf8').trim();
+export const PROMPT = readPrompt('setup-review.txt');
+export const CONTRIBUTE_PROMPT = readPrompt('contribute.txt');
 
-export const CONTRIBUTE_PROMPT =
-  'Read https://github.com/better-isms/grcskills/blob/main/skills/.system/submit-skill/SKILL.md and follow it. Interview me about one GRC job I do well, including my thresholds, examples and the mistakes I see, draft it in the grcskills format, validate it, show me the files, and submit it as a pull request once I say yes.';
+// Framework pages with fewer skills than this are noindex (thin pages) and
+// stay out of the sitemap until they grow.
+export const FRAMEWORK_INDEX_MIN = 3;
 
 function buildSha() {
   const fromEnv = process.env.GRCSKILLS_BUILD_SHA || process.env.VERCEL_GIT_COMMIT_SHA;
@@ -49,6 +57,52 @@ function releaseTag() {
   }
   return tag;
 }
+
+// Commit dates from git, read in one pass over the history of skills/: for
+// each file, the newest and the oldest commit that touched it. The index is
+// also written to .generated/git-dates.json with the commit it was read at.
+// `vercel deploy` uploads the folder without .git, so a build with no history
+// uses that file, but only when its commit equals this build's SHA (run
+// `npm run content` in the release checkout before deploying). Otherwise the
+// dates are left out, with a warning, rather than guessed.
+const DATES_FILE = path.join(siteDir, '.generated', 'git-dates.json');
+let gitIndex;
+function readGitLog() {
+  if (execFileSync('git', ['rev-parse', '--is-shallow-repository'], { cwd: repoRoot, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim() === 'true') return null;
+  const head = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: repoRoot, encoding: 'utf8' }).trim();
+  const log = execFileSync('git', ['log', '--format=%x00%cI', '--name-only', '--', 'skills'], { cwd: repoRoot, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 });
+  const files = {};
+  for (const chunk of log.split('\0').filter(Boolean)) {
+    const [date, ...names] = chunk.trim().split('\n');
+    const iso = new Date(date).toISOString();
+    for (const f of names.filter(Boolean)) {
+      if (!files[f]) files[f] = { newest: iso, oldest: iso };
+      else files[f].oldest = iso; // log runs newest first
+    }
+  }
+  return { sha: head, files };
+}
+function loadGitIndex() {
+  let data = null;
+  try { data = readGitLog(); } catch { data = null; }
+  if (data) {
+    write('.generated/git-dates.json', JSON.stringify(data));
+  } else {
+    try { data = JSON.parse(fs.readFileSync(DATES_FILE, 'utf8')); } catch { data = null; }
+    const sha = buildSha();
+    if (!data || data.sha !== sha) {
+      console.warn(`content: WARNING no git history and no .generated/git-dates.json for ${sha}; JSON-LD dates and sitemap lastmod are left out. Run \`npm run content\` in the release checkout before deploying.`);
+      data = null;
+    }
+  }
+  return new Map(Object.entries(data?.files ?? {}));
+}
+function gitDate(rel, { first = false } = {}) {
+  gitIndex ??= loadGitIndex();
+  const hits = [...gitIndex.entries()].filter(([f]) => f === rel || f.startsWith(`${rel}/`)).map(([, e]) => (first ? e.oldest : e.newest));
+  return hits.length ? hits.sort()[first ? 0 : hits.length - 1] : null;
+}
+const latest = (dates) => dates.filter(Boolean).sort().at(-1) ?? null;
 
 const write = (rel, data) => {
   const file = path.join(siteDir, rel);
@@ -86,8 +140,8 @@ export function buildLlms({ skills, tag }) {
     '',
     '## Install',
     '',
-    '- One skill: `npx skills add better-isms/grcskills --skill <skill-name>`',
-    '- The whole library, interactive: `npx skills add better-isms/grcskills`',
+    `- One skill: \`npx skills add better-isms/grcskills#${tag} --skill <skill-name>\``,
+    `- The whole library, interactive: \`npx skills add better-isms/grcskills#${tag}\``,
     '- Claude Code plugin: `/plugin marketplace add better-isms/grcskills`, then `/plugin install grcskills@grcskills`',
     `- Clone a release: \`git clone --branch ${tag} https://github.com/better-isms/grcskills\``,
     '',
@@ -105,7 +159,7 @@ export function buildLlms({ skills, tag }) {
   ].join('\n');
 }
 
-export function main() {
+export async function main() {
   const tag = releaseTag();
   const sha = buildSha();
   let content;
@@ -124,10 +178,37 @@ export function main() {
     process.exit(1);
   }
 
+  for (const s of skills) {
+    const dir = path.posix.dirname(s.repoPath);
+    s.dateModified = gitDate(dir);
+    s.datePublished = gitDate(s.repoPath, { first: true }) ?? s.dateModified;
+    s.image = `/og/skill/${s.slug}.png`;
+  }
+  const allDates = latest(skills.map((s) => s.dateModified));
+  for (const c of categories) {
+    c.intro = CATEGORY_INTROS[c.slug] ?? '';
+    c.dateModified = latest(skills.filter((s) => s.category === c.slug).map((s) => s.dateModified));
+  }
+  for (const f of frameworks) {
+    f.intro = FRAMEWORK_INTROS[f.tag] ?? '';
+    f.indexable = f.count >= FRAMEWORK_INDEX_MIN;
+    f.dateModified = latest(skills.filter((s) => s.frameworks.includes(f.tag)).map((s) => s.dateModified));
+  }
+  for (const a of authors) a.dateModified = latest(skills.filter((s) => s.author === a.slug).map((s) => s.dateModified));
+  const missing = [
+    ...categories.filter((c) => c.count && !c.intro).map((c) => `category ${c.slug}`),
+    ...frameworks.filter((f) => f.count && !f.intro).map((f) => `framework ${f.tag}`),
+  ];
+  if (missing.length) {
+    console.error(`content: no intro for ${missing.join(', ')}; add one to scripts/intros.mjs`);
+    process.exit(1);
+  }
+
   const meta = {
     sha,
     tag,
     builtAt: new Date().toISOString(),
+    dateModified: allDates,
     count: skills.length,
     prompt: PROMPT,
     contributePrompt: CONTRIBUTE_PROMPT,
@@ -142,6 +223,7 @@ export function main() {
     s: s.slug,
     t: s.title,
     d: s.summary,
+    k: s.description,
     c: s.categoryLabel,
     f: s.frameworks.map((f) => FRAMEWORK_LABELS[f] ?? f),
     g: s.tags,
@@ -151,20 +233,22 @@ export function main() {
   write('public/build.json', `${JSON.stringify({ sha, tag, builtAt: meta.builtAt, skills: skills.length }, null, 2)}\n`);
 
   const urls = [
-    '/', '/skills/', '/contribute/',
-    ...skills.map((s) => `/skill/${s.slug}/`),
-    ...skills.flatMap((s) => s.references.map((r) => `/skill/${s.slug}/${r.slug}/`)),
-    ...authors.filter((a) => a.skills.length).map((a) => `/${a.slug}/`),
-    ...categories.filter((c) => c.count).map((c) => `/category/${c.slug}/`),
-    ...frameworks.filter((f) => f.count).map((f) => `/framework/${f.tag}/`),
+    ['/', allDates], ['/skills/', allDates], ['/contribute/', allDates],
+    ...skills.map((s) => [`/skill/${s.slug}/`, s.dateModified]),
+    ...skills.flatMap((s) => s.references.map((r) => [`/skill/${s.slug}/${r.slug}/`, s.dateModified])),
+    ...authors.filter((a) => a.skills.length).map((a) => [`/${a.slug}/`, a.dateModified]),
+    ...categories.filter((c) => c.count).map((c) => [`/category/${c.slug}/`, c.dateModified]),
+    ...frameworks.filter((f) => f.count && f.indexable).map((f) => [`/framework/${f.tag}/`, f.dateModified]),
   ];
   write('public/sitemap.xml', [
     '<?xml version="1.0" encoding="UTF-8"?>',
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
-    ...urls.map((u) => `  <url><loc>${xmlEscape(SITE_URL + u)}</loc></url>`),
+    ...urls.map(([u, d]) => `  <url><loc>${xmlEscape(SITE_URL + u)}</loc>${d ? `<lastmod>${d.slice(0, 10)}</lastmod>` : ''}</url>`),
     '</urlset>',
     '',
   ].join('\n'));
+
+  await writeOgImages({ skills, categories, frameworks, tag });
 
   write('public/robots.txt', `User-agent: *\nAllow: /\n\nSitemap: ${SITE_URL}/sitemap.xml\n`);
 
@@ -173,5 +257,27 @@ export function main() {
   console.log(`content: ${skills.length} skills, ${authors.length} author${authors.length === 1 ? '' : 's'}, tag ${tag}, sha ${sha.slice(0, 12)}`);
 }
 
+// Open Graph cards: the home card at /og.png, one per skill, category and
+// framework page under /og/. Text comes from validated fields only.
+async function writeOgImages({ skills, categories, frameworks, tag }) {
+  const png = async (rel, element) => write(`public/${rel}`, toPng(await toSvg(element, 1200, 630), 1200));
+  await png('og.png', heroCard({ prompt: PROMPT }));
+  for (const s of skills) {
+    await png(`og/skill/${s.slug}.png`, skillCard({
+      title: s.title,
+      category: s.categoryLabel,
+      frameworks: s.frameworks.map((f) => FRAMEWORK_LABELS[f] ?? f),
+      command: `npx skills add ${REPO}#${tag} --skill ${s.slug}`,
+    }));
+  }
+  const n = (k) => `${k} ${k === 1 ? 'skill' : 'skills'}`;
+  for (const c of categories.filter((x) => x.count)) {
+    await png(`og/category/${c.slug}.png`, listCard({ kind: 'Category', heading: `${c.label} skills for AI agents`, line: `${n(c.count)} in the Agent Skills format, MIT licensed` }));
+  }
+  for (const f of frameworks.filter((x) => x.count)) {
+    await png(`og/framework/${f.tag}.png`, listCard({ kind: 'Framework tag', heading: `${f.label} agent skills`, line: `${n(f.count)} related to ${f.label}, MIT licensed` }));
+  }
+}
+
 const isMain = process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);
-if (isMain) main();
+if (isMain) await main();

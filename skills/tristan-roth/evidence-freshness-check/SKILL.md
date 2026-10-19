@@ -8,6 +8,7 @@ description: |
   "what will the auditor reject". Indexes every evidence artefact with the date inside it, its owner
   and the period it covers, flags what is stale, undated, unowned, outside the audit period or
   missing for a recurring activity, and writes an index plus a refresh list per owner.
+summary: "An index of every evidence artefact with its date, owner and period covered, flagging stale, undated and missing items before the auditor does."
 category: evidence
 frameworks: [general, iso27001, soc2]
 tags: [evidence, audit-readiness, audit-period, evidence-collection]

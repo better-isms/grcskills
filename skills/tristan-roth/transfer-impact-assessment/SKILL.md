@@ -9,6 +9,7 @@ description: |
   the full chain including remote access and sub-processors, identifies the transfer mechanism,
   structures the destination law assessment from sourced material, proposes supplementary measures
   and drafts a documented assessment with a review trigger.
+summary: "A transfer impact assessment for data leaving the EEA: the full transfer chain, the transfer mechanism, destination law and supplementary measures."
 category: privacy
 frameworks: [gdpr]
 tags: [international-transfers, tia, sccs, supplementary-measures, vendors]

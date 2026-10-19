@@ -9,6 +9,7 @@ description: |
   logs, backups and vendors, to where it leaves and is disposed of, records the safeguards that
   cover each flow and the business associate agreement behind each external one, and lists the gaps
   as input to the security risk analysis.
+summary: "A map of where protected health information enters, moves and rests, across systems, logs, backups and vendors, with BAA gaps flagged."
 category: privacy
 frameworks: [hipaa]
 tags: [phi, ephi, data-flow, baa, risk-analysis-input]

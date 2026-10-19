@@ -1,9 +1,19 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import CopyButton from '@/components/CopyButton';
 import JsonLd from '@/components/JsonLd';
 import SearchBox from '@/components/SearchBox';
 import SkillCard from '@/components/SkillCard';
 import { categories, featuredSkill, meta, SITE_URL, skills, toRow } from '@/lib/content';
+import { HOME_DESCRIPTION, HOME_TITLE, pageMeta } from '@/lib/seo';
+
+export const metadata: Metadata = pageMeta({
+  title: HOME_TITLE,
+  description: HOME_DESCRIPTION,
+  path: '/',
+  absoluteTitle: true,
+  imageAlt: 'grcskills: one prompt, your setup reviewed',
+});
 
 export default function Home() {
   const featured = featuredSkill();
@@ -16,6 +26,7 @@ export default function Home() {
           <p className="lead">
             Open GRC skills for AI agents. Paste the prompt into your agent; it runs {n} practitioner skills against your files and writes a 30-day plan.
           </p>
+          <p className="works">Agent Skills for Claude Code, Codex, Cursor and any agent that reads SKILL.md.</p>
         </div>
         <div className="pcard">
           <p className="lbl">The prompt</p>
@@ -81,10 +92,24 @@ export default function Home() {
         data={[
           {
             '@context': 'https://schema.org',
+            '@type': 'WebSite',
+            '@id': `${SITE_URL}/#website`,
+            name: 'grcskills',
+            alternateName: 'GRC Skills',
+            url: `${SITE_URL}/`,
+            description: HOME_DESCRIPTION,
+            inLanguage: 'en',
+            publisher: { '@type': 'Organization', name: 'Better ISMS', url: 'https://betterisms.co' },
+          },
+          {
+            '@context': 'https://schema.org',
             '@type': 'CollectionPage',
             name: 'grcskills',
             url: `${SITE_URL}/`,
             description: `Open GRC skills for AI agents: ${n} practitioner skills.`,
+            isPartOf: { '@id': `${SITE_URL}/#website` },
+            image: `${SITE_URL}/og.png`,
+            ...(meta.dateModified ? { dateModified: meta.dateModified } : {}),
             license: 'https://opensource.org/licenses/MIT',
             mainEntity: {
               '@type': 'ItemList',

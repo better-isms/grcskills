@@ -3,12 +3,13 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import JsonLd from '@/components/JsonLd';
 import SkillFilter from '@/components/SkillFilter';
 import { categories, frameworks, meta, SITE_URL, skills, toRow } from '@/lib/content';
+import { pageMeta } from '@/lib/seo';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: 'All skills',
-  description: `All ${meta.count} open GRC skills for AI agents, by category and framework.`,
-  alternates: { canonical: '/skills/' },
-};
+  description: `All ${meta.count} open GRC skills for AI agents, by category and framework: Agent Skills for Claude Code, Codex, Cursor and other agents.`,
+  path: '/skills/',
+});
 
 export default function SkillsPage() {
   return (

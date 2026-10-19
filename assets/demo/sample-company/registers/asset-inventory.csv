@@ -1,0 +1,7 @@
+asset,type,owner,classification,location
+Production database,Data store,CTO,Confidential,Cloud EU region
+Invoice processing service,Application,Head of Engineering,Confidential,Cloud EU region
+Legacy reporting server,Server,,Internal,Office rack
+Company laptops (44),Endpoint,IT,Internal,Staff homes and office
+Source code repository,Application,CTO,Confidential,Code hosting SaaS
+CRM,SaaS,Head of Sales,Confidential,Vendor

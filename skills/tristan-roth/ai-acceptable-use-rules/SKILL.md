@@ -9,6 +9,7 @@ description: |
   short list of approved tools with a data traffic light, rules for checking outputs and for agents
   that act, a fast route to request a new tool, and writes a two-page rule set, the approved tools
   list and rollout notes.
+summary: "Short AI usage rules people will follow: an approved tools list, what data may go into AI assistants, and rules for agents and connectors."
 category: ai-systems
 frameworks: [general, iso42001, eu-ai-act]
 tags: [ai-policy, acceptable-use, generative-ai, shadow-ai, ai-literacy]
