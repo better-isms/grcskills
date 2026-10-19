@@ -22,7 +22,7 @@ Read what exists: current policies or templates, the scope statement, the risk r
 
 ## Step 1: size the policy set before writing a word
 
-Draw `policy-map.md` first: each policy, its owner role, its audience and what it covers. Rules of thumb:
+Draw `policy-map.md` first: each policy, its owner role, its audience, what it covers and the control ids from the company's control set or applicability statement it supports. Rules of thumb:
 
 - One policy per owner who will keep it alive. A policy without a named owner role is a policy that will rot.
 - Under 50 people: the top-level policy plus 6 to 10 topic policies, merging where one owner covers several topics (identity and access with endpoint use; operations with change and backup).
@@ -33,7 +33,7 @@ Then run a framework lookup for each framework in scope to confirm which topics 
 
 ## Step 2: draft the top-level policy
 
-Keep it to two to four pages that a new hire reads in ten minutes. Write it in the company's own business terms: what the company protects and why it matters to its customers, how security objectives are set and measured, who decides what (leadership, the security lead, managers, everyone), how exceptions are requested and approved, what happens when people do not follow the rules, and how often the policy set is reviewed and what triggers an early review. Check the draft against the framework lookup answers and list any element still missing in `open-decisions.md` rather than padding the text.
+Keep it to two to four pages that a new hire reads in ten minutes. Write it in the company's own business terms: what the company protects and why it matters to its customers, how security objectives are set and measured, who decides what (leadership, the security lead, managers, everyone), how exceptions are requested and approved, what happens when people do not follow the rules, and how often the policy set is reviewed and what triggers an early review (a new law or framework in scope, a material change to the scope or risk register, a major incident, an audit finding on a policy). Check the draft against the framework lookup answers and list any element still missing in `open-decisions.md` rather than padding the text.
 
 ## Step 3: draft the topic policies in testable language
 
@@ -45,11 +45,11 @@ Keep it to two to four pages that a new hire reads in ten minutes. Write it in t
 
 ## Step 4: add privacy and health commitments where in scope
 
-If personal data is processed under GDPR, Article 24 asks controllers to implement data protection policies where proportionate; draft a short data protection policy that points to the processing record and the request procedure, rather than repeating privacy content in every security policy. If the company handles protected health information under HIPAA, written policies and procedures and their retention are part of the Security Rule (45 CFR 164.316); keep a version history from the start and confirm retention with the reader.
+If personal data is processed under GDPR, Article 24 asks controllers to implement data protection policies where proportionate; draft a short data protection policy that points to the processing record and the request procedure, rather than repeating privacy content in every security policy. If the company handles protected health information under HIPAA, written policies and procedures and their retention are part of the Security Rule (45 CFR 164.316); keep a version history from the start; the documentation is retained for six years from creation or last effective date (164.316(b)(2)(i)) and made available to the people who implement it.
 
 ## Step 5: prepare approval and communication
 
-Add to `open-decisions.md` an approval record per policy (version, approver role, decision, any accepted gaps), a communication plan (who reads which policy, how acknowledgement is recorded) and the review cadence per policy. The agent drafts these; leadership signs them.
+Before any policy goes for signature, make one pass over the whole set: no `[decision:]` marker left without a recorded resolution, one definition per term, must and should used the same way, and no two policies setting different frequencies or exception routes for the same thing. Add to `open-decisions.md` an approval record per policy (version, approver role, decision, any accepted gaps), a communication plan (who reads which policy, how acknowledgement is recorded) and the review cadence per policy. The agent drafts these; leadership signs them.
 
 ## What good looks like
 

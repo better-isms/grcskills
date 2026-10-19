@@ -48,11 +48,11 @@ Take status from the treatment plan and the records, never from the policy alone
 
 ## Step 4: fill the remaining columns
 
-For each row: control id (bare identifier), included (yes or no), reasons (ids), justification in one sentence in the company's terms, status, evidence path, owner role, linked treatment action. Keep justifications specific to the company: "Customer data in three production databases; R-007 and R-015 treated by encryption at rest and key rotation." A sentence that would fit any company adds nothing.
+For each row: control id (bare identifier), included (yes, partial or no; for partial, state which part of the scope it covers and the fact for each half, in the same shape the exclusion justification review uses), reasons (ids), justification in one sentence in the company's terms, status, evidence path and date of that record, owner role, linked treatment action. Flag evidence older than the review cadence as stale. Keep justifications specific to the company: "Customer data in three production databases; R-007 and R-015 treated by encryption at rest and key rotation." A sentence that would fit any company adds nothing.
 
 ## Step 5: reconcile and hand over
 
-Before handing over, check both directions: every risk the treatment plan says is reduced by a control points to an included row, and every included row has at least one reason. Record mismatches in `soa-notes.md` with the decision needed, the approver role and a version line for the statement. Ask before overwriting existing files. Run a framework lookup for what the standard expects the statement to show, instead of assuming the column set.
+Before handing over, check that every identifier from the licensed list has exactly one row; list absent identifiers first in the notes, since a control missing from the statement is a defect good wording elsewhere cannot cure. Then check both directions: every risk the treatment plan says is reduced by a control points to an included row, and every included row has at least one reason. Record mismatches in `soa-notes.md` with the decision needed, the versions of the register and treatment plan the draft was built from, and an approval block (version, approver role, date) with the rule that a change to scope, register or treatment plan triggers a re-reconciliation and re-approval. Ask before overwriting existing files. Run a framework lookup for what the standard expects the statement to show, instead of assuming the column set.
 
 ## What good looks like
 

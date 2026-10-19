@@ -34,10 +34,11 @@ For each practice, record where it is enforced (file path or setting), its scope
 - Deployment: who or what deploys, environment approvals, separation of duties between the person who writes and the person who releases, rollback.
 - Dependencies and supply chain: pinned versions, update automation, a software bill of materials generated at build, signed artefacts.
 - Secrets: where secrets come from at build and run time, and whether a detected secret blocks the push.
-- Environments: whether production data reaches development or test, and how it is masked.
+- Environments: whether production data reaches development or test, and how it is masked, citing the mechanism (masked clone job, synthetic data seed) per environment rather than an answer.
 - Vulnerability intake: a published way for outsiders to report a flaw, and fix-time targets by severity.
+- Exceptions in use: pull the bypass and emergency change log for the period; a bypass path with no recorded after-the-fact review is the first thing an auditor samples.
 
-Write `enforcement-inventory.md` as one table. A practice that is blocking in 18 of 20 repositories is not "enforced"; name the two.
+Write `enforcement-inventory.md` as one table, with the control id from the reader's control set or applicability statement per row and the pipeline definition versions it was built from. A practice that is blocking in 18 of 20 repositories is not "enforced"; name the two.
 
 ## Step 3: write the policy from the inventory
 
@@ -51,12 +52,13 @@ Keep the policy to three to five pages: scope, roles, change and review, testing
 
 ## Step 4: add product obligations if the company ships to the EU
 
-If the company places products with digital elements on the EU market, the Cyber Resilience Act sets essential cybersecurity requirements in Annex I, including vulnerability handling and identifying the product's components, and Article 14 covers reporting actively exploited vulnerabilities. Run a framework lookup on whether the products are in scope, their category and the timelines, and add the vulnerability handling and component inventory commitments the team will run.
+If the company places products with digital elements on the EU market, the Cyber Resilience Act sets essential cybersecurity requirements in Annex I, including vulnerability handling and identifying the product's components, and Article 14 covers reporting actively exploited vulnerabilities. Article 14 reporting applies from 11 September 2026 and the remaining obligations from 11 December 2027. Run a framework lookup on whether the products are in scope and their category, and add the commitments the team will run: vulnerability handling, component inventory, a coordinated disclosure policy and the support period.
 
 ## What good looks like
 
 - The best reviewer checks who can bypass the rules before checking the rules: an organisation where administrators can merge unreviewed code has optional review, whatever the settings page shows.
 - The common mistake is a template policy promising mandatory review, penetration tests per release and zero critical findings, while the pipeline lets scans fail silently. The tell: a sampled change merged with a failing scan and one self-approval, and the policy says that cannot happen.
+- The inventory is re-run quarterly and after any major tooling change, because branch rules drift weekly.
 - Good output lets an auditor pick any "must", open the cited file or setting and see it enforced, and lets an engineer read the policy in ten minutes and recognise their own workflow.
 
 ## Framework lookups

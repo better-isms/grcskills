@@ -22,7 +22,7 @@ Read: the statement of applicability (security, privacy or AI extension), the sc
 
 ## Step 1: list every exclusion with its current wording
 
-Build `exclusion-review.csv` with one row per excluded control: control id (bare identifier), current justification verbatim, and the source path. Also pull rows marked partially applicable; a partial exclusion hides the same weaknesses.
+Build `exclusion-review.csv` with one row per excluded control: control id (bare identifier), current justification verbatim, and the source path. Also pull rows marked partially applicable; a partial exclusion hides the same weaknesses. First reconcile the statement against the framework's full control list (from the licensed source or a framework lookup): a control that appears nowhere, neither included nor excluded, is a worse defect than a weak justification, so list missing rows first. Mark every exclusion challenged at a previous audit; repeating challenged wording unchanged invites the same finding.
 
 ## Step 2: run six tests on each exclusion
 
@@ -31,7 +31,7 @@ Answer each test with a fact and a source, not an opinion:
 1. **Activity**: does the company do this kind of thing anywhere in scope, including staff working from home, contractors and teams outside the main office? Remote work and personal devices bring many premises-related practices back into scope.
 2. **Asset**: does any in-scope asset exist that the control would protect (laptops, paper, removable media, source code, a model, a dataset)?
 3. **Supplier**: is the activity done by a supplier? Outsourcing rarely removes a control; it usually moves the company's part into choosing, contracting and monitoring that supplier. "The cloud provider handles it" is a reason to check supplier oversight, not an exclusion.
-4. **Risk**: does any risk in the register touch this topic, or name this control in its treatment? If yes, the exclusion contradicts the risk assessment.
+4. **Risk**: does any risk in the register touch this topic, or name this control in its treatment, and does any treatment plan action strengthen it? If yes, the exclusion contradicts the risk assessment.
 5. **Commitment**: does a contract, questionnaire answer or public page claim the company does this? If yes, the exclusion contradicts what customers were told.
 6. **Role**: for a privacy or AI extension, does the exclusion rest on a role claim (processor only, uses AI but does not build it)? Check that role against the records of processing, the AI inventory and the contracts. Every employer is a controller for its own staff data, and a company that writes prompts, builds retrieval pipelines or fine-tunes models is doing more than using a tool.
 
@@ -42,7 +42,7 @@ Answer each test with a fact and a source, not an opinion:
 - **Reverse**: a test fails; the control should be included, with a status and owner.
 - **Ask**: a fact is missing; name the person by role and the question.
 
-For every Keep and Rewrite, draft the justification in this shape: "Excluded because <fact about the company>. An auditor can see this in <document or record>. Revisit if <trigger, such as opening an office or onboarding a development contractor>." Keep each under 50 words.
+For every Keep and Rewrite, draft the justification in this shape: "Excluded because <fact about the company>. An auditor can see this in <document or record>. Revisit if <trigger, such as opening an office or onboarding a development contractor>." Keep each under 50 words, and name the role that watches for the trigger. For a partial exclusion, state which part is excluded and which applies, with the fact behind each half. Every justification is re-tested at each revision of the statement, whatever the triggers.
 
 ## Step 4: write the notes
 
