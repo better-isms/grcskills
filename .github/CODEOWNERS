@@ -1,0 +1,4 @@
+# Every path needs a maintainer review. Outside pull requests may only touch
+# skills/<their-author>/ (enforced by the path guard in CI), and are merged
+# only with the founder's approval.
+* @tristanroth1

@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "ismscopilot": {
+      "type": "http",
+      "url": "https://account.ismscopilot.com/v1/account/mcp"
+    }
+  }
+}

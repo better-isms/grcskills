@@ -1,0 +1,39 @@
+name: validate
+
+# Runs on pull_request only, never pull_request_target: outside PRs get a
+# read-only token and no secrets. Actions are pinned by commit SHA.
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions: read-all
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: 22
+
+      - name: Library rules
+        run: node tools/validate.mjs
+
+      - name: Validator tests
+        run: node --test tools/*.test.mjs
+
+      # Outside PRs (from a fork) may only change their own skills/<author>/ folder:
+      # at most 10 files, 60 KB, markdown only, no symlinks.
+      - name: Outside-PR path guard
+        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          git diff --name-only --no-renames "$BASE_SHA"...HEAD | node tools/validate.mjs --changed -

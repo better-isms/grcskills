@@ -1,0 +1,60 @@
+name: Submit a skill
+description: Submit a GRC skill without git. Paste your files and a maintainer turns this into a pull request credited to you.
+title: "[skill submission] <skill slug>"
+labels: [skill-submission]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The easiest path is to let your AI agent do it: see "Contribute" in the README. Use this form if your agent cannot open a pull request.
+        Format: [AGENTS.md](https://github.com/better-isms/grcskills/blob/main/AGENTS.md). Templates: [templates/](https://github.com/better-isms/grcskills/tree/main/templates).
+        Do not paste email addresses, client names, personal data, real evidence or text copied from a standard.
+  - type: input
+    id: author-slug
+    attributes:
+      label: Your author slug
+      description: kebab-case, for example jane-doe. Your folder becomes skills/<slug>/. Reuse it if you submitted before.
+      placeholder: jane-doe
+    validations:
+      required: true
+  - type: input
+    id: skill-slug
+    attributes:
+      label: Skill slug
+      description: kebab-case, at most 54 characters, no standards-body names. It becomes the permanent install name.
+      placeholder: vendor-offboarding-check
+    validations:
+      required: true
+  - type: textarea
+    id: skill-md
+    attributes:
+      label: SKILL.md
+      description: Full contents, frontmatter included (start from templates/SKILL.md and delete the template notes).
+      render: markdown
+    validations:
+      required: true
+  - type: textarea
+    id: author-md
+    attributes:
+      label: author.md (first submission only)
+      description: Full contents from templates/author.md. No email address.
+      render: markdown
+  - type: textarea
+    id: references
+    attributes:
+      label: Reference files (optional)
+      description: "Each references/<name>.md file, preceded by a line with its path, for example: --- references/scoring-rubric.md ---"
+      render: markdown
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: Confirmations
+      options:
+        - label: Nothing in it sends data off the reader's machine, downloads or runs code, or reads credentials
+          required: true
+        - label: It copies no text from any standard and quotes no official control titles
+          required: true
+        - label: It contains no email addresses, client names or personal data
+          required: true
+        - label: I agree to the MIT license, credited through my author profile
+          required: true

@@ -1,0 +1,16 @@
+{
+  "name": "grcskills",
+  "displayName": "GRC Skills",
+  "version": "2026.10.19",
+  "description": "Open, task-level GRC skills for AI agents: scope statements, statements of applicability, risk registers, audit prep, evidence, vendors, policies, privacy, AI governance, incidents and continuity. Optional ISMS Copilot MCP server for framework lookups.",
+  "author": {
+    "name": "Better ISMS",
+    "url": "https://grcskills.com"
+  },
+  "homepage": "https://grcskills.com",
+  "repository": "https://github.com/better-isms/grcskills",
+  "license": "MIT",
+  "keywords": ["grc", "compliance", "audit", "risk", "privacy", "ai-governance", "security"],
+  "skills": ["./skills/tristan-roth/"],
+  "mcpServers": "./plugin/.mcp.json"
+}

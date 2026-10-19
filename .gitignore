@@ -1,0 +1,4 @@
+node_modules/
+.DS_Store
+# outputs of running skills inside this repo
+/grc-setup-review/

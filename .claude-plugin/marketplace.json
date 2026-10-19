@@ -1,0 +1,28 @@
+{
+  "name": "grcskills",
+  "description": "Open GRC skills for AI agents: gap and readiness, statement of applicability, risk, audit, evidence, vendors, policies, privacy, AI governance, incidents and continuity. By ISMS Copilot.",
+  "owner": {
+    "name": "Better ISMS",
+    "url": "https://grcskills.com"
+  },
+  "plugins": [
+    {
+      "name": "grcskills",
+      "description": "Every skill in the grcskills library, plus the optional ISMS Copilot MCP server for framework lookups (OAuth at first use, never required).",
+      "source": {
+        "source": "github",
+        "repo": "better-isms/grcskills",
+        "ref": "v2026.10.19"
+      },
+      "category": "security",
+      "tags": [
+        "grc",
+        "compliance",
+        "audit",
+        "risk",
+        "privacy",
+        "ai-governance"
+      ]
+    }
+  ]
+}
