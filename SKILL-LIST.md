@@ -58,45 +58,45 @@ Excluded sources: any Probo skill text, any internal audit skill or client engag
 
 | # | Slug | Title | Job | Frameworks | Source | Status |
 |---|---|---|---|---|---|---|
-| 25 | evidence-freshness-check | Evidence freshness check | Flag evidence that is stale, undated, unowned or outside the audit period before the auditor does | general, iso27001, soc2 | UC evidence-collection-iso-27001, evidence-collection-soc-2 | written |
-| 26 | evidence-request-list-builder | Evidence request list builder | Turn an auditor's request list into owned, dated tasks with the exact artefact each one needs | iso27001, soc2, nis2, dora | UC evidence-collection-iso-27001, evidence-collection-soc-2, evidence-collection-nis-2, evidence-collection-dora | written |
-| 27 | access-review-campaign-prep | Access review campaign prep | Prepare a user access review: systems, reviewers, populations, decisions to record and follow-up of removals | iso27001, soc2, hipaa, pci-dss | PL access-control-and-identity-management-prompts | written |
-| 28 | change-management-evidence-sampling | Change management evidence sampling | Sample changes from the pipeline and tickets and check approval, testing and segregation evidence | soc2, iso27001 | PL devsecops-and-automation-prompts, secure-development-lifecycle-prompts | written |
-| 29 | logging-and-monitoring-evidence-pack | Logging and monitoring evidence pack | Show what is logged, who reviews alerts and how a real alert was handled, with records | iso27001, soc2, nis2 | PL security-monitoring-and-incident-response-prompts, infrastructure-and-cloud-security-prompts | written |
-| 30 | backup-restore-test-evidence | Backup restore test evidence | Plan and record a restore test that proves recovery within the stated objectives | iso27001, soc2, dora, hipaa | PL iso-27001-audit-preparation-prompts (backup and recovery evidence) | written |
+| 25 | evidence-freshness-check | Evidence freshness check | Flag evidence that is stale, undated, unowned or outside the audit period before the auditor does | general, iso27001, soc2 | UC evidence-collection-iso-27001, evidence-collection-soc-2 | planned |
+| 26 | evidence-request-list-builder | Evidence request list builder | Turn an auditor's request list into owned, dated tasks with the exact artefact each one needs | iso27001, soc2, nis2, dora | UC evidence-collection-iso-27001, evidence-collection-soc-2, evidence-collection-nis-2, evidence-collection-dora | planned |
+| 27 | access-review-campaign-prep | Access review campaign prep | Prepare a user access review: systems, reviewers, populations, decisions to record and follow-up of removals | iso27001, soc2, hipaa, pci-dss | PL access-control-and-identity-management-prompts | planned |
+| 28 | change-management-evidence-sampling | Change management evidence sampling | Sample changes from the pipeline and tickets and check approval, testing and segregation evidence | soc2, iso27001 | PL devsecops-and-automation-prompts, secure-development-lifecycle-prompts | planned |
+| 29 | logging-and-monitoring-evidence-pack | Logging and monitoring evidence pack | Show what is logged, who reviews alerts and how a real alert was handled, with records | iso27001, soc2, nis2 | PL security-monitoring-and-incident-response-prompts, infrastructure-and-cloud-security-prompts | planned |
+| 30 | backup-restore-test-evidence | Backup restore test evidence | Plan and record a restore test that proves recovery within the stated objectives | iso27001, soc2, dora, hipaa | PL iso-27001-audit-preparation-prompts (backup and recovery evidence) | planned |
 
 ## vendors (6)
 
 | # | Slug | Title | Job | Frameworks | Source | Status |
 |---|---|---|---|---|---|---|
-| 31 | vendor-tiering | Vendor tiering | Tier suppliers by data, access and dependency so assessment effort follows risk | general, iso27001, soc2, dora, nis2 | PL iso-27001-audit-preparation-prompts (supplier evidence) | written |
-| 32 | vendor-security-questionnaire-triage | Vendor security questionnaire triage | Read a supplier's completed questionnaire and reports, find the answers that matter and the follow-up questions | general, iso27001, soc2, gdpr | PL iso-27001-audit-preparation-prompts (vendor management evidence) | written |
-| 33 | customer-security-questionnaire-answers | Customer security questionnaire answers | Answer an incoming customer questionnaire from the company's own documents, flagging every answer without evidence | general, soc2, iso27001, gdpr | PL soc-2-documentation-and-reporting-prompts | written |
-| 34 | dpa-security-annex-review | Data processing agreement security annex review | Review the security measures annex of a processing agreement against what the company actually runs | gdpr | PL gdpr-prompt-library-overview | written |
-| 35 | subprocessor-register-update | Subprocessor register update | Keep the subprocessor list complete and current, with locations, transfers and customer notice duties | gdpr, iso27701 | PL gdpr-prompt-library-overview, iso-27701-privacy-management-prompt-library | written |
-| 36 | ict-third-party-register | ICT third-party register | Build or refresh the register of ICT third-party arrangements a financial entity keeps under DORA | dora | PL dora-compliance-prompt-library | written |
+| 31 | vendor-tiering | Vendor tiering | Tier suppliers by data, access and dependency so assessment effort follows risk | general, iso27001, soc2, dora, nis2 | PL iso-27001-audit-preparation-prompts (supplier evidence) | planned |
+| 32 | vendor-security-questionnaire-triage | Vendor security questionnaire triage | Read a supplier's completed questionnaire and reports, find the answers that matter and the follow-up questions | general, iso27001, soc2, gdpr | PL iso-27001-audit-preparation-prompts (vendor management evidence) | planned |
+| 33 | customer-security-questionnaire-answers | Customer security questionnaire answers | Answer an incoming customer questionnaire from the company's own documents, flagging every answer without evidence | general, soc2, iso27001, gdpr | PL soc-2-documentation-and-reporting-prompts | planned |
+| 34 | dpa-security-annex-review | Data processing agreement security annex review | Review the security measures annex of a processing agreement against what the company actually runs | gdpr | PL gdpr-prompt-library-overview | planned |
+| 35 | subprocessor-register-update | Subprocessor register update | Keep the subprocessor list complete and current, with locations, transfers and customer notice duties | gdpr, iso27701 | PL gdpr-prompt-library-overview, iso-27701-privacy-management-prompt-library | planned |
+| 36 | ict-third-party-register | ICT third-party register | Build or refresh the register of ICT third-party arrangements a financial entity keeps under DORA | dora | PL dora-compliance-prompt-library | planned |
 
 ## policies (6)
 
 | # | Slug | Title | Job | Frameworks | Source | Status |
 |---|---|---|---|---|---|---|
-| 37 | policy-gap-review-against-practice | Policy gap review against practice | Compare what a policy says with what the systems and records show, and fix the gap on the right side | general, iso27001, soc2 | UC document-consistency; PL iso-27001-policy-and-procedure-prompts | planned |
-| 38 | security-policy-drafting | Security policy drafting | Draft the top-level security policy and its topic policies at the size the company can actually run | iso27001, soc2, hipaa, gdpr | UC policy-generation-iso-27001, policy-generation-soc-2, policy-generation-hipaa, policy-generation-gdpr | planned |
-| 39 | acceptable-use-policy-drafting | Acceptable use policy drafting | Draft an acceptable use policy people read, including AI tools, personal devices and remote work | general, iso27001, soc2 | PL iso-27001-policy-and-procedure-prompts, soc-2-policy-and-procedure-prompts | planned |
-| 40 | policy-review-cycle-refresh | Policy review cycle refresh | Run the periodic policy review: what changed, who approves, version history, communication to staff | general, iso27001, soc2 | PL iso-27001-documentation-and-reporting-prompts | planned |
-| 41 | document-consistency-check | Document consistency check | Find contradictions across policies, procedures and registers (retention, severity scales, roles, review cycles) | general | UC document-consistency | planned |
-| 42 | secure-development-policy-from-pipeline | Secure development policy from the pipeline | Write the secure development policy from what the repositories and pipeline already enforce | iso27001, soc2, cra | PL secure-development-lifecycle-prompts, devsecops-and-automation-prompts | planned |
+| 37 | policy-gap-review-against-practice | Policy gap review against practice | Compare what a policy says with what the systems and records show, and fix the gap on the right side | general, iso27001, soc2 | UC document-consistency; PL iso-27001-policy-and-procedure-prompts | written |
+| 38 | security-policy-drafting | Security policy drafting | Draft the top-level security policy and its topic policies at the size the company can actually run | iso27001, soc2, hipaa, gdpr | UC policy-generation-iso-27001, policy-generation-soc-2, policy-generation-hipaa, policy-generation-gdpr | written |
+| 39 | acceptable-use-policy-drafting | Acceptable use policy drafting | Draft an acceptable use policy people read, including AI tools, personal devices and remote work | general, iso27001, soc2 | PL iso-27001-policy-and-procedure-prompts, soc-2-policy-and-procedure-prompts | written |
+| 40 | policy-review-cycle-refresh | Policy review cycle refresh | Run the periodic policy review: what changed, who approves, version history, communication to staff | general, iso27001, soc2 | PL iso-27001-documentation-and-reporting-prompts | written |
+| 41 | document-consistency-check | Document consistency check | Find contradictions across policies, procedures and registers (retention, severity scales, roles, review cycles) | general | UC document-consistency | written |
+| 42 | secure-development-policy-from-pipeline | Secure development policy from the pipeline | Write the secure development policy from what the repositories and pipeline already enforce | iso27001, soc2, cra | PL secure-development-lifecycle-prompts, devsecops-and-automation-prompts | written |
 
 ## privacy (6)
 
 | # | Slug | Title | Job | Frameworks | Source | Status |
 |---|---|---|---|---|---|---|
-| 43 | ropa-first-draft | Records of processing first draft | Draft the record of processing activities from systems, vendors and teams, with legal bases and retention | gdpr, iso27701 | PL gdpr-prompt-library-overview; UC policy-generation-gdpr | planned |
-| 44 | dpia-screening | DPIA screening | Decide whether a processing activity needs a data protection impact assessment and record why | gdpr, iso27701 | PL gdpr-prompt-library-overview; UC internal-audit-gdpr | planned |
-| 45 | data-subject-request-procedure | Data subject request procedure | Design the intake, identity check, search, response and logging for access, erasure and other requests | gdpr, iso27701 | PL gdpr-prompt-library-overview (data subject rights procedures) | planned |
-| 46 | privacy-notice-gap-check | Privacy notice gap check | Compare the published privacy notice with the processing records and fix what is missing or wrong | gdpr | PL gdpr-prompt-library-overview (privacy policies and notices) | planned |
-| 47 | transfer-impact-assessment | Transfer impact assessment | Assess a transfer of personal data outside the EEA: mechanism, destination law, supplementary measures | gdpr | PL gdpr-prompt-library-overview | planned |
-| 48 | phi-flow-mapping | Health data flow mapping | Map where protected health information enters, moves and rests, and which safeguards cover each flow | hipaa | PL hipaa-compliance-prompt-library; UC gap-analysis-hipaa | planned |
+| 43 | ropa-first-draft | Records of processing first draft | Draft the record of processing activities from systems, vendors and teams, with legal bases and retention | gdpr, iso27701 | PL gdpr-prompt-library-overview; UC policy-generation-gdpr | written |
+| 44 | dpia-screening | DPIA screening | Decide whether a processing activity needs a data protection impact assessment and record why | gdpr, iso27701 | PL gdpr-prompt-library-overview; UC internal-audit-gdpr | written |
+| 45 | data-subject-request-procedure | Data subject request procedure | Design the intake, identity check, search, response and logging for access, erasure and other requests | gdpr, iso27701 | PL gdpr-prompt-library-overview (data subject rights procedures) | written |
+| 46 | privacy-notice-gap-check | Privacy notice gap check | Compare the published privacy notice with the processing records and fix what is missing or wrong | gdpr | PL gdpr-prompt-library-overview (privacy policies and notices) | written |
+| 47 | transfer-impact-assessment | Transfer impact assessment | Assess a transfer of personal data outside the EEA: mechanism, destination law, supplementary measures | gdpr | PL gdpr-prompt-library-overview | written |
+| 48 | phi-flow-mapping | Health data flow mapping | Map where protected health information enters, moves and rests, and which safeguards cover each flow | hipaa | PL hipaa-compliance-prompt-library; UC gap-analysis-hipaa | written |
 
 ## ai-systems (6)
 
@@ -128,10 +128,10 @@ Excluded sources: any Probo skill text, any internal audit skill or client engag
 | statement-of-applicability | 6 | 0 |
 | risk | 6 | 1 |
 | audit | 6 | 1 |
-| evidence | 6 | 6 |
-| vendors | 6 | 6 |
-| policies | 6 | 0 |
-| privacy | 6 | 0 |
+| evidence | 6 | 0 |
+| vendors | 6 | 0 |
+| policies | 6 | 6 |
+| privacy | 6 | 6 |
 | ai-systems | 6 | 0 |
 | incidents-continuity | 6 | 0 |
 | **Total** | **60** | **15** |
