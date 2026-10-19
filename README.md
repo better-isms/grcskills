@@ -10,29 +10,30 @@ Browse the library at **[grcskills.com](https://grcskills.com)**. The planned se
 
 Paste this into your agent, in the folder that holds your compliance material:
 
-> Clone https://github.com/better-isms/grcskills (or use it if it is already installed), read its AGENTS.md, then run the grc-setup-review skill against my GRC setup: rank the 10 skills that would help me most, audit what is broken, duplicated or missing, and write a 30-day plan to files.
+> Clone release v2026.10.19 of https://github.com/better-isms/grcskills (or use it if it is already installed), read its AGENTS.md, then run the grc-setup-review skill against my GRC setup: rank the 10 skills that would help me most, audit what is broken, duplicated or missing, and write a 30-day plan to files.
 
 The agent reads every skill's description, looks at the policies, registers and exports it can reach (read-only), and writes `grc-setup-review/inventory.md`, `top-10.md`, `audit.md` and `30-day-plan.md` in your working folder.
 
 ## Install
 
+Every install path is pinned to a release tag (`v2026.10.19`). Releases are immutable and carry a build provenance attestation; `main` is the integration branch and is not an install source.
+
 ```bash
 # the whole library, with an interactive picker (skills.sh)
-npx skills add better-isms/grcskills
+npx skills add better-isms/grcskills#v2026.10.19
 
 # one skill
-npx skills add better-isms/grcskills --skill risk-register-first-pass
+npx skills add better-isms/grcskills#v2026.10.19 --skill risk-register-first-pass
 
 # see what is there
-npx skills add better-isms/grcskills --list
+npx skills add better-isms/grcskills#v2026.10.19 --list
 ```
 
-Add `-a claude-code`, `-a cursor` or `-a codex` to target one agent.
+The `#<tag>` suffix makes the skills CLI clone that tag instead of the default branch. Add `-a claude-code`, `-a cursor` or `-a codex` to target one agent.
 
-**Clone** (and pin a release tag if you want a fixed version):
+**Clone** the release tag:
 
 ```bash
-git clone https://github.com/better-isms/grcskills
 git clone --branch v2026.10.19 https://github.com/better-isms/grcskills
 ```
 
