@@ -59,27 +59,43 @@ function releaseTag() {
 }
 
 // Commit dates from git, read in one pass over the history of skills/: for
-// each file, the newest and the oldest commit that touched it. Unknown in a
-// shallow clone (the dates would be wrong), so they are left out, not guessed.
+// each file, the newest and the oldest commit that touched it. The index is
+// also written to .generated/git-dates.json with the commit it was read at.
+// `vercel deploy` uploads the folder without .git, so a build with no history
+// uses that file, but only when its commit equals this build's SHA (run
+// `npm run content` in the release checkout before deploying). Otherwise the
+// dates are left out, with a warning, rather than guessed.
+const DATES_FILE = path.join(siteDir, '.generated', 'git-dates.json');
 let gitIndex;
-function loadGitIndex() {
-  const index = new Map();
-  try {
-    if (execFileSync('git', ['rev-parse', '--is-shallow-repository'], { cwd: repoRoot, encoding: 'utf8' }).trim() === 'true') return index;
-    const log = execFileSync('git', ['log', '--format=%x00%cI', '--name-only', '--', 'skills'], { cwd: repoRoot, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 });
-    for (const chunk of log.split('\0').filter(Boolean)) {
-      const [date, ...files] = chunk.trim().split('\n');
-      const iso = new Date(date).toISOString();
-      for (const f of files.filter(Boolean)) {
-        const e = index.get(f);
-        if (!e) index.set(f, { newest: iso, oldest: iso });
-        else e.oldest = iso; // log runs newest first
-      }
+function readGitLog() {
+  if (execFileSync('git', ['rev-parse', '--is-shallow-repository'], { cwd: repoRoot, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim() === 'true') return null;
+  const head = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: repoRoot, encoding: 'utf8' }).trim();
+  const log = execFileSync('git', ['log', '--format=%x00%cI', '--name-only', '--', 'skills'], { cwd: repoRoot, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 });
+  const files = {};
+  for (const chunk of log.split('\0').filter(Boolean)) {
+    const [date, ...names] = chunk.trim().split('\n');
+    const iso = new Date(date).toISOString();
+    for (const f of names.filter(Boolean)) {
+      if (!files[f]) files[f] = { newest: iso, oldest: iso };
+      else files[f].oldest = iso; // log runs newest first
     }
-  } catch {
-    // no git: no dates
   }
-  return index;
+  return { sha: head, files };
+}
+function loadGitIndex() {
+  let data = null;
+  try { data = readGitLog(); } catch { data = null; }
+  if (data) {
+    write('.generated/git-dates.json', JSON.stringify(data));
+  } else {
+    try { data = JSON.parse(fs.readFileSync(DATES_FILE, 'utf8')); } catch { data = null; }
+    const sha = buildSha();
+    if (!data || data.sha !== sha) {
+      console.warn(`content: WARNING no git history and no .generated/git-dates.json for ${sha}; JSON-LD dates and sitemap lastmod are left out. Run \`npm run content\` in the release checkout before deploying.`);
+      data = null;
+    }
+  }
+  return new Map(Object.entries(data?.files ?? {}));
 }
 function gitDate(rel, { first = false } = {}) {
   gitIndex ??= loadGitIndex();

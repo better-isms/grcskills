@@ -123,8 +123,10 @@ test('a summary that repeats the agent trigger is rejected', () =>
 test('a summary with Markdown is rejected', () => assert.ok(summaryProblems('A **bold** sample summary that is long enough to pass the floor.').length));
 test('an unquoted summary with ": " is rejected (YAML parsers would fail)', () =>
   expectRule(makeRepo({ skill: skillMd('sample-skill', { summaryLine: 'summary: A sample workflow: the steps, the checks and the files it writes.' }) }), 'summary'));
-test('an unquoted plain summary passes', () =>
-  expectClean(makeRepo({ skill: skillMd('sample-skill', { summaryLine: 'summary: A sample workflow with the steps, the checks and the files it writes.' }) })));
+test('an unquoted summary is rejected even without YAML-sensitive characters', () =>
+  expectRule(makeRepo({ skill: skillMd('sample-skill', { summaryLine: 'summary: A sample workflow with the steps, the checks and the files it writes.' }) }), 'summary'));
+test('a single-quoted summary is rejected (the contract is double quotes)', () =>
+  expectRule(makeRepo({ skill: skillMd('sample-skill', { summaryLine: "summary: 'A sample workflow with the steps, the checks and the files it writes.'" }) }), 'summary'));
 test('every library skill has a quoted summary within the cap', () => {
   for (const author of fs.readdirSync(path.join(REPO, 'skills')).filter((d) => !d.startsWith('.'))) {
     for (const slug of fs.readdirSync(path.join(REPO, 'skills', author))) {

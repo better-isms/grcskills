@@ -396,7 +396,7 @@ const isPlainObject = (v) => v !== null && typeof v === 'object' && !Array.isArr
 
 // `summary` is one plain line for people: what the reader gets, in at most
 // SUMMARY_MAX characters. Real YAML parsers (the skills CLI, agents) read the
-// same frontmatter, so a value with ": " or " #" must be quoted.
+// same frontmatter, so the value is always double-quoted (no " or \ inside).
 export function summaryProblems(summary, raw = '') {
   if (summary === undefined || summary === '') return [`missing \`summary\`; one plain line of ${SUMMARY_MIN} to ${SUMMARY_MAX} characters saying what the reader gets (search results and social cards show it)`];
   if (typeof summary !== 'string') return ['`summary` must be one line of text'];
@@ -406,8 +406,7 @@ export function summaryProblems(summary, raw = '') {
   if (/^use this skill\b/i.test(summary)) out.push('summary is for people, not the agent trigger; start with what the reader gets (for example "A first risk register of ...")');
   if (/[*_`#<>[\]]/.test(summary)) out.push('summary is plain text; no Markdown or HTML');
   const line = raw.replace(/\r\n/g, '\n').match(/^summary:[ \t]+(.*)$/m)?.[1]?.trim() ?? '';
-  const quoted = /^"[^"]*"$/.test(line) || /^'[^']*'$/.test(line);
-  if (line && !quoted && (/: | #/.test(line) || /^[[{>|*&!%@`'"]/.test(line))) out.push('quote the summary ("...") so YAML parsers read it as one string');
+  if (line && !/^"[^"\\]*"$/.test(line)) out.push('write the summary in double quotes on one line (summary: "...") so every YAML parser reads it as one string');
   return out;
 }
 
