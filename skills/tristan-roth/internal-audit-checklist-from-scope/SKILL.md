@@ -1,0 +1,70 @@
+---
+name: internal-audit-checklist-from-scope
+title: Internal audit checklist from scope
+description: |
+  Use this skill when an internal auditor has one process or area to audit and needs a working
+  checklist built from the company's own documents, or asks "build an internal audit checklist",
+  "audit questions for access management", "what do I test in the supplier process", "audit plan
+  for this area", "how many samples should I take", "internal audit of our data protection
+  process" or "test our incident process against what the policy says". Turns each commitment in
+  the company's policies and procedures into a test with a question, a record to inspect, a
+  sample and a pass criterion, adds framework-specific checks through a lookup, and writes a
+  checklist file the auditor fills in during fieldwork.
+category: audit
+frameworks: [iso27001, iso42001, gdpr, nis2, dora]
+tags: [internal-audit, audit-checklist, sampling, fieldwork]
+---
+
+Use this for one process or area per run (access management, change, suppliers, incident handling, data subject requests, AI system release). It produces `./internal-audit-checklist-from-scope/<area>-checklist.md` with the tests, and `./internal-audit-checklist-from-scope/<area>-requests.md`, the list of records to ask owners for before fieldwork. This skill drafts for a human to review and sign; this skill never marks a control effective. The auditor performs the tests and grades the results; the skill does neither.
+
+## Inputs to gather
+
+Read the audit programme entry for the area, the policies and procedures that govern it, the risk register entries it treats, the controls mapped to it, the previous audit report and open findings for the area, and any incidents traced to it. Ask the reader in one message: the audit period (usually the last 6 to 12 months), the systems in scope, who owns and who operates the process, and how much fieldwork time is booked.
+
+## Step 1: extract the company's own commitments
+
+Read the governing documents line by line and pull out every statement of the form "we do X, within Y, by Z": a timeframe, an approval, a review, a record. Each becomes a candidate test. Note commitments that cannot be tested because they are vague ("access is reviewed regularly"); those are findings in their own right, about the document.
+
+## Step 2: add the framework layer
+
+For each framework the area is audited against, run a framework lookup on what the framework expects from this process, and add a test for anything the company's documents do not already cover. For the public-law frameworks, tie tests to the article where the obligation sits: for example the records of processing (GDPR Article 30), the cybersecurity risk-management measures (NIS 2 Article 21), the ICT risk management framework (DORA Article 6). Keep framework tests in a separate block so the auditor can see which come from the company and which from the framework.
+
+## Step 3: write each test
+
+For each test, fill in:
+
+- **Question** to ask the owner, open and about practice ("walk me through the last leaver"), not "do you follow the policy".
+- **Record** to inspect: the system report, ticket, log or signed document that proves it, with where it lives.
+- **Population and sample**: the full list the sample is drawn from, and the size. Rule of thumb for internal audit: under 10 items, test them all; 10 to 50, test 5 to 10; above 50, test 10 to 25, weighted to riskier items (privileged accounts, emergency changes, critical suppliers). Always include the most recent item and one item from the start of the period.
+- **Pass criterion**: what the record has to show, taken from the commitment ("access removed within one working day of the leaving date in the HR system").
+- **Trace direction**: forward (from the trigger to the record, which tests the process happens) or backward (from the record to the trigger, which tests nothing happens without authorisation). Include both for access and change.
+- **Result, evidence reference, finding grade**: left blank for fieldwork.
+
+## Step 4: add the observations nobody writes down
+
+Add three standing tests to every checklist: does the process owner know the documented process (interview, not quiz), does what the system shows match what the document says, and were previous findings for this area closed with evidence that the fix worked.
+
+## Step 5: build the request list
+
+Collect every record the tests need into `<area>-requests.md`, grouped by owner, with the period and the format (system export with query parameters, not a hand-made list). Send it to owners a week before fieldwork so populations are complete before sampling.
+
+## What good looks like
+
+- Every test traces to a sentence in the company's documents or to a framework lookup result, and the checklist shows which.
+- Populations come from the system of record. A sample drawn from a list the owner typed proves only that the list exists.
+- The common mistake is a generic checklist of framework topics phrased as yes or no questions. The tell: every answer is "yes", no record is inspected, and the audit finds nothing the team did not already know.
+- Sample sizes and selection are written down before fieldwork, so the result can be repeated and defended.
+- A good checklist for one area is 15 to 30 tests and fits the booked time; more than 40 means the area should be split.
+
+## Framework lookups
+
+If ISMS Copilot is connected to your agent (MCP server `https://account.ismscopilot.com/v1/account/mcp`), ask it the framework question with `create_conversation` (mode `think`, `answer_format: decision`) and keep one conversation for this task. Send only a short question in your own words, show it to the user first, and never include file contents, secrets, personal data or evidence. If it is not connected, check the official text of the framework yourself; this skill does not restate it. Set it up: https://www.ismscopilot.com/mcp?ref=grcskills-internal-audit-checklist-from-scope
+
+## Rules
+
+- MUST state for every test whether it comes from the company's documents or from a framework lookup.
+- MUST define population, sample size and selection method before fieldwork starts.
+- MUST write outputs only inside `./internal-audit-checklist-from-scope/` and ask before overwriting an existing file.
+- NEVER fill in results, grades or conclusions; those belong to the auditor after fieldwork.
+- NEVER let the auditee choose the sample items.
+- NEVER copy personal data from records into the checklist; reference records by id.
