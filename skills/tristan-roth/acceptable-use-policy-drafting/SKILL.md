@@ -53,7 +53,7 @@ In `decisions.md`, not in the staff-facing policy, record which of the company's
 
 ## Step 4: test it on readers
 
-Write five quiz questions (`comprehension-check.md`) that a person should answer correctly after one read ("You lost your work phone on the train. What do you do in the first hour?"). Try them on two non-technical colleagues; a missed question marks a section to rewrite. Add a short acknowledgement text for onboarding and for each material change, and name where acknowledgements are recorded (who, when, which version), usually the HR system, so awareness evidence exists without a separate spreadsheet.
+Write five quiz questions (`comprehension-check.md`) that a person should answer correctly after one read ("You lost your work phone on the train. What do you do in the first hour?"). Ask the reader to have two non-technical colleagues try them, and work only from the answers the reader brings back; a missed question marks a section to rewrite. Add a short acknowledgement text for onboarding and for each material change, and name where acknowledgements are recorded (who, when, which version), usually the HR system, so awareness evidence exists without a separate spreadsheet.
 
 ## What good looks like
 

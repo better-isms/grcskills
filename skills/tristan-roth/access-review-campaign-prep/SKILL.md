@@ -46,7 +46,7 @@ Each line gets keep, remove or change, the reviewer's role, the decision date an
 
 ## Step 5: plan the follow-up
 
-Every remove or change decision needs a ticket, which the system owner raises, with a due date the policy sets. After that date, ask the system owner for a fresh export of the account list and compare: a decision recorded with the account still active is the most common access review exception auditors find. Track it in the follow-up spreadsheet (`follow-up-tracker.csv`): account, decision, ticket, removed (yes or no), re-export time. Write `campaign-plan.md` with scope, reviewers, timeline, flag counts per system and the re-export step. Keep the exports, decisions and re-exports for the retention period the company's document rules set; run a framework lookup if a regulation sets a longer one.
+Every remove or change decision needs a ticket, which the system owner raises, with a due date the policy sets. After that date, ask the reader or campaign owner to obtain a fresh export of the account list from the system owner and provide it, then compare: a decision recorded with the account still active is the most common access review exception auditors find. Track it in the follow-up spreadsheet (`follow-up-tracker.csv`): account, decision, ticket, removed (yes or no), re-export time. Write `campaign-plan.md` with scope, reviewers, timeline, flag counts per system and the re-export step. Keep the exports, decisions and re-exports for the retention period the company's document rules set; run a framework lookup if a regulation sets a longer one.
 
 If the output folder exists, ask before overwriting and offer a new subfolder instead.
 
@@ -70,3 +70,4 @@ If ISMS Copilot is connected to your agent (MCP server `https://account.ismscopi
 - NEVER disable, remove or change an account; the system owner acts on the reviewer's decision.
 - NEVER record a decision on a reviewer's behalf or approve lines left unreviewed.
 - NEVER copy passwords, tokens, API keys or session data into any export or output file.
+- NEVER contact system owners or request exports yourself; the reader or campaign owner obtains them.

@@ -41,7 +41,7 @@ Record each system or flow in the inventory spreadsheet (`phi-inventory.csv`): i
 For each row, record what protects it, with the evidence path:
 
 - Access: who can reach it, how access is granted and reviewed, and whether it is the minimum necessary.
-- Encryption at rest and in transit. Mark data in a store or flow without qualifying encryption as unsecured (45 CFR 164.402); that is where a loss becomes a notifiable breach.
+- Encryption at rest and in transit. Mark data in a store or flow that is not encrypted or destroyed by a method HHS recognises as unsecured (45 CFR 164.402). Unsecured data is what the breach rule analyses; whether a given incident is notifiable still depends on the exceptions in 164.402 and a documented assessment of the probability that the data was compromised, which the privacy or security owner makes, not the agent.
 - Audit logging: whether access is logged and someone reads the logs.
 - Integrity and backup: changes tracked, restores tested.
 - External flows: the business associate agreement in place, or the reason none is needed; for a business associate, the subcontractor agreements that flow the same terms down. For disclosures outside treatment, payment and operations (research, public health, legal requests), name the log that supports an accounting of disclosures (45 CFR 164.528). A cloud provider storing health data is generally a business associate even when it cannot read it; the conduit exception is narrow.
