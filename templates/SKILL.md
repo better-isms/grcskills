@@ -15,7 +15,7 @@ Template notes (delete this comment block in your copy):
 - `name` equals the folder name: skills/<your-author-slug>/<your-skill-slug>/SKILL.md.
   Kebab-case, at most 54 characters, no standards-body names (ISO, AICPA, PCI, NIST, SOC 2).
 - `category`: one of gap-readiness, statement-of-applicability, risk, audit, evidence, vendors,
-  policies, privacy, ai-governance, incidents-continuity.
+  policies, privacy, ai-systems, incidents-continuity.
 - `frameworks`: one or more of iso27001, iso27701, iso42001, soc2, pci-dss, gdpr, nis2, dora,
   eu-ai-act, cra, nist-800-171, cmmc, hipaa, nist-csf, general.
 - Body spine: 600 to 900 words is the target (the validator accepts 450 to 1200). Depth goes in

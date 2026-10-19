@@ -68,7 +68,7 @@ contributors: [<optional, other author slugs>]
 ---
 ```
 
-Categories: `gap-readiness`, `statement-of-applicability`, `risk`, `audit`, `evidence`, `vendors`, `policies`, `privacy`, `ai-governance`, `incidents-continuity`.
+Categories: `gap-readiness`, `statement-of-applicability`, `risk`, `audit`, `evidence`, `vendors`, `policies`, `privacy`, `ai-systems`, `incidents-continuity`.
 
 Framework tags: `iso27001`, `iso27701`, `iso42001`, `soc2`, `pci-dss`, `gdpr`, `nis2`, `dora`, `eu-ai-act`, `cra`, `nist-800-171`, `cmmc`, `hipaa`, `nist-csf`, `general`.
 

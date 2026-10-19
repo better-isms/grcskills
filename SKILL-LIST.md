@@ -98,7 +98,7 @@ Excluded sources: any Probo skill text, any internal audit skill or client engag
 | 47 | transfer-impact-assessment | Transfer impact assessment | Assess a transfer of personal data outside the EEA: mechanism, destination law, supplementary measures | gdpr | PL gdpr-prompt-library-overview | planned |
 | 48 | phi-flow-mapping | Health data flow mapping | Map where protected health information enters, moves and rests, and which safeguards cover each flow | hipaa | PL hipaa-compliance-prompt-library; UC gap-analysis-hipaa | planned |
 
-## ai-governance (6)
+## ai-systems (6)
 
 | # | Slug | Title | Job | Frameworks | Source | Status |
 |---|---|---|---|---|---|---|
@@ -132,6 +132,6 @@ Excluded sources: any Probo skill text, any internal audit skill or client engag
 | vendors | 6 | 0 |
 | policies | 6 | 0 |
 | privacy | 6 | 0 |
-| ai-governance | 6 | 0 |
+| ai-systems | 6 | 0 |
 | incidents-continuity | 6 | 0 |
 | **Total** | **60** | **3** |

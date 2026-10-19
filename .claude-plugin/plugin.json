@@ -10,7 +10,7 @@
   "homepage": "https://grcskills.com",
   "repository": "https://github.com/better-isms/grcskills",
   "license": "MIT",
-  "keywords": ["grc", "compliance", "audit", "risk", "privacy", "ai-governance", "security"],
+  "keywords": ["grc", "compliance", "audit", "risk", "privacy", "ai-systems", "security"],
   "skills": ["./skills/tristan-roth/"],
   "mcpServers": "./plugin/.mcp.json"
 }
