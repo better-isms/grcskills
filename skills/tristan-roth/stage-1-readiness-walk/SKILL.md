@@ -13,19 +13,19 @@ frameworks: [iso27001, iso27701, iso42001]
 tags: [stage-1, readiness, documentation-review, certification, mock-audit]
 ---
 
-Use this four to eight weeks before a first certification audit, or before a scope extension audit. It produces `./stage-1-readiness-walk/readiness-walk.md` and `./stage-1-readiness-walk/document-map.csv`. This skill drafts for a human to review and sign; this skill never marks a control effective. Only the certification body decides whether an audit proceeds.
+Use this four to eight weeks before a first certification audit, or before a scope extension audit. You get two files in a new folder, `./stage-1-readiness-walk/`: a short report of what would stop the audit (`readiness-walk.md`), and a spreadsheet you can open in Excel listing every document with its version, owner, approval and whether it goes to the auditor (`document-map.csv`). This skill drafts for a human to review and sign; this skill never marks a control effective. Only the certification body decides whether an audit proceeds.
 
 ## Inputs to gather
 
-Collect the exact set the auditor will receive: the folder, platform export or document list the company plans to send, plus the audit plan or booking confirmation if the certification body sent one. Ask the reader, in one message: the audit dates, the scope as written in the certification application, which documents are still drafts, and whether an internal audit and a management review have already been held over the full scope.
+Collect the exact set the auditor will receive: the folder, platform export or document list the company plans to send, plus the audit plan or booking confirmation if the certification body sent one. Ask the reader, in one message: audit dates, the scope as written in the certification application, which documents are still drafts, and whether an internal audit and a management review have already been held over the full scope.
 
 ## Step 1: map the document set
 
-List every document in `document-map.csv`: path, title, version, approval record (who and when, as a role), last review, owner role, the topic it serves, and whether it goes to the auditor or stays internal. Mark the drafts the reader named as present but unapproved, and reconcile the pack against any evidence request in the booking confirmation; an auditor credits only what was sent. Then build the list of documented information the target framework expects from the reader's licensed copy or a framework lookup, and mark each as present, present but unapproved, or missing. Do not assume the list from memory; the expected set differs between frameworks and extensions.
+List every document in the document spreadsheet (`document-map.csv`): path, title, version, approval record (who and when, as a role), last review, owner role, the topic it serves, and whether it goes to the auditor or stays internal. Mark the drafts the reader named as present but unapproved, and reconcile the pack against any evidence request in the booking confirmation; an auditor credits only what was sent. Then build the list of documented information the target framework expects from the reader's licensed copy or a framework lookup, and mark each as present, present but unapproved, or missing. Do not assume the list from memory; the expected set differs between frameworks and extensions.
 
 ## Step 2: read in the auditor's order
 
-A certification auditor reads for the system first and the controls second. Walk in this order and note what an auditor would question:
+An auditor reads for the system first and the controls second. Walk in this order, noting what an auditor would question:
 
 1. **Scope**: the scope statement, the application form and the applicability statement name the same entities, sites, products and exclusions.
 2. **Context and obligations**: the issues, interested parties and legal or contractual obligations the documents list are the ones the scope and risks reflect.
@@ -37,7 +37,7 @@ A certification auditor reads for the system first and the controls second. Walk
 
 ## Step 3: test consistency, not existence
 
-The cheapest findings come from documents that contradict each other. Check at least:
+The cheapest findings are documents that contradict each other. Check at least:
 
 - Risk counts and ids match between the register, the treatment plan and the applicability statement.
 - Review periods, severity scales, retention periods and role names agree across documents.
@@ -55,15 +55,15 @@ For each issue write the document, what an auditor would say, the fix, the owner
 
 ## Step 5: write the walk
 
-Write `readiness-walk.md`: a go, go with fixes, or postpone recommendation with reasons; the stoppers; likely findings; polish; and the question list for the auditor's opening meeting. Set a re-walk date after the stopper fixes fall due, to confirm the recommendation still stands. Ask before overwriting existing files.
+Write the readiness report (`readiness-walk.md`): a go, go with fixes, or postpone recommendation with reasons; the stoppers; likely findings; polish; and the question list for the auditor's opening meeting. Set a re-walk date after the stopper fixes fall due, to confirm the recommendation still stands. Ask before overwriting existing files.
 
 ## What good looks like
 
 - The walk finds contradictions between documents, because that is what an auditor finds in the first hour. The common mistake is a checklist of document titles ticked as present; the tell is a readiness report with no finding that cites two documents at once.
 - Stoppers are few, specific and dated against the audit. A list of forty equally weighted issues helps nobody decide whether to postpone.
 - Records are sampled, not assumed. One real access review record says more than the access control policy.
-- Template residue is hunted deliberately; an auditor who finds another company's name stops trusting the rest of the set.
-- The recommendation is honest. Postponing two weeks is cheaper than a failed first stage and a second visit.
+- Template residue is hunted deliberately; an auditor who finds another company's name stops trusting the set.
+- The recommendation is honest: postponing two weeks is cheaper than a failed first stage.
 
 ## Framework lookups
 

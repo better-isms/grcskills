@@ -14,11 +14,11 @@ frameworks: [gdpr]
 tags: [dpa, toms, processor-contracts, security-annex]
 ---
 
-Use this for one agreement at a time, or once a year on the company's own standard annex, and earlier when a subprocessor changes, a new tool touches the data, a security incident happens or a certificate lapses. It writes `./dpa-security-annex-review/<agreement>/annex-review.csv`, `redlines.md` and `practice-gaps.md`. This skill drafts for a human to review and sign; this skill never marks a control effective. The reader's legal counsel or data protection officer decides what is signed.
+Use this for one agreement at a time, or once a year on the company's own standard annex, and earlier when a subprocessor changes, a new tool touches the data, a security incident happens or a certificate lapses. You get three files in a new subfolder per agreement, `./dpa-security-annex-review/<agreement>/`: a spreadsheet you can open in Excel with one line per security promise in the annex, whether it is true today and the proof (`annex-review.csv`); the wording changes to propose in the negotiation, each with a one-line reason (`redlines.md`); and a list of promises the company does not keep today, with an owner and a fix (`practice-gaps.md`). This skill drafts for a human to review and sign; this skill never marks a control effective. The reader's legal counsel or data protection officer decides what is signed.
 
 ## Inputs to gather
 
-Read the agreement and its security measures annex, the company's security policies, its subprocessor list, its incident response plan, and any assurance report or certificate it holds. Ask the reader, in one message: is the company the processor making these promises, or the controller receiving them from a supplier; what personal data and volume the agreement covers; whether the other party wrote the annex or the company's own template is used; and the negotiation deadline.
+Read the agreement and its security annex, the company's security policies, subprocessor list, incident response plan, and any assurance report or certificate. Ask the reader, in one message: is the company the processor making these promises, or the controller receiving them from a supplier; what personal data and volume the agreement covers; whether the other party wrote the annex or the company's own template is used; and the negotiation deadline.
 
 ## Step 1: establish the direction
 
@@ -26,7 +26,7 @@ The same annex is read two ways. As a **processor**, the company is promising: t
 
 ## Step 2: split the annex into single commitments
 
-One row per commitment, in `annex-review.csv`: the annex wording copied unchanged, the topic (access, encryption, logging, backup, incident notice, staff, physical, testing, deletion, subprocessors, location), and whether it is specific and testable ("multi-factor authentication for all administrative access") or vague ("appropriate access controls").
+One row per commitment, in the review spreadsheet (`annex-review.csv`): the annex wording copied unchanged, the topic (access, encryption, logging, backup, incident notice, staff, physical, testing, deletion, subprocessors, location), and whether it is specific and testable ("multi-factor authentication for all administrative access") or vague ("appropriate access controls").
 
 ## Step 3: test each commitment against reality
 
@@ -47,7 +47,7 @@ For each gap choose a side and say which: change the practice (owner, effort and
 
 ## Step 5: write the outputs
 
-`annex-review.csv`: commitment, topic, specificity, status, evidence path, proposed change. `redlines.md`: the proposed wording change per line, with a one-line reason the reader can paste into the negotiation. `practice-gaps.md`: each commitment that is not true today, with the owner role and the proposed fix; send the material ones to the risk register.
+`annex-review.csv`: commitment, topic, specificity, status, evidence path, proposed change. `redlines.md`: the proposed wording change per line, with a one-line reason the reader can paste into the negotiation. `practice-gaps.md`: each commitment that is not true today, with the owner role and the proposed fix; draft the material ones as proposed risk register entries for the risk owner to add.
 
 If the output folder exists, ask before overwriting and offer a new subfolder instead.
 

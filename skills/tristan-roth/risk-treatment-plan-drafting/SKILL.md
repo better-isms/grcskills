@@ -14,7 +14,7 @@ frameworks: [iso27001, soc2, general]
 tags: [risk-treatment, treatment-plan, roadmap, residual-risk]
 ---
 
-Use this after the register is scored and owners have chosen a treatment option for each risk above the acceptance threshold. It produces `./risk-treatment-plan-drafting/treatment-plan.csv` and `./risk-treatment-plan-drafting/plan-notes.md`. This skill drafts for a human to review and sign; this skill never marks a control effective. Owners approve their own lines; the skill never approves a plan or a budget.
+Use this after the register is scored and owners have chosen a treatment option for each risk above the acceptance threshold. You get two files in a new folder, `./risk-treatment-plan-drafting/`: a spreadsheet you can open in Excel with one line per action (who does it, by when, what it costs and what record proves it is done) (`treatment-plan.csv`), and a short note with the open questions for owners and what does not fit the budget (`plan-notes.md`). This skill drafts for a human to review and sign; this skill never marks a control effective. Owners approve their own lines; the skill never approves a plan or a budget.
 
 ## Inputs to gather
 
@@ -22,11 +22,11 @@ Read the risk register, the risk method (scales, acceptance threshold, who appro
 
 ## Step 1: select the risks that need a plan
 
-Take every risk above the acceptance threshold and every risk whose owner chose reduce, avoid or transfer. Risks the owner wants to accept go to a separate list for an acceptance memo, each with the approver the risk method requires at its score; flag any acceptance an owner made above their authority. They do not belong in this plan. If a risk has no treatment decision yet, list it in `plan-notes.md` as a question for its owner rather than inventing one.
+Take every risk above the acceptance threshold and every risk whose owner chose reduce, avoid or transfer. Risks the owner wants to accept go to a separate list for an acceptance memo, each with the approver the risk method requires at its score; flag any acceptance an owner made above their authority. They do not belong in this plan. If a risk has no treatment decision yet, list it in the plan note (`plan-notes.md`) as a question for its owner rather than inventing one.
 
 ## Step 2: write actions, not control names
 
-For each risk, write one to four actions. An action is a change someone can finish: "enforce hardware keys for the 12 production admin accounts", not "implement access control". Each line carries: risk id, action, owner role, contributors, estimated effort in person-days, cash cost, dependency on other actions, target date, the record that proves completion (a config export, a signed contract, a ticket closed with a test result), the control in the reader's control set that the action strengthens, whether the applicability statement needs an update when it completes, and any open audit finding the action closes. Where the reader wants the control mapped to a framework, run a framework lookup instead of assuming the mapping.
+For each risk, write one to four actions as lines of the plan spreadsheet (`treatment-plan.csv`). An action is a change someone can finish: "enforce hardware keys for the 12 production admin accounts", not "implement access control". Each line carries: risk id, action, owner role, contributors, estimated effort in person-days, cash cost, dependency on other actions, target date, the record that proves completion (a config export, a signed contract, a ticket closed with a test result), the control in the reader's control set that the action strengthens, whether the applicability statement needs an update when it completes, and any open audit finding the action closes. Where the reader wants the control mapped to a framework, run a framework lookup instead of assuming the mapping.
 
 Rules of thumb that keep the plan real:
 

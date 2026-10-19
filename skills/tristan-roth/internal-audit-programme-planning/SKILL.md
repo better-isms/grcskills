@@ -14,7 +14,7 @@ frameworks: [iso27001, iso27701, iso42001, soc2]
 tags: [internal-audit, audit-programme, audit-planning, independence]
 ---
 
-Use this once per cycle and again when scope, frameworks or the risk picture change materially. It produces `./internal-audit-programme-planning/programme.md`, `./internal-audit-programme-planning/coverage-matrix.csv` and `./internal-audit-programme-planning/calendar.csv`. This skill drafts for a human to review and sign; this skill never marks a control effective. Leadership approves the programme; the skill proposes it.
+Use this once per cycle and again when scope, frameworks or the risk picture change materially. You get three files in a new folder, `./internal-audit-programme-planning/`: a short plan document saying what gets audited, why, by whom and how findings are followed up (`programme.md`), a spreadsheet you can open in Excel showing every audit area against each year of the cycle (`coverage-matrix.csv`), and a second spreadsheet with the proposed audit dates and auditors (`calendar.csv`). This skill drafts for a human to review and sign; this skill never marks a control effective. Leadership approves the programme; the skill proposes it.
 
 ## Inputs to gather
 
@@ -41,11 +41,11 @@ Nobody audits their own work or a process they run. In a company of 15 to 50 peo
 
 ## Step 4: schedule the calendar
 
-Place audits so that findings can be corrected before the external audit or the end of the examination period: finish the yearly round at least six to eight weeks before the external audit and before the management review that must read the results. Avoid release freezes, financial year end and peak seasons the reader names. For a readiness audit ahead of an attestation examination, test the controls over a sample of the period, not just their design. Allow 1 day of preparation and 0.5 day of reporting per audit day.
+Place audits so that findings can be corrected before the external audit or the end of the examination period: finish the yearly round at least six to eight weeks before the external audit and before the management review that must read the results. Avoid release freezes, financial year end and peak seasons the reader names. For a readiness audit ahead of an attestation examination, test the controls over a sample of the period, not just their design. Allow 1 day of preparation and 0.5 day of reporting per audit day. Put the proposed dates, areas and auditor roles in the calendar spreadsheet (`calendar.csv`).
 
 ## Step 5: write the programme
 
-`programme.md` states objectives, scope, criteria (the frameworks plus the company's own policies), the ranking method, auditor assignments with independence notes, reporting route (findings to the owner, summary to management review), how findings are tracked to closure, and what triggers an unplanned audit (a major incident, a significant change). `coverage-matrix.csv` lists every area and control group against the years of the cycle so gaps in coverage are visible at a glance.
+The plan document (`programme.md`) states objectives, scope, criteria (the frameworks plus the company's own policies), the ranking method, auditor assignments with independence notes, reporting route (findings to the owner, summary to management review), how findings are tracked to closure, and what triggers an unplanned audit (a major incident, a significant change). The coverage spreadsheet (`coverage-matrix.csv`) lists every area and control group against the years of the cycle so gaps in coverage are visible at a glance.
 
 ## What good looks like
 

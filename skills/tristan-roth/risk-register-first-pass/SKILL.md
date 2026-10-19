@@ -13,7 +13,7 @@ frameworks: [iso27001, soc2, nis2, dora, general]
 tags: [risk-assessment, risk-register, risk-treatment]
 ---
 
-Use this when there is no register, or when the register is a generic list that would fit any company. It produces `./risk-register-first-pass/risk-register.csv` and `./risk-register-first-pass/risk-notes.md`. This skill drafts for a human to review and sign; this skill never marks a control effective. Risk acceptance is a decision for named owners, never for the agent.
+Use this when there is no register, or when the register is a generic list that would fit any company. You get two files in a new folder, `./risk-register-first-pass/`: a spreadsheet you can open in Excel listing 20 to 40 risks specific to the company, each with an owner, scores and a proposed treatment (`risk-register.csv`), and a short notes document with the scoring rules, the reasoning behind the top scores and the questions for each owner (`risk-notes.md`). This skill drafts for a human to review and sign; this skill never marks a control effective. Risk acceptance is a decision for named owners, never for the agent.
 
 ## Inputs to gather
 
@@ -21,7 +21,7 @@ Read what exists before asking anything: the scope statement, the asset or servi
 
 ## Step 1: agree the method before scoring
 
-If the company already has a risk method, use it as written and note where it is vague. If not, draft a minimal one in `risk-notes.md` and get the reader's yes before scoring:
+If the company already has a risk method, use it as written and note where it is vague. If not, draft a minimal one in the notes document (`risk-notes.md`) and get the reader's yes before scoring:
 
 - Likelihood 1 to 5, each level anchored to a frequency the team can recognise (1 = not expected in five years, 3 = about once a year, 5 = several times a year).
 - Impact 1 to 5, each level anchored to the company's own numbers: revenue or contract value at risk, hours of downtime, number of people whose data is involved, regulatory exposure.
@@ -36,7 +36,7 @@ Write each risk as one sentence: "If <threat> exploits <weakness> in <asset or p
 
 ## Step 3: score, link controls, propose treatment
 
-For each risk fill: id, scenario, asset or process, owner role, existing controls with the path to evidence that they run, inherent likelihood and impact, residual likelihood and impact after existing controls, proposed treatment (reduce, avoid, transfer, accept), proposed action, whether the action adds or changes a control (so the applicability statement can follow) and a review cadence. Mark every existing control without evidence as "claimed, not evidenced"; the residual score assumes it does not work until someone shows it does. Where a framework expects specific risk criteria or links to a control set, run a framework lookup instead of guessing.
+For each risk, fill a row of the risk spreadsheet (`risk-register.csv`): id, scenario, asset or process, owner role, existing controls with the path to evidence that they run, inherent likelihood and impact, residual likelihood and impact after existing controls, proposed treatment (reduce, avoid, transfer, accept), proposed action, whether the action adds or changes a control (so the applicability statement can follow) and a review cadence. Mark every existing control without evidence as "claimed, not evidenced"; the residual score assumes it does not work until someone shows it does. Where a framework expects specific risk criteria or links to a control set, run a framework lookup instead of guessing.
 
 ## Step 4: sanity checks before handing over
 

@@ -15,7 +15,7 @@ frameworks: [iso27001, iso42001, gdpr, nis2, dora]
 tags: [internal-audit, audit-checklist, sampling, fieldwork]
 ---
 
-Use this for one process or area per run (access management, change, suppliers, incident handling, data subject requests, AI system release). It produces `./internal-audit-checklist-from-scope/<area>-checklist.md` with the tests, and `./internal-audit-checklist-from-scope/<area>-requests.md`, the list of records to ask owners for before fieldwork. This skill drafts for a human to review and sign; this skill never marks a control effective. The auditor performs the tests and grades the results; the skill does neither.
+Use this for one process or area per run (access management, change, suppliers, incident handling, data subject requests, AI system release). You get two files in a new folder, `./internal-audit-checklist-from-scope/`: the audit checklist the internal auditor works through during fieldwork, one test per line with blank result columns (`<area>-checklist.md`), and a draft request package listing the records each owner must provide before fieldwork (`<area>-requests.md`). This skill drafts for a human to review and sign; this skill never marks a control effective. The auditor performs the tests and grades the results; the skill does neither.
 
 ## Inputs to gather
 
@@ -46,7 +46,7 @@ Add three standing tests to every checklist: does the process owner know the doc
 
 ## Step 5: build the request list
 
-Collect every record the tests need into `<area>-requests.md`, grouped by owner, with the period and the format (system export with query parameters, not a hand-made list). Send it to owners a week before fieldwork so populations are complete before sampling.
+Collect every record the tests need into the draft request package (`<area>-requests.md`), grouped by owner, with the period and the format (system export with query parameters, not a hand-made list), and a short covering note per owner. The audit owner reviews the package and sends it to owners about a week before fieldwork, so populations are complete before sampling.
 
 ## What good looks like
 
@@ -67,4 +67,5 @@ If ISMS Copilot is connected to your agent (MCP server `https://account.ismscopi
 - MUST write outputs only inside `./internal-audit-checklist-from-scope/` and ask before overwriting an existing file.
 - NEVER fill in results, grades or conclusions; those belong to the auditor after fieldwork.
 - NEVER let the auditee choose the sample items.
+- NEVER send the request package or contact owners yourself; the audit owner reviews and sends it.
 - NEVER copy personal data from records into the checklist; reference records by id.

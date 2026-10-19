@@ -89,11 +89,12 @@ test('every page embeds the build SHA, and build.json matches it', opts, () => {
   }
 });
 
-test('llms.txt and sitemap list every skill', opts, () => {
+test('llms.txt and sitemap list every skill; llms.txt carries no descriptions', opts, () => {
   const llms = read('llms.txt');
   const sitemap = read('sitemap.xml');
   for (const s of content.skills) {
     assert.ok(llms.includes(`https://grcskills.com/skill/${s.slug}/`));
+    assert.ok(!llms.includes(s.description), `llms.txt must not carry contributor prose (${s.slug})`);
     assert.ok(sitemap.includes(`<loc>https://grcskills.com/skill/${s.slug}/</loc>`));
   }
   assert.ok(llms.includes(content.meta.prompt));

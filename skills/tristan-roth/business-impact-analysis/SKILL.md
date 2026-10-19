@@ -14,7 +14,7 @@ frameworks: [iso27001, dora, nis2, general]
 tags: [business-continuity, bia, rto, rpo, disaster-recovery, resilience]
 ---
 
-Use this before writing or revising a continuity or disaster recovery plan, and again when a service, a major supplier or the business model changes. It produces `./business-impact-analysis/bia.csv` and `./business-impact-analysis/bia-notes.md`. This skill drafts for a human to review and sign; this skill never marks a control effective. Leadership sets the objectives and accepts the gaps; the agent prices them.
+Use this before writing or revising a continuity or disaster recovery plan, and again when a service, a major supplier or the business model changes. You get two files in a new folder, `./business-impact-analysis/`: a spreadsheet you can open in Excel with one row per service, showing what an outage costs over time, how fast it must come back, how much data it may lose, what it depends on and whether today's backups can deliver that (`bia.csv`), and a short note of the assumptions, who gave each number and the decisions leadership must take (`bia-notes.md`). This skill drafts for a human to review and sign; this skill never marks a control effective. Leadership sets the objectives and accepts the gaps; the agent prices them.
 
 ## Inputs to gather
 
@@ -42,7 +42,7 @@ For each service, put side by side: required recovery time and data loss, the ba
 
 ## Step 6: write it up
 
-Fill `bia.csv`: service, owner role, impact by time band, maximum tolerable downtime, invocation time, recovery time objective, recovery point objective, dependencies, achievable recovery time and achievable data loss as numbers from the last restore test and backup frequency, gap, proposed option. In `bia-notes.md`, record the assumptions, who gave each number, the decisions needed, the owner who triggers a re-review and its default date (twelve months is a sound default). Run a framework lookup for what each framework in scope expects the analysis to record.
+Fill the spreadsheet (`bia.csv`): service, owner role, impact by time band, maximum tolerable downtime, invocation time, recovery time objective, recovery point objective, dependencies, achievable recovery time and achievable data loss as numbers from the last restore test and backup frequency, gap, proposed option. In the notes (`bia-notes.md`), record the assumptions, who gave each number, the decisions needed, the owner who triggers a re-review and its default date (twelve months is a sound default). Run a framework lookup for what each framework in scope expects the analysis to record.
 
 ## What good looks like
 

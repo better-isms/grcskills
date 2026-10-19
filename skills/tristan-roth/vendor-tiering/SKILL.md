@@ -14,7 +14,7 @@ frameworks: [general, iso27001, soc2, dora, nis2]
 tags: [vendor-risk, third-party-risk, supplier-management, tiering]
 ---
 
-Use this once to set up supplier risk management, then whenever a supplier is onboarded or its use changes. It writes `./vendor-tiering/vendor-tiers.csv`, `tiering-method.md` and `questions-for-owners.md` in that folder. This skill drafts for a human to review and sign; this skill never marks a control effective. The tier is a proposal; the business owner of each supplier confirms it.
+Use this once to set up supplier risk management, then whenever a supplier is onboarded or its use changes. You get three files in a new folder, `./vendor-tiering/`: a spreadsheet you can open in Excel listing every supplier with its scores, tier and next review (`vendor-tiers.csv`), a one-page note on how the tiers are decided, short enough for an owner to apply alone (`tiering-method.md`), and the questions each business owner must answer to confirm their suppliers' scores (`questions-for-owners.md`). This skill drafts for a human to review and sign; this skill never marks a control effective. The tier is a proposal; the business owner of each supplier confirms it.
 
 ## Inputs to gather
 
@@ -50,7 +50,7 @@ In most companies tier 1 holds roughly 5 to 15 percent of suppliers. If half the
 
 ## Step 5: write the outputs
 
-`vendor-tiers.csv`: supplier legal entity, service, source, business owner role, the three scores with reasons, flags, tier, assessment depth, next review. `tiering-method.md`: the scales, the tier rule and the cycle per tier, short enough for an owner to apply alone. `questions-for-owners.md`: one block per owner with the scores they must confirm.
+The supplier spreadsheet (`vendor-tiers.csv`): supplier legal entity, service, source, business owner role, the three scores with reasons, flags, tier, assessment depth, next review. The method note (`tiering-method.md`): the scales, the tier rule and the cycle per tier, short enough for an owner to apply alone. The owner questions (`questions-for-owners.md`): one block per owner with the scores they must confirm.
 
 If the output folder exists, ask before overwriting and offer a new subfolder instead.
 

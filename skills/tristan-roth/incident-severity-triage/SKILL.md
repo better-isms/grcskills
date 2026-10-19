@@ -14,7 +14,7 @@ frameworks: [general, iso27001, soc2, nis2, dora]
 tags: [incident-response, severity, triage, escalation, on-call]
 ---
 
-Use this in the first hour of a suspected incident, and again each time a new fact arrives. It produces `./incident-severity-triage/<incident-id>-triage.md`, a running record. This skill drafts for a human to review and sign; this skill never marks a control effective. The incident lead decides the severity; the agent proposes it fast, with reasons.
+Use this in the first hour of a suspected incident, and again each time a new fact arrives. You get one file in a new folder, `./incident-severity-triage/`: a running incident log, one per incident, that opens with when the company found out, the proposed severity with its reason, who to call and which reporting deadlines may apply, then adds each new fact and decision with its time (`<incident-id>-triage.md`). This skill drafts for a human to review and sign; this skill never marks a control effective. The incident lead decides the severity; the agent proposes it fast, with reasons.
 
 ## Inputs to gather
 

@@ -14,7 +14,7 @@ frameworks: [iso27001, soc2, dora, nis2]
 tags: [tabletop-exercise, business-continuity, crisis-management, incident-response, testing]
 ---
 
-Use this to design one discussion-based exercise and to record its findings afterwards. It produces `./bcp-tabletop-design/exercise-plan.md`, `./bcp-tabletop-design/injects.md`, `./bcp-tabletop-design/observer-sheet.md` and, after the session, `./bcp-tabletop-design/findings.md`. This skill drafts for a human to review and sign; this skill never marks a control effective. A tabletop tests decisions and the plan on paper; it does not prove a technical recovery works, which needs a restore or failover test.
+Use this to design one discussion-based exercise and to record its findings afterwards. You get four documents in a new folder, `./bcp-tabletop-design/`: the exercise plan with objectives, scenario, timing and ground rules (`exercise-plan.md`); the script of events the facilitator reveals one by one during the session (`injects.md`); a note-taking sheet for observers (`observer-sheet.md`); and, after the session, the findings and owned actions (`findings.md`). This skill drafts for a human to review and sign; this skill never marks a control effective. A tabletop tests decisions and the plan on paper; it does not prove a technical recovery works, which needs a restore or failover test.
 
 ## Inputs to gather
 
@@ -30,7 +30,7 @@ Take the scenario from the top of the risk register or the business impact analy
 
 ## Step 3: write injects that force decisions
 
-Write six to ten injects in `injects.md`, each with a time in the scenario, the information given, who receives it, and the decision it forces. Escalate across the session. Include:
+Write six to ten injects in the facilitator's script (`injects.md`), each with a time in the scenario, the information given, who receives it, and the decision it forces. Escalate across the session. Include:
 
 - one inject that makes things worse (backups also encrypted, the supplier extends its estimate);
 - one that removes a person (the incident lead is unreachable);
@@ -42,11 +42,11 @@ An inject that only adds information without forcing a choice wastes time.
 
 ## Step 4: brief facilitator and observers
 
-The facilitator runs the clock and the injects and does not take part in decisions. Name one or two observers and give them `observer-sheet.md`: per inject, the decision made, who made it, how long it took, which document or tool they used, and gaps. Set ground rules for the opening: no blame, answer with what you would actually do, use the real plan and contact tree, and a stop rule if a real incident starts. Plan 90 to 120 minutes plus a 20-minute hot debrief.
+The facilitator runs the clock and the injects and does not take part in decisions. Name one or two observers and give them the observer sheet (`observer-sheet.md`): per inject, the decision made, who made it, how long it took, which document or tool they used, and gaps. Set ground rules for the opening: no blame, answer with what you would actually do, use the real plan and contact tree, and a stop rule if a real incident starts. Plan 90 to 120 minutes plus a 20-minute hot debrief.
 
 ## Step 5: record findings and actions
 
-After the session, fill `findings.md` from the observer sheets: what worked, and each gap classified as plan, role, tool, supplier or knowledge. Start by checking the actions from the last exercise: closed, or still open with a new date. Turn new gaps into owned, dated actions with the document each one updates, and send risk-relevant gaps to the risk register and the next management review. Record attendance by role, the scenario, objectives met or not, and the date of the next exercise with a different scenario. Keep the record under the company's document rules so the evidence survives the person who ran the session. Run a framework lookup for what each framework in scope expects as testing frequency and test evidence; DORA (Art. 11 and Art. 24 onwards) and NIS 2 (Art. 21) both reach continuity testing for entities in their scope.
+After the session, fill the findings document (`findings.md`) from the observer sheets: what worked, and each gap classified as plan, role, tool, supplier or knowledge. Start by checking the actions from the last exercise: closed, or still open with a new date. Turn new gaps into owned, dated actions with the document each one updates, and list risk-relevant gaps as proposed entries for the risk register and the next management review, for their owners to add. Record attendance by role, the scenario, objectives met or not, and the date of the next exercise with a different scenario. Keep the record under the company's document rules so the evidence survives the person who ran the session. Run a framework lookup for what each framework in scope expects as testing frequency and test evidence; DORA (Art. 11 and Art. 24 onwards) and NIS 2 (Art. 21) both reach continuity testing for entities in their scope.
 
 ## What good looks like
 

@@ -13,7 +13,7 @@ frameworks: [general, iso27001, soc2]
 tags: [policy-review, document-control, version-history, approval]
 ---
 
-Use this when policy reviews come due on their cadence, when an audit is approaching and the approval records are stale, or when a big change (new product, acquisition, reorganisation, new law) makes the whole set suspect. It produces `./policy-review-cycle-refresh/review-register.md`, one change note per policy under `./policy-review-cycle-refresh/changes/`, and `./policy-review-cycle-refresh/communication-plan.md`. This skill drafts for a human to review and sign; this skill never marks a control effective. Each policy's approver decides; the agent proposes.
+Use this when policy reviews come due on their cadence, when an audit is approaching and the approval records are stale, or when a big change (new product, acquisition, reorganisation, new law) makes the whole set suspect. You get, in a new folder `./policy-review-cycle-refresh/`: a table of every policy with its owner, approver and review status (`review-register.md`), one short note per policy showing each proposed edit as old text and new text with the reason (in `changes/`), and a plan for telling staff what changed (`communication-plan.md`). This skill drafts for a human to review and sign; this skill never marks a control effective. Each policy's approver decides; the agent proposes.
 
 ## Inputs to gather
 
@@ -21,7 +21,7 @@ Read the policy set with each document's version, owner, approver and last appro
 
 ## Step 1: build the review register
 
-One row per policy: id, title, current version, owner role, approver role, last approval, review due, the evidence window considered (last approval to this review), the version staff last acknowledged, and status (due, overdue, not due, proposed for withdrawal). Flag documents with no approval record at all; for an auditor those are drafts, whatever their file name says. Flag owners who have left or changed role; the first fix is a new owner, not new text. Do the same for approvers: where the approver role is vacant or no longer senior enough, propose an interim approver to be named and minuted, or the cycle stalls. Flag policies staff acknowledged at an older version than the one now in force. Propose withdrawal, with the last version archived and the approver's sign-off, for a policy whose subject no longer exists, instead of carrying it as a permanent "no change" row.
+In the review table (`review-register.md`), write one row per policy: id, title, current version, owner role, approver role, last approval, review due, the evidence window considered (last approval to this review), the version staff last acknowledged, and status (due, overdue, not due, proposed for withdrawal). Flag documents with no approval record at all; for an auditor those are drafts, whatever their file name says. Flag owners who have left or changed role; the first fix is a new owner, not new text. Do the same for approvers: where the approver role is vacant or no longer senior enough, propose an interim approver to be named and minuted, or the cycle stalls. Flag policies staff acknowledged at an older version than the one now in force. Propose withdrawal, with the last version archived and the approver's sign-off, for a policy whose subject no longer exists, instead of carrying it as a permanent "no change" row.
 
 ## Step 2: collect the triggers per policy
 
@@ -37,7 +37,7 @@ A policy with no triggers can still be reviewed: read it against current practic
 
 ## Step 3: propose changes and classify them
 
-Write `changes/<policy-id>.md` with each proposed edit as old text, new text and the trigger behind it. Classify each edit:
+Write a change note per policy (`changes/<policy-id>.md`) with each proposed edit as old text, new text and the trigger behind it. Classify each edit:
 
 - **Editorial**: wording, formatting, renamed teams or tools, broken references. Usually approved by the owner and versioned as a minor change (2.0 to 2.1) if the document control rules allow it.
 - **Substantive**: changes what someone must do, how often, or who decides. Goes to the policy's approver and versioned as a major change (2.1 to 3.0).
@@ -51,7 +51,7 @@ For each policy, draft the version history entry (version, summary of change in 
 
 ## Step 5: plan communication
 
-In `communication-plan.md`, list per substantive change: who is affected, what changes for them in at most three bullets, the channel, and whether a new acknowledgement is needed. Editorial changes need no announcement. Changes affecting behaviour (a new reporting deadline, a new approval step) need one, plus an update to onboarding material, and they feed the awareness or training plan as an input. Keep the plan: it is the record that people were told.
+In the communication plan (`communication-plan.md`), list per substantive change: who is affected, what changes for them in at most three bullets, the channel, and whether a new acknowledgement is needed. Editorial changes need no announcement. Changes affecting behaviour (a new reporting deadline, a new approval step) need one, plus an update to onboarding material, and they feed the awareness or training plan as an input. Keep the plan: it is the record that people were told.
 
 ## What good looks like
 

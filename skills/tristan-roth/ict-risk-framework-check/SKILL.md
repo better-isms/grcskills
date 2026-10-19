@@ -14,7 +14,7 @@ frameworks: [dora]
 tags: [ict-risk, operational-resilience, financial-entities, gap-analysis]
 ---
 
-Use this for one legal entity at a time; groups run it per entity, then compare. It produces `./ict-risk-framework-check/gap-register.csv` and `./ict-risk-framework-check/summary.md`. This skill drafts for a human to review and sign; this skill never marks a control effective. The check reads documents and records; it is not a legal opinion, and it does not decide what the competent authority will accept.
+Use this for one legal entity at a time; groups run it per entity, then compare. You get two files in a new folder, `./ict-risk-framework-check/`: a spreadsheet you can open in Excel with one row per DORA topic, showing which document or record covers it, the gap, its severity and a proposed owner (`gap-register.csv`), and a short summary for the management body with the gaps that matter most and the decisions only it can take (`summary.md`). This skill drafts for a human to review and sign; this skill never marks a control effective. The check reads documents and records; it is not a legal opinion, and it does not decide what the competent authority will accept.
 
 ## Inputs to gather
 
@@ -26,7 +26,7 @@ Confirm the entity type falls within DORA's scope (Article 2) and record it. Che
 
 ## Step 2: map evidence article by article
 
-Build `gap-register.csv` with one row per topic below, and columns: article, topic, the entity's document or record that covers it, evidence it operates, gap, severity, proposed owner, proposed action.
+Build the gap spreadsheet (`gap-register.csv`) with one row per topic below, and columns: article, topic, the entity's document or record that covers it, evidence it operates, gap, severity, proposed owner, proposed action.
 
 - Article 5: the management body's role in ICT risk (approval, oversight, budget, its own ICT knowledge and training).
 - Article 6: the documented framework, its review cycle and review after major incidents, the control function and its independence, internal audit of the framework, the resilience strategy.
@@ -50,7 +50,7 @@ Grade each gap: **missing** (no document, no practice), **paper only** (document
 
 ## Step 5: summarise for the management body
 
-In `summary.md`: entity, regime applied, count of gaps by grade, the five gaps that would matter most in a supervisory review, proposed owners, and the decisions the management body itself has to take.
+In the management body summary (`summary.md`): entity, regime applied, count of gaps by grade, the five gaps that would matter most in a supervisory review, proposed owners, and the decisions the management body itself has to take.
 
 ## What good looks like
 

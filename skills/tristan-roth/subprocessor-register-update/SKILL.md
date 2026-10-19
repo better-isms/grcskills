@@ -14,7 +14,7 @@ frameworks: [gdpr, iso27701]
 tags: [subprocessors, processor, data-transfers, customer-notice]
 ---
 
-Use this every quarter, and before any new tool that touches customer data goes live. It writes `./subprocessor-register-update/subprocessor-register.csv`, `changes.md`, `customer-notice-draft.md` and `open-questions.md`. This skill drafts for a human to review and sign; this skill never marks a control effective. The data protection officer or privacy lead approves the list and any notice.
+Use this every quarter, and before any new tool that touches customer data goes live. You get four files in a new folder, `./subprocessor-register-update/`: a draft of the list of outside companies that handle your customers' personal data, as a spreadsheet you can open in Excel (`subprocessor-register.csv`); a short change log of what was added, removed or moved since the last version (`changes.md`); a draft notice to customers about the changes, for the privacy lead to approve and send (`customer-notice-draft.md`); and the facts still to confirm, per owner (`open-questions.md`). This skill drafts for a human to review and sign; this skill never marks a control effective. The data protection officer or privacy lead approves the list and any notice.
 
 ## Inputs to gather
 
@@ -34,11 +34,11 @@ For each subprocessor record: legal entity, service, purpose, categories of pers
 
 ## Step 4: work out the notice duties
 
-GDPR Art. 28 lets a processor engage another processor only with the controller's prior specific or general written authorisation, with notice of changes under a general one. Read the standard agreement for the notice period and objection mechanism, then the list of customers with non-standard terms: some need prior approval, some a longer notice period, some notice by a named channel. For each change, list which customers need what and by when relative to go-live. Flag any addition already live before its notice or objection window ran: that is a breach of the agreement to escalate to the privacy lead, not just a register entry. Draft one notice for the standard terms in `customer-notice-draft.md`: what changes, purpose, data, location, and how to object. For interpretation beyond this, run a framework lookup or ask counsel.
+GDPR Art. 28 lets a processor engage another processor only with the controller's prior specific or general written authorisation, with notice of changes under a general one. Read the standard agreement for the notice period and objection mechanism, then the list of customers with non-standard terms: some need prior approval, some a longer notice period, some notice by a named channel. For each change, list which customers need what and by when relative to go-live. Flag any addition already live before its notice or objection window ran: that is a breach of the agreement; put it first in the open questions for the privacy lead, not just as a register entry. Draft one notice for the standard terms in the customer notice draft (`customer-notice-draft.md`): what changes, purpose, data, location, and how to object. The privacy lead approves it and a named person sends it through the channel each agreement names; the agent sends nothing. For interpretation beyond this, run a framework lookup or ask counsel.
 
 ## Step 5: write the outputs
 
-`subprocessor-register.csv`: the complete list with all fields and the source of each. `changes.md`: additions, removals and changed locations or purposes since the last version; for each removal, the return or deletion evidence the agreement's exit clause calls for, or "to confirm". Cross-check the published list against the processor record of processing and the supplier list, and list mismatched rows. `open-questions.md`: unconfirmed fields per owner.
+The register spreadsheet (`subprocessor-register.csv`): the complete list with all fields and the source of each; the privacy lead approves it and the list owner publishes it. The change log (`changes.md`): additions, removals and changed locations or purposes since the last version; for each removal, the return or deletion evidence the agreement's exit clause calls for, or "to confirm". Cross-check the published list against the processor record of processing and the supplier list, and list mismatched rows. The open questions (`open-questions.md`): unconfirmed fields per owner.
 
 If the output folder exists, ask before overwriting and offer a new subfolder instead.
 

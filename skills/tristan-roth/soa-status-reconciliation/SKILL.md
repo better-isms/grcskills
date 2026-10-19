@@ -13,15 +13,15 @@ frameworks: [iso27001]
 tags: [soa, implementation-status, evidence, reconciliation, audit-readiness]
 ---
 
-Use this six to ten weeks before an external audit, and at each internal audit of the management system. It produces `./soa-status-reconciliation/status-reconciliation.csv` and `./soa-status-reconciliation/evidence-gaps.md`. This skill drafts for a human to review and sign; this skill never marks a control effective. The reconciliation proposes statuses; the control owner and the approver of the statement decide them.
+Use this six to ten weeks before an external audit, and at each internal audit of the management system. You get two files in a new folder, `./soa-status-reconciliation/`: a spreadsheet you can open in Excel comparing, control by control, the status the company claims with what its records actually show, and the status they support (`status-reconciliation.csv`), and a to-do list per owner of the proof that is missing and how long it takes to produce (`evidence-gaps.md`). This skill drafts for a human to review and sign; this skill never marks a control effective. The reconciliation proposes statuses; the control owner and the approver of the statement decide them.
 
 ## Inputs to gather
 
-Read: the statement of applicability, the treatment plan, the evidence index or compliance platform export, policies and procedures, and the records the agent can reach (ticket exports, review records, logs exported by the reader, training records, supplier assessments). Ask the reader for the audit period the next audit will cover and which systems are the source of truth for people, assets and changes. Write the period's start and end dates in the notes; a record outside them supports nothing.
+Read: the statement of applicability, the treatment plan, the evidence index or compliance platform export, policies and procedures, and the records the agent can reach (ticket exports, review records, logs exported by the reader, training records, supplier assessments). Ask the reader for the audit period the next audit will cover and which systems are the source of truth for people, assets and changes. Write the period's start and end dates in the gap list; a record outside them supports nothing.
 
 ## Step 1: list the claims
 
-For each control marked implemented or partially implemented, record the control id, the claimed status, the owner, and the evidence the statement or index points to. Note controls with no evidence pointer at all; they go straight to the gap list.
+For each control marked implemented or partially implemented, add a row to the reconciliation spreadsheet (`status-reconciliation.csv`): the control id, the claimed status, the owner, and the evidence the statement or index points to. Note controls with no evidence pointer at all; they go straight to the gap list (`evidence-gaps.md`).
 
 ## Step 2: classify what the control is
 
@@ -49,7 +49,7 @@ The proposed status follows the weakest grade in the sample. Supported keeps imp
 
 ## Step 5: write the gap list
 
-Write `evidence-gaps.md` grouped by owner role: control id, what is missing, the exact artefact that would close it, and how long before it can exist (a quarterly control needs a quarter). Put contradictions first; they are likely audit findings and may be incidents. Then rank by how likely the auditor is to sample the control: controls tied to top risks, recent incidents or customer claims come before low-traffic ones. Ask before overwriting either file.
+Write the gap list grouped by owner role: control id, what is missing, the exact artefact that would close it, and how long before it can exist (a quarterly control needs a quarter). Put contradictions first; they are likely audit findings and may be incidents. Then rank by how likely the auditor is to sample the control: controls tied to top risks, recent incidents or customer claims come before low-traffic ones. Ask before overwriting either file.
 
 ## What good looks like
 

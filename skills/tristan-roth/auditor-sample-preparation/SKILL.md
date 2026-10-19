@@ -15,7 +15,7 @@ frameworks: [iso27001, soc2, pci-dss]
 tags: [audit-sampling, populations, evidence, fieldwork, readiness]
 ---
 
-Use this four to eight weeks before fieldwork, or as soon as the auditor sends a request list. It produces `./auditor-sample-preparation/populations.md` (the index), one `./auditor-sample-preparation/<population>.md` per population, and `./auditor-sample-preparation/gaps.md`. This skill drafts for a human to review and sign; this skill never marks a control effective. The auditor selects the samples; this skill only makes sure the team can answer any selection.
+Use this four to eight weeks before fieldwork, or as soon as the auditor sends a request list. You get a new folder, `./auditor-sample-preparation/`, holding: a one-page index of every list of records the auditor is likely to sample from, marked ready or not ready (`populations.md`); one short file per list explaining where it came from, how it was pulled and how many items it holds (`<population>.md`); and a list of the gaps found, each with an owner and a fix (`gaps.md`). This skill drafts for a human to review and sign; this skill never marks a control effective. The auditor selects the samples; this skill only makes sure the team can answer any selection.
 
 ## Inputs to gather
 
@@ -27,7 +27,7 @@ Start from the controls that operate per event or on a cycle, because those are 
 
 ## Step 2: build each population from the system of record
 
-For each population, write in its file: the source system, the exact query or report and its parameters (date range, filters), who ran it and when, the row count, and the fields. Prefer a system-generated export to any list a person typed; auditors test completeness and a typed list fails it. Reconcile one population against another where they should match: leavers in HR against accounts disabled in the identity provider; changes merged in code hosting against change tickets. Every unmatched item is either an explanation to write down now or a gap. A population can legitimately be empty (emergency changes often are): keep the query, the run date and the zero-count export, plus the configuration showing the path exists, because an unprovable "we had none" brings a follow-up request. Before marking a population ready, have someone other than the preparer re-run the query and confirm the same count; record the re-run in the file.
+For each population, write in its file: the source system, the exact query or report and its parameters (date range, filters), who ran it and when, the row count, and the fields. Prefer a system-generated export to any list a person typed; auditors test completeness and a typed list fails it. Reconcile one population against another where they should match: leavers in HR against accounts disabled in the identity provider; changes merged in code hosting against change tickets. Every unmatched item is either an explanation to write down now or a gap. A population can legitimately be empty (emergency changes often are): keep the query, the run date and the zero-count export, plus the configuration showing the path exists, because an unprovable "we had none" brings a follow-up request. Re-running the same query only shows it is repeatable; a query with a wrong filter returns the same incomplete list every time. Before marking a population ready, prove completeness two ways and record both in the file: someone other than the preparer checks the query logic (date range, filters, status values, whether deleted or archived records are included), and the count is reconciled to an independent source or control total, such as headcount movements from HR or payroll, the total of deployments in the pipeline, the system's own record count, or a finance total.
 
 ## Step 3: plan for the sample sizes auditors use
 
@@ -35,15 +35,15 @@ Auditors scale samples with how often a control runs and how many items exist; a
 
 ## Step 4: dry-run a sample
 
-Pick five items per population yourself at random (not the cleanest ones), plus the earliest item in the period (auditors test whether the control already operated at the start, especially in a first attestation period). Gather the evidence for each as the auditor would want it: the record itself, timestamped, showing the system and the identity of whoever approved or acted. Note for each item: evidence found, where, and anything missing. If two of five fail, the control has an operating problem; record it in `gaps.md` with an owner and send it to the company's corrective action process, because fixing evidence for five items does not fix the other items.
+Pick five items per population yourself at random (not the cleanest ones), plus the earliest item in the period (auditors test whether the control already operated at the start, especially in a first attestation period). Gather the evidence for each as the auditor would want it: the record itself, timestamped, showing the system and the identity of whoever approved or acted. Note for each item: evidence found, where, and anything missing. If two of five fail, the control has an operating problem; write it in the gap list (`gaps.md`) with an owner and a draft corrective action for the control owner to raise in the company's own process, because fixing evidence for five items does not fix the other items.
 
 ## Step 5: write the gaps and the readiness index
 
-`gaps.md` lists each population with missing exports, reconciliation breaks, failed dry-run items and controls with no record at all, each with an owner role and a proposed fix. `populations.md` shows every population as ready, ready with explanations, or not ready, and names the person who can pull the evidence for any selected item on the audit day.
+The gap list (`gaps.md`) shows each population with missing exports, reconciliation breaks, failed dry-run items and controls with no record at all, each with an owner role and a proposed fix. The index (`populations.md`) shows every population as ready, ready with explanations, or not ready, and names the person who can pull the evidence for any selected item on the audit day.
 
 ## What good looks like
 
-- Each population can be regenerated by someone else from the query in its file and gives the same count. That is what proves completeness.
+- Each population has a checked query and a count that ties to an independent total. Someone else can regenerate it, but the tie-out to another source is what shows nothing is missing.
 - Reconciliations are done before the auditor does them. The leaver who still had access for three weeks is found and explained, not discovered in fieldwork.
 - The common mistake is preparing a polished evidence folder for hand-picked items. The tell: the team cannot produce evidence within a day for an item the auditor picks at random.
 - Exceptions are written down honestly with their cause and the fix; auditors deal far better with a disclosed exception than one they find.

@@ -14,7 +14,7 @@ frameworks: [iso27001, iso42001]
 tags: [traceability, risk-treatment, soa, consistency]
 ---
 
-Use this after any update to the risk register, the treatment plan or the applicability statement, and before every external audit. It produces `./risk-to-control-traceability-check/traceability-matrix.csv` and `./risk-to-control-traceability-check/orphans.md`. This skill drafts for a human to review and sign; this skill never marks a control effective. Fixes are proposals for the risk owners and the statement approver.
+Use this after any update to the risk register, the treatment plan or the applicability statement, and before every external audit. You get two files in a new folder, `./risk-to-control-traceability-check/`: a spreadsheet you can open in Excel with one row per link between a risk and a security measure, showing where each link breaks (`traceability-matrix.csv`), and a short report of the broken links, each with a proposed fix and the person who decides it (`orphans.md`). This skill drafts for a human to review and sign; this skill never marks a control effective. Fixes are proposals for the risk owners and the statement approver.
 
 ## Inputs to gather
 
@@ -56,7 +56,7 @@ For an AI management system, also check that each significant finding of an AI i
 
 ## Step 5: write the outputs
 
-Write `traceability-matrix.csv`, headed by the versions and dates of the register, treatment plan and statement it was built from, with one row per risk to control link: risk id, treatment, control id, control inclusion, control status, link source, defect type. Write `orphans.md` grouped by defect type, each with the proposed fix and the owner role who decides. End it with the defects that block the next approval of the statement or belong in the next management review. Ask before overwriting either file.
+Write the link spreadsheet (`traceability-matrix.csv`), headed by the versions and dates of the register, treatment plan and statement it was built from, with one row per risk to control link: risk id, treatment, control id, control inclusion, control status, link source, defect type. Write the broken-links report (`orphans.md`) grouped by defect type, each with the proposed fix and the owner role who decides. End it with the defects that block the next approval of the statement or belong in the next management review. Ask before overwriting either file.
 
 ## What good looks like
 

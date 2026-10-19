@@ -14,7 +14,7 @@ frameworks: [iso27001, soc2, hipaa, nis2]
 tags: [incident-response, playbooks, contact-tree, evidence-handling, breach-notification]
 ---
 
-Use this to write or rewrite the plan, not during a live incident (use the triage skill then). It produces `./incident-response-plan-drafting/incident-response-plan.md`, `./incident-response-plan-drafting/quick-reference.md`, `./incident-response-plan-drafting/contact-tree.md` and one file per playbook in `./incident-response-plan-drafting/playbooks/`. This skill drafts for a human to review and sign; this skill never marks a control effective.
+Use this to write or rewrite the plan, not during a live incident (use the triage skill then). You get a new folder, `./incident-response-plan-drafting/`, holding: the incident response plan itself, under ten pages, for the owner to approve (`incident-response-plan.md`); a one-page cheat sheet people can follow at 3am (`quick-reference.md`); a list of who to call, by role, with blanks for names and numbers (`contact-tree.md`); and one single-page step-by-step guide per likely incident, such as ransomware or a lost laptop (one file each in `playbooks/`). This skill drafts for a human to review and sign; this skill never marks a control effective.
 
 ## Inputs to gather
 
@@ -32,11 +32,11 @@ A 30-person company does not have a security operations centre and a crisis comm
 
 ## Step 3: build the contact tree
 
-In `contact-tree.md`, list by role: internal on-call, executives, legal and privacy, the insurer's notification line, the forensics retainer, key suppliers' security contacts, the relevant authorities and computer emergency teams, and law enforcement. Leave names and numbers as placeholders for the reader to fill in their own copy. Add an out-of-band channel (phones, a separate messaging group) for when email or chat is compromised. Check the insurance policy: many require notice within a short time and use of the insurer's panel; missing that can void cover.
+In the call list (`contact-tree.md`), list by role: internal on-call, executives, legal and privacy, the insurer's notification line, the forensics retainer, key suppliers' security contacts, the relevant authorities and computer emergency teams, and law enforcement. Leave names and numbers as placeholders for the reader to fill in their own copy. Add an out-of-band channel (phones, a separate messaging group) for when email or chat is compromised. Check the insurance policy: many require notice within a short time and use of the insurer's panel; missing that can void cover.
 
 ## Step 4: write the playbooks
 
-Pick four to six scenarios from the risk register and past incidents, typically: ransomware, mailbox or business email compromise, a cloud key or token leaked in a public repository, a lost or stolen laptop, a supplier breach that touches company data, and personal data sent to the wrong recipient. Each playbook fits on one page: triggers, first 30 minutes, containment options with who authorises them, evidence to preserve, recovery, and the notification check.
+Pick four to six scenarios from the risk register and past incidents, one guide each in `playbooks/`, typically: ransomware, mailbox or business email compromise, a cloud key or token leaked in a public repository, a lost or stolen laptop, a supplier breach that touches company data, and personal data sent to the wrong recipient. Each playbook fits on one page: triggers, first 30 minutes, containment options with who authorises them, evidence to preserve, recovery, and the notification check.
 
 ## Step 5: evidence handling and notification
 

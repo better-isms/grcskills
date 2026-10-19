@@ -14,7 +14,7 @@ frameworks: [iso27001, iso27701, iso42001, dora, general]
 tags: [risk-method, risk-criteria, risk-appetite, risk-acceptance, scoring]
 ---
 
-Use this before the first register, or when two people score the same risk three points apart. It produces `./risk-method-drafting/risk-method.md` (the method, three to five pages) and `./risk-method-drafting/calibration.md` (the test that shows the method works). This skill drafts for a human to review and sign; this skill never marks a control effective. The risk appetite and the acceptance threshold are leadership decisions; the skill proposes, it does not set them.
+Use this before the first register, or when two people score the same risk three points apart. You get two documents in a new folder, `./risk-method-drafting/`: the rulebook your team uses to score risks the same way (`risk-method.md`), and a record of two people scoring the same risks with it, to show it is repeatable (`calibration.md`). This skill drafts for a human to review and sign; this skill never marks a control effective. The risk appetite and the acceptance threshold are leadership decisions; the skill proposes, it does not set them.
 
 ## Inputs to gather
 
@@ -22,7 +22,7 @@ Read first: any existing method or matrix, the current register, the last year's
 
 ## Step 1: choose the shape of the assessment
 
-Decide, and write down why, whether risks are identified by scenario (threat, weakness, asset, consequence) or by asset first. Scenario-based suits companies under about 300 people with one product; asset-based suits estates with many systems and owners. State the scope the method covers, the unit of assessment, and that existing controls count toward residual scores only when there is evidence they run. Run a framework lookup if the reader needs to know what the framework expects the method to contain; do not guess.
+Decide, and write down why, whether risks are identified by scenario (threat, weakness, asset, consequence) or by asset first. Scenario-based suits companies under about 300 people with one product; asset-based suits estates with many systems and owners. State the scope the method covers, the unit of assessment, and that existing controls count toward residual scores only when there is evidence they run. Run a framework lookup for what the framework expects the method to contain; do not guess.
 
 ## Step 2: anchor the scales in the company's own numbers
 
@@ -46,7 +46,7 @@ State a full reassessment cadence (typically every 12 months) and the events tha
 
 ## Step 5: calibrate before anyone relies on it
 
-Pick five real risks of different kinds. Ask two people to score them independently with the draft method, record both scores in `calibration.md`, and discuss every gap of more than one level, with the evidence each scorer used. Tighten the anchor that caused the gap; where the gap came from missing evidence rather than a vague anchor, record it as a register quality issue instead of forcing agreement. Repeat until the two scorers land within one level on all five.
+Pick five real risks of different kinds. Ask two people to score them independently with the draft method, record both scores in the calibration record (`calibration.md`), and discuss every gap of more than one level, with the evidence each scorer used. Tighten the anchor that caused the gap; where the gap came from missing evidence rather than a vague anchor, record it as a register quality issue instead of forcing agreement. Repeat until the two scorers land within one level on all five.
 
 ## What good looks like
 
@@ -54,7 +54,6 @@ Pick five real risks of different kinds. Ask two people to score them independen
 - The common mistake is a 5x5 matrix copied from a template, with no link to the company's size. The tell: a risk that would cost a month of revenue scores the same impact as one that costs a day.
 - Acceptance authority matches real spending authority. A method where the security lead accepts every risk is a method nobody above them has read.
 - The calibration file exists and shows scores converging. An auditor who asks "how do you know the method is repeatable" gets a record, not an assurance.
-- The method fits in five pages. Longer methods are followed less.
 
 ## Framework lookups
 

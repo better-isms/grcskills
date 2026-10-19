@@ -14,7 +14,7 @@ frameworks: [general, iso27001, soc2, nis2, nist-csf, gdpr]
 tags: [framework-mapping, crosswalk, unified-controls, evidence-reuse]
 ---
 
-Use this when a second framework arrives, or when the evidence calendar already shows the same artefact requested by two audits. It produces `./multi-framework-overlap-map/control-map.csv`, `./multi-framework-overlap-map/evidence-plan.csv` and `./multi-framework-overlap-map/mapping-notes.md`. This skill drafts for a human to review and sign; this skill never marks a control effective. A mapping says where evidence can be reused; it never says one framework satisfies another.
+Use this when a second framework arrives, or when the evidence calendar already shows the same artefact requested by two audits. You get three files in a new folder, `./multi-framework-overlap-map/`: a spreadsheet you can open in Excel with the company's own controls as rows and each framework as a column (`control-map.csv`), a second spreadsheet listing each piece of evidence to collect once and which audits it serves (`evidence-plan.csv`), and short notes on sources, coverage and the decisions you need to make (`mapping-notes.md`). This skill drafts for a human to review and sign; this skill never marks a control effective. A mapping says where evidence can be reused; it never says one framework satisfies another.
 
 ## Inputs to gather
 
@@ -22,7 +22,7 @@ Read first: the existing control list (from a compliance platform export, a cont
 
 ## Step 1: build the internal control set first
 
-Write the company's controls in its own words, one practice per row, with its own ids (for example CTL-ACC-03). Each row has: a control statement saying who does what, how often, on which systems; an owner role; a frequency; and the artefact that proves it ran. Merge duplicates found across existing framework-specific lists. Aim for 60 to 150 controls for a company of 20 to 300 people; fewer means the rows are too coarse to evidence, more means they are split by framework instead of by practice.
+Write the company's controls in its own words in the control spreadsheet (`control-map.csv`), one practice per row, with its own ids (for example CTL-ACC-03). Each row has: a control statement saying who does what, how often, on which systems; an owner role; a frequency; and the artefact that proves it ran. Merge duplicates found across existing framework-specific lists. Aim for 60 to 150 controls for a company of 20 to 300 people; fewer means the rows are too coarse to evidence, more means they are split by framework instead of by practice.
 
 ## Step 2: map each control to framework references
 
@@ -40,11 +40,11 @@ List, per framework, the items no internal control covers yet, and the items uni
 
 ## Step 4: plan evidence once
 
-Write `evidence-plan.csv` with one row per artefact: artefact, internal control ids, every framework reference it supports, owner role, collection frequency, retention, and the period each audit samples. Use the most demanding frequency and the longest audit period among the mapped frameworks, so one collection serves all audits. Flag artefacts where frameworks pull in different directions (one wants a quarterly review, another an annual one; one audit period ends in a different month) and propose one schedule. Check the format too: if one auditor accepts a screenshot and another wants the system record or ticket, collect the stronger format once.
+Write the evidence spreadsheet (`evidence-plan.csv`) with one row per artefact: artefact, internal control ids, every framework reference it supports, owner role, collection frequency, retention, and the period each audit samples. Use the most demanding frequency and the longest audit period among the mapped frameworks, so one collection serves all audits. Flag artefacts where frameworks pull in different directions (one wants a quarterly review, another an annual one; one audit period ends in a different month) and propose one schedule. Check the format too: if one auditor accepts a screenshot and another wants the system record or ticket, collect the stronger format once.
 
 ## Step 5: write the notes
 
-Write `mapping-notes.md`: the sources used for each framework with their edition or version and the date of any lookup (a map silently rots when a framework is revised), the count of controls and references, the coverage per framework (covers, partial, none), the unique items, and the decisions the reader needs to make. Ask before overwriting any file.
+Write the notes (`mapping-notes.md`): the sources used for each framework with their edition or version and the date of any lookup (a map silently rots when a framework is revised), the count of controls and references, the coverage per framework (covers, partial, none), the unique items, and the decisions the reader needs to make. Ask before overwriting any file.
 
 ## What good looks like
 

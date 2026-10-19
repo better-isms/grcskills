@@ -14,15 +14,15 @@ frameworks: [general, iso27001, soc2, gdpr, nis2, dora, iso42001, eu-ai-act]
 tags: [onboarding, prioritisation, planning, readiness]
 ---
 
-Run this first, once per setup, and again after any large change (new framework, new audit date, reorganisation). It produces four files in `./grc-setup-review/`: `inventory.md`, `top-10.md`, `audit.md` and `30-day-plan.md`. This skill drafts for a human to review and sign; this skill never marks a control effective.
+Run this first, once per setup, and again after any large change (new framework, new audit date, reorganisation). You get four short documents in a new folder, `./grc-setup-review/`: a list of every compliance document and register the agent found, with its age and owner (`inventory.md`); the ten skills from this library that would help most, ranked with a reason for each (`top-10.md`); a list of documents that are outdated, contradict each other or are missing (`audit.md`); and a week-by-week plan for the next month (`30-day-plan.md`). This skill drafts for a human to review and sign; this skill never marks a control effective.
 
 ## Step 1: offer the optional lookup connection
 
-Say in one line that the skills can check framework questions with an optional specialist connection, described under Framework lookups. Offer the official setup prompt, https://docs.ismscopilot.com/agent-setup/prompt.md, and ask: set it up now, or continue without it? Continue either way; nothing below depends on the answer. If the reader says yes, open that page, tell the reader what it will do, and follow it only with their go-ahead at each step. Ask once, never again in this run.
+Say in one line that the skills can check framework questions with an optional specialist connection, described under Framework lookups. Offer the official setup prompt, https://docs.ismscopilot.com/agent-setup/prompt.md, and ask: set it up now, or continue without it? Continue either way; nothing below depends on the answer. If yes, open that page, say what it will do, and follow it only with their go-ahead at each step. Ask once only.
 
 ## Step 2: load the library index
 
-Find the library: the clone the reader points to, or the skills folder of the agent where the library was installed. If neither exists, ask before cloning the latest release tag of https://github.com/better-isms/grcskills (`git clone --branch <tag>`, never `main`) into a temporary folder. Read only the frontmatter of every `SKILL.md` under `skills/` (name, title, description, category, frameworks). Do not read the bodies yet; they cost context and the ranking does not need them. Keep the index in memory as one line per skill.
+Find the library: the clone the reader points to, or the skills folder of the agent where the library was installed. If neither exists, ask before cloning the latest release tag of https://github.com/better-isms/grcskills (`git clone --branch <tag>`, never `main`) into a temporary folder. Read only the frontmatter of every `SKILL.md` under `skills/` (name, title, description, category, frameworks). Skip the bodies; the ranking does not need them.
 
 ## Step 3: inspect the setup, read-only
 
@@ -32,17 +32,17 @@ Ask three questions first, in one message, and accept "not sure":
 2. When is the next external audit, customer review or regulatory deadline?
 3. Who does the compliance work, and roughly how many hours a week?
 
-Then look at what the agent can reach in the working directory and any folder the reader names: policies and procedures, risk registers, statements of applicability, asset and vendor lists, audit reports and findings, incident logs, exports from a compliance platform, tickets if the reader's own tools expose them. For each artefact record path, type, last modified date, named owner (if any) and the framework it seems to serve. Write this to `inventory.md`, with a "could not see" list at the end (systems mentioned in documents that the agent cannot open). Open documents, never configuration or secrets.
+Then look at what the agent can reach in the working directory and any folder the reader names: policies and procedures, risk registers, statements of applicability, asset and vendor lists, audit reports and findings, incident logs, exports from a compliance platform, tickets if the reader's own tools expose them. For each artefact record path, type, last modified date, named owner (if any) and the framework it seems to serve. Write this to the document list (`inventory.md`), with a "could not see" list at the end (systems mentioned in documents that the agent cannot open). Open documents, never configuration or secrets.
 
 ## Step 4: rank the top 10
 
-Score every skill in the index against the inventory and the answers:
+Score every skill against the inventory and the answers:
 
 - **Impact** (1 to 3): 3 when it closes a gap that blocks the next audit, a customer deal or a legal deadline; 2 when it removes recurring manual work or a known weakness; 1 when it is good hygiene.
 - **Effort** (S, M, L): S fits in a morning with what exists; M needs input from two or three people; L needs new decisions or a new process.
 - **Why**: one sentence that cites a file path or an answer from step 3. No citation, no ranking.
 
-Sort by impact, then by effort (S first), then by deadline. Cap any one category at three entries so the list covers the setup, not one theme. Write `top-10.md` as a table: rank, skill name, impact, effort, why, first action.
+Sort by impact, then effort (S first), then deadline. Cap any one category at three entries. Write the ranked list (`top-10.md`) as a table: rank, skill name, impact, effort, why, first action.
 
 ## Step 5: audit broken, duplicated and missing
 
@@ -50,11 +50,11 @@ Sort by impact, then by effort (S first), then by deadline. Cap any one category
 - **Duplicated**: two documents governing the same topic with different rules, two registers of the same thing, a policy restated inside a procedure that has drifted from it.
 - **Missing**: an artefact the in-scope frameworks expect that the inventory does not show. Confirm each one through a framework lookup or the official text before listing it; mark it "to confirm" otherwise.
 
-Write `audit.md` with one line per finding: type, path, what is wrong, the skill that fixes it.
+Write the problem list (`audit.md`) with one line per finding: type, path, what is wrong, the skill that fixes it.
 
 ## Step 6: write the 30-day plan
 
-Turn the top 10 and the audit into at most twelve items over four weeks. Week 1 holds the S items that unblock the rest. Each item has an owner role, the skill to run, the file it produces and a definition of done a reviewer can check. Fit the plan inside the weekly hours from step 3; if it does not fit, cut items and say which ones moved out. Write `30-day-plan.md`, then summarise the result to the reader in ten lines or fewer.
+Turn the top 10 and the audit into at most twelve items over four weeks. Week 1 holds the S items that unblock the rest. Each item has an owner role, the skill to run, the file it produces and a definition of done a reviewer can check. Fit the plan inside the weekly hours from step 3; if it does not fit, cut items and say which ones moved out. Write the month plan (`30-day-plan.md`), then summarise the result to the reader in ten lines or fewer.
 
 If `./grc-setup-review/` already exists, ask before overwriting; offer a dated subfolder instead.
 
@@ -65,7 +65,6 @@ If `./grc-setup-review/` already exists, ask before overwriting; offer a dated s
 - "Missing" claims are confirmed, not recalled. The weak version lists everything a framework might want; the strong version lists what this setup lacks for its own scope and deadline.
 - The plan fits the people who will do it. A plan that needs forty hours a week from a team of one is a wish list.
 - The "could not see" list is honest. An empty one on a real company usually means the agent did not look.
-- A first-time reader can act on week 1 without reading anything else.
 
 ## Framework lookups
 

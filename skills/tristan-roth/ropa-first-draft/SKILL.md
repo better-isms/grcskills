@@ -14,7 +14,7 @@ frameworks: [gdpr, iso27701]
 tags: [ropa, records-of-processing, data-mapping, legal-basis, retention]
 ---
 
-Use this when there is no record, when the record is a system inventory with a privacy heading, or after new products, markets or vendors changed the processing. It produces `./ropa-first-draft/ropa-controller.csv`, `./ropa-first-draft/ropa-processor.csv` when the company acts as a processor, and `./ropa-first-draft/ropa-notes.md`. This skill drafts for a human to review and sign; this skill never marks a control effective. Legal bases and retention periods are decisions for the controller's privacy lead or counsel; the agent proposes them.
+Use this when there is no record, when the record is a system inventory with a privacy heading, or after new products, markets or vendors changed the processing. You get two or three files in a new folder, `./ropa-first-draft/`: a spreadsheet you can open in Excel listing everything the company does with personal data for its own purposes, one row per activity with its data, people, legal basis and retention (`ropa-controller.csv`); a second spreadsheet for the data the company handles on behalf of customers, only if it does (`ropa-processor.csv`); and a short note of open questions per team (`ropa-notes.md`). This skill drafts for a human to review and sign; this skill never marks a control effective. Legal bases and retention periods are decisions for the controller's privacy lead or counsel; the agent proposes them.
 
 ## Inputs to gather
 
@@ -26,7 +26,7 @@ A processing activity is a purpose with its data, people and systems: "payroll",
 
 ## Step 2: fill each row
 
-Article 30 of the GDPR sets out what the record covers; use it as the backbone and add the columns the rest of the programme needs. Per activity:
+Article 30 of the GDPR sets out what the record covers; use it as the backbone and add the columns the rest of the programme needs. Per activity, one row of the controller spreadsheet (`ropa-controller.csv`):
 
 - Purpose in one plain sentence, owner role, and whether the company is controller, joint controller or processor for it. A joint controller row points to its Article 26 arrangement, or the missing arrangement becomes an open question.
 - Data subject categories and personal data categories. Flag special category data (Article 9) and criminal offence data (Article 10) in their own column.
@@ -39,7 +39,7 @@ Article 30 of the GDPR sets out what the record covers; use it as the backbone a
 
 ## Step 3: draft the processor record if it applies
 
-If the company processes personal data for customers (a software provider hosting customer data, for example), keep a separate record organised by service: categories of processing done for customers, sub-processors, transfers, and security measures. Do not list every customer by name; the record describes processing categories, and the customer list stays in the contract system.
+If the company processes personal data for customers (a software provider hosting customer data, for example), keep a separate record, the processor spreadsheet (`ropa-processor.csv`), organised by service: categories of processing done for customers, sub-processors, transfers, and security measures. Do not list every customer by name; the record describes processing categories, and the customer list stays in the contract system.
 
 ## Step 4: cross-check and collect questions
 
@@ -47,7 +47,7 @@ If the company processes personal data for customers (a software provider hostin
 - Every purpose in the privacy notice appears in the record and the reverse. List mismatches for a privacy notice gap check.
 - Every transfer marked "unknown" becomes an open question with an owner and a date; no transfer should continue past the review without a documented mechanism.
 - Activities with special category data, large-scale monitoring, profiling or new technology go on a list of DPIA screening candidates, each with the trigger that put it there, so the privacy lead's decision is documented.
-- Write the open questions per owner role in `ropa-notes.md`, so confirmation is a short session per team. Name the role that maintains the record and a review date per team; the supervisory authority can ask for it at any time.
+- Write the open questions per owner role in the notes file (`ropa-notes.md`), so confirmation is a short session per team. Name the role that maintains the record and a review date per team; the supervisory authority can ask for it at any time.
 
 The general exemption for organisations under 250 employees is narrow: it does not apply when processing is more than occasional, carries risk, or involves special category data or criminal offence data. Do not rely on it without counsel's view.
 

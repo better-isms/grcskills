@@ -14,11 +14,11 @@ frameworks: [gdpr, iso27701]
 tags: [dsar, data-subject-rights, access-request, erasure, procedure]
 ---
 
-Use this to build the procedure once and to rehearse it before a real request arrives. It produces `./data-subject-request-procedure/procedure.md`, `./data-subject-request-procedure/system-search-map.md`, `./data-subject-request-procedure/response-templates.md` and `./data-subject-request-procedure/request-log-template.csv`. This skill drafts for a human to review and sign; this skill never marks a control effective. The privacy lead approves the procedure and every response before it is sent.
+Use this to build the procedure once and to rehearse it before a real request arrives. You get four files in a new folder, `./data-subject-request-procedure/`: the written procedure staff follow when someone asks for their data (`procedure.md`); a table of every system holding personal data, with how to search, export and delete in each (`system-search-map.md`); plain-language reply letters, one per type of request (`response-templates.md`); and an empty spreadsheet you can open in Excel to log each request and its deadline (`request-log-template.csv`). This skill drafts for a human to review and sign; this skill never marks a control effective. The privacy lead approves the procedure and every response before it is sent.
 
 ## Inputs to gather
 
-Read the record of processing activities, the system and vendor lists, data processing agreements, the privacy notice (it tells people how to make a request), support tooling and any past requests with how they were handled. Ask the reader, in one message: who is the privacy contact or data protection officer, which channels customers and staff use to reach the company, whether the company also processes data for customers (then requests about that data belong to the customer), and which countries' supervisory authorities matter.
+Read the record of processing activities, system and vendor lists, data processing agreements, the privacy notice, support tooling and past requests. Ask the reader, in one message: who is the privacy contact or data protection officer, which channels customers and staff use to reach the company, whether the company also processes data for customers (then requests about that data belong to the customer), and which countries' supervisory authorities matter.
 
 ## Step 1: design intake
 
@@ -30,7 +30,7 @@ A request is valid whatever the channel or wording: an email to any employee, a 
 
 ## Step 2: verify identity proportionately
 
-Use what the company already trusts: a request from the email address on the account, or confirmed through the logged-in product, is usually enough. Ask for more only where there are reasonable doubts (Article 12(6) of the GDPR) and ask for the least that resolves them. Do not demand a copy of an identity document by default; it collects more data than the request needs. Requests made through an agent or lawyer need evidence of their authority. Record what was checked and the dates: ask promptly, never use verification to buy time, and follow the supervisory authority's guidance on how the clock runs while you wait.
+Use what the company already trusts: a request from the account's email address or the logged-in product is usually enough. Ask for more only where there are reasonable doubts (Article 12(6) of the GDPR) and ask for the least that resolves them. Do not demand a copy of an identity document by default; it collects more data than the request needs. Requests made through an agent or lawyer need evidence of their authority. Record what was checked and the dates: ask promptly, never use verification to buy time, and follow the supervisory authority's guidance on how the clock runs while you wait.
 
 ## Step 3: track the deadline
 
@@ -38,7 +38,7 @@ Article 12(3) sets the response time: without undue delay and within one month o
 
 ## Step 4: build the system search map
 
-In `system-search-map.md`, one row per system holding personal data, taken from the processing record: data held, search key (email, customer id, phone), owner role, how to export, how to delete or restrict, what happens in backups (data put beyond use and removed as backups rotate), and processors to ask. Include unstructured places: shared mailboxes, chat, documents and the support tool. A search map written before the first request is what makes the deadline achievable.
+In the search table (`system-search-map.md`), one row per system holding personal data, taken from the processing record: data held, search key (email, customer id, phone), owner role, how to export, how to delete or restrict, what happens in backups (data put beyond use and removed as backups rotate), and processors to ask. Include unstructured places: shared mailboxes, chat, documents and the support tool. A search map written before the first request is what makes the deadline achievable.
 
 ## Step 5: review, redact and respond per right
 
@@ -46,16 +46,16 @@ In `system-search-map.md`, one row per system holding personal data, taken from 
 - **Rectification and erasure** (Articles 16 and 17): confirm what changed or was deleted, and what is kept and why, naming the Article 17(3) ground relied on (a legal retention duty, a legal claim). Tell recipients where Article 19 applies.
 - **Restriction, portability, objection and automated decisions** (Articles 18, 20, 21 and 22): an objection to direct marketing is always honoured; other objections need a documented assessment.
 
-Any refusal, full or partial, goes out within one month with the reasons and the right to complain to a supervisory authority and to seek a judicial remedy (Article 12(4)). Write one template per right in plain language, and deliver data through a secure channel, never as an open attachment to an unverified address.
+Any refusal, full or partial, goes out within one month with the reasons and the right to complain to a supervisory authority and to seek a judicial remedy (Article 12(4)). Write one reply letter per right in plain language in `response-templates.md`, and deliver data through a secure channel, never as an open attachment to an unverified address.
 
 ## Step 6: log and learn
 
-The log holds request id, received date, type, verification method, extension, systems searched, outcome and closed date, and no copy of the data released. The log is itself personal data: restrict it to the privacy team and give it a retention period. Review it every quarter: requests answered on time, by type, and the systems that slowed the search.
+The request log spreadsheet (`request-log-template.csv`) holds request id, received date, type, verification method, extension, systems searched, outcome and closed date, and no copy of the data released. The log is itself personal data: restrict it to the privacy team and give it a retention period. Review it every quarter: requests answered on time, by type, and the systems that slowed the search.
 
 ## What good looks like
 
 - The best practitioner checks first whether front-line staff recognise a request that does not use legal words ("what do you have on me?", "close my account and forget me"). Missed recognition is the most common cause of a missed deadline.
-- The common mistake is a procedure that starts when a form is submitted, asks every requester for a passport scan and searches only the main database. The tell: no search map, no unstructured sources, and receipt dates taken from the queue rather than the original message.
+- The common mistake is a procedure that starts at form submission, asks everyone for a passport scan and searches only the main database. The tell: no search map, no unstructured sources, receipt dates taken from the queue.
 - Good output lets a support agent who has never seen a request route it correctly on day one, and lets the privacy lead prove from the log that each request was answered within its deadline.
 
 ## Framework lookups

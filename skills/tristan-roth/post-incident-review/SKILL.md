@@ -14,7 +14,7 @@ frameworks: [general, iso27001, soc2]
 tags: [post-mortem, lessons-learned, blameless, continual-improvement, incident-response]
 ---
 
-Use this after every SEV1 and SEV2, for a sample of SEV3s (one per recurring theme per quarter, with the reason it was picked recorded in the review), and for any near miss that would have been a SEV1. It produces `./post-incident-review/<incident-id>-review.md` and `./post-incident-review/<incident-id>-actions.csv`. This skill drafts for a human to review and sign; this skill never marks a control effective. Hold the review within about five working days, while memory is fresh and before the next incident pushes it out.
+Use this after every SEV1 and SEV2, for a sample of SEV3s (one per recurring theme per quarter, with the reason it was picked recorded in the review), and for any near miss that would have been a SEV1. You get two files per incident in a new folder, `./post-incident-review/`: the written review with the timeline, what contributed and what went well (`<incident-id>-review.md`), and a spreadsheet you can open in Excel listing the follow-up actions with owner, due date and how to check each worked (`<incident-id>-actions.csv`). This skill drafts for a human to review and sign; this skill never marks a control effective. Hold the review within about five working days, while memory is fresh and before the next incident pushes it out.
 
 ## Inputs to gather
 
@@ -22,13 +22,13 @@ Read the triage record, the incident ticket, chat channel exports, alert history
 
 ## Step 1: build the timeline before the meeting
 
-Reconstruct from records, not memory: first signal, detection, awareness, escalation, containment, recovery, notifications, closure, all in UTC with the source of each entry. Compute time to detect, time to contain and time to recover. Mark gaps where nothing happened for more than an hour during a SEV1, and points where a decision waited for someone. Send the draft timeline to participants before the meeting so they correct facts, not argue them live. Chat exports and logs often expire before the next audit: archive a redacted copy of each cited source in the incident record, or note where it is retained and until when.
+Reconstruct from records, not memory: first signal, detection, awareness, escalation, containment, recovery, notifications, closure, all in UTC with the source of each entry. Compute time to detect, time to contain and time to recover. Mark gaps where nothing happened for more than an hour during a SEV1, and points where a decision waited for someone. The incident lead shares the draft timeline with participants before the meeting so they correct facts, not argue them live. Chat exports and logs often expire before the next audit: note where each cited source is retained and until when, and propose that the incident lead archives a redacted copy in the incident record.
 
 Check notification against the timeline: which regulatory or contractual clocks applied (for example GDPR Article 33 for a personal data breach, NIS 2 Article 23 for a significant incident, customer notice windows), when each started and whether it was met. Record "none applied" with the reason when that is the answer. A missed notice found now can still be remedied.
 
 ## Step 2: run the discussion blameless
 
-Book 60 to 90 minutes with the responders, the system owners and a facilitator who did not respond. In a small team where everyone responded, take the facilitator from another function or from outside, and say so in the review. Ground rule, said at the start: people acted reasonably on what they knew at the time; the review looks for the conditions that made the mistake possible. Ask "what did you know at that moment", "what made that look like the right action", "what would have told you sooner". Never ask "why did you". A review that names a culprit teaches everyone to hide the next near miss.
+Propose a 60 to 90 minute session for the incident lead to book with the responders, the system owners and a facilitator who did not respond. In a small team where everyone responded, take the facilitator from another function or from outside, and say so in the review. Ground rule, said at the start: people acted reasonably on what they knew at the time; the review looks for the conditions that made the mistake possible. Ask "what did you know at that moment", "what made that look like the right action", "what would have told you sooner". Never ask "why did you". A review that names a culprit teaches everyone to hide the next near miss.
 
 ## Step 3: find contributing factors
 
@@ -36,7 +36,7 @@ Incidents rarely have one root cause. List the factors across detection (why it 
 
 ## Step 4: turn factors into few, owned actions
 
-Write five to eight actions, not twenty. Sort each into prevent, detect sooner, respond faster or reduce impact. Each action has an owner role, a due date agreed with that owner, the record it produces, and how you will check it worked. Then link updates:
+Write five to eight actions in the actions spreadsheet (`<incident-id>-actions.csv`), not twenty. Sort each into prevent, detect sooner, respond faster or reduce impact. Each action has an owner role, a due date agreed with that owner, the record it produces, and how you will check it worked. Then propose linked updates for each record's owner to make:
 
 - **Risk register**: an incident that happened means the likelihood was underestimated, or the risk had been accepted; re-score or record the acceptance decision again.
 - **Controls**: any control that failed or was missing, with the evidence.
@@ -48,7 +48,7 @@ If a regulator or customer expects a final report, reuse the timeline and factor
 
 ## Step 5: close the loop
 
-Schedule a follow-up after the latest due date to verify each action, and write the result into the tracker. Share a short summary beyond the responders. For SEV1 and SEV2, send the summary and any overdue actions to the next management review. Compare factors with earlier reviews: a factor that appears twice means the previous action did not work.
+Propose a follow-up date after the latest due date to verify each action, and draft tracker-ready rows for the action owners to enter. Draft a short summary for the incident lead to share beyond the responders; for SEV1 and SEV2, the incident lead takes the summary and any overdue actions to the next management review. Compare factors with earlier reviews: a factor that appears twice means the previous action did not work.
 
 ## What good looks like
 

@@ -14,7 +14,7 @@ frameworks: [soc2, iso27001]
 tags: [change-management, sampling, segregation-of-duties, ci-cd, pull-requests]
 ---
 
-Use this for a period of operation, typically the audit period or the last quarter. It writes `./change-management-evidence-sampling/sample-plan.md`, `change-sample.csv` and `exceptions.md` in that folder. This skill drafts for a human to review and sign; this skill never marks a control effective. It records what each sampled change shows; conclusions belong to the reader and the auditor.
+Use this for a period of operation, typically the audit period or the last quarter. You get three files in a new folder, `./change-management-evidence-sampling/`: a short note of how the list of production changes was built and how the sample was drawn, so anyone can redraw it (`sample-plan.md`); a spreadsheet you can open in Excel with one row per sampled change and a yes or no for each check, with the link that proves it (`change-sample.csv`); and a plain list of every check that failed, stated as facts (`exceptions.md`). This skill drafts for a human to review and sign; this skill never marks a control effective. It records what each sampled change shows; conclusions belong to the reader and the auditor.
 
 ## Inputs to gather
 
@@ -45,7 +45,7 @@ Read, without changing, the branch protection or repository rules for each produ
 
 ## Step 5: write results and exceptions
 
-`change-sample.csv` holds one row per sampled change with every attribute. `exceptions.md` lists each failed attribute as a fact: "Change 17: approved by the author's second account after merge; deployed by the author." No adjectives, no severity; the reader decides what is a deviation. `sample-plan.md` records the period, population sources and counts, the reconciliation, the method and the guardrail review.
+The sample spreadsheet (`change-sample.csv`) holds one row per sampled change with every attribute. The exceptions list (`exceptions.md`) states each failed attribute as a fact: "Change 17: approved by the author's second account after merge; deployed by the author." No adjectives, no severity; the reader decides what is a deviation. The sample plan (`sample-plan.md`) records the period, population sources and counts, the reconciliation, the method and the guardrail review.
 
 If the output folder exists, ask before overwriting and offer a new subfolder instead.
 

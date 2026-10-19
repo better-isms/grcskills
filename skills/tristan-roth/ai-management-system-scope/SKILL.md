@@ -14,7 +14,7 @@ frameworks: [iso42001]
 tags: [ai-management-system, scope, roles, raci, ai-governance]
 ---
 
-Use this after the AI inventory exists and before any AI risk or impact work, so those steps know their boundary. It produces `./ai-management-system-scope/scope.md`, `./ai-management-system-scope/roles.md` and `./ai-management-system-scope/open-questions.md`. This skill drafts for a human to review and sign; this skill never marks a control effective. Leadership approves the scope; the agent proposes it.
+Use this after the AI inventory exists and before any AI risk or impact work, so those steps know their boundary. You get three documents in a new folder, `./ai-management-system-scope/`: the scope document, saying which AI systems, teams and places the AI management system covers and why (`scope.md`); a who-does-what table for the AI work, using role titles rather than names (`roles.md`); and the list of decisions leadership still has to make (`open-questions.md`). This skill drafts for a human to review and sign; this skill never marks a control effective. Leadership approves the scope; the agent proposes it.
 
 ## Inputs to gather
 
@@ -22,7 +22,7 @@ Read the security management system scope statement, its context and interested 
 
 ## Step 1: write the reason into the scope
 
-The reason drives the boundary. If customers ask for it, the AI they buy must be inside. If regulation drives it, the systems the regulation reaches must be inside. If it is internal control, start with the systems that make or support decisions about people. Write the reason in two lines at the top of `scope.md`; every later boundary choice should trace back to it.
+The reason drives the boundary. If customers ask for it, the AI they buy must be inside. If regulation drives it, the systems the regulation reaches must be inside. If it is internal control, start with the systems that make or support decisions about people. Write the reason in two lines at the top of the scope document (`scope.md`); every later boundary choice should trace back to it.
 
 ## Step 2: draw the boundary
 
@@ -44,11 +44,11 @@ Make a two-column table in `scope.md`: processes shared with the security system
 
 ## Step 5: assign roles
 
-In `roles.md`, write a RACI for the AI-specific processes and for the boundary decisions, tied to the interested parties (customers, regulators, staff affected by AI) whose expectations each role serves: a leadership sponsor, an AI governance lead, an owner per AI system, data science or engineering lead, legal and privacy, security, and the internal auditor. Check two things: each AI system has one accountable owner who can stop it, and whoever audits the AI management system does not run it. In a small company that usually means borrowing the auditor from another function or outside.
+In the roles table (`roles.md`), write a RACI (who is responsible, accountable, consulted, informed) for the AI-specific processes and for the boundary decisions, tied to the interested parties (customers, regulators, staff affected by AI) whose expectations each role serves: a leadership sponsor, an AI governance lead, an owner per AI system, data science or engineering lead, legal and privacy, security, and the internal auditor. Check two things: each AI system has one accountable owner who can stop it, and whoever audits the AI management system does not run it. In a small company that usually means borrowing the auditor from another function or outside.
 
 ## Step 6: draft the statement and the questions
 
-Write the scope statement as one paragraph a certification auditor and a customer can both read: the AI systems or product lines, the roles, the units and locations, and any exclusion with its reason. Run a framework lookup for what the standard expects the scope and context work to consider. List open questions for leadership in `open-questions.md`, including an explicit include-or-exclude decision, with its reason, for every customer-visible AI feature if certification is planned.
+Write the scope statement as one paragraph a certification auditor and a customer can both read: the AI systems or product lines, the roles, the units and locations, and any exclusion with its reason. Run a framework lookup for what the standard expects the scope and context work to consider. List open questions for leadership in the decision list (`open-questions.md`), including an explicit include-or-exclude decision, with its reason, for every customer-visible AI feature if certification is planned.
 
 ## What good looks like
 

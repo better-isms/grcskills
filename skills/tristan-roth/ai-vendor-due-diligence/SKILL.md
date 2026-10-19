@@ -14,7 +14,7 @@ frameworks: [iso42001, gdpr, eu-ai-act]
 tags: [ai-vendor, due-diligence, third-party-risk, model-provider, dpa]
 ---
 
-Use this for one AI vendor and one intended use at a time. It produces `./ai-vendor-due-diligence/<vendor>-assessment.md` and `./ai-vendor-due-diligence/<vendor>-questions.md`. This skill drafts for a human to review and sign; this skill never marks a control effective. The decision to buy, and any risk accepted with it, belongs to the business owner.
+Use this for one AI vendor and one intended use at a time. You get two documents per vendor in a new folder, `./ai-vendor-due-diligence/`: an assessment report saying what the contract really allows the vendor to do with your data and whether to approve, approve with conditions or decline, ending with a ready-to-paste row for the supplier register (`<vendor>-assessment.md`), and a list of questions the documents leave open, ready for your team to send to the vendor (`<vendor>-questions.md`). This skill drafts for a human to review and sign; this skill never marks a control effective. The decision to buy, and any risk accepted with it, belongs to the business owner.
 
 ## Inputs to gather
 
@@ -30,14 +30,14 @@ Record the tier and why. Most AI purchases are standard; a deep review of a meet
 
 ## Step 2: read the documents before asking anything
 
-Answer each question from the documents first, citing section and document. Send questions only for what the documents leave open. Vendors answer questionnaires with marketing; contracts are what bind them.
+Answer each question from the documents first, citing section and document. Draft questions only for what the documents leave open; the relationship owner sends them.
 
 - **Training use**: are inputs or outputs used to train or improve models, by default, with an opt-out, or never under the signed plan?
 - **Retention**: how long prompts, files and outputs are kept, including abuse-monitoring copies, and whether vendor staff can read them.
 - **Underlying model**: does the vendor run its own model or call another provider? If it calls another, that provider is a subprocessor; check its terms too. This is the most common blind spot.
 - **Subprocessors and location**: the full chain, where data is processed, and the transfer mechanism for any transfer outside the EEA (GDPR Chapter V, Art. 44 onwards).
 - **GDPR role**: processor under Art. 28 for your purposes; if the vendor uses data for its own purposes, such as training, it may act as a controller for that use, which needs its own basis. Check the processing agreement's content, not just that one exists: the Art. 28(3) terms (documented instructions, confidentiality, security, subprocessor conditions, help with data subject requests, deletion or return at the end, audits), and notice of subprocessor changes with a right to object (Art. 28(2)). A vendor whose model provider can change between review and renewal makes that notice the clause that matters most.
-- **Model changes**: notice before a model version changes or is retired, or changes in a way that affects performance, version pinning, and how quality is checked after a change. If the company fine-tunes or rebrands the vendor's model, a vendor change can shift the company's own AI Act position.
+- **Model changes**: notice before a model version changes or is retired, version pinning, and how quality is checked after a change. If the company fine-tunes or rebrands the vendor's model, a vendor change can shift the company's own AI Act position.
 - **Security**: whether the audit report or certificate scope covers the AI feature, tenant isolation, admin controls (switch features off, restrict users, export logs), and protection against prompt injection for products that act or browse.
 - **Incidents**: notification time and content in the contract.
 - **AI Act position**: the vendor's own role and classification for its intended purpose, and, for a high-risk system, its instructions for use (Art. 13) so the company can meet its deployer duties. In the deep tier, also ask for the EU declaration of conformity, the CE marking and the registration (Art. 47 to 49); a high-risk system without them passes the problem to the buyer.
@@ -46,11 +46,11 @@ Answer each question from the documents first, citing section and document. Send
 
 ## Step 3: check the account type
 
-Confirm the protections apply to the account people will actually use. Business terms rarely cover free or individual accounts of the same product. If staff already use personal accounts, flag it to the owner; the assessment of the business plan says nothing about that data.
+Confirm the protections apply to the account people will actually use. Business terms rarely cover free or individual accounts of the same product. Flag any personal-account use to the owner; this assessment does not cover it.
 
 ## Step 4: recommend and list conditions
 
-Write a recommendation: approve, approve with conditions, or do not approve. Conditions are concrete: switch off training in admin settings, restrict to amber data, sign the processing agreement, pin the model version, review again at renewal. Put unanswered points in the questions file, each with why it matters. Record the result in the supplier register (tier, conditions, re-review date), so it counts as supplier management evidence instead of sitting in a standalone file.
+Write a recommendation: approve, approve with conditions, or do not approve. Conditions are concrete: switch off training in admin settings, restrict to amber data, sign the processing agreement, pin the model version, review again at renewal. Put unanswered points in the questions list (`<vendor>-questions.md`), each with why it matters. End the assessment with a proposed supplier-register update: one ready-to-paste row (vendor, use, tier, recommendation, conditions, re-review date). The register owner approves it and enters it in the supplier register, so it counts as supplier management evidence.
 
 ## What good looks like
 

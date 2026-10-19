@@ -14,7 +14,7 @@ frameworks: [iso27001, soc2, cra]
 tags: [secure-development, sdlc, ci-cd, code-review, change-management, sbom]
 ---
 
-Use this when the policy is missing, when it was copied from a template, or when auditors will sample changes and the team wants the policy to describe what the pipeline proves. It produces `./secure-development-policy-from-pipeline/enforcement-inventory.md`, `./secure-development-policy-from-pipeline/secure-development-policy.md` and `./secure-development-policy-from-pipeline/decisions.md`. This skill drafts for a human to review and sign; this skill never marks a control effective. The engineering lead approves the policy.
+Use this when the policy is missing, when it was copied from a template, or when auditors will sample changes and the team wants the policy to describe what the pipeline proves. You get three documents in a new folder, `./secure-development-policy-from-pipeline/`: a table of what your build and release pipeline actually enforces today, repository by repository (`enforcement-inventory.md`); a draft secure development policy of three to five pages that only promises what that table shows (`secure-development-policy.md`); and a list of gaps and decisions for the engineering lead (`decisions.md`). This skill drafts for a human to review and sign; this skill never marks a control effective. The engineering lead approves the policy.
 
 ## Inputs to gather
 
@@ -22,7 +22,7 @@ Read, without changing anything: the repositories' pipeline definitions, code ow
 
 ## Step 1: pick the repositories
 
-All repositories that reach production are in scope. If there are many, inventory all for branch rules and required checks (cheap), and read pipelines in depth for the five with the most deployments plus any that handle payments, authentication or personal data. Record the selection in the inventory.
+All repositories that reach production are in scope. If there are many, inventory all for branch rules and required checks (cheap), and read pipelines in depth for the five with the most deployments plus any that handle payments, authentication or personal data. Record the selection in the enforcement table.
 
 ## Step 2: inventory what is enforced
 
@@ -38,15 +38,15 @@ For each practice, record where it is enforced (file path or setting), its scope
 - Vulnerability intake: a published way for outsiders to report a flaw, and fix-time targets by severity.
 - Exceptions in use: pull the bypass and emergency change log for the period; a bypass path with no recorded after-the-fact review is the first thing an auditor samples.
 
-Write `enforcement-inventory.md` as one table, with the control id from the reader's control set or applicability statement per row and the pipeline definition versions it was built from. A practice that is blocking in 18 of 20 repositories is not "enforced"; name the two.
+Write the enforcement table (`enforcement-inventory.md`) as one table, with the control id from the reader's control set or applicability statement per row and the pipeline definition versions it was built from. A practice that is blocking in 18 of 20 repositories is not "enforced"; name the two.
 
 ## Step 3: write the policy from the inventory
 
-Each statement in the policy cites its enforcement point in a footnote or table column. Use three tiers:
+Draft the policy (`secure-development-policy.md`). Each statement in it cites its enforcement point in a footnote or table column. Use three tiers:
 
 - **Must**: enforced and blocking across scope, or a decision the lead takes now to make it so.
-- **Should**: practised but partial or advisory. State the target and the owner in `decisions.md`.
-- **Not stated**: practices the team does not do. Do not write them as commitments; list them in `decisions.md` as gaps with a proposal.
+- **Should**: practised but partial or advisory. State the target and the owner in the decisions list (`decisions.md`).
+- **Not stated**: practices the team does not do. Do not write them as commitments; list them in the decisions list as gaps with a proposal.
 
 Keep the policy to three to five pages: scope, roles, change and review, testing and scanning, dependencies and build integrity, secrets, environments and data, release and rollback, vulnerability handling with fix-time targets, exceptions (how an emergency change is approved and reviewed after the fact). Where a framework expects specific secure development or change practices, run a framework lookup for each topic and record the answer against the inventory, rather than assuming.
 
@@ -58,7 +58,7 @@ If the company places products with digital elements on the EU market, the Cyber
 
 - The best reviewer checks who can bypass the rules before checking the rules: an organisation where administrators can merge unreviewed code has optional review, whatever the settings page shows.
 - The common mistake is a template policy promising mandatory review, penetration tests per release and zero critical findings, while the pipeline lets scans fail silently. The tell: a sampled change merged with a failing scan and one self-approval, and the policy says that cannot happen.
-- The inventory is re-run quarterly and after any major tooling change, because branch rules drift weekly.
+- The inventory is re-run quarterly and after major tooling changes; branch rules drift weekly.
 - Good output lets an auditor pick any "must", open the cited file or setting and see it enforced, and lets an engineer read the policy in ten minutes and recognise their own workflow.
 
 ## Framework lookups

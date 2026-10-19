@@ -13,15 +13,15 @@ frameworks: [general, iso27001, soc2]
 tags: [evidence, audit-readiness, audit-period, evidence-collection]
 ---
 
-Run this four to eight weeks before fieldwork, early enough to fix gaps by running the activity, not by producing paper. It writes `./evidence-freshness-check/evidence-index.csv` and `./evidence-freshness-check/freshness-report.md`. This skill drafts for a human to review and sign; this skill never marks a control effective. Whether an item satisfies the auditor is the auditor's call.
+Run this four to eight weeks before fieldwork, early enough to fix gaps by running the activity, not by producing paper. You get two files in a new folder, `./evidence-freshness-check/`: a spreadsheet you can open in Excel listing every piece of audit evidence with the date it really shows and whether it is current, stale or undated (`evidence-index.csv`), and a short report of what is missing or out of date, with a to-do list per owner (`freshness-report.md`). This skill drafts for a human to review and sign; this skill never marks a control effective. Whether an item satisfies the auditor is the auditor's call.
 
 ## Inputs to gather
 
-Read the evidence folder or the export from the compliance platform, the control list or applicability statement the evidence is filed against, and the policies, because they state the review cycles the company promised itself (quarterly access reviews, annual policy review, monthly vulnerability scans). Then ask the reader, in one message: the exact start and end of the audit period, whether the audit looks at a point in time (currency on the date), a period of operation (occurrences across it) or a surveillance visit (the period since the last audit, plus the status of corrective actions), because each changes what "current" means, and where evidence lives that is not in the folder (ticketing, the identity provider, the CI system).
+Read the evidence folder or compliance platform export, the control list the evidence is filed against, and the policies, because they state the review cycles the company promised itself (quarterly access reviews, monthly scans). Then ask the reader, in one message: the exact start and end of the audit period, whether the audit looks at a point in time (currency on the date), a period of operation (occurrences across it) or a surveillance visit (the period since the last audit, plus the status of corrective actions), because each changes what "current" means, and where evidence lives that is not in the folder (ticketing, the identity provider, the CI system).
 
 ## Step 1: index every artefact
 
-One row per file or record: path, what it claims to show, the control or area it is filed against, the source system, the owner role, the content date and the period it covers. The content date is the date inside the artefact: the report header, the timestamp in a screenshot, the ticket creation and closure times, the signature date on an approval. The file modification date is not evidence; files get copied, renamed and re-exported, and the modification date then says nothing about when the activity happened. Where no date is visible inside the artefact, record "undated". Record the timezone where the artefact shows one; a screenshot with no visible clock or timezone, offered for a period, is easily discounted.
+One row per file or record in the evidence spreadsheet (`evidence-index.csv`): path, what it claims to show, the control or area it is filed against, the source system, the owner role, the content date and the period it covers. The content date is the date inside the artefact: the report header, the timestamp in a screenshot, the ticket creation and closure times, the signature date on an approval. The file modification date is not evidence; files get copied, renamed and re-exported, and the modification date then says nothing about when the activity happened. Where no date is visible inside the artefact, record "undated". Record the timezone where the artefact shows one; a screenshot with no visible clock or timezone, offered for a period, is easily discounted.
 
 ## Step 2: classify each item
 
@@ -48,7 +48,7 @@ Group open items by owner role. For each item propose one of three actions:
 - **Run now**: the activity did not happen for that occurrence; run it now, record it with today's date, and record the missed occurrence honestly as a gap with its cause.
 - **Explain**: the item is legitimately absent (no leavers that quarter, no major change); write the one-line explanation and the record that proves the absence.
 
-Write `freshness-report.md` with the counts per status, a coverage view per control (evidenced, missing or explained occurrences, the way the auditor samples), the refresh list per owner and the items that need a decision from the reader. Date each run of the index and compare it with the previous one: a gap found twice and still unowned is a systemic finding. If the output folder exists, ask before overwriting and offer a new subfolder instead.
+Write the report (`freshness-report.md`) with the counts per status, a coverage view per control (evidenced, missing or explained occurrences, the way the auditor samples), the refresh list per owner and the items that need a decision from the reader. Date each run of the index and compare it with the previous one: a gap found twice and still unowned is a systemic finding. If the output folder exists, ask before overwriting and offer a new subfolder instead.
 
 ## What good looks like
 

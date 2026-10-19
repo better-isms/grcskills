@@ -15,7 +15,7 @@ frameworks: [dora]
 tags: [dora, register-of-information, ict-third-party-risk, outsourcing, concentration-risk]
 ---
 
-Use this when the register is first built, at each periodic refresh, and whenever an ICT contract is signed, changed or ended. It writes `./ict-third-party-register/register.csv`, `gaps.md`, `concentration.md` and `questions-for-owners.md`. This skill drafts for a human to review and sign; this skill never marks a control effective. The working register is not the regulatory submission; the entity's own team prepares and files that.
+Use this when the register is first built, at each periodic refresh, and whenever an ICT contract is signed, changed or ended. You get four files in a new folder, `./ict-third-party-register/`: a spreadsheet you can open in Excel listing every ICT contract with its provider, the business functions it supports, data locations, subcontractors and exit plan, and where each fact came from (`register.csv`); a list of missing fields, missing exit plans and contracts for legal review (`gaps.md`); a one-page view of the providers that several critical functions depend on (`concentration.md`); and one block of questions per function owner (`questions-for-owners.md`). This skill drafts for a human to review and sign; this skill never marks a control effective. The working register is not the regulatory submission; the entity's own team prepares and files that.
 
 ## Inputs to gather
 
@@ -35,14 +35,14 @@ For each arrangement collect: the contract reference, start, end and notice term
 
 ## Step 4: run quality checks
 
-- **Concentration**: several critical or important functions resting on one provider, or one provider's subcontractor. Write `concentration.md` with each case and the functions at stake.
+- **Concentration**: several critical or important functions resting on one provider, or one provider's subcontractor. Write the concentration page (`concentration.md`) with each case and the functions at stake.
 - **Exit**: arrangements supporting critical or important functions without a documented, realistic exit plan.
 - **Contract terms**: DORA Art. 30 lists key contractual provisions for ICT arrangements; mark contracts the legal team should check against it, without concluding on compliance.
 - **Data quality**: missing identifiers, unknown locations, provider names that do not match legal entities, rows that are suppliers rather than arrangements.
 
 ## Step 5: write the outputs
 
-`register.csv`: the working register with the source of each field. `gaps.md`: missing fields, missing exit plans and contracts for legal review, each with an owner role. `questions-for-owners.md`: one block per function owner with the arrangements to confirm. Set a refresh trigger in the notes: any new, changed or ended ICT contract updates the register within the cycle the entity defines.
+`register.csv`: the working register with the source of each field. `gaps.md`: missing fields, missing exit plans and contracts for legal review, each with an owner role. `questions-for-owners.md`: one block per function owner with the arrangements to confirm. Set a refresh trigger in the notes: any new, changed or ended ICT contract triggers a re-run, and the register owner applies the change within the cycle the entity defines.
 
 If the output folder exists, ask before overwriting and offer a new subfolder instead.
 

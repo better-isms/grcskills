@@ -14,7 +14,7 @@ frameworks: [general, iso27001, dora]
 tags: [risk-acceptance, risk-exception, decision-record, residual-risk]
 ---
 
-Use this for one risk at a time; batch only exceptions that share the same system, cause and owner. It produces `./risk-acceptance-memo/<risk-id>.md`, one page each, and appends a line to `./risk-acceptance-memo/acceptance-log.csv`. This skill drafts for a human to review and sign; this skill never marks a control effective. The skill never accepts the risk: the named person with the authority signs, or nothing is accepted.
+Use this for one risk at a time; batch only exceptions that share the same system, cause and owner. You get, in a new folder `./risk-acceptance-memo/`, a one-page memo per risk that the person with authority reads and signs or declines (`<risk-id>.md`), and one new line in a spreadsheet you can open in Excel that lists every live acceptance and when it expires (`acceptance-log.csv`). This skill drafts for a human to review and sign; this skill never marks a control effective. The skill never accepts the risk: the named person with the authority signs, or nothing is accepted.
 
 ## Inputs to gather
 
@@ -50,7 +50,7 @@ Keep it to one page so the signer reads all of it:
 
 ## Step 4: log it and set the reminders
 
-Before finalising, scan the log for other live acceptances on the same asset or cause; show any cluster to the signer, since five defensible acceptances on one system can add up to exposure nobody approved. Add the risk id, signer role, expiry and conditions to `acceptance-log.csv`. Tell the reader to mark the treatment plan row as retained with the memo id, and to check whether the applicability statement relies on a control this acceptance leaves unimplemented. Tell the reader to add the expiry to the risk register and to whatever calendar or ticket system their team watches; the skill does not write to those systems.
+Before finalising, scan the log for other live acceptances on the same asset or cause; show any cluster to the signer, since five defensible acceptances on one system can add up to exposure nobody approved. Add the risk id, signer role, expiry and conditions to the acceptance spreadsheet (`acceptance-log.csv`). At the foot of the memo, draft ready-to-paste lines for the risk owner to enter after signature: the treatment plan row marked as retained with the memo id, and the expiry for the risk register and the team's calendar or ticket system. Flag whether the applicability statement relies on a control this acceptance leaves unimplemented. The skill does not write to those systems.
 
 ## What good looks like
 

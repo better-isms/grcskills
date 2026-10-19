@@ -14,7 +14,7 @@ frameworks: [iso27001]
 tags: [soa, applicability, risk-treatment, control-selection]
 ---
 
-Use this after the risk assessment and treatment plan exist, not before: an applicability statement written first is a guess dressed as a decision. It produces `./soa-first-draft/soa.csv` and `./soa-first-draft/soa-notes.md`. This skill drafts for a human to review and sign; this skill never marks a control effective. Control selection is a management decision; the agent proposes it.
+Use this after the risk assessment and treatment plan exist, not before: an applicability statement written first is a guess dressed as a decision. You get two files in a new folder, `./soa-first-draft/`: a draft statement of applicability as a spreadsheet you can open in Excel, one row per control saying whether it applies, why, how far along it is and where the proof sits (`soa.csv`), and a short note with the status scale, the mismatches found and the questions for owners (`soa-notes.md`). This skill drafts for a human to review and sign; this skill never marks a control effective. Control selection is a management decision; the agent proposes it.
 
 ## Inputs to gather
 
@@ -22,7 +22,7 @@ Read: the scope statement, the risk register and treatment plan, the register of
 
 ## Step 1: collect the reasons to include
 
-For every control identifier, collect every reason it is needed, each with an id:
+For every control identifier, collect every reason it is needed, each with an id, as the first columns of the draft statement (`soa.csv`):
 
 - **Risk**: a treated risk in the register whose treatment names this control or an action it covers (R-012).
 - **Obligation**: a law, regulation or contract clause that calls for the practice (OBL-04, or the contract reference).
@@ -37,7 +37,7 @@ A control is a candidate for exclusion only when no in-scope activity, asset or 
 
 ## Step 3: set implementation status from records
 
-Use one scale and define it in the notes:
+Use one scale and define it in the notes file (`soa-notes.md`):
 
 - **Implemented**: operating, and a record from the current period exists. Give the path.
 - **Implemented, evidence pending**: operating, record not yet located.
@@ -52,7 +52,7 @@ For each row: control id (bare identifier), included (yes, partial or no; for pa
 
 ## Step 5: reconcile and hand over
 
-Before handing over, check that every identifier from the licensed list has exactly one row; list absent identifiers first in the notes, since a control missing from the statement is a defect good wording elsewhere cannot cure. Then check both directions: every risk the treatment plan says is reduced by a control points to an included row, and every included row has at least one reason. Record mismatches in `soa-notes.md` with the decision needed, the versions of the register and treatment plan the draft was built from, and an approval block (version, approver role, date) with the rule that a change to scope, register or treatment plan triggers a re-reconciliation and re-approval. Ask before overwriting existing files. Run a framework lookup for what the standard expects the statement to show, instead of assuming the column set.
+Before handing over, check that every identifier from the licensed list has exactly one row; list absent identifiers first in the notes, since a control missing from the statement is a defect good wording elsewhere cannot cure. Then check both directions: every risk the treatment plan says is reduced by a control points to an included row, and every included row has at least one reason. Record mismatches in the notes file with the decision needed, the versions of the register and treatment plan the draft was built from, and an approval block (version, approver role, date) with the rule that a change to scope, register or treatment plan triggers a re-reconciliation and re-approval. Ask before overwriting existing files. Run a framework lookup for what the standard expects the statement to show, instead of assuming the column set.
 
 ## What good looks like
 

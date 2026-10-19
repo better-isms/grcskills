@@ -14,7 +14,7 @@ frameworks: [general, iso27001, soc2, hipaa, nis2, iso42001]
 tags: [gap-analysis, baseline, readiness, prioritisation]
 ---
 
-Use this once at the start of a programme, and again when the target framework or audit date changes. It produces `./first-gap-assessment/gap-register.csv` and `./first-gap-assessment/gap-summary.md`. This skill drafts for a human to review and sign; this skill never marks a control effective. A gap rating is a planning estimate, not an audit opinion.
+Use this once at the start of a programme, and again when the target framework or audit date changes. You get two files in a new folder, `./first-gap-assessment/`: a spreadsheet you can open in Excel with one row per framework item, saying how far the company is from it, how big the fix is and who should own it (`gap-register.csv`), and a two-page summary for leadership with the top ten gaps and the earliest realistic audit date (`gap-summary.md`). This skill drafts for a human to review and sign; this skill never marks a control effective. A gap rating is a planning estimate, not an audit opinion.
 
 ## Inputs to gather
 
@@ -52,7 +52,7 @@ For every row below Evidenced, record:
 
 ## Step 4: prioritise and summarise
 
-Sort by audit risk, then lead time (longest first), then effort. Group fixes that share a cause, such as one access review process that closes five rows. Write `gap-summary.md`: the readiness picture in five lines, the top ten gaps with owner role and next action, the earliest realistic audit date with the reasoning, and the open questions per owner. Write the register as CSV with columns: id, area, item reference, rating, evidence path, gap description, effort, audit risk, lead time, proposed owner role, proposed action. Ask before overwriting either file.
+Sort by audit risk, then lead time (longest first), then effort. Group fixes that share a cause, such as one access review process that closes five rows. Write the leadership summary (`gap-summary.md`): the readiness picture in five lines, the top ten gaps with owner role and next action, the earliest realistic audit date with the reasoning, and the open questions per owner. Write the gap spreadsheet (`gap-register.csv`) with columns: id, area, item reference, rating, evidence path, gap description, effort, audit risk, lead time, proposed owner role, proposed action. Ask before overwriting either file.
 
 ## What good looks like
 

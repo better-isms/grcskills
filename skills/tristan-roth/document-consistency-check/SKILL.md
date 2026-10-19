@@ -14,15 +14,15 @@ frameworks: [general]
 tags: [consistency, documentation, retention, severity, glossary]
 ---
 
-Use this before an audit, after merging two document sets (an acquisition, a second framework, a new consultant's templates), or when people quote different numbers for the same rule. It produces `./document-consistency-check/facts-index.csv`, `./document-consistency-check/conflicts.md` and `./document-consistency-check/glossary.md`. This skill drafts for a human to review and sign; this skill never marks a control effective. Document owners decide which version is right.
+Use this before an audit, after merging two document sets (an acquisition, a second framework, a new consultant's templates), or when people quote different numbers for the same rule. You get three files in a new folder, `./document-consistency-check/`: a spreadsheet you can open in Excel listing every checkable fact your documents state (periods, scales, roles, references), quoted with its source (`facts-index.csv`); a report of every place two documents disagree, with the fix proposed for each owner (`conflicts.md`); and a short glossary that fixes one name per role and term (`glossary.md`). This skill drafts for a human to review and sign; this skill never marks a control effective. Document owners decide which version is right.
 
 ## Inputs to gather
 
-Collect every governing document the agent can read: policies, procedures, plans (incident, continuity, recovery), registers (risk, assets, vendors, processing, exceptions), the statement of applicability, contracts templates and customer-facing security pages or trust documents. Ask the reader, in one message: which documents are authoritative when two disagree, which are drafts or retired, and whether any contract or law sets a value the documents must follow (retention, notification deadlines).
+Collect every governing document the agent can read: policies, procedures, plans, registers, the statement of applicability, contract templates and customer-facing security pages. Ask the reader, in one message: which documents are authoritative when two disagree, which are drafts or retired, and whether any contract or law sets a value the documents must follow (retention, notification deadlines).
 
 ## Step 1: extract the facts
 
-Read the approved version of each document and record every checkable fact as a row in `facts-index.csv`: document, version and status, section, fact type, subject, value, quoted text. Retired documents give no owner values, but a live document that points at one is a broken reference. Put the values a contract or law fixes (retention duties, notification deadlines, contractual service windows) in a short table at the top of `conflicts.md`; internal documents must match them. The fact types that carry most conflicts, in rough order:
+Read the approved version of each document and record every checkable fact as a row in the facts spreadsheet (`facts-index.csv`): document, version and status, section, fact type, subject, value, quoted text. Retired documents give no owner values, but a live document that points at one is a broken reference. Put the values a contract or law fixes (retention duties, notification deadlines, contractual service windows) in a short table at the top of the conflicts report (`conflicts.md`); internal documents must match them. The fact types that carry most conflicts, in rough order:
 
 1. **Periods and deadlines**: retention periods, revocation time for leavers, patch windows, notification deadlines, review cycles, backup retention, log retention.
 2. **Scales**: incident severity levels, risk likelihood and impact scales, data classification labels, vendor criticality tiers.

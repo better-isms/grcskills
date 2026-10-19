@@ -14,11 +14,11 @@ frameworks: [eu-ai-act]
 tags: [ai-act, risk-classification, high-risk-ai, annex-iii, ai-governance]
 ---
 
-Use this after the AI inventory exists, one system at a time. It produces `./ai-act-risk-classification/<system-id>.md` per system and `./ai-act-risk-classification/summary.csv`. This skill drafts for a human to review and sign; this skill never marks a control effective. The output is a reasoned draft, not a legal opinion; the person accountable for legal interpretation confirms every high-risk, prohibited or unclear result.
+Use this after the AI inventory exists, one system at a time. You get, in a new folder `./ai-act-risk-classification/`: a short written record per AI system explaining which EU AI Act risk tier it falls in and why, with the article behind each step (`<system-id>.md`), and a one-line-per-system spreadsheet you can open in Excel with the tier and the open questions (`summary.csv`). This skill drafts for a human to review and sign; this skill never marks a control effective. The output is a reasoned draft, not a legal opinion; the person accountable for legal interpretation confirms every high-risk, prohibited or unclear result.
 
 ## Inputs to gather
 
-Read the AI register entry, the product documentation, the vendor's instructions for use, and any marketing copy about the system (it often states the real intended purpose best). Ask the reader, in one message: what the system is for in one sentence, who it makes or supports decisions about, whether the company puts it on the market under its own name, and whether it is used in the EU or its output is used there.
+Read the AI register entry, the product documentation, the vendor's instructions for use, and any marketing copy about the system. Ask the reader, in one message: what the system is for in one sentence, who it makes or supports decisions about, whether the company puts it on the market under its own name, and whether it is used in the EU or its output is used there.
 
 ## Step 1: confirm scope and role
 
@@ -41,18 +41,17 @@ Art. 6(3) lets an Annex III system escape high-risk status when it does not pose
 
 ## Step 5: transparency and general-purpose models
 
-Check Art. 50 for every system, high-risk or not: systems that interact with people, generate synthetic content, perform emotion recognition or biometric categorisation, or produce deep fakes carry disclosure duties. Then check whether the company provides a general-purpose AI model (Chapter V, Art. 51 onwards); most companies only use one, which is not the same thing.
+Check Art. 50 for every system, high-risk or not: systems that interact with people, generate synthetic content, perform emotion recognition or biometric categorisation, or produce deep fakes carry disclosure duties. Then check whether the company provides a general-purpose AI model (Chapter V, Art. 51 onwards); most companies only use one.
 
 ## Step 6: record the result and headline obligations
 
-For each system write: role, prohibited practice check, high-risk route and Annex point or the reason none applies, exemption reasoning, transparency duties, resulting tier, and the headline obligations by role, by article only (for example provider duties in Chapter III, deployer duties in Art. 26, including Art. 26(9), which links the provider's instructions to the deployer's data protection impact assessment, fundamental rights impact assessment in Art. 27 for the deployers it names, AI literacy in Art. 4 for everyone). Add the application date for each result: after the 2026 amendment, Annex III obligations apply from 2 December 2027 and the Annex I product route from 2 August 2028. Dates have moved once already, so check the consolidated text when the record is used.
+In each system record write: role, prohibited practice check, high-risk route and Annex point or the reason none applies, exemption reasoning, transparency duties, resulting tier, and the headline obligations by role, by article only (for example provider duties in Chapter III, deployer duties in Art. 26, including Art. 26(9), which links the provider's instructions to the deployer's data protection impact assessment, fundamental rights impact assessment in Art. 27 for the deployers it names, AI literacy in Art. 4 for everyone). Add the application date for each result: after the 2026 amendment, Annex III obligations apply from 2 December 2027 and the Annex I product route from 2 August 2028. Dates have moved before, so check the consolidated text when the record is used. Add one line per system to the summary spreadsheet.
 
 ## What good looks like
 
 - Each record cites the exact Annex III point or Art. 5 practice it ruled in or out, with the fact from the system that decided it.
 - The common mistake is classifying by technology or by the vendor's label ("the vendor says minimal risk"). The vendor classified its own intended purpose; yours may differ.
 - The tell that it went wrong: every system lands in minimal risk, nothing is marked unclear, and no record mentions Art. 25. Real portfolios usually have at least one system in employment, credit or customer interaction that needs a second look.
-- A legal reviewer can confirm or overturn each result in minutes because the facts and the reasoning sit side by side.
 
 ## Framework lookups
 

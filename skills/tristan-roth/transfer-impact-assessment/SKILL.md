@@ -14,7 +14,7 @@ frameworks: [gdpr]
 tags: [international-transfers, tia, sccs, supplementary-measures, vendors]
 ---
 
-Use this for each transfer, or each group of transfers to the same importer under the same mechanism, before data flows and whenever the importer, the data or the destination law changes. It produces `./transfer-impact-assessment/transfer-inventory.csv` and `./transfer-impact-assessment/<importer>-tia.md`. This skill drafts for a human to review and sign; this skill never marks a control effective. The destination law conclusion and the decision to transfer belong to the exporter's privacy lead and counsel.
+Use this for each transfer, or each group of transfers to the same importer under the same mechanism, before data flows and whenever the importer, the data or the destination law changes. You get two kinds of file in a new folder, `./transfer-impact-assessment/`: a spreadsheet you can open in Excel listing every transfer, with the receiving company, country, data, purpose and how the data is reached (`transfer-inventory.csv`), and one written assessment per receiving company that counsel can check line by line (`<importer>-tia.md`). This skill drafts for a human to review and sign; this skill never marks a control effective. The destination law conclusion and the decision to transfer belong to the exporter's privacy lead and counsel.
 
 ## Inputs to gather
 
@@ -22,7 +22,7 @@ Read the record of processing activities, the vendor and sub-processor lists, th
 
 ## Step 1: confirm there is a transfer
 
-Under the EDPB's guidance, a transfer exists when an exporter subject to the GDPR for the processing discloses or makes personal data available to a separate importer located in a third country. Remote access counts: a support engineer viewing EU-hosted data from outside the EEA is a transfer, even if the servers sit in the EU. Map the full chain in `transfer-inventory.csv`: importer, country, data categories, data subjects, purpose, access type (storage, remote access, onward transfer), sub-processors and their countries. Onward transfers by the importer are part of the assessment.
+Under the EDPB's guidance, a transfer exists when an exporter subject to the GDPR for the processing discloses or makes personal data available to a separate importer located in a third country. Remote access counts: a support engineer viewing EU-hosted data from outside the EEA is a transfer, even if the servers sit in the EU. Map the full chain in the transfer spreadsheet (`transfer-inventory.csv`): importer, country, data categories, data subjects, purpose, access type (storage, remote access, onward transfer), sub-processors and their countries. Onward transfers by the importer are part of the assessment.
 
 ## Step 2: identify the mechanism
 
@@ -54,7 +54,7 @@ Rule of thumb from the EDPB guidance: where the importer needs the data in clear
 
 ## Step 5: write the assessment
 
-Draft `<importer>-tia.md`: the transfer description, the mechanism, the law and practice findings with sources, the measures in place and proposed, the residual risk, the open questions for counsel, the decision owner, and a re-assessment trigger (new sub-processor or country, new data category, change in destination law or adequacy status, a relevant ruling).
+Draft the written assessment for this importer (`<importer>-tia.md`): the transfer description, the mechanism, the law and practice findings with sources, the measures in place and proposed, the residual risk, the open questions for counsel, the decision owner, and a re-assessment trigger (new sub-processor or country, new data category, change in destination law or adequacy status, a relevant ruling).
 
 ## What good looks like
 

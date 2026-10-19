@@ -13,22 +13,22 @@ frameworks: [general, iso27001, soc2]
 tags: [policy-review, gap-analysis, evidence, paper-vs-practice]
 ---
 
-Use this when policies were written before the practice settled, when an audit is close, or after a reorganisation, a new tool or a new team changed how work is done. It produces `./policy-gap-review-against-practice/gap-table.md` and `./policy-gap-review-against-practice/fix-list.md`. This skill drafts for a human to review and sign; this skill never marks a control effective. Whether the policy or the practice changes is the policy owner's decision.
+Use this when policies were written before the practice settled, when an audit is close, or after a reorganisation, a new tool or a new team changed how work is done. You get two files in a new folder, `./policy-gap-review-against-practice/`: a table comparing each promise in your policies with what the records show actually happens (`gap-table.md`), and a to-do list of fixes grouped by owner, most urgent first (`fix-list.md`). This skill drafts for a human to review and sign; this skill never marks a control effective. Whether the policy or the practice changes is the policy owner's decision.
 
 ## Inputs to gather
 
-Read the policies in scope with their version and approval record. Then find what shows the practice: access review records and identity exports, ticket history, change records, backup job reports, joiner and leaver checklists, training completion, vendor files, and configuration the agent can read (repository settings, infrastructure code, endpoint management reports). Ask the reader in one message: which policies matter most for the next audit or customer review, who owns each one, and which systems the agent cannot see.
+Read the policies in scope with their version and approval record. Then find what shows the practice: access review records, ticket and change history, backup reports, joiner and leaver checklists, training completion, vendor files, and configuration the agent can read (repository settings, infrastructure code). Ask the reader in one message: which policies matter most for the next audit or customer review, who owns each one, and which systems the agent cannot see.
 
 ## Step 1: turn each policy into testable statements
 
-Extract every sentence that commits the company to something observable: who does what, how often, within what time, leaving which record. "System owners review access every quarter" is testable. "We take security seriously" is not; note it for the owner as wording to cut or sharpen. Give each statement an id such as `ACC-03`. A substantial policy usually yields 15 to 40 testable statements. Fewer than 10 means the policy is too vague to audit, which is a finding in itself. Add statements for the policy's own record: approved, reviewed by its due date, published where staff find it. An unapproved or overdue policy is a gap whatever the practice.
+Extract every sentence that commits the company to something observable: who does what, how often, within what time, leaving which record. "System owners review access every quarter" is testable. "We take security seriously" is not; note it for the owner as wording to cut or sharpen. Give each statement an id such as `ACC-03`. A substantial policy yields 15 to 40 testable statements; fewer than 10 means it is too vague to audit, a finding in itself. Add statements for the policy's own record: approved, reviewed by its due date, published where staff find it. An unapproved or overdue policy is a gap whatever the practice.
 
 ## Step 2: find the evidence for each statement
 
 For each statement, find the record that would prove it and sample it:
 
 - Recurring activity: the last three or four occurrences (a quarterly review means the last year).
-- Event-driven activity: 5 to 10 items from the population (leavers, changes, new vendors, incidents), picked across the period, not the most recent five. Build the population from the source of truth (HR leaver export, deployment history, vendor payments), not the ticket queue: a leaver who never got a ticket never shows up in a ticket sample.
+- Event-driven activity: 5 to 10 items picked across the period, not the latest five. Build the population from the source of truth (HR leaver export, deployment history, vendor payments), not the ticket queue: a leaver who never got a ticket never shows up in a ticket sample.
 - Configuration: the setting itself, read where it lives, not a screenshot in a folder.
 
 Record what you looked at, by path or system, and what you saw. Then classify:
@@ -44,7 +44,7 @@ Record what you looked at, by path or system, and what you saw. Then classify:
 The reflex is to fix the practice to match the paper. Often the paper is wrong. Rules of thumb:
 
 - The gap touches a customer contract, a legal obligation or a risk the register rates high: fix the practice; the text stays.
-- The policy promises a frequency the team cannot sustain and the risk does not need it (daily manual log review by a team of three): change the text to what the risk needs and the team can run, then hold them to it. A commitment met every time beats a stricter one missed every time.
+- The policy promises a frequency the team cannot sustain and the risk does not need (daily manual log review by a team of three): change the text to what the risk needs, then hold them to it. A commitment met every time beats a stricter one missed every time.
 - Practice is stronger: raise the text only if the company wants to be held to the stronger level; otherwise remove the contradiction and keep headroom.
 - No record: the fix is a record (a recurring ticket, a log export, a sign-off line), not a rewrite.
 
@@ -52,9 +52,9 @@ Where a framework expects a particular policy element or frequency, run a framew
 
 ## Step 4: write the outputs
 
-`gap-table.md`: a header with the review date, the evidence window and the policy versions tested, then one row per statement with the id, the policy text quoted exactly, the evidence examined and sample, the classification, the proposed side to fix, the owner role, and an empty decision column (accepted, rejected or deferred, with the owner's reason). Add a short section listing contradictions found between policies, such as two review frequencies for the same activity or two definitions of sensitive data. Accepted practice fixes go into the finding or corrective action tracker so the next audit can verify closure.
+The comparison table (`gap-table.md`): a header with the review date, the evidence window and the policy versions tested, then one row per statement with the id, the policy text quoted exactly, the evidence examined and sample, the classification, the proposed side to fix, the owner role, and an empty decision column (accepted, rejected or deferred, with the owner's reason). Add a short section listing contradictions between policies (two review frequencies for one activity, two definitions of sensitive data). For each accepted practice fix, add a ready-to-paste tracker row; the owner enters it in the corrective action tracker so the next audit can verify closure.
 
-`fix-list.md`: grouped by owner, each fix written as an action someone can start tomorrow ("change the access policy sentence on review frequency to every six months for low-risk systems", "create a recurring ticket for the backup restore test with the report attached"), with effort S, M or L. Order the list: weaker practice on high-risk or contractual commitments first, then missing records, then text corrections. End with the "not observable" list so the owner knows what to bring to the review meeting.
+The fix list (`fix-list.md`): grouped by owner, each fix written as an action someone can start tomorrow ("create a recurring ticket for the backup restore test with the report attached"), with effort S, M or L. Order the list: weaker practice on high-risk or contractual commitments first, then missing records, then text corrections. End with the "not observable" list so the owner knows what to bring to the review meeting.
 
 ## What good looks like
 

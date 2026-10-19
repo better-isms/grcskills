@@ -13,7 +13,7 @@ frameworks: [iso27001, soc2, hipaa, pci-dss]
 tags: [access-review, user-recertification, joiners-leavers, privileged-access]
 ---
 
-Use this to prepare a review campaign before reviewers see anything. It writes `./access-review-campaign-prep/campaign-plan.md`, one `populations/<system>.csv` per system and `follow-up-tracker.csv` in that folder. This skill drafts for a human to review and sign; this skill never marks a control effective. Reviewers decide on access; the agent only prepares and flags.
+Use this to prepare a review campaign before reviewers see anything. You get, in a new folder `./access-review-campaign-prep/`: a short plan saying which systems are reviewed, by whom and by when, with a sign-off line per reviewer (`campaign-plan.md`); one spreadsheet per system, openable in Excel, listing every account with the risky ones flagged at the top, ready for the reviewer (`populations/<system>.csv`); and a follow-up spreadsheet that tracks whether each removal really happened (`follow-up-tracker.csv`). This skill drafts for a human to review and sign; this skill never marks a control effective. Reviewers decide on access; the agent only prepares and flags.
 
 ## Inputs to gather
 
@@ -46,7 +46,7 @@ Each line gets keep, remove or change, the reviewer's role, the decision date an
 
 ## Step 5: plan the follow-up
 
-Every remove or change decision becomes a ticket with the system owner and a due date the policy sets. After that date, re-export the account list and compare: a decision recorded with the account still active is the most common access review exception auditors find. Track it in `follow-up-tracker.csv`: account, decision, ticket, removed (yes or no), re-export time. Write `campaign-plan.md` with scope, reviewers, timeline, flag counts per system and the re-export step. Keep the exports, decisions and re-exports for the retention period the company's document rules set; run a framework lookup if a regulation sets a longer one.
+Every remove or change decision needs a ticket, which the system owner raises, with a due date the policy sets. After that date, ask the system owner for a fresh export of the account list and compare: a decision recorded with the account still active is the most common access review exception auditors find. Track it in the follow-up spreadsheet (`follow-up-tracker.csv`): account, decision, ticket, removed (yes or no), re-export time. Write `campaign-plan.md` with scope, reviewers, timeline, flag counts per system and the re-export step. Keep the exports, decisions and re-exports for the retention period the company's document rules set; run a framework lookup if a regulation sets a longer one.
 
 If the output folder exists, ask before overwriting and offer a new subfolder instead.
 

@@ -13,7 +13,7 @@ frameworks: [iso27001, soc2, general]
 tags: [raci, control-ownership, accountability, segregation-of-duties, governance]
 ---
 
-Use this after the applicable controls are known (statement of applicability or control matrix), and again after a reorganisation, a change to which controls apply, the departure of anyone who owns several controls, or at the annual management review. It produces `./control-owner-raci/raci.csv` and `./control-owner-raci/owner-briefs.md`. This skill drafts for a human to review and sign; this skill never marks a control effective. Owners accept their role; the agent only proposes it.
+Use this after the applicable controls are known (statement of applicability or control matrix), and again after a reorganisation, a change to which controls apply, the departure of anyone who owns several controls, or at the annual management review. You get two files in a new folder, `./control-owner-raci/`: a spreadsheet you can open in Excel with one row per control, showing which role answers for it, who runs it, who is consulted and informed, how often it is reviewed and any conflict found (`raci.csv`), and a one-page brief per owner explaining the controls they own and what an auditor will ask them (`owner-briefs.md`). This skill drafts for a human to review and sign; this skill never marks a control effective. Owners accept their role; the agent only proposes it.
 
 ## Inputs to gather
 
@@ -52,7 +52,7 @@ Raise the cadence for controls that treat the top risks or were the subject of a
 
 ## Step 5: write the outputs
 
-Write `raci.csv` with columns: control id, control description in the company's words, A, R, C, I, observed operator, cadence, next review, flags. Write `owner-briefs.md` with one section per accountable role: the controls they own, what each one produces, the cadence, and the three questions an auditor is likely to ask them. Ask before overwriting either file. Record each owner's acceptance (an acknowledgement in the GRC tool, a signed brief or a logged email), because an assignment nobody can show was communicated does not survive an audit.
+Write the spreadsheet (`raci.csv`) with columns: control id, control description in the company's words, A, R, C, I, observed operator, cadence, next review, flags. Write the owner briefs (`owner-briefs.md`) with one section per accountable role: the controls they own, what each one produces, the cadence, and the three questions an auditor is likely to ask them. Ask before overwriting either file. Add an acceptance column, left blank, for the reader to fill once each owner confirms (an acknowledgement in the GRC tool, a signed brief or a logged email), because an assignment nobody can show was communicated does not survive an audit.
 
 ## What good looks like
 

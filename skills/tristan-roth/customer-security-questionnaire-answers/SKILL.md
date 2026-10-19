@@ -14,7 +14,7 @@ frameworks: [general, soc2, iso27001, gdpr]
 tags: [security-questionnaire, sales-security, trust, due-diligence]
 ---
 
-Use this for one questionnaire at a time. It writes `./customer-security-questionnaire-answers/<customer-role-or-deal-id>/answers.csv`, `flags.md` and `library-updates.md`. This skill drafts for a human to review and sign; this skill never marks a control effective. Questionnaire answers often become part of the contract, so a named person approves every one before it leaves.
+Use this for one questionnaire at a time. You get three files in a new folder, `./customer-security-questionnaire-answers/<customer-role-or-deal-id>/`: a spreadsheet you can open in Excel with every question, a draft answer, the document it comes from, a confidence level and the owner who must confirm it (`answers.csv`); a list of answers that need a human decision, such as promises, sensitive details and contradictions (`flags.md`); and the new or corrected answers worth keeping for the next questionnaire (`library-updates.md`). This skill drafts for a human to review and sign; this skill never marks a control effective. Questionnaire answers often become part of the contract, so a named person approves every one before it leaves.
 
 ## Inputs to gather
 
@@ -40,11 +40,11 @@ Some answers are promises. Any incident notice time goes to the incident respons
 
 ## Step 4: check consistency with past answers
 
-Compare with previous questionnaires and the public trust or security page. Different answers to the same question for two customers create contractual and credibility risk. List every difference in `flags.md` with both versions and ask which is true now.
+Compare with previous questionnaires and the public trust or security page. Different answers to the same question for two customers create contractual and credibility risk. List every difference in the flags list (`flags.md`) with both versions and ask which is true now.
 
 ## Step 5: write the outputs
 
-`answers.csv`: reference, question, draft answer, source, confidence, owner to confirm. `flags.md`: no-source items, commitments, sensitive answers and inconsistencies, grouped by owner. `library-updates.md`: new or corrected answers to add to the answer library once approved. Release requested documents only after the confidentiality agreement is signed, as watermarked copies, and log which version went to which customer.
+The answer spreadsheet (`answers.csv`): reference, question, draft answer, source, confidence, owner to confirm. The flags list: no-source items, commitments, sensitive answers and inconsistencies, grouped by owner. The library file (`library-updates.md`): new or corrected answers for the library owner to add once approved. Note in the flags list that requested documents go out only after the confidentiality agreement is signed, as watermarked copies released by the approver, who logs which version went to which customer.
 
 If the output folder exists, ask before overwriting and offer a new subfolder instead.
 

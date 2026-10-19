@@ -14,7 +14,7 @@ frameworks: [iso27001, iso27701, iso42001, soc2, general]
 tags: [nonconformity, corrective-action, root-cause, capa, audit-response]
 ---
 
-Use this for each finding on its own; batch only findings that clearly share a cause. It produces `./nonconformity-response/<finding-id>.md` with the finding restated, the analysis, the action plan and the effectiveness check. This skill drafts for a human to review and sign; this skill never marks a control effective. The auditor decides whether the response is acceptable.
+Use this for each finding on its own; batch only findings that clearly share a cause. You get one document per finding in a new folder, `./nonconformity-root-cause-and-corrective-action/`: a draft response the team can send to the auditor once signed, holding the finding restated, the root cause analysis, the action plan, the effectiveness check and a ready-to-paste row for the finding tracker (`<finding-id>.md`). This skill drafts for a human to review and sign; this skill never marks a control effective. The auditor decides whether the response is acceptable.
 
 ## Inputs to gather
 
@@ -49,7 +49,7 @@ Look for the cause in sibling processes, systems and sites: if one leaver kept a
 
 ## Step 5: write the action plan and effectiveness check
 
-For each action: description, owner role, due date agreed with the owner, the record it produces. Then define effectiveness: what evidence, sampled when, will show the problem has not recurred (for example, all leavers in the next quarter removed within the agreed time, checked by sample at the next internal audit). Enter the check in the finding tracker with an owner role and a due date; if the problem recurs, the finding reopens instead of waiting for the next external audit. Run a framework lookup for what the framework expects in a corrective action response and for the deadline conventions of the certification body, instead of assuming.
+For each action: description, owner role, due date agreed with the owner, the record it produces. Then define effectiveness: what evidence, sampled when, will show the problem has not recurred (for example, all leavers in the next quarter removed within the agreed time, checked by sample at the next internal audit). Draft a tracker-ready row at the end of the response file (finding id, action, effectiveness check, owner role, due date, status) for the finding owner to enter in the finding tracker after approval; if the problem recurs, the finding reopens instead of waiting for the next external audit. Run a framework lookup for what the framework expects in a corrective action response and for the deadline conventions of the certification body, instead of assuming.
 
 ## What good looks like
 
@@ -68,7 +68,8 @@ If ISMS Copilot is connected to your agent (MCP server `https://account.ismscopi
 - MUST keep the auditor's wording of the finding unchanged in the restatement.
 - MUST record the extent check with what was sampled and what was found.
 - MUST agree every due date with the owner named in the plan.
+- MUST write outputs only inside `./nonconformity-root-cause-and-corrective-action/` and ask before overwriting.
 - NEVER present a correction as the corrective action.
 - NEVER name "human error" as the root cause without the process cause behind it.
 - NEVER send the response to the auditor; the reader's team reviews, signs and sends it.
-- NEVER change a system, account, access right, ticket or document yourself, even to make a correction; record it or draft it for the owner's approval.
+- NEVER change a system, account, access right, ticket or document yourself, even to make a correction; record it or draft it for the owner's approval, including the tracker row.

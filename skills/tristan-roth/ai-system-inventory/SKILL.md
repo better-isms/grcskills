@@ -14,7 +14,7 @@ frameworks: [eu-ai-act, iso42001]
 tags: [ai-inventory, ai-register, shadow-ai, ai-governance]
 ---
 
-Use this when there is no AI register, or when the one that exists lists two tools and an internal model and nothing else. It produces `./ai-system-inventory/ai-register.csv` and `./ai-system-inventory/inventory-notes.md`. This skill drafts for a human to review and sign; this skill never marks a control effective. Every later AI governance step (classification, impact assessment, vendor review) reads this register, so a gap here is a gap everywhere.
+Use this when there is no AI register, or when the one that exists lists two tools and an internal model and nothing else. You get two files in a new folder, `./ai-system-inventory/`: a spreadsheet you can open in Excel listing every use of AI in the company, one row per use, with its owner, the data it touches and who it affects (`ai-register.csv`), and a short notes document explaining what counts as AI, where each finding came from and the questions for each owner (`inventory-notes.md`). This skill drafts for a human to review and sign; this skill never marks a control effective. Every later AI governance step (classification, impact assessment, vendor review) reads this register, so a gap here is a gap everywhere.
 
 ## Inputs to gather
 
@@ -22,7 +22,7 @@ Read before asking: the vendor or procurement list, expense or card exports for 
 
 ## Step 1: agree what counts as an AI system
 
-Write the boundary test into `inventory-notes.md` before collecting anything. For the EU scope, use the definition in EU AI Act Art. 3(1) as the test: a machine-based system that infers from its input how to generate outputs such as predictions, content, recommendations or decisions, with some autonomy. Check the current consolidated text, since the Act was amended in 2026, and record in the notes which version you relied on. Rule-based scoring written by hand usually falls outside; a model trained on data usually falls inside. Record borderline cases with the reasoning instead of dropping them; a reviewer can move a borderline entry out later, but a missing entry stays invisible.
+Write the boundary test into the notes document (`inventory-notes.md`) before collecting anything. For the EU scope, use the definition in EU AI Act Art. 3(1) as the test: a machine-based system that infers from its input how to generate outputs such as predictions, content, recommendations or decisions, with some autonomy. Check the current consolidated text, since the Act was amended in 2026, and record in the notes which version you relied on. Rule-based scoring written by hand usually falls outside; a model trained on data usually falls inside. Record borderline cases with the reasoning instead of dropping them; a reviewer can move a borderline entry out later, but a missing entry stays invisible.
 
 ## Step 2: discover from five sources
 
@@ -38,7 +38,7 @@ AI features switched on inside software the company already pays for are the mos
 
 ## Step 3: record one entry per use case
 
-The unit is the use case, not the vendor. The same assistant used for drafting marketing copy and for screening job applicants is two entries, because the people affected and the risk differ. For each entry fill:
+Each entry is a row in the register spreadsheet (`ai-register.csv`). The unit is the use case, not the vendor. The same assistant used for drafting marketing copy and for screening job applicants is two entries, because the people affected and the risk differ. For each entry fill:
 
 - id, name, short description, source of discovery
 - owner role (a business owner who can stop the use, not "IT")
@@ -65,7 +65,6 @@ The unit is the use case, not the vendor. The same assistant used for drafting m
 - The first thing a strong practitioner checks is the embedded features: transcription in the meeting tool, ranking in the recruiting tool, auto-replies in the helpdesk. They are where people are affected and nobody asked.
 - The common mistake is a register of vendor names ("we use two chatbots and one model"). It cannot be classified, because risk depends on the use case, not the product.
 - The tell that it went wrong: no entry is marked discovered unapproved, every owner is IT, and nothing affects applicants or customers. Real companies always have at least one of each.
-- A reviewer can pick any entry and know who to call, what data it touches and what decision it feeds.
 
 ## Framework lookups
 

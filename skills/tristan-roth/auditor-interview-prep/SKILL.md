@@ -14,7 +14,7 @@ frameworks: [iso27001, soc2, general]
 tags: [audit-interviews, audit-prep, briefing, mock-audit]
 ---
 
-Use this one to three weeks before an audit, once the audit plan or agenda is known. It produces `./auditor-interview-prep/briefs/<role>.md`, one per interviewee role, and `./auditor-interview-prep/schedule.md`. This skill drafts for a human to review and sign; this skill never marks a control effective. The aim is people who can show what they do, not people who recite policy.
+Use this one to three weeks before an audit, once the audit plan or agenda is known. You get a new folder, `./auditor-interview-prep/`, holding a one-to-two-page briefing note for each person the auditor will interview, with the likely questions, the records they should open and how to answer (`briefs/<role>.md`, one per role), and a timetable of the interview sessions with topics, backups and the coordinator (`schedule.md`). This skill drafts for a human to review and sign; this skill never marks a control effective. The aim is people who can show what they do, not people who recite policy.
 
 ## Inputs to gather
 
@@ -50,7 +50,7 @@ For each role, script a 15-minute mock with four questions from the brief, asked
 
 ## Step 6: build the schedule
 
-`schedule.md` lists each session: role, time, topics, records to have open, the backup person if the interviewee is absent, and the coordinator who tracks auditor requests made during the session. The coordinator keeps a written request log (request, owner, due time) and reviews it at the end of each audit day; "can you send me that later" is the item most often lost.
+The interview timetable (`schedule.md`) lists each session: role, time, topics, records to have open, the backup person if the interviewee is absent, and the coordinator who tracks auditor requests made during the session. The coordinator keeps a written request log (request, owner, due time) and reviews it at the end of each audit day; "can you send me that later" is the item most often lost.
 
 ## What good looks like
 

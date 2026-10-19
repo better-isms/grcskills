@@ -14,7 +14,7 @@ frameworks: [general, iso42001, eu-ai-act]
 tags: [ai-policy, acceptable-use, generative-ai, shadow-ai, ai-literacy]
 ---
 
-Use this when the company has no AI rules, or has a ban nobody follows. It produces `./ai-acceptable-use-rules/ai-use-rules.md`, `./ai-acceptable-use-rules/approved-tools.csv` and `./ai-acceptable-use-rules/rollout-notes.md`. This skill drafts for a human to review and sign; this skill never marks a control effective. The rules take effect only when the policy owner approves and publishes them.
+Use this when the company has no AI rules, or has a ban nobody follows. You get three files in a new folder, `./ai-acceptable-use-rules/`: the staff rules for using AI tools, two pages with a red, amber, green guide to what data may go where (`ai-use-rules.md`); a spreadsheet you can open in Excel listing every AI tool as approved, approved for public information only, or not approved, with the reason (`approved-tools.csv`); and a short plan for announcing the rules and training each team (`rollout-notes.md`). This skill drafts for a human to review and sign; this skill never marks a control effective. The rules take effect only when the policy owner approves and publishes them.
 
 ## Inputs to gather
 
@@ -26,7 +26,7 @@ List the tools people use and what for, team by team. A rule set written without
 
 ## Step 2: set the approved tools list
 
-Put every tool in one of three states in `approved-tools.csv`, with the reason, the checks behind it (data location, retention, subprocessors, breach notice in the terms) and a re-check date, because vendors change training and retention terms and a tool approved today can drift:
+Put every tool in one of three states in the tools spreadsheet (`approved-tools.csv`), with the reason, the checks behind it (data location, retention, subprocessors, breach notice in the terms) and a re-check date, because vendors change training and retention terms and a tool approved today can drift:
 
 - **Approved**: business account under terms the company signed, inputs not used for training, retention known, company sign-in, admin can remove users.
 - **Approved for public information only**: useful, but terms or controls are not good enough for anything internal.
@@ -54,7 +54,7 @@ Give two examples per colour from the company's own work.
 
 ## Step 5: make asking easy, then train
 
-Write a request route for new tools with a target answer time of days, not months; slow approval is the main cause of shadow use. Add an exceptions process with an owner and an expiry. In `rollout-notes.md`, plan a short training per role with the traffic light and real examples; EU AI Act Art. 4 asks providers and deployers to take measures for staff AI literacy, and this training is the cheapest evidence of it. Run a framework lookup if an AI management standard is in scope, for what it expects the policy to cover, and note in `rollout-notes.md` which parts of the management system these rules and the tools list serve as evidence for.
+Write a request route for new tools with a target answer time of days, not months; slow approval is the main cause of shadow use. Add an exceptions process with an owner and an expiry. In the rollout plan (`rollout-notes.md`), plan a short training per role with the traffic light and real examples; EU AI Act Art. 4 asks providers and deployers to take measures for staff AI literacy, and this training is the cheapest evidence of it. Run a framework lookup if an AI management standard is in scope, for what it expects the policy to cover, and note in `rollout-notes.md` which parts of the management system these rules and the tools list serve as evidence for.
 
 ## What good looks like
 

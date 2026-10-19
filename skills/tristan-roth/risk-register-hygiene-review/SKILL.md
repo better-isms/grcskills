@@ -14,7 +14,7 @@ frameworks: [general, iso27001, soc2]
 tags: [risk-register, risk-review, data-quality, audit-prep]
 ---
 
-Use this on a register that already exists; for a first register, build one instead. It produces `./risk-register-hygiene-review/findings.csv` (one line per issue, with a proposed fix) and `./risk-register-hygiene-review/summary.md` (counts, the five issues that matter most, questions per owner). This skill drafts for a human to review and sign; this skill never marks a control effective. The register itself is never edited: owners decide each fix.
+Use this on a register that already exists; for a first register, build one instead. You get two files in a new folder, `./risk-register-hygiene-review/`: a spreadsheet you can open in Excel with one line per problem found in the register and a proposed fix for each (`findings.csv`), and a one-page summary with the counts, the five problems that matter most and the questions for each owner (`summary.md`). This skill drafts for a human to review and sign; this skill never marks a control effective. The register itself is never edited: owners decide each fix.
 
 ## Inputs to gather
 
@@ -22,7 +22,7 @@ Read the register (spreadsheet, export from a compliance platform, or document),
 
 ## Step 1: check structure and ownership
 
-For each entry, record a finding when:
+For each entry, add a line to the findings spreadsheet (`findings.csv`) when:
 
 - The owner is a team, a tool or a departed person, not a role that can approve money or change a process.
 - One owner holds more than about a third of all risks; nobody can review that many.
@@ -55,7 +55,7 @@ Group entries that share asset, threat and consequence. Propose a merge where th
 
 ## Step 6: summarise for the owners
 
-In `summary.md`, give counts by finding type, the five findings that would worry an auditor or a board most (including whether top risks, overdue treatments and expired acceptances reached the last management review), and a list of questions grouped by owner so the clean-up is a short series of decisions. Estimate the effort: most registers of 30 to 60 risks clean up in two to four owner sessions of an hour.
+In the one-page summary (`summary.md`), give counts by finding type, the five findings that would worry an auditor or a board most (including whether top risks, overdue treatments and expired acceptances reached the last management review), and a list of questions grouped by owner so the clean-up is a short series of decisions. Estimate the effort: most registers of 30 to 60 risks clean up in two to four owner sessions of an hour.
 
 ## What good looks like
 

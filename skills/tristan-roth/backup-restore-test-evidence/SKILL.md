@@ -13,7 +13,7 @@ frameworks: [iso27001, soc2, dora, hipaa]
 tags: [backup, restore-test, disaster-recovery, rto, rpo]
 ---
 
-Use this at least once per review cycle the company has set, rotating across critical services, and after any major change to the backup setup. It writes `./backup-restore-test-evidence/test-plan.md` before the test and `test-record.md` after it, in that folder. This skill drafts for a human to review and sign; this skill never marks a control effective. The reader's team runs the restore; the agent plans and records.
+Use this at least once per review cycle the company has set, rotating across critical services, and after any major change to the backup setup. You get two documents in a new folder, `./backup-restore-test-evidence/`: a test plan written before anyone touches a backup, with the service, the scenario and the pass criteria (`test-plan.md`), and after the test a record with the measured times, the results, the findings and a sign-off line for the system owner (`test-record.md`). This skill drafts for a human to review and sign; this skill never marks a control effective. The reader's team runs the restore; the agent plans and records.
 
 ## Inputs to gather
 
@@ -25,7 +25,7 @@ Pick the service with the tightest objectives or the most important data, and ro
 
 ## Step 2: write the plan before the test
 
-`test-plan.md` holds: the service and its objectives; the backup set to use and its age; the declared time of the simulated failure, so data loss is measured against a fixed scenario rather than the last convenient backup; the target environment, isolated from production, with its access controls stated; the people and their roles; open findings from the last test, to check; the success criteria, set now and not after the result is known (row counts within a stated tolerance, checksums, the application starts, a user can sign in, one business transaction completes); stop conditions; and how the restored copy is deleted or secured afterwards, because it contains production data. Get the system owner's approval of the plan before anything runs.
+The test plan (`test-plan.md`) holds: the service and its objectives; the backup set to use and its age; the declared time of the simulated failure, so data loss is measured against a fixed scenario rather than the last convenient backup; the target environment, isolated from production, with its access controls stated; the people and their roles; open findings from the last test, to check; the success criteria, set now and not after the result is known (row counts within a stated tolerance, checksums, the application starts, a user can sign in, one business transaction completes); stop conditions; and how the restored copy is deleted or secured afterwards, because it contains production data. Get the system owner's approval of the plan before anything runs.
 
 ## Step 3: record the run with timestamps
 
@@ -33,11 +33,11 @@ During the test, record times for: start, backup located, data retrieved, restor
 
 ## Step 4: compare and write findings
 
-Compare measured recovery time and data loss with the objectives. Mark each success criterion pass or fail with the evidence. Write findings as facts with an owner role and a proposed action: "Restore took 9 hours against a 4 hour objective; 5 hours spent waiting for access to the backup vault, held by one engineer." A failed test written up honestly with actions is good evidence; a test that "passed" without timings is weak evidence. A measured time beyond the objective also goes to the risk register; if the gap persists, the business owner either funds the fix or accepts the risk in writing, because the objectives are what customers were told.
+Compare measured recovery time and data loss with the objectives. Mark each success criterion pass or fail with the evidence. Write findings as facts with an owner role and a proposed action: "Restore took 9 hours against a 4 hour objective; 5 hours spent waiting for access to the backup vault, held by one engineer." A failed test written up honestly with actions is good evidence; a test that "passed" without timings is weak evidence. A measured time beyond the objective also gets a proposed risk register entry for the risk owner to add; if the gap persists, the business owner either funds the fix or accepts the risk in writing, because the objectives are what customers were told.
 
 ## Step 5: assemble the record and sign-off
 
-`test-record.md` holds the plan reference, timings, criteria results, findings, actions, confirmation that the restored copy was deleted or secured (a listing showing it is gone, not a screenshot of the delete), each earlier finding marked closed or still open, and a sign-off line for the system owner. Attach log extracts and screenshots that show times, with any personal data in them masked. Where a framework or regulation sets expectations on testing frequency or scope, run a framework lookup instead of assuming one.
+The test record (`test-record.md`) holds the plan reference, timings, criteria results, findings, actions, confirmation that the restored copy was deleted or secured (a listing showing it is gone, not a screenshot of the delete), each earlier finding marked closed or still open, and a sign-off line for the system owner. Attach log extracts and screenshots that show times, with any personal data in them masked. Where a framework or regulation sets expectations on testing frequency or scope, run a framework lookup instead of assuming one.
 
 If the output folder exists, ask before overwriting and offer a new subfolder instead.
 

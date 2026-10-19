@@ -13,19 +13,19 @@ frameworks: [nis2]
 tags: [applicability, scoping, essential-entity, important-entity, jurisdiction]
 ---
 
-Use this before any NIS 2 gap work, and again after a merger, a new country, a new service line or a change in headcount or turnover across a threshold. It produces `./nis2-entity-applicability-check/applicability-memo.md` and `./nis2-entity-applicability-check/entity-facts.csv`. This skill drafts for a human to review and sign; this skill never marks a control effective. The memo is a reasoned first pass for the company's legal owner to confirm, not a legal opinion.
+Use this before any NIS 2 gap work, and again after a merger, a new country, a new service line or a change in headcount or turnover across a threshold. You get two files in a new folder, `./nis2-entity-applicability-check/`: a memo saying, entity by entity and country by country, whether NIS 2 applies and why (`applicability-memo.md`), and a spreadsheet you can open in Excel with the facts behind it, such as headcount, turnover and services (`entity-facts.csv`). This skill drafts for a human to review and sign; this skill never marks a control effective. The memo is a reasoned first pass for the company's legal owner to confirm, not a legal opinion.
 
 ## Inputs to gather
 
-Read the group structure, legal entities and their countries, the service catalogue, the latest accounts, headcount by entity, and customer contracts that mention NIS 2. Ask the reader, in one message: which legal entities provide which services in which member states, whether any entity is part of a larger group or has partner companies, whether the company is a financial entity, and whether any authority has already contacted it.
+Read the group structure, entities and countries, service catalogue, latest accounts, headcount by entity, and contracts that mention NIS 2. Ask the reader, in one message: which legal entities provide which services in which member states, whether any entity is part of a larger group or has partner companies, whether the company is a financial entity, and whether any authority has already contacted it.
 
 ## Step 1: list entities and activities
 
-Fill `entity-facts.csv` with one row per legal entity: country of establishment, member states where it provides services, activities in plain words, headcount, annual turnover, balance sheet total, ownership links, and the source for each fact. Decide per entity, not per brand or group.
+Fill the facts spreadsheet (`entity-facts.csv`) with one row per legal entity: country of establishment, member states where it provides services, activities in plain words, headcount, annual turnover, balance sheet total, ownership links, and the source for each fact. Decide per entity, not per brand or group.
 
 ## Step 2: test the sector
 
-Compare each activity with the sectors and entity types in Annexes I and II of Directive (EU) 2022/2555, then with the national transposition law of each member state involved, because member states can widen the list. Record the exact annex entry or national provision that matches, or "no match". Record too whether each national law is in force, partly in force or still pending, since obligations and enforcement differ in each case. Flag borderline activities, such as a software company that also runs managed services, for the legal owner.
+Compare each activity with the sectors and entity types in Annexes I and II of Directive (EU) 2022/2555, then with the national transposition law of each member state involved, because member states can widen the list. Record the exact annex entry or national provision that matches, or "no match". Record whether each national law is in force, partly in force or pending. Flag borderline activities (software plus managed services) for the legal owner.
 
 ## Step 3: test size, the way the Directive counts it
 
@@ -41,22 +41,21 @@ Apply Article 3 to each in-scope entity and state the result with the facts behi
 
 ## Step 6: decide jurisdiction and registration
 
-Apply Article 26: as a rule, the member state where the entity is established. Special rules exist for public electronic communications providers (where they provide services), public administration (the member state that set them up) and a list of digital providers (among them cloud, data centre, managed and managed security services, and online platforms), which fall to the member state of their main establishment in the Union. Note registration duties under Article 3 and, for the listed digital providers, Article 27. Check each national registration process and its deadline in the national law, never from memory.
+Apply Article 26: as a rule, the member state where the entity is established. Special rules exist for public electronic communications providers (where they provide services), public administration (the member state that set them up) and a list of digital providers (among them cloud, data centre, managed and managed security services, and online platforms), which fall to the member state of their main establishment in the Union. Note registration duties under Article 3 and, for the listed digital providers, Article 27. Check each national registration process and deadline in the national law.
 
 ## Step 7: check sector-specific law
 
-Article 4 gives way to sector-specific Union law with equivalent measures. For financial entities, record whether DORA applies, which entity type the company is under DORA, and which topics it covers instead. Being a DORA financial entity is not the exit by itself: record the Article 4 equivalence reasoning (DORA Article 1(2) declares itself sector-specific law for this purpose) and any national exclusion. Note group entities that stay under NIS 2 while a sister entity falls under DORA.
+Article 4 gives way to sector-specific Union law with equivalent measures. For financial entities, record whether DORA applies, which entity type the company is under DORA, and which topics it covers instead. Being a DORA financial entity is not the exit by itself: record the Article 4 equivalence reasoning (DORA Article 1(2) declares itself sector-specific law for this purpose) and any national exclusion. Note group entities that stay under NIS 2 while a sister falls under DORA.
 
 ## Step 8: write what follows
 
-For each in-scope entity, list the consequences in one line each: management body approval and training duties (Article 20), risk management measures (Article 21), staged incident reporting (Article 23), registration, and the supervisory regime. Where personal data is involved, note that a GDPR Article 33 breach notification runs alongside NIS 2 reporting, so one incident process should feed both. For out-of-scope entities, add the indirect effect: customers in scope will push supply chain clauses into contracts, so the company may still need to show comparable measures. Write the memo: conclusion per entity and member state, confidence (clear, likely, uncertain), the facts it rests on, the facts that would change it, and questions for counsel. Ask before overwriting.
+For each in-scope entity, list the consequences in one line each: management body approval and training duties (Article 20), risk management measures (Article 21), staged incident reporting (Article 23), registration, and the supervisory regime. Where personal data is involved, note that a GDPR Article 33 breach notification runs alongside NIS 2 reporting, so one incident process should feed both. For out-of-scope entities, add the indirect effect: in-scope customers will push supply chain clauses into contracts. Write the memo (`applicability-memo.md`): conclusion per entity and member state, confidence (clear, likely, uncertain), the facts it rests on, the facts that would change it, and questions for counsel. Ask before overwriting.
 
 ## What good looks like
 
 - Conclusions are per legal entity and per member state, each with the annex entry, the size calculation and the jurisdiction rule cited.
 - The size test includes group data. The common mistake is reading headcount from the subsidiary alone and concluding "too small"; the tell is a memo with no partner or linked enterprise line.
 - National law is checked for every member state involved, since transpositions differ.
-- Uncertainty is stated with the fact that would resolve it.
 - Out of scope never ends the memo: supply chain pressure from in-scope customers is named with what it means in practice.
 
 ## Framework lookups

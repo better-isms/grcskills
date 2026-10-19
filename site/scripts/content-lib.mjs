@@ -13,7 +13,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import MarkdownIt from 'markdown-it';
-import { parseFrontmatter, CATEGORIES, FRAMEWORKS } from '../../tools/validate.mjs';
+import { parseFrontmatter, CATEGORIES, FRAMEWORKS, DESCRIPTION_MAX } from '../../tools/validate.mjs';
 
 export { CATEGORIES, FRAMEWORKS };
 
@@ -21,12 +21,12 @@ export const SITE_URL = 'https://grcskills.com';
 export const REPO = 'better-isms/grcskills';
 export const REPO_URL = `https://github.com/${REPO}`;
 
-// Length caps. Title and bio follow the design doc. The description cap
-// follows the library contract in tools/validate.mjs (100 to 1024 characters),
-// which the seed skills are written to.
+// Length caps. Title and bio follow the design doc. The description cap is
+// imported from tools/validate.mjs (the Agent Skills format limit, 1024), so the
+// validator and the site loader always agree.
 export const CAPS = {
   title: 80,
-  description: 1024,
+  description: DESCRIPTION_MAX,
   bio: 600,
   authorName: 80,
   authorTitle: 160,

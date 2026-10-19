@@ -14,7 +14,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
-import { loadContent, ContentError, SITE_URL, REPO, REPO_URL, FRAMEWORK_LABELS } from './content-lib.mjs';
+import { loadContent, ContentError, SITE_URL, REPO, REPO_URL, FRAMEWORK_LABELS, CATEGORIES, FRAMEWORKS } from './content-lib.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const siteDir = path.resolve(here, '..');
@@ -57,7 +57,53 @@ const write = (rel, data) => {
 };
 
 const xmlEscape = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-const oneLine = (s) => s.replace(/\s+/g, ' ').trim();
+
+// llms.txt is read by agents, so it carries no contributor prose: no title, no
+// description, nothing a skill author typed. Each line is built only from the
+// validated slug, the controlled category and framework vocabularies, and the
+// canonical URL. A value outside those sets fails the build.
+const LLMS_SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+export function llmsSkillLine(s) {
+  if (!LLMS_SLUG.test(s.slug ?? '')) throw new Error(`llms.txt: slug "${s.slug}" is not kebab-case`);
+  if (!Object.hasOwn(CATEGORIES, s.category)) throw new Error(`llms.txt: ${s.slug}: unknown category`);
+  if (!Array.isArray(s.frameworks) || s.frameworks.some((f) => !FRAMEWORKS.includes(f))) throw new Error(`llms.txt: ${s.slug}: unknown framework`);
+  return `- ${s.slug}: ${SITE_URL}/skill/${s.slug}/ (${CATEGORIES[s.category]}; ${s.frameworks.map((f) => FRAMEWORK_LABELS[f]).join(', ')})`;
+}
+
+export function buildLlms({ skills, tag }) {
+  return [
+    '# grcskills',
+    '',
+    `> Open GRC skills for AI agents: ${skills.length} practitioner skills in the Agent Skills format (one SKILL.md each) for governance, risk and compliance work. MIT licensed, by ISMS Copilot.`,
+    '',
+    '## When to use',
+    '',
+    'Use these skills when a user asks you to do GRC work on their own files: scope statements, statements of applicability, risk registers, audit prep and response, evidence, vendors, policies, privacy, AI systems, incidents and continuity. Each skill is one practitioner job with steps, a quality bar and the files it writes. Every skill drafts for a human to review and sign; no skill marks a control effective, accepts a risk or sends data off the machine. Skills contain no text from any standard. If you do not know where to start, run grc-setup-review: it ranks the skills that fit the setup and writes a 30-day plan.',
+    '',
+    '## The one prompt',
+    '',
+    PROMPT,
+    '',
+    '## Install',
+    '',
+    '- One skill: `npx skills add better-isms/grcskills --skill <skill-name>`',
+    '- The whole library, interactive: `npx skills add better-isms/grcskills`',
+    '- Claude Code plugin: `/plugin marketplace add better-isms/grcskills`, then `/plugin install grcskills@grcskills`',
+    `- Clone a release: \`git clone --branch ${tag} https://github.com/better-isms/grcskills\``,
+    '',
+    '## Skills',
+    '',
+    'One line per skill: skill name, page, category and frameworks. Read the SKILL.md on the page for what it does.',
+    '',
+    ...skills.map(llmsSkillLine),
+    '',
+    '## Optional',
+    '',
+    `- [Contribute a skill](${SITE_URL}/contribute/): interview-driven submission with your own agent`,
+    `- [Repository](${REPO_URL}): AGENTS.md explains install, run and submit`,
+    '',
+  ].join('\n');
+}
 
 export function main() {
   const tag = releaseTag();
@@ -122,37 +168,7 @@ export function main() {
 
   write('public/robots.txt', `User-agent: *\nAllow: /\n\nSitemap: ${SITE_URL}/sitemap.xml\n`);
 
-  const llms = [
-    '# grcskills',
-    '',
-    `> Open GRC skills for AI agents: ${skills.length} practitioner skills in the Agent Skills format (one SKILL.md each) for governance, risk and compliance work. MIT licensed, by ISMS Copilot.`,
-    '',
-    '## When to use',
-    '',
-    'Use these skills when a user asks you to do GRC work on their own files: scope statements, statements of applicability, risk registers, audit prep and response, evidence, vendors, policies, privacy, AI systems, incidents and continuity. Each skill is one practitioner job with steps, a quality bar and the files it writes. Every skill drafts for a human to review and sign; no skill marks a control effective, accepts a risk or sends data off the machine. Skills contain no text from any standard. If you do not know where to start, run grc-setup-review: it ranks the skills that fit the setup and writes a 30-day plan.',
-    '',
-    '## The one prompt',
-    '',
-    PROMPT,
-    '',
-    '## Install',
-    '',
-    '- One skill: `npx skills add better-isms/grcskills --skill <skill-name>`',
-    '- The whole library, interactive: `npx skills add better-isms/grcskills`',
-    '- Claude Code plugin: `/plugin marketplace add better-isms/grcskills`, then `/plugin install grcskills@grcskills`',
-    `- Clone a release: \`git clone --branch ${tag} https://github.com/better-isms/grcskills\``,
-    '',
-    '## Skills',
-    '',
-    ...skills.map((s) => `- [${oneLine(s.title)}](${SITE_URL}/skill/${s.slug}/): ${oneLine(s.description)} (${s.categoryLabel}; ${s.frameworks.map((f) => FRAMEWORK_LABELS[f] ?? f).join(', ')})`),
-    '',
-    '## Optional',
-    '',
-    `- [Contribute a skill](${SITE_URL}/contribute/): interview-driven submission with your own agent`,
-    `- [Repository](${REPO_URL}): AGENTS.md explains install, run and submit`,
-    '',
-  ].join('\n');
-  write('public/llms.txt', llms);
+  write('public/llms.txt', buildLlms({ skills, tag }));
 
   console.log(`content: ${skills.length} skills, ${authors.length} author${authors.length === 1 ? '' : 's'}, tag ${tag}, sha ${sha.slice(0, 12)}`);
 }

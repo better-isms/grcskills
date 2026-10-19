@@ -14,7 +14,7 @@ frameworks: [iso27001, iso27701, iso42001]
 tags: [management-review, leadership, metrics, minutes, decisions]
 ---
 
-Use this for each scheduled review, typically once or twice a year, and for an extra review after a major incident or a large change. It produces `./management-review-pack/pre-read.md`, `./management-review-pack/agenda.md`, `./management-review-pack/minutes-draft.md` and `./management-review-pack/actions.csv`. This skill drafts for a human to review and sign; this skill never marks a control effective. Leadership makes the decisions; the minutes record what they decided, never what the skill proposed.
+Use this for each scheduled review, typically once or twice a year, and for an extra review after a major incident or a large change. You get four files in a new folder, `./management-review-pack/`: a two to four page briefing leadership reads before the meeting (`pre-read.md`); the meeting agenda, decisions first (`agenda.md`); a minutes template with blanks for what leadership decides (`minutes-draft.md`); and a spreadsheet you can open in Excel tracking every action, its owner and due date (`actions.csv`). This skill drafts for a human to review and sign; this skill never marks a control effective. Leadership makes the decisions; the minutes record what they decided, never what the skill proposed.
 
 ## Inputs to gather
 
@@ -26,13 +26,7 @@ List every action from the previous minutes with its status and the record that 
 
 ## Step 2: collect the facts, short
 
-Build the pre-read from records, two to four pages:
-
-- **What changed** since the last review: in the business, the systems, the suppliers, the laws and contracts that apply.
-- **How the system performed**: each objective with its target, current value and trend over the last three periods; incidents by severity with one line each on the serious ones; audit findings opened, closed and overdue.
-- **Risk picture**: the top ten risks with movement since the last review, overdue treatment actions, acceptances expiring.
-- **What people outside said**: customer and auditor feedback, questionnaire themes, regulator contact.
-- **Resources**: where the team is short of people, budget or tools, with the risk that creates.
+Build the pre-read (`pre-read.md`), two to four pages, from the records gathered above, not from a fixed list of headings: what the incident log, audit reports, finding tracker, risk register, metrics, customer feedback, open actions and budget actually show since the last review. Organise it around what leadership must decide, and lead with what moved: an objective missed, a risk that rose, a finding overdue, a team short of people. Show each tracked metric with its target and its trend over the last three periods. The framework's own required inputs are added in Step 4 from the lookup, not assumed here.
 
 Every figure carries its source and the date it was pulled; pull figures no more than two weeks before the meeting, since a pre-read built a month early shows a risk register that has already moved. Metrics without a target or a trend are cut; a number leadership cannot act on is noise.
 
@@ -42,11 +36,11 @@ For each topic that needs leadership, write a decision paper of five lines: the 
 
 ## Step 4: check coverage against the framework
 
-Run a framework lookup on what the framework expects a management review to consider and to produce, for each framework in scope. Tick each input against the pre-read and each expected output against the minutes template, since a review can consider everything and still miss a required output. Add a line for anything missing. Keep this checklist as an appendix so the auditor can trace coverage; leadership reads the decisions, not the checklist.
+Get the required inputs and outputs of a management review for each framework in scope from a framework lookup or the reader's licensed copy; do not work from memory. Tick each input against the pre-read and each expected output against the minutes template, since a review can consider everything and still miss a required output. Add a line for anything missing. Keep this checklist as an appendix so the auditor can trace coverage; leadership reads the decisions, not the checklist.
 
 ## Step 5: draft the agenda and the minutes template
 
-The agenda follows the pre-read and puts decisions in the first half of the meeting, while attention is high. The minutes draft has a section per agenda item with space for the discussion summary, the decision taken, the owner role and the due date, all blank, followed by a closing section where the chair writes the overall conclusion on the management system in their own words, with the reasons drawn from the decisions above. Attendance is recorded by role and confirmed by the chair. `actions.csv` is pre-filled with carried-over actions and empty rows for new ones.
+The agenda (`agenda.md`) follows the pre-read and puts decisions in the first half of the meeting, while attention is high. The minutes template (`minutes-draft.md`) has a section per agenda item with space for the discussion summary, the decision taken, the owner role and the due date, all blank, followed by a closing section where the chair writes the overall conclusion on the management system in their own words, with the reasons drawn from the decisions above. Attendance is recorded by role and confirmed by the chair. The action spreadsheet (`actions.csv`) is pre-filled with carried-over actions and empty rows for new ones.
 
 ## Step 6: after the meeting
 

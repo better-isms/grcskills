@@ -14,7 +14,7 @@ frameworks: [iso42001, eu-ai-act]
 tags: [ai-impact-assessment, fria, fairness, human-oversight, ai-governance]
 ---
 
-Use this for one AI system at a time, after it is in the AI register and classified. It produces `./ai-impact-assessment/<system-id>-assessment.md` and `./ai-impact-assessment/<system-id>-open-questions.md`. This skill drafts for a human to review and sign; this skill never marks a control effective. The signature belongs to the system owner and an accountable executive, never the agent.
+Use this for one AI system at a time, after it is in the AI register and classified. You get two documents per AI system in a new folder, `./ai-impact-assessment/`: the impact assessment itself, a report of who the system could harm, how badly, and what reduces it, ready for the owner to sign (`<system-id>-assessment.md`), and a short list of questions each owner still has to answer (`<system-id>-open-questions.md`). This skill drafts for a human to review and sign; this skill never marks a control effective. The signature belongs to the system owner and an accountable executive, never the agent.
 
 ## Inputs to gather
 
@@ -47,7 +47,7 @@ For each significant impact, propose a mitigation and how you will know it works
 
 ## Step 5: set reassessment triggers and route for sign-off
 
-List what reopens the assessment: a new model or version, a new population or country, a new purpose, a monitoring metric breaching its trigger, an incident or a pattern of complaints. Put open questions per owner in the questions file. Hand the draft to the system owner; the reader decides who signs. Name where the signed record is kept and that it goes to the next management review.
+List what reopens the assessment: a new model or version, a new population or country, a new purpose, a monitoring metric breaching its trigger, an incident or a pattern of complaints. Put open questions per owner in the questions list (`<system-id>-open-questions.md`). Hand the draft to the system owner; the reader decides who signs. Name where the signed record is kept and that it goes to the next management review.
 
 ## What good looks like
 

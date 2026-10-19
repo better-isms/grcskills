@@ -14,7 +14,7 @@ frameworks: [iso27001, iso27701, iso42001]
 tags: [soa, exclusions, justification, audit-readiness]
 ---
 
-Use this before every certification or surveillance audit, and whenever the scope, the product or the supplier list changes. It produces `./soa-exclusion-justification-review/exclusion-review.csv` and `./soa-exclusion-justification-review/review-notes.md`. This skill drafts for a human to review and sign; this skill never marks a control effective. Reversing or keeping an exclusion is the approver's decision.
+Use this before every certification or surveillance audit, and whenever the scope, the product or the supplier list changes. You get two files in a new folder, `./soa-exclusion-justification-review/`: a spreadsheet you can open in Excel with one row per control the company says does not apply, the tests it passed or failed, a verdict and a better-worded reason (`exclusion-review.csv`), and a short note summarising what should change and the questions for each owner (`review-notes.md`). This skill drafts for a human to review and sign; this skill never marks a control effective. Reversing or keeping an exclusion is the approver's decision.
 
 ## Inputs to gather
 
@@ -22,7 +22,7 @@ Read: the statement of applicability (security, privacy or AI extension), the sc
 
 ## Step 1: list every exclusion with its current wording
 
-Build `exclusion-review.csv` with one row per excluded control: control id (bare identifier), current justification verbatim, and the source path. Also pull rows marked partially applicable; a partial exclusion hides the same weaknesses. First reconcile the statement against the framework's full control list (from the licensed source or a framework lookup): a control that appears nowhere, neither included nor excluded, is a worse defect than a weak justification, so list missing rows first. Mark every exclusion challenged at a previous audit; repeating challenged wording unchanged invites the same finding.
+Build the review spreadsheet (`exclusion-review.csv`) with one row per excluded control: control id (bare identifier), current justification verbatim, and the source path. Also pull rows marked partially applicable; a partial exclusion hides the same weaknesses. First reconcile the statement against the framework's full control list (from the licensed source or a framework lookup): a control that appears nowhere, neither included nor excluded, is a worse defect than a weak justification, so list missing rows first. Mark every exclusion challenged at a previous audit; repeating challenged wording unchanged invites the same finding.
 
 ## Step 2: run six tests on each exclusion
 
@@ -46,7 +46,7 @@ For every Keep and Rewrite, draft the justification in this shape: "Excluded bec
 
 ## Step 4: write the notes
 
-Write `review-notes.md`: counts per verdict, the reversals with the risk or commitment that forced them and what including the control will take, the questions per owner, and any pattern (for example, all premises-related controls excluded on a remote-first assumption the laptop fleet contradicts). Where the framework's own expectations for exclusions matter, run a framework lookup instead of assuming. Ask before overwriting.
+Write the review note (`review-notes.md`): counts per verdict, the reversals with the risk or commitment that forced them and what including the control will take, the questions per owner, and any pattern (for example, all premises-related controls excluded on a remote-first assumption the laptop fleet contradicts). Where the framework's own expectations for exclusions matter, run a framework lookup instead of assuming. Ask before overwriting.
 
 ## What good looks like
 

@@ -14,7 +14,7 @@ frameworks: [general, iso27001, soc2, gdpr]
 tags: [vendor-risk, due-diligence, security-questionnaire, assurance-reports]
 ---
 
-Use this for one supplier at a time, sized to its tier. It writes `./vendor-security-questionnaire-triage/<supplier>/triage.md`, `follow-up-questions.md` and `our-obligations.md`. This skill drafts for a human to review and sign; this skill never marks a control effective. The business owner and the security lead decide whether to proceed.
+Use this for one supplier at a time, sized to its tier. You get three short documents in a new folder per supplier, `./vendor-security-questionnaire-triage/<supplier>/`: a one-page verdict on the supplier's answers with a proposed decision (`triage.md`), a draft list of follow-up questions for the business owner to send (`follow-up-questions.md`), and the list of things your own company must do for the supplier's protections to work (`our-obligations.md`). This skill drafts for a human to review and sign; this skill never marks a control effective. The business owner and the security lead decide whether to proceed.
 
 ## Inputs to gather
 
@@ -33,7 +33,7 @@ Assurance reports carry more weight than self-declared answers, so read them fir
 - **Scope**: the report or certificate covers the product, the legal entity and the region the company will actually use. A certificate for the head office does not cover the hosted product.
 - **Age**: the period or validity covers the present; if a report period ended months ago, ask for a bridge letter.
 - **Exceptions**: any deviation or qualification the auditor recorded, and the supplier's response to it.
-- **Customer obligations**: the controls the report expects the customer to operate. These go into `our-obligations.md` as actions for the company.
+- **Customer obligations**: the controls the report expects the customer to operate. These go into the company's own to-do list (`our-obligations.md`) as actions for the company.
 - **Issuer**: who issued it and whether that body is accredited for this kind of work.
 
 For what a given framework's report or certificate should contain, run a framework lookup rather than relying on memory.
@@ -51,11 +51,11 @@ A questionnaire where every answer is yes, including questions that do not fit t
 
 ## Step 4: turn gaps into follow-ups and options
 
-For each contradicted, evasive or asserted deciding answer, write: the risk to the company in one line; one follow-up question that can be answered with evidence; and the fallback if the answer stays weak, such as a contract clause, a configuration on the company's side or limiting the data sent. Cite the page or section of the supplier document behind every finding.
+For each contradicted, evasive or asserted deciding answer, write: the risk to the company in one line; one follow-up question that can be answered with evidence, drafted in the follow-up list (`follow-up-questions.md`) for the business owner to send; and the fallback if the answer stays weak, such as a contract clause, a configuration on the company's side or limiting the data sent. Cite the page or section of the supplier document behind every finding.
 
 ## Step 5: propose a decision
 
-Propose one of: proceed; proceed with conditions (listed, each with an owner); or escalate to the risk owner with the residual risk stated. Write `triage.md` with the proposal, the deciding questions and their status, the report checks and the findings.
+Propose one of: proceed; proceed with conditions (listed, each with an owner); or escalate to the risk owner with the residual risk stated. Write the one-page verdict (`triage.md`) with the proposal, the deciding questions and their status, the report checks and the findings.
 
 If the output folder exists, ask before overwriting and offer a new subfolder instead.
 
