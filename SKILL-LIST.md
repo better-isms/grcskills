@@ -15,22 +15,22 @@ Excluded sources: any Probo skill text, any internal audit skill or client engag
 | # | Slug | Title | Job | Frameworks | Source | Status |
 |---|---|---|---|---|---|---|
 | 1 | grc-setup-review | GRC setup review | Rank the 10 library skills that help this setup most, audit what is broken, duplicated or missing, write a 30-day plan | general, iso27001, soc2, gdpr, nis2, dora, iso42001, eu-ai-act | PL iso-27001-prompt-library-overview, grc-engineering-prompt-library-overview; UC multi-framework-compliance | written |
-| 2 | scope-statement-drafting | Scope statement drafting | Draft the management system scope with boundaries, interfaces, dependencies and justified exclusions | iso27001, iso27701, iso42001 | PL iso-27001-documentation-and-reporting-prompts; UC gap-analysis-iso-27001 | planned |
-| 3 | first-gap-assessment | First gap assessment | Baseline what exists against a chosen framework and size the gap by effort and audit risk | general, iso27001, soc2, hipaa, nis2, iso42001 | UC gap-analysis-iso-27001, gap-analysis-soc-2, gap-analysis-hipaa, gap-analysis-nis-2, gap-analysis-iso-42001 | planned |
-| 4 | stage-1-readiness-walk | Stage 1 readiness walk | Walk the documentation an auditor reads first and list what would stop a certification audit from proceeding | iso27001, iso27701, iso42001 | PL iso-27001-audit-preparation-prompts (pre-audit readiness check) | planned |
-| 5 | multi-framework-overlap-map | Multi-framework overlap map | Map one internal control set to several frameworks so evidence is collected once | general, iso27001, soc2, nis2, nist-csf, gdpr | UC framework-mapping-iso-27001-soc-2, framework-mapping-iso-27001-nis-2, framework-mapping-nist-csf-iso-27001, framework-mapping-gdpr-ccpa | planned |
-| 6 | nis2-entity-applicability-check | NIS 2 entity applicability check | Decide whether the company is an essential or important entity, in which member states, and what follows | nis2 | PL nis2-directive-prompt-library | planned |
+| 2 | scope-statement-drafting | Scope statement drafting | Draft the management system scope with boundaries, interfaces, dependencies and justified exclusions | iso27001, iso27701, iso42001 | PL iso-27001-documentation-and-reporting-prompts; UC gap-analysis-iso-27001 | written |
+| 3 | first-gap-assessment | First gap assessment | Baseline what exists against a chosen framework and size the gap by effort and audit risk | general, iso27001, soc2, hipaa, nis2, iso42001 | UC gap-analysis-iso-27001, gap-analysis-soc-2, gap-analysis-hipaa, gap-analysis-nis-2, gap-analysis-iso-42001 | written |
+| 4 | stage-1-readiness-walk | Stage 1 readiness walk | Walk the documentation an auditor reads first and list what would stop a certification audit from proceeding | iso27001, iso27701, iso42001 | PL iso-27001-audit-preparation-prompts (pre-audit readiness check) | written |
+| 5 | multi-framework-overlap-map | Multi-framework overlap map | Map one internal control set to several frameworks so evidence is collected once | general, iso27001, soc2, nis2, nist-csf, gdpr | UC framework-mapping-iso-27001-soc-2, framework-mapping-iso-27001-nis-2, framework-mapping-nist-csf-iso-27001, framework-mapping-gdpr-ccpa | written |
+| 6 | nis2-entity-applicability-check | NIS 2 entity applicability check | Decide whether the company is an essential or important entity, in which member states, and what follows | nis2 | PL nis2-directive-prompt-library | written |
 
 ## statement-of-applicability (6)
 
 | # | Slug | Title | Job | Frameworks | Source | Status |
 |---|---|---|---|---|---|---|
-| 7 | soa-first-draft | Statement of applicability first draft | Build the first applicability statement from the risk treatment plan, with inclusion reasons and implementation status | iso27001 | UC soa-generation-iso-27001 | planned |
-| 8 | soa-exclusion-justification-review | Exclusion justification review | Test every excluded control against scope and risk and rewrite weak justifications before the auditor reads them | iso27001, iso27701, iso42001 | UC soa-generation-iso-27001; PL iso-27001-control-implementation-prompts | planned |
-| 9 | soa-status-reconciliation | Applicability status reconciliation | Reconcile the implementation status column with the evidence that actually exists | iso27001 | PL iso-27001-audit-preparation-prompts (evaluate control implementation evidence) | planned |
-| 10 | control-owner-raci | Control owner RACI | Assign an accountable owner and operators to every applicable control, with a review cadence | iso27001, soc2, general | PL iso-27001-control-implementation-prompts, soc-2-control-design-and-implementation-prompts | planned |
-| 11 | risk-to-control-traceability-check | Risk to control traceability check | Check that every treated risk points to controls and every applicable control traces back to a risk or obligation | iso27001, iso42001 | PL iso-27001-risk-assessment-prompts | planned |
-| 12 | privacy-and-ai-control-applicability | Privacy and AI control applicability | Extend the applicability statement with the additional privacy or AI management controls and their justifications | iso27701, iso42001 | PL iso-27701-privacy-management-prompt-library, iso-42001-ai-management-prompt-library | planned |
+| 7 | soa-first-draft | Statement of applicability first draft | Build the first applicability statement from the risk treatment plan, with inclusion reasons and implementation status | iso27001 | UC soa-generation-iso-27001 | written |
+| 8 | soa-exclusion-justification-review | Exclusion justification review | Test every excluded control against scope and risk and rewrite weak justifications before the auditor reads them | iso27001, iso27701, iso42001 | UC soa-generation-iso-27001; PL iso-27001-control-implementation-prompts | written |
+| 9 | soa-status-reconciliation | Applicability status reconciliation | Reconcile the implementation status column with the evidence that actually exists | iso27001 | PL iso-27001-audit-preparation-prompts (evaluate control implementation evidence) | written |
+| 10 | control-owner-raci | Control owner RACI | Assign an accountable owner and operators to every applicable control, with a review cadence | iso27001, soc2, general | PL iso-27001-control-implementation-prompts, soc-2-control-design-and-implementation-prompts | written |
+| 11 | risk-to-control-traceability-check | Risk to control traceability check | Check that every treated risk points to controls and every applicable control traces back to a risk or obligation | iso27001, iso42001 | PL iso-27001-risk-assessment-prompts | written |
+| 12 | privacy-and-ai-control-applicability | Privacy and AI control applicability | Extend the applicability statement with the additional privacy or AI management controls and their justifications | iso27701, iso42001 | PL iso-27701-privacy-management-prompt-library, iso-42001-ai-management-prompt-library | written |
 
 ## risk (6)
 
@@ -124,8 +124,8 @@ Excluded sources: any Probo skill text, any internal audit skill or client engag
 
 | Category | Planned | Written |
 |---|---|---|
-| gap-readiness | 6 | 1 |
-| statement-of-applicability | 6 | 0 |
+| gap-readiness | 6 | 6 |
+| statement-of-applicability | 6 | 6 |
 | risk | 6 | 1 |
 | audit | 6 | 1 |
 | evidence | 6 | 0 |
@@ -134,4 +134,4 @@ Excluded sources: any Probo skill text, any internal audit skill or client engag
 | privacy | 6 | 0 |
 | ai-systems | 6 | 0 |
 | incidents-continuity | 6 | 0 |
-| **Total** | **60** | **3** |
+| **Total** | **60** | **14** |
