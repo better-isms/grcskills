@@ -22,7 +22,7 @@ Collect every governing document the agent can read: policies, procedures, plans
 
 ## Step 1: extract the facts
 
-Read each document and record every checkable fact as a row in `facts-index.csv`: document, section, fact type, subject, value, quoted text. The fact types that carry most conflicts, in rough order:
+Read the approved version of each document and record every checkable fact as a row in `facts-index.csv`: document, version and status, section, fact type, subject, value, quoted text. Retired documents give no owner values, but a live document that points at one is a broken reference. Put the values a contract or law fixes (retention duties, notification deadlines, contractual service windows) in a short table at the top of `conflicts.md`; internal documents must match them. The fact types that carry most conflicts, in rough order:
 
 1. **Periods and deadlines**: retention periods, revocation time for leavers, patch windows, notification deadlines, review cycles, backup retention, log retention.
 2. **Scales**: incident severity levels, risk likelihood and impact scales, data classification labels, vendor criticality tiers.
@@ -50,14 +50,16 @@ For each conflicting fact, propose one document as its owner and make the others
 
 - A contract or law beats every internal document; the internal value moves to match it.
 - The operational document closest to the work (the backup procedure, the incident runbook) usually reflects reality, but check the actual configuration or record before choosing it.
-- Scales live in one place and are referenced everywhere else. When two scales must coexist (a vendor's priority scale), write the mapping table once.
+- Scales live in one place and are referenced everywhere else. When two scales must coexist (a vendor's priority scale), write the mapping table once. Map the incident severity scale to the external clocks it triggers (customer contract notice windows, statutory breach notification), because a severity level with no link to a deadline is what an auditor probes.
 - Repeated numbers are the root cause of most contradictions; every repetition removed is a future conflict prevented.
 
 ## Step 4: write the outputs
 
-`conflicts.md`: one entry per finding with the quoted values, documents and sections, classification, rating, proposed owner document, proposed value or the question the owner must answer, and the edits needed in each other document. Order by rating.
+`conflicts.md`: one entry per finding with the quoted values, documents and sections, classification, rating, proposed owner document, proposed value or the question the owner must answer, and the edits needed in each other document. Order by rating. If the set includes a statement of applicability and registers, also check that every control marked applicable has a live implementing document, that the scope matches the asset inventory and org chart, and that every owner named is a real role.
 
 `glossary.md`: one definition per term and role, with the owning document, and the list of variant spellings to replace.
+
+After owners apply the edits, re-extract the changed sections and confirm each value now appears once, in its owner, with the other places pointing to it. This catches the common case where the owner fixes one document and the change never propagates.
 
 ## What good looks like
 

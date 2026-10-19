@@ -14,7 +14,7 @@ frameworks: [gdpr]
 tags: [dpa, toms, processor-contracts, security-annex]
 ---
 
-Use this for one agreement at a time, or once a year on the company's own standard annex. It writes `./dpa-security-annex-review/<agreement>/annex-review.csv`, `redlines.md` and `practice-gaps.md`. This skill drafts for a human to review and sign; this skill never marks a control effective. The reader's legal counsel or data protection officer decides what is signed.
+Use this for one agreement at a time, or once a year on the company's own standard annex, and earlier when a subprocessor changes, a new tool touches the data, a security incident happens or a certificate lapses. It writes `./dpa-security-annex-review/<agreement>/annex-review.csv`, `redlines.md` and `practice-gaps.md`. This skill drafts for a human to review and sign; this skill never marks a control effective. The reader's legal counsel or data protection officer decides what is signed.
 
 ## Inputs to gather
 
@@ -30,22 +30,24 @@ One row per commitment, in `annex-review.csv`: the annex wording copied unchange
 
 ## Step 3: test each commitment against reality
 
-As processor, compare each commitment with what the company runs, and record the evidence path:
+Record the agreement and annex version and the review date; counterparties update annexes without saying so. As processor, compare each commitment with what the company runs, and record the evidence path, pointing to evidence the company already keeps for its controls (logs, test reports, the control register) rather than building a parallel set:
 
 - **True and evidenced**: a configuration, record or report shows it.
 - **True, no evidence at hand**: the owner believes it; find the record.
 - **Partly true**: true for some systems, data or times only. A frequent example: encryption at rest promised everywhere, while one backup bucket or a support tool export is not covered.
 - **Not true**: an annual penetration test promised and none performed; round-the-clock monitoring promised and one engineer on call; data kept in one region promised while a support or analytics tool processes it elsewhere.
 
+Check every location promise against the subprocessor list and where each subprocessor processes; support and analytics tools are where those promises break. Check the deletion promise against backup rotation: deletion or return at the end of the contract is an Art. 28(3)(g) term, and the honest wording says data in backups is put beyond use and removed as backups rotate.
+
 As controller, test each commitment against the use case instead: does it cover the data and risk the company is handing over, and is it specific enough to check?
 
 ## Step 4: propose redlines
 
-For each gap choose a side and say which: change the practice (owner, effort and date for the owner to agree), or change the text to accurate, outcome-focused wording that will stay true. Avoid numbers the company cannot hold, such as a fixed hour count for incident notice that is shorter than the main agreement or the incident plan allows. Keep the annex consistent with the main agreement body, the subprocessor list and the incident plan; contradictions between them are what the other side's lawyers find first. As controller, propose the specific measures the use case needs in place of vague ones.
+For each gap choose a side and say which: change the practice (owner, effort and date for the owner to agree), or change the text to accurate, outcome-focused wording that will stay true. Avoid numbers the company cannot hold, such as a fixed hour count for incident notice that is shorter than the main agreement or the incident plan allows. The notice must still leave the controller time to meet its own 72-hour deadline to the supervisory authority under Art. 33, so the processor commitment is "without undue delay" plus a number the incident plan can actually deliver. Keep the annex consistent with the main agreement body, the subprocessor list and the incident plan; contradictions between them are what the other side's lawyers find first. As controller, propose the specific measures the use case needs in place of vague ones.
 
 ## Step 5: write the outputs
 
-`annex-review.csv`: commitment, topic, specificity, status, evidence path, proposed change. `redlines.md`: the proposed wording change per line, with a one-line reason the reader can paste into the negotiation. `practice-gaps.md`: each commitment that is not true today, with the owner role and the proposed fix.
+`annex-review.csv`: commitment, topic, specificity, status, evidence path, proposed change. `redlines.md`: the proposed wording change per line, with a one-line reason the reader can paste into the negotiation. `practice-gaps.md`: each commitment that is not true today, with the owner role and the proposed fix; send the material ones to the risk register.
 
 If the output folder exists, ask before overwriting and offer a new subfolder instead.
 

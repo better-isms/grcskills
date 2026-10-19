@@ -26,11 +26,11 @@ A request is valid whatever the channel or wording: an email to any employee, a 
 
 - Every front-line role forwards anything that looks like a privacy request to one queue within one business day, with the original message and the date it arrived. The deadline runs from receipt by the company, not from arrival in the queue.
 - A web form may be offered, never required.
-- If the company is the processor for the data concerned, it forwards the request to the customer as the data processing agreement sets out and does not answer it.
+- If the company is the processor for the data concerned, it forwards the request to the customer as the data processing agreement sets out (the assistance term in Article 28(3)(e)) and does not answer it.
 
 ## Step 2: verify identity proportionately
 
-Use what the company already trusts: a request from the email address on the account, or confirmed through the logged-in product, is usually enough. Ask for more only where there are reasonable doubts (Article 12(6) of the GDPR) and ask for the least that resolves them. Do not demand a copy of an identity document by default; it collects more data than the request needs. Requests made through an agent or lawyer need evidence of their authority. Record what was checked.
+Use what the company already trusts: a request from the email address on the account, or confirmed through the logged-in product, is usually enough. Ask for more only where there are reasonable doubts (Article 12(6) of the GDPR) and ask for the least that resolves them. Do not demand a copy of an identity document by default; it collects more data than the request needs. Requests made through an agent or lawyer need evidence of their authority. Record what was checked and the dates: ask promptly, never use verification to buy time, and follow the supervisory authority's guidance on how the clock runs while you wait.
 
 ## Step 3: track the deadline
 
@@ -42,15 +42,15 @@ In `system-search-map.md`, one row per system holding personal data, taken from 
 
 ## Step 5: review, redact and respond per right
 
-- **Access** (Article 15): a copy of the data plus the information that article lists (purposes, categories, recipients, retention, source, rights, automated decisions, transfer safeguards). Remove other people's data and confidential business information; the privacy lead checks any exemption with counsel.
-- **Rectification and erasure** (Articles 16 and 17): confirm what changed or was deleted, and what is kept and why (a legal retention duty, a claim). Tell recipients where Article 19 applies.
+- **Access** (Article 15): a copy of the data plus the information that article lists (purposes, categories, recipients, retention, source, rights, automated decisions, transfer safeguards). Remove other people's data and confidential business information (the copy must not adversely affect others, Article 15(4)); the privacy lead checks any exemption with counsel.
+- **Rectification and erasure** (Articles 16 and 17): confirm what changed or was deleted, and what is kept and why, naming the Article 17(3) ground relied on (a legal retention duty, a legal claim). Tell recipients where Article 19 applies.
 - **Restriction, portability, objection and automated decisions** (Articles 18, 20, 21 and 22): an objection to direct marketing is always honoured; other objections need a documented assessment.
 
-Write one template per right in plain language, and deliver data through a secure channel, never as an open attachment to an unverified address.
+Any refusal, full or partial, goes out within one month with the reasons and the right to complain to a supervisory authority and to seek a judicial remedy (Article 12(4)). Write one template per right in plain language, and deliver data through a secure channel, never as an open attachment to an unverified address.
 
 ## Step 6: log and learn
 
-The log holds request id, received date, type, verification method, extension, systems searched, outcome and closed date, and no copy of the data released. Review it every quarter: requests answered on time, by type, and the systems that slowed the search.
+The log holds request id, received date, type, verification method, extension, systems searched, outcome and closed date, and no copy of the data released. The log is itself personal data: restrict it to the privacy team and give it a retention period. Review it every quarter: requests answered on time, by type, and the systems that slowed the search.
 
 ## What good looks like
 

@@ -14,7 +14,7 @@ frameworks: [gdpr, iso27701]
 tags: [dpia, screening, high-risk-processing, privacy-by-design]
 ---
 
-Use this at design time, before a processing activity starts or changes, one activity per screening. It produces `./dpia-screening/<activity>-screening.md` and appends a line to `./dpia-screening/screening-log.md`. This skill drafts for a human to review and sign; this skill never marks a control effective. The controller decides whether a DPIA is carried out, after the data protection officer's advice where one is designated.
+Use this at design time, before a processing activity starts or changes, one activity per screening. If the processing already runs, screen it now, record that it is late, and send the gap to corrective action. It produces `./dpia-screening/<activity>-screening.md` and appends a line to `./dpia-screening/screening-log.md`. This skill drafts for a human to review and sign; this skill never marks a control effective. The controller decides whether a DPIA is carried out, after the data protection officer's advice where one is designated.
 
 ## Inputs to gather
 
@@ -22,7 +22,7 @@ Read the feature specification, design document or vendor proposal, the record o
 
 ## Step 1: describe the processing in numbers
 
-Write one paragraph a stranger could assess: purpose, data subject categories, data categories (flag special category and criminal offence data), sources, systems and vendors, recipients, transfers, retention, and the technology involved. Then quantify scale: number of people, volume of records, duration, geographic reach. "Large" without numbers cannot be reviewed. If the reader cannot give numbers, record a range and the assumption.
+Write one paragraph a stranger could assess: purpose, data subject categories, data categories (flag special category and criminal offence data), sources, systems and vendors, recipients, transfers, retention, and the technology involved. Then quantify scale: number of people, volume of records, duration, geographic reach. "Large" without numbers cannot be reviewed. If the reader cannot give numbers, record a range and the assumption, and make "real volumes confirmed" one of the re-screen triggers, so an assumed range does not quietly become the record.
 
 ## Step 2: test against the cases the law names
 
@@ -50,11 +50,11 @@ Rule of thumb from the guidelines: two or more criteria usually means an assessm
 
 ## Step 5: reach the outcome and set a trigger
 
-- **Required**: a statutory case, an authority list entry, or two or more criteria. Name the DPIA owner and the questions the assessment will answer first.
+- **Required**: a statutory case, an authority list entry, or two or more criteria. Name the DPIA owner and the questions the assessment will answer first. State the path that follows: the assessment is done before the processing starts (Art. 35(1)), the data protection officer's advice is sought (Art. 35(2)), and if high risk remains after mitigation, the supervisory authority is consulted before processing begins (Art. 36(1)).
 - **Recommended**: one criterion with real impact, or high uncertainty about scale. Explain why a proportionate assessment is still worth doing.
 - **Not required**: record why each criterion is a no, and set a re-screen trigger tied to something observable (users pass a stated number, a new data category is added, an automated decision is introduced, a new vendor processes the data).
 
-If an existing DPIA already covers similar processing with similar risks, say so and reference it instead of starting again. Write the screening file and the log line (activity, outcome, criteria met, trigger, decision owner).
+If an existing DPIA already covers similar processing with similar risks, say so and reference it instead of starting again. Where an AI system is involved, note whether the EU AI Act adds its own assessment (a deployer of a high-risk system uses the provider's instructions for the DPIA, Art. 26(9), and some deployers owe a fundamental rights impact assessment that can build on it, Art. 27), so one screening routes to every assessment that applies. Write the screening file and the log line (activity, outcome, criteria met, trigger, decision owner), and link the outcome and trigger from the activity's entry in the record of processing, so a review of that record fires the next screening.
 
 ## What good looks like
 

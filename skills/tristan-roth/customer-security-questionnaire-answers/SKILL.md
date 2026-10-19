@@ -26,7 +26,7 @@ One row per question: the customer's reference and wording unchanged, the type (
 
 ## Step 2: draft each answer from a source
 
-Answer from the company's documents and records only, and cite the path or section for each answer. Give each a confidence level:
+Answer from the company's documents and records only, and cite the path or section and the date of the source for each answer. Flag sources older than the customer will accept (a penetration test from last year, a certificate near expiry, a report outside the current period). Give each a confidence level:
 
 - **Evidenced**: a policy says it and a record or configuration shows it happens.
 - **Policy only**: written down, but no record at hand; owner to confirm.
@@ -36,7 +36,7 @@ Write answers that are short, true and scoped: "Yes. Production access uses sing
 
 ## Step 3: flag commitments and sensitive answers
 
-Some answers are promises. Flag every answer that states a time, a frequency or a guarantee (incident notice within a number of hours, a penetration test every year, data never leaves a region, deletion within a number of days) and check it against what the company does today and what its contracts already say. Flag answers that would reveal internal hostnames, network ranges, tool versions or open weaknesses; propose a higher-level wording instead. For questions about what a framework expects, run a framework lookup rather than guessing.
+Some answers are promises. Any incident notice time goes to the incident response owner, who checks it against the contracts and against what detection to notification has actually achieved; promising 24 hours when the process has never beaten 72 turns the first incident into a contract breach. Flag every other answer that states a time, a frequency or a guarantee (incident notice within a number of hours, a penetration test every year, data never leaves a region, deletion within a number of days) and check it against what the company does today and what its contracts already say. Flag answers that would reveal internal hostnames, network ranges, tool versions or open weaknesses; propose a higher-level wording instead, using one standard redirect ("we do not share this detail; our assurance report covers it and is available under confidentiality") so refusals read the same in every questionnaire. Check answers on subprocessors, transfers and retention against the records of processing and the data processing terms the customer will sign; a mismatch between the two is the finding a customer's lawyer spots first. For questions about what a framework expects, run a framework lookup rather than guessing.
 
 ## Step 4: check consistency with past answers
 
@@ -44,7 +44,7 @@ Compare with previous questionnaires and the public trust or security page. Diff
 
 ## Step 5: write the outputs
 
-`answers.csv`: reference, question, draft answer, source, confidence, owner to confirm. `flags.md`: no-source items, commitments, sensitive answers and inconsistencies, grouped by owner. `library-updates.md`: new or corrected answers to add to the answer library once approved.
+`answers.csv`: reference, question, draft answer, source, confidence, owner to confirm. `flags.md`: no-source items, commitments, sensitive answers and inconsistencies, grouped by owner. `library-updates.md`: new or corrected answers to add to the answer library once approved. Release requested documents only after the confidentiality agreement is signed, as watermarked copies, and log which version went to which customer.
 
 If the output folder exists, ask before overwriting and offer a new subfolder instead.
 
