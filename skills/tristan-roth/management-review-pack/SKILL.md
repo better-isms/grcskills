@@ -34,7 +34,7 @@ Build the pre-read from records, two to four pages:
 - **What people outside said**: customer and auditor feedback, questionnaire themes, regulator contact.
 - **Resources**: where the team is short of people, budget or tools, with the risk that creates.
 
-Every figure carries its source and the date it was pulled. Metrics without a target or a trend are cut; a number leadership cannot act on is noise.
+Every figure carries its source and the date it was pulled; pull figures no more than two weeks before the meeting, since a pre-read built a month early shows a risk register that has already moved. Metrics without a target or a trend are cut; a number leadership cannot act on is noise.
 
 ## Step 3: turn findings into decisions
 
@@ -42,11 +42,11 @@ For each topic that needs leadership, write a decision paper of five lines: the 
 
 ## Step 4: check coverage against the framework
 
-Run a framework lookup on what the framework expects a management review to consider and to produce, for each framework in scope. Tick each item against the pre-read and add a line for anything missing. Keep this checklist as an appendix so the auditor can trace coverage; leadership reads the decisions, not the checklist.
+Run a framework lookup on what the framework expects a management review to consider and to produce, for each framework in scope. Tick each input against the pre-read and each expected output against the minutes template, since a review can consider everything and still miss a required output. Add a line for anything missing. Keep this checklist as an appendix so the auditor can trace coverage; leadership reads the decisions, not the checklist.
 
 ## Step 5: draft the agenda and the minutes template
 
-The agenda follows the pre-read and puts decisions in the first half of the meeting, while attention is high. The minutes draft has a section per agenda item with space for the discussion summary, the decision taken, the owner role and the due date, all blank. `actions.csv` is pre-filled with carried-over actions and empty rows for new ones.
+The agenda follows the pre-read and puts decisions in the first half of the meeting, while attention is high. The minutes draft has a section per agenda item with space for the discussion summary, the decision taken, the owner role and the due date, all blank, followed by a closing section where the chair writes the overall conclusion on the management system in their own words, with the reasons drawn from the decisions above. Attendance is recorded by role and confirmed by the chair. `actions.csv` is pre-filled with carried-over actions and empty rows for new ones.
 
 ## Step 6: after the meeting
 
@@ -56,6 +56,7 @@ When the reader brings back notes, fill the minutes from what was said and decid
 
 - Leadership spends the meeting deciding, not reading. The pre-read is short and arrives days before; the minutes show decisions with owners and dates.
 - The common mistake is a slide of green status indicators and a minutes line saying "the system was reviewed and found suitable". The tell: no decision, no action and no budget line can be traced to the meeting, and the next review is a copy of this one.
+- Reviews are scheduled against the audit calendar: before a first certification audit, at least one full review with minutes and some closed actions exists.
 - Trends over three periods beat a single snapshot; they show whether last year's decisions worked.
 - An auditor can follow any input to its source and any decision to an action that was later closed.
 
@@ -70,4 +71,4 @@ If ISMS Copilot is connected to your agent (MCP server `https://account.ismscopi
 - MUST write outputs only inside `./management-review-pack/` and ask before overwriting an existing file.
 - NEVER record a decision, approval or attendance that leadership did not make or confirm.
 - NEVER fill the minutes with conclusions before the meeting takes place.
-- NEVER name individuals in the pack; use roles.
+- NEVER name individuals in the pack; use roles, and record attendance by role as confirmed by the chair.

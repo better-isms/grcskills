@@ -21,11 +21,11 @@ Read the system inventory, the logging and monitoring policy (it states what the
 
 ## Step 1: map coverage per system
 
-One row per in-scope system in `coverage.csv`: which event types are logged (sign-in success and failure, administrator actions, access to sensitive data, configuration changes, security tool events), where the logs go, retention as configured, retention as the policy states, who can delete or alter the logs, and the source of each answer. Read retention from the settings, not from the policy. Check that administrators of a system cannot quietly delete that system's audit log; logs stored in a separate account or with write-once settings answer that question, logs on the same host do not.
+One row per in-scope system in `coverage.csv`: which event types are logged (sign-in success and failure, administrator actions, access to sensitive data, configuration changes, security tool events), where the logs go, retention as configured, retention as the policy states, who can read the logs, who can delete or alter them, the time source the system syncs to, the control id from the company's own control matrix or statement of applicability, and the source of each answer. Read retention from the settings, not from the policy. Check that administrators of a system cannot quietly delete that system's audit log; logs stored in a separate account or with write-once settings answer that question, logs on the same host do not. Read access matters too: logs hold personal data and credential fragments, so broad read access is a finding in its own right. Check that systems sync to a common time source; every timestamp in Step 4 depends on it.
 
 ## Step 2: list the alert rules that matter
 
-From the rule list, keep the ones tied to real risks: repeated sign-in failures and impossible travel, new administrator accounts or privilege changes, logging switched off, unusual data export, malware detections, changes to network exposure. For each: what it detects, who receives it, the expected response time, and how often it fired in the period. Flag three patterns:
+From the rule list, keep the ones tied to real risks: repeated sign-in failures and impossible travel, new administrator accounts or privilege changes, logging switched off, unusual data export, malware detections, changes to network exposure. For each: what it detects, the control id it evidences, who receives it, the expected response time, and how often it fired in the period. Flag three patterns:
 
 - **Routed nowhere**: the alert goes to an unread mailbox or a channel nobody owns.
 - **Never fired**: a rule silent for the whole period may be broken; propose a safe test the owner can run.
@@ -37,11 +37,11 @@ Find the record that a human looked at alerts: a ticket per alert, a triage note
 
 ## Step 4: trace real alerts end to end
 
-Pick at least three alerts from the period: one closed as a false positive, one escalated to an incident, and one picked at random. For each, write a walkthrough with timestamps: rule fired, who acknowledged and when, what they checked, the decision and why, closure, and any follow-up such as a rule change. Compare response time with the target. A single real trace convinces an auditor more than a dozen configuration screenshots.
+Agree the period first (the audit period, or the last 90 days when none is set). Pick at least three alerts from it: one closed as a false positive, one escalated to an incident, and one picked at random from the full ticket list, with the method recorded so the pick can be repeated. For each, write a walkthrough with timestamps: rule fired, who acknowledged and when, what they checked, the decision and why, closure, and any follow-up such as a rule change. Compare response time with the target. A single real trace convinces an auditor more than a dozen configuration screenshots.
 
 ## Step 5: assemble the pack and the gaps
 
-Put configuration extracts, rule descriptions and walkthroughs together with the source of each. Replace user names, IP addresses and other personal data in log extracts with roles or placeholders unless the reviewer needs them. Write `gaps.md`: systems without logs, retention shorter than promised, alerts routed nowhere, review not recorded, each with an owner role and a proposed fix. Where a framework sets expectations on retention or review frequency, run a framework lookup rather than assuming a number.
+Put configuration extracts, rule descriptions and walkthroughs together with the source of each. Replace user names, IP addresses and other personal data in log extracts with roles or placeholders unless the reviewer needs them. Write `gaps.md`: systems without logs, systems logged but covered by no alert rule, retention shorter than promised, alerts routed nowhere, review not recorded, each with an owner role and a proposed fix. Where a framework sets expectations on retention or review frequency, run a framework lookup rather than assuming a number.
 
 If the output folder exists, ask before overwriting and offer a new subfolder instead.
 

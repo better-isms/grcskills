@@ -25,15 +25,15 @@ Fill `entity-facts.csv` with one row per legal entity: country of establishment,
 
 ## Step 2: test the sector
 
-Compare each activity with the sectors and entity types in Annexes I and II of Directive (EU) 2022/2555, then with the national transposition law of each member state involved, because member states can widen the list. Record the exact annex entry or national provision that matches, or "no match". Flag borderline activities, such as a software company that also runs managed services, for the legal owner.
+Compare each activity with the sectors and entity types in Annexes I and II of Directive (EU) 2022/2555, then with the national transposition law of each member state involved, because member states can widen the list. Record the exact annex entry or national provision that matches, or "no match". Record too whether each national law is in force, partly in force or still pending, since obligations and enforcement differ in each case. Flag borderline activities, such as a software company that also runs managed services, for the legal owner.
 
 ## Step 3: test size, the way the Directive counts it
 
-Article 2 of the Directive applies to entities that are at least medium-sized under the European Commission definition of micro, small and medium-sized enterprises (Recommendation 2003/361/EC). That definition counts headcount and financial figures and adds data from partner and linked enterprises. The common trap: a small subsidiary of a large group can be large for this test. Record the calculation and whether the national law adjusts how group data is counted.
+Article 2 of the Directive applies to entities that are at least medium-sized under the European Commission definition of micro, small and medium-sized enterprises (Recommendation 2003/361/EC). That definition counts headcount and financial figures and adds data from partner and linked enterprises. The common trap: a small subsidiary of a large group can be large for this test. Record the calculation with the figures: headcount, turnover and balance sheet for the entity, the partner and linked enterprise additions, the totals and the thresholds they were compared with, each with its source. Note whether the national law adjusts how group data is counted.
 
 ## Step 4: test the size-independent cases
 
-Article 2 also lists cases that apply whatever the size: certain digital infrastructure and trust service providers, sole providers in a member state of a service essential for society or the economy, entities whose disruption would have significant impact, certain public administration bodies, and entities a member state designates. Say for each case why it does or does not apply.
+Article 2 also lists cases that apply whatever the size: certain digital infrastructure and trust service providers, sole providers in a member state of a service essential for society or the economy, entities whose disruption would have significant impact, certain public administration bodies, entities identified as critical entities under Directive (EU) 2022/2557 (Article 2(3)), and entities a member state designates. Say for each case why it does or does not apply.
 
 ## Step 5: classify essential or important
 
@@ -45,11 +45,11 @@ Apply Article 26: as a rule, the member state where the entity is established. S
 
 ## Step 7: check sector-specific law
 
-Article 4 gives way to sector-specific Union law with equivalent measures. For financial entities, record whether DORA applies and which topics it covers instead. Note group entities that stay under NIS 2 while a sister entity falls under DORA.
+Article 4 gives way to sector-specific Union law with equivalent measures. For financial entities, record whether DORA applies, which entity type the company is under DORA, and which topics it covers instead. Being a DORA financial entity is not the exit by itself: record the Article 4 equivalence reasoning (DORA Article 1(2) declares itself sector-specific law for this purpose) and any national exclusion. Note group entities that stay under NIS 2 while a sister entity falls under DORA.
 
 ## Step 8: write what follows
 
-For each in-scope entity, list the consequences in one line each: management body approval and training duties (Article 20), risk management measures (Article 21), staged incident reporting (Article 23), registration, and the supervisory regime. For out-of-scope entities, add the indirect effect: customers in scope will push supply chain clauses into contracts, so the company may still need to show comparable measures. Write the memo: conclusion per entity and member state, confidence (clear, likely, uncertain), the facts it rests on, the facts that would change it, and questions for counsel. Ask before overwriting.
+For each in-scope entity, list the consequences in one line each: management body approval and training duties (Article 20), risk management measures (Article 21), staged incident reporting (Article 23), registration, and the supervisory regime. Where personal data is involved, note that a GDPR Article 33 breach notification runs alongside NIS 2 reporting, so one incident process should feed both. For out-of-scope entities, add the indirect effect: customers in scope will push supply chain clauses into contracts, so the company may still need to show comparable measures. Write the memo: conclusion per entity and member state, confidence (clear, likely, uncertain), the facts it rests on, the facts that would change it, and questions for counsel. Ask before overwriting.
 
 ## What good looks like
 
