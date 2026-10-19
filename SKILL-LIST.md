@@ -102,23 +102,23 @@ Excluded sources: any Probo skill text, any internal audit skill or client engag
 
 | # | Slug | Title | Job | Frameworks | Source | Status |
 |---|---|---|---|---|---|---|
-| 49 | ai-system-inventory | AI system inventory | List every AI system the company builds, buys or uses, with owner, purpose, data and role | eu-ai-act, iso42001 | PL iso-42001-ai-management-prompt-library | planned |
-| 50 | ai-act-risk-classification | AI Act risk classification | Classify each AI system under the EU AI Act and record the reasoning and resulting obligations | eu-ai-act | UC risk-assessment-eu-ai-act | planned |
-| 51 | ai-impact-assessment | AI impact assessment | Assess the impact of one AI system on people and the company, with mitigations and sign-off | iso42001, eu-ai-act | PL iso-42001-ai-management-prompt-library; UC gap-analysis-iso-42001 | planned |
-| 52 | ai-acceptable-use-rules | AI acceptable use rules | Write the rules staff follow when using AI tools: approved tools, data they may enter, review of outputs | general, iso42001, eu-ai-act | UC train-ai-assistants | planned |
-| 53 | ai-vendor-due-diligence | AI vendor due diligence | Assess an AI supplier: training on customer data, retention, model changes, subprocessors, contractual terms | iso42001, gdpr, eu-ai-act | PL iso-42001-ai-management-prompt-library | planned |
-| 54 | ai-management-system-scope | AI management system scope | Draft the scope and roles of an AI management system that fits next to the security one | iso42001 | UC internal-audit-iso-42001, gap-analysis-iso-42001 | planned |
+| 49 | ai-system-inventory | AI system inventory | List every AI system the company builds, buys or uses, with owner, purpose, data and role | eu-ai-act, iso42001 | PL iso-42001-ai-management-prompt-library | written |
+| 50 | ai-act-risk-classification | AI Act risk classification | Classify each AI system under the EU AI Act and record the reasoning and resulting obligations | eu-ai-act | UC risk-assessment-eu-ai-act | written |
+| 51 | ai-impact-assessment | AI impact assessment | Assess the impact of one AI system on people and the company, with mitigations and sign-off | iso42001, eu-ai-act | PL iso-42001-ai-management-prompt-library; UC gap-analysis-iso-42001 | written |
+| 52 | ai-acceptable-use-rules | AI acceptable use rules | Write the rules staff follow when using AI tools: approved tools, data they may enter, review of outputs | general, iso42001, eu-ai-act | UC train-ai-assistants | written |
+| 53 | ai-vendor-due-diligence | AI vendor due diligence | Assess an AI supplier: training on customer data, retention, model changes, subprocessors, contractual terms | iso42001, gdpr, eu-ai-act | PL iso-42001-ai-management-prompt-library | written |
+| 54 | ai-management-system-scope | AI management system scope | Draft the scope and roles of an AI management system that fits next to the security one | iso42001 | UC internal-audit-iso-42001, gap-analysis-iso-42001 | written |
 
 ## incidents-continuity (6)
 
 | # | Slug | Title | Job | Frameworks | Source | Status |
 |---|---|---|---|---|---|---|
-| 55 | incident-severity-triage | Incident severity triage | Classify a live incident on the company's scale, decide who is woken up and what is recorded | general, iso27001, soc2, nis2, dora | PL security-monitoring-and-incident-response-prompts | planned |
-| 56 | incident-response-plan-drafting | Incident response plan drafting | Draft an incident response plan with roles, contact trees, playbooks and evidence handling | iso27001, soc2, hipaa, nis2 | PL security-monitoring-and-incident-response-prompts | planned |
-| 57 | regulatory-incident-reporting-clock | Regulatory incident reporting clock | Work out which authorities and customers must be told, by when, and draft the notifications for review | nis2, dora, gdpr, hipaa | PL nis2-directive-prompt-library, dora-compliance-prompt-library, gdpr-prompt-library-overview | planned |
-| 58 | post-incident-review | Post-incident review | Run a blameless review that ends in owned actions and updates to risks, controls and playbooks | general, iso27001, soc2 | PL security-monitoring-and-incident-response-prompts | planned |
-| 59 | business-impact-analysis | Business impact analysis | Set recovery objectives per service from what an outage costs, and check them against what backups and suppliers allow | iso27001, dora, nis2, general | PL infrastructure-and-cloud-security-prompts | planned |
-| 60 | bcp-tabletop-design | Continuity tabletop design | Design a tabletop exercise with a realistic scenario, injects, observers and a findings record | iso27001, soc2, dora, nis2 | PL security-monitoring-and-incident-response-prompts | planned |
+| 55 | incident-severity-triage | Incident severity triage | Classify a live incident on the company's scale, decide who is woken up and what is recorded | general, iso27001, soc2, nis2, dora | PL security-monitoring-and-incident-response-prompts | written |
+| 56 | incident-response-plan-drafting | Incident response plan drafting | Draft an incident response plan with roles, contact trees, playbooks and evidence handling | iso27001, soc2, hipaa, nis2 | PL security-monitoring-and-incident-response-prompts | written |
+| 57 | regulatory-incident-reporting-clock | Regulatory incident reporting clock | Work out which authorities and customers must be told, by when, and draft the notifications for review | nis2, dora, gdpr, hipaa | PL nis2-directive-prompt-library, dora-compliance-prompt-library, gdpr-prompt-library-overview | written |
+| 58 | post-incident-review | Post-incident review | Run a blameless review that ends in owned actions and updates to risks, controls and playbooks | general, iso27001, soc2 | PL security-monitoring-and-incident-response-prompts | written |
+| 59 | business-impact-analysis | Business impact analysis | Set recovery objectives per service from what an outage costs, and check them against what backups and suppliers allow | iso27001, dora, nis2, general | PL infrastructure-and-cloud-security-prompts | written |
+| 60 | bcp-tabletop-design | Continuity tabletop design | Design a tabletop exercise with a realistic scenario, injects, observers and a findings record | iso27001, soc2, dora, nis2 | PL security-monitoring-and-incident-response-prompts | written |
 
 ## Counts
 
@@ -132,6 +132,6 @@ Excluded sources: any Probo skill text, any internal audit skill or client engag
 | vendors | 6 | 0 |
 | policies | 6 | 0 |
 | privacy | 6 | 0 |
-| ai-systems | 6 | 0 |
-| incidents-continuity | 6 | 0 |
-| **Total** | **60** | **3** |
+| ai-systems | 6 | 6 |
+| incidents-continuity | 6 | 6 |
+| **Total** | **60** | **15** |
