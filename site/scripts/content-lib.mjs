@@ -264,7 +264,7 @@ const DECIDE_NEVER = new RegExp([
   String.raw`\b(?:mark|record)\w*\b[^;]*\b(?:as )?(?:effective|approved|accepted|having accepted|ready for launch)\b`,
   String.raw`\b(?:acceptable or )?effective\b`,
   String.raw`(?<![\w-])sign(?:s|ed)?\b|\bsignature\b`,
-  String.raw`\bdecid(?:e|es|ed)\b|\bdecision\b|\bconclu(?:de|sions)\b|\bfinal determination\b|\blegal advice\b|\bfinali[sz]e\b`,
+  String.raw`\bdecid(?:e|es|ed)\b|\bdecisions?\b|\bconclu(?:de|sions)\b|\bfinali[sz]e\b|\bwithout counsel's documented view\b`,
   String.raw`\b(?:send|sends|submit|upload|publish|publishes|contact|notify|page|book)\b|\bfile (?:a|any)\b|\bregister (?:a|the company)\b`,
   String.raw`\b(?:change|edit|delete|disable|remove|rename|move|switch off|block|shut down|close|merge|revert|update|commit|trigger a test alert|write to production|start a restore|run a restore|touch live systems)\b`,
 ].join('|'), 'i');
@@ -272,9 +272,11 @@ const DECIDE_NEVER = new RegExp([
 const QUALITY_RULE = /\b(?:on the strength of|alone|without (?:checking|reading|the evidence|the contract|naming|testing))\b|\bdelete or overwrite a superseded\b/i;
 // Routing a call to a person. Also qualifies a NEVER line, such as
 // "...; route them to an acceptance decision".
-const DECIDE_MUST = /(\bto approve\b|\bapproval before\b|\breview before\b|\bconfirms it\b|\broute\w*\b[^;]*\bto (?:HR|legal|a reviewer|the legal owner|the privacy lead|an acceptance decision)\b|\bopen decision for\b|\bagree\b[^;]*\bwith the (?:owner|reader)\b|\braise\w*\b[^;]*\bto its owner\b|\bwho confirmed\b)/i;
-// Data-handling rules (what to copy, name or open) are not decisions.
-const DATA_RULE = /^NEVER (open|copy|name|put (?:names|personal|a requester's)|paste|include|read|fill in personal)\b|\boutside the reader's machine\b/;
+const DECIDE_MUST = /(\bto approve\b|\bapproval before\b|\breview before\b|\bconfirms it\b|\broute\w*\b[^;]*\bto (?:HR|legal|a reviewer|the legal owner|the privacy lead|an acceptance decision)\b|\bopen decision for\b|\bagree\b[^;]*\bwith the (?:owner|reader)\b|\braise\w*\b[^;]*\bto its owner\b|\bwho confirmed\b|\bauthority to accept\b)/i;
+// Data-handling rules (what to copy, name or open, or keeping files on the
+// machine) are not decisions. "Never present X as legal advice" alone is a
+// framing rule; it qualifies only when it names who decides.
+const DATA_RULE = /^NEVER (open|copy|name|put (?:names|personal|a requester's)|paste|include|read|fill in personal)\b|^NEVER (?:send|share)\b[^;]*\boutside the reader's machine\b/;
 export const DECISIONS_MAX = 4;
 
 export function decisionRules(body) {

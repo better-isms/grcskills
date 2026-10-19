@@ -173,6 +173,8 @@ test('decisionRules keeps the rules that leave a call with a person, not data-ha
     '- NEVER delete or overwrite a superseded version.',
     '- NEVER send inventory content anywhere outside the reader\'s machine.',
     '- NEVER put personal data of individuals into the register; use roles.',
+    '- NEVER present the review as legal advice.',
+    '- NEVER share the supplier\'s confidential report outside the reader\'s machine.',
     '- MUST decide applicability per legal entity, citing the provision used.',
   ].join('\n');
   assert.deepEqual(decisionRules(quality), []);
@@ -193,6 +195,11 @@ test('decisionRules keeps the rules that leave a call with a person, not data-ha
     'MUST agree the scoring method with the reader before scoring any risk.',
     'MUST raise every contradicted control to its owner role as the first item in the gap list.',
     'NEVER put risks the owner wants to accept into the treatment plan; route them to an acceptance decision.',
+    'NEVER contact the certification body or send any document outside the reader\'s machine.',
+    'MUST name the role with authority to accept at the risk\'s residual score, from the reader\'s own method.',
+    'NEVER rely on the small-organisation exemption without counsel\'s documented view.',
+    'NEVER present the analysis as legal advice; unclear results go to the person accountable for legal decisions.',
+    'NEVER present the memo as legal advice or a final determination; the legal owner confirms it.',
   ]) assert.equal(kinds(line).length, 1, line);
   const many = ['## Rules', '', ...Array.from({ length: 9 }, (_, i) => `- NEVER approve item ${i}.`)].join('\n');
   assert.equal(decisionRules(many).length, DECISIONS_MAX);
