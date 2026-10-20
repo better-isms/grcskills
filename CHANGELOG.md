@@ -4,6 +4,8 @@ Release tags are `vYYYY.MM.DD[.n]`. Installers and the Claude Code plugin consum
 
 ## Unreleased
 
+- grcskills.com shows a one-line heyGRC bar above the menu on every page ("From the grcskills team: heyGRC checks each pull request against your frameworks. See how"; a shorter line on phones). A visitor can close it and it stays closed: one flag in the browser's localStorage, written only on that click, nothing sent anywhere. It replaces the footer heyGRC line; the home band and the skill and list page cards stay.
+
 ## v2026.10.20
 
 - grcskills.com shows heyGRC, from the same team, for the work after a skill: a home band after "What comes back", "Also from us: heyGRC" in every footer, and a card under the Install card on four skill pages whose output lives in pull requests (secure development policy, change management sampling, policy gap review, GRC setup review) and on the evidence, policies and CRA list pages. Every link goes to heygrc.com/for/grc-teams with no query string. ISMS Copilot links are unchanged.

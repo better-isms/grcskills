@@ -97,6 +97,18 @@ export const HEYGRC_SKILLS: Record<string, string> = {
 // List pages that show the same card, by path.
 export const HEYGRC_LIST_PATHS = ['/category/evidence/', '/category/policies/', '/framework/cra/'];
 export const HEYGRC_LINE = 'Your policy says every change is reviewed. heyGRC checks each pull request and gives you the evidence, with the control behind each finding cited.';
+// The heyGRC announcement bar above the nav on every page (founder pick
+// 2026-10-20; it replaces the footer line). The long copy shows on wide
+// screens, the short one on phones. TOPBAR.id is the value public/topbar.js
+// stores when a visitor dismisses the bar: change both together, and a new
+// bar shows again to visitors who closed the old one.
+export const TOPBAR = {
+  id: 'heygrc-1',
+  long: 'From the grcskills team: heyGRC checks each pull request against your frameworks.',
+  short: 'heyGRC: evidence on each pull request.',
+  link: 'See how',
+  dismiss: 'Dismiss heyGRC announcement',
+};
 export const githubUrl = (repoPath: string) => `${meta.repoUrl}/blob/${meta.tag}/${repoPath}`;
 export const githubFolderUrl = (repoPath: string) => `${meta.repoUrl}/tree/${meta.tag}/${repoPath.replace(/\/SKILL\.md$/, '')}`;
 export const relatedTo = (s: Skill) => s.related.map(getSkill).filter((x): x is Skill => Boolean(x));
