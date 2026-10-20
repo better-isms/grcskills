@@ -154,6 +154,7 @@ test('ISMS Copilot placement: home band before the heyGRC band, nav link, attrib
     assert.ok(read(`skill/${slug}/index.html`).includes('class="card heygrc'), `${slug}: heyGRC card kept`);
   }
   assert.ok(read('faq/index.html').includes('href="https://www.ismscopilot.com/mcp?ref=grcskills-faq-connect"'));
+  assert.ok(read('faq/index.html').includes('ref=grcskills-faq"'), 'existing FAQ ref kept');
   assert.doesNotMatch(home, /\u2014/, 'no em dash on home');
 });
 

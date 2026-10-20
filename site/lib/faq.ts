@@ -235,7 +235,7 @@ export function faqGroups(tag: string, count: number): FaqGroup[] {
           q: 'How do I connect ISMS Copilot to my AI?',
           a: [
             'Add one URL to your AI: https://account.ismscopilot.com/v1/account/mcp. In claude.ai, Claude Desktop, Claude Code and ChatGPT you sign in to ISMS Copilot and click Approve. Cursor, Codex and other clients use a personal access token you create in the ISMS Copilot app. Nothing to install.',
-            'It works on every ISMS Copilot plan, Free included, and you can disconnect it at any time.',
+            'It works on every ISMS Copilot plan, Free included; Free runs fast mode only, and the think mode the skills ask for needs a paid plan. You can disconnect it any time in Settings, Connected apps.',
           ],
           link: { href: 'https://www.ismscopilot.com/mcp?ref=grcskills-faq-connect', label: 'Step-by-step setup for each AI' },
         },
