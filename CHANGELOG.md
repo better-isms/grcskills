@@ -4,10 +4,11 @@ Release tags are `vYYYY.MM.DD[.n]`. Installers and the Claude Code plugin consum
 
 ## Unreleased
 
-- llms.txt run steps: step 1 is the pinned clone only. The `npx skills add` alternative is gone from the steps (it fetched and ran an npm package the user's request did not cover); npx stays under `## Install`.
-- "Where you decide" lists only rules that keep a decision or sign-off with a person (accepting, marking effective, approving, signing, deciding, sending, changing systems, routing a call to a person); rules about the quality of evidence no longer appear. The intro reads "From this skill's rules: where you decide", and the draft-only boundary sits below the list. A skill with no such rule shows the boundary alone.
+## v2026.10.20
 
-- A first-time outside author's pull request can pass CI: the validator no longer requires a new `skills/<author>/` folder in `.claude-plugin/plugin.json` (outside PRs may not touch that file). It prints a note instead, and `--release`, run by the release workflow on the tag, requires every author folder to be listed. Claude Code reads plugin skills one level below each listed folder, so `"./skills/"` alone would expose nothing.
+- grcskills.com shows heyGRC, from the same team, for the work after a skill: a home band after "What comes back", "Also from us: heyGRC" in every footer, and a card under the Install card on four skill pages whose output lives in pull requests (secure development policy, change management sampling, policy gap review, GRC setup review) and on the evidence, policies and CRA list pages. Every link goes to heygrc.com/for/grc-teams with no query string. ISMS Copilot links are unchanged.
+- CI runs the portfolio SEO gate on the built site (#6).
+- Every install pin moves to `v2026.10.20`.
 
 ## v2026.10.19.2
 
