@@ -7,7 +7,7 @@ import { faqGroups, faqLd } from '@/lib/faq';
 import { pageMeta } from '@/lib/seo';
 
 export const metadata: Metadata = pageMeta({
-  title: 'grcskills FAQ: cost, agents, data and safety',
+  title: 'FAQ: cost, agents, data and safety',
   description: 'grcskills answers: who it is for, agents and frameworks, cost, client data and safety, stale evidence, updates, ISMS Copilot, publishing a skill.',
   path: '/faq/',
 });

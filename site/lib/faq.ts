@@ -47,7 +47,7 @@ export function faqGroups(tag: string, count: number): FaqGroup[] {
           q: 'What does it cost?',
           a: [
             'Nothing. The library is MIT licensed and there is nothing to sign up for. You run it with the agent you already pay for.',
-            'The optional framework lookup through ISMS Copilot is included in every ISMS Copilot plan, Free included. Its questions count against that plan.',
+            'The optional framework lookup through ISMS Copilot works on every ISMS Copilot plan, Free included, and its questions count against that plan. Free runs the fast model only, 10 messages per 4 hours; the deeper think mode the skills ask for needs a paid plan.',
           ],
         },
         {
@@ -58,6 +58,20 @@ export function faqGroups(tag: string, count: number): FaqGroup[] {
             'A skill is one piece of work, not one framework. A risk register skill serves ISO 27001 and SOC 2 alike.',
           ],
           link: { href: '/skills/', label: 'Browse all skills by framework' },
+        },
+        {
+          id: 'authors',
+          q: 'Who wrote the skills, and who checks them?',
+          a: [
+            'Each skill names its author, and every author has a page on this site. The first 60 are by Tristan Roth. Before a skill goes in, a GRC specialist model challenges it: would a practising auditor follow this, does anything misstate a framework, what is missing.',
+          ],
+        },
+        {
+          id: 'affiliation',
+          q: 'Is grcskills affiliated with ISO, AICPA, NIST or a regulator?',
+          a: [
+            'No. Framework names appear only as tags saying which framework a skill relates to, and they belong to their owners. grcskills is not affiliated with, endorsed by or sponsored by any standards body or regulator.',
+          ],
         },
         {
           id: 'agents',
@@ -113,7 +127,7 @@ export function faqGroups(tag: string, count: number): FaqGroup[] {
           id: 'confidential',
           q: 'Is it safe to run on client data?',
           a: [
-            'The skills themselves send nothing anywhere. They work on your files with your agent and write drafts in your folder.',
+            'The skills themselves send nothing anywhere, apart from the optional ISMS Copilot question, which you see first. They work on your files with your agent and write drafts in your folder.',
             'What your agent reads still goes to the AI model it runs on, so the risk is the one you already accepted for that agent. If you want to test first, run it on a copy with no client data.',
           ],
         },
@@ -121,7 +135,7 @@ export function faqGroups(tag: string, count: number): FaqGroup[] {
           id: 'edits',
           q: 'Will it change my files or my systems?',
           a: [
-            'The setup review only reads your material. Skills write their drafts as new files in your working folder. No skill may write to shared systems such as compliance platforms, tickets or repositories without an explicit approval step from you.',
+            'The setup review only reads your material. Each skill writes its drafts only inside its own folder (for example ./risk-register-first-pass/) and asks before overwriting anything there. No skill may write to shared systems such as compliance platforms, tickets or repositories without an explicit approval step from you.',
             'No skill marks a control effective, accepts a risk or signs anything on your behalf.',
           ],
         },
@@ -129,8 +143,8 @@ export function faqGroups(tag: string, count: number): FaqGroup[] {
           id: 'code',
           q: 'Can a skill run code or send my data to the internet?',
           a: [
-            'No. A skill may never upload or send data, download or run code, read credentials or link outside an allowlist of official sites. The validator rejects these on every pull request, and maintainers read every file before a release.',
-            'The one network step is yours: the one prompt clones the pinned release from GitHub into your folder.',
+            'No. A skill may never upload or send data, download or run code, read credentials or link outside an allowlist (official law, regulator and standards sites, plus this project on GitHub). The validator rejects what it can check mechanically on every pull request, and maintainers read every file before a release.',
+            'The one prompt makes two network calls, both visible to you: it reads grcskills.com/llms.txt and clones the pinned release into a .grcskills folder. The optional ISMS Copilot lookup is the only other one, and you see each question first.',
           ],
           link: { href: `${REPO}/blob/main/SECURITY.md`, label: 'Read SECURITY.md' },
         },
@@ -160,7 +174,7 @@ export function faqGroups(tag: string, count: number): FaqGroup[] {
           id: 'stale-evidence',
           q: 'What about stale evidence, like last year\'s screenshot?',
           a: [
-            'There is a skill for exactly this. The evidence freshness check reads the date inside each artefact (the clock on the screenshot, the report header), never the file date, and flags what is stale, undated or outside the audit period. Run it a few weeks before fieldwork.',
+            'There is a skill for exactly this. The evidence freshness check reads the date inside each artefact (the clock on the screenshot, the report header), never the file date, and flags what is stale, undated or outside the audit period. Run it four to eight weeks before fieldwork, early enough to fix gaps by running the activity.',
           ],
           link: { href: '/skill/evidence-freshness-check/', label: 'Evidence freshness check' },
         },
@@ -176,14 +190,14 @@ export function faqGroups(tag: string, count: number): FaqGroup[] {
           id: 'judgment',
           q: 'Is the judgment not formed while you gather the evidence?',
           a: [
-            'A lot of it is. That is why the drafts are not a summary to sign. The skills write down where each finding comes from and mark what is claimed but not evidenced, so the expert goes into the evidence where it matters.',
+            'A lot of it is. That is why the drafts are not a summary to sign. Many skills cite the file or answer behind each finding, and the risk and statement of applicability skills mark what is claimed but not evidenced, so the expert goes into the evidence where it matters.',
           ],
         },
         {
           id: 'traceability',
           q: 'How do I keep the link between evidence, findings and decisions over time?',
           a: [
-            'Each draft is a plain file in your folder, and most skills write down where each finding comes from. Keep those drafts in the same version control as your evidence, and add your decision next to each one. grcskills does not run a tracking system of its own today.',
+            'Each draft is a plain file in your folder, and many skills cite the file behind each finding. Keep those drafts in the same version control as your evidence, and add your decision next to each one. grcskills does not run a tracking system of its own today.',
           ],
         },
         {
@@ -197,7 +211,7 @@ export function faqGroups(tag: string, count: number): FaqGroup[] {
           id: 'scanner',
           q: 'Can a skill look inside files, like a sensitive data scanner?',
           a: [
-            'Not today. Skills never run outside tools, so there is no plug-in for a scanner. Some skills also stay out of the data on purpose: the health data flow mapping skill never opens patient records, even to confirm a field holds health data. It maps where the data should be and lists the copies nobody planned (logs, tickets, test databases) for a person to check.',
+            'Not today. Skills never download or run code, so none ships a scanner. Some skills also stay out of the data on purpose: the health data flow mapping skill never opens patient records, even to confirm a field holds health data. It maps where health data enters, moves and rests from schemas, field names and configuration, and calls out the copies nobody designed (logs, support tickets, test databases) for an owner to check.',
           ],
           link: { href: '/skill/phi-flow-mapping/', label: 'Health data flow mapping' },
         },
@@ -246,6 +260,13 @@ export function faqGroups(tag: string, count: number): FaqGroup[] {
             'Your author page shows your name, title, LinkedIn profile and company domain, never an email address.',
           ],
           link: { href: '/contribute/', label: 'How to contribute' },
+        },
+        {
+          id: 'removal',
+          q: 'Can I correct or remove my author profile or skill later?',
+          a: [
+            'Yes, at any time. Open an issue, or a private security advisory if it is sensitive. A removed author\'s profile and skills leave the next release.',
+          ],
         },
         {
           id: 'review',
