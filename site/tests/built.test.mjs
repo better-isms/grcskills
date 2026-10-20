@@ -136,6 +136,28 @@ test('faq: FAQPage JSON-LD matches the visible questions and answers; links reso
   assert.ok(read('llms.txt').includes('https://grcskills.com/faq/'), 'faq in llms.txt');
 });
 
+test('ISMS Copilot placement: home band before the heyGRC band, nav link, attributed refs; heyGRC promotion unchanged', opts, () => {
+  const home = read('index.html');
+  const cop = home.indexOf('class="section copilot-band"');
+  const hey = home.indexOf('class="section close heygrc-band"');
+  assert.ok(cop > 0 && hey > cop, 'copilot band sits before the heyGRC band');
+  assert.ok(home.includes('href="https://www.ismscopilot.com/mcp?ref=grcskills-home"'), 'home CTA ref');
+  assert.ok(home.includes('https://account.ismscopilot.com/v1/account/mcp'), 'endpoint shown');
+  for (const f of htmlFiles()) {
+    const html = fs.readFileSync(f, 'utf8');
+    if (!html.includes('<header class="nav">')) continue;
+    assert.equal((html.match(/href="https:\/\/www\.ismscopilot\.com\/mcp\?ref=grcskills-nav"/g) ?? []).length, 2, `${f}: nav link, wide and small`);
+    assert.equal((html.match(/class="topbar"/g) ?? []).length, 1, `${f}: heyGRC bar kept`);
+  }
+  assert.ok(home.includes('href="https://heygrc.com/for/grc-teams"'), 'heyGRC home band kept');
+  for (const slug of ['secure-development-policy-from-pipeline', 'change-management-evidence-sampling', 'policy-gap-review-against-practice', 'grc-setup-review']) {
+    assert.ok(read(`skill/${slug}/index.html`).includes('class="card heygrc'), `${slug}: heyGRC card kept`);
+  }
+  assert.ok(read('faq/index.html').includes('href="https://www.ismscopilot.com/mcp?ref=grcskills-faq-connect"'));
+  assert.ok(read('faq/index.html').includes('ref=grcskills-faq"'), 'existing FAQ ref kept');
+  assert.doesNotMatch(home, /\u2014/, 'no em dash on home');
+});
+
 test('skill pages: a "Where you decide" block from the skill\'s own rules, near the top', opts, () => {
   for (const s of content.skills) {
     const html = read(`skill/${s.slug}/index.html`);

@@ -83,7 +83,7 @@ export default async function SkillPage({ params }: Props) {
               <a className="b1 b-sm" href={copilotUrl(s.slug)}>Run with ISMS Copilot</a>
               <a className="b2 b-sm" href={githubUrl(s.repoPath)}>View on GitHub</a>
             </div>
-            <p className="quiet">ISMS Copilot answers framework questions for this skill. Optional; the skill works without it.</p>
+            <p className="quiet">ISMS Copilot is the GRC specialist your AI calls: connect it once with one URL, and this skill can ask it its framework questions. Free plan: fast mode only; the think mode the skills ask for needs a paid plan. Optional; the skill works without it.</p>
           </section>
 
           {heygrc && <HeygrcCard body={heygrc} />}

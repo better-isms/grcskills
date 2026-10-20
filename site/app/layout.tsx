@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { Inter_Tight, JetBrains_Mono } from 'next/font/google';
 import Link from 'next/link';
 import { Analytics } from '@vercel/analytics/next';
-import { COPILOT_FOOTER_URL, HEYGRC_URL, meta, SITE_URL, TOPBAR } from '@/lib/content';
+import { COPILOT_FOOTER_URL, COPILOT_NAV_URL, HEYGRC_URL, meta, SITE_URL, TOPBAR } from '@/lib/content';
 import { HOME_DESCRIPTION, HOME_TITLE, pageMeta } from '@/lib/seo';
 import './globals.css';
 
@@ -66,12 +66,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Link className="wm" href="/">grcskills</Link>
           <nav className="links" aria-label="Main">
             {NAV.map((n) => <Link key={n.href} href={n.href}>{n.label}</Link>)}
+            <a href={COPILOT_NAV_URL}>Connect your AI</a>
             <a href={meta.repoUrl}>GitHub</a>
           </nav>
           <details className="menu">
             <summary>Menu</summary>
             <nav aria-label="Main, small screens">
               {NAV.map((n) => <Link key={n.href} href={n.href}>{n.label}</Link>)}
+              <a href={COPILOT_NAV_URL}>Connect your AI</a>
               <a href={meta.repoUrl}>GitHub</a>
             </nav>
           </details>

@@ -4,7 +4,7 @@ import CopyButton from '@/components/CopyButton';
 import JsonLd from '@/components/JsonLd';
 import SearchBox from '@/components/SearchBox';
 import SkillCard from '@/components/SkillCard';
-import { categories, featuredSkill, HEYGRC_LINE, HEYGRC_URL, meta, SITE_URL, skills, toRow } from '@/lib/content';
+import { categories, COPILOT_HOME_URL, COPILOT_LINE, COPILOT_MCP_ENDPOINT, featuredSkill, HEYGRC_LINE, HEYGRC_URL, meta, SITE_URL, skills, toRow } from '@/lib/content';
 import { HOME_DESCRIPTION, HOME_H1, HOME_SUBLINE, HOME_TITLE, pageMeta } from '@/lib/seo';
 
 export const metadata: Metadata = pageMeta({
@@ -51,11 +51,30 @@ export default function Home() {
         {featured && <SkillCard skill={featured} />}
       </section>
 
+      <section className="section copilot-band" aria-labelledby="specialist">
+        <div>
+          <h2 id="specialist">While a skill runs: the GRC specialist your AI calls</h2>
+          <p>{COPILOT_LINE}</p>
+          <p className="quiet">Optional. The skills work without it. They tell your AI to send only a short question you see first, never file contents, secrets, personal data or evidence.</p>
+        </div>
+        <div className="pcard">
+          <p className="lbl">Add this URL to your AI once</p>
+          <pre>{COPILOT_MCP_ENDPOINT}</pre>
+          <div className="prow">
+            <small>Claude and ChatGPT: sign in and approve. Cursor and Codex: a personal access token. The Free plan works in fast mode; think mode needs a paid plan.</small>
+            <div className="ctas">
+              <CopyButton text={COPILOT_MCP_ENDPOINT} label="Copy the URL" className="b2" />
+              <a className="b1" href={COPILOT_HOME_URL}>Connect your AI</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="section close heygrc-band" aria-labelledby="after">
         <div>
           <h2 id="after">After the skill: evidence on each pull request</h2>
           <p>{HEYGRC_LINE}</p>
-          <p className="two-jobs">Also from us. ISMS Copilot answers framework questions while a skill runs. heyGRC reviews each pull request after it, against the frameworks you pick.</p>
+          <p className="two-jobs">Also from us. heyGRC reviews each pull request after a skill runs, against the frameworks you pick.</p>
         </div>
         <a className="b2" href={HEYGRC_URL}>heyGRC for GRC teams</a>
       </section>
