@@ -4,7 +4,10 @@ Release tags are `vYYYY.MM.DD[.n]`. Installers and the Claude Code plugin consum
 
 ## Unreleased
 
-- ISMS Copilot, the GRC specialist your AI calls, gets its own place: a home band after "What comes back" with the connect URL and a copy button, a "Connect your AI" menu link, a clearer note under "Run with ISMS Copilot" on every skill page, and an FAQ answer on how to connect. Each link carries its own `ref=grcskills-*`. The heyGRC bar, home band and cards are unchanged.
+## v2026.10.20.3
+
+- ISMS Copilot, the GRC specialist your AI calls, gets its own place: a home band after "What comes back" with the connect URL and a copy button, a "Connect your AI" menu link, a clearer note under "Run with ISMS Copilot" on every skill page, and an FAQ answer on how to connect. Each link carries its own `ref=grcskills-*`. The heyGRC bar, home band and cards are unchanged (#14).
+- Every install pin moves to `v2026.10.20.3`.
 
 ## v2026.10.20.2
 
