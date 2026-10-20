@@ -47,7 +47,7 @@ export function faqGroups(tag: string, count: number): FaqGroup[] {
           q: 'What does it cost?',
           a: [
             'Nothing. The library is MIT licensed and there is nothing to sign up for. You run it with the agent you already pay for.',
-            'The optional framework lookup through ISMS Copilot works on every ISMS Copilot plan, Free included, and its questions count against that plan. Free runs the fast model only, 10 messages per 4 hours; the deeper think mode the skills ask for needs a paid plan.',
+            'The optional framework lookup through ISMS Copilot works on every ISMS Copilot plan, Free included, and its questions count against that plan. Free runs fast mode only, 10 messages per 4 hours; the think mode the skills ask for needs a paid plan.',
           ],
         },
         {
@@ -63,7 +63,7 @@ export function faqGroups(tag: string, count: number): FaqGroup[] {
           id: 'authors',
           q: 'Who wrote the skills, and who checks them?',
           a: [
-            'Each skill names its author, and every author has a page on this site. The first 60 are by Tristan Roth. Before a skill goes in, a GRC specialist model challenges it: would a practising auditor follow this, does anything misstate a framework, what is missing.',
+            'Each skill names its author, and every author has a page on this site. The first skills are by Tristan Roth. Before a skill goes in, a GRC specialist model challenges it: would a practising auditor follow this, does anything misstate a framework, what is missing.',
           ],
         },
         {
@@ -190,7 +190,7 @@ export function faqGroups(tag: string, count: number): FaqGroup[] {
           id: 'judgment',
           q: 'Is the judgment not formed while you gather the evidence?',
           a: [
-            'A lot of it is. That is why the drafts are not a summary to sign. Many skills cite the file or answer behind each finding, and the risk and statement of applicability skills mark what is claimed but not evidenced, so the expert goes into the evidence where it matters.',
+            'A lot of it is. That is why the drafts are not a summary to sign. Many skills cite the file or answer behind each finding, and the gap assessment and risk skills mark what is claimed but not evidenced, so the expert goes into the evidence where it matters.',
           ],
         },
         {
