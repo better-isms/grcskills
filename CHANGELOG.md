@@ -4,7 +4,10 @@ Release tags are `vYYYY.MM.DD[.n]`. Installers and the Claude Code plugin consum
 
 ## Unreleased
 
-- grcskills.com/faq/: 29 questions and answers (what it is, who it is for, who wrote it, cost, frameworks, agents, install, client data and safety, stale evidence, policy changes, traceability, ISMS Copilot, updates, contributing), many from questions asked under the launch post. One source in `site/lib/faq.ts` feeds the page and its FAQPage JSON-LD; a test checks they match. FAQ added to the menu, footer, sitemap and llms.txt; `faq` is a reserved author slug.
+## v2026.10.20.2
+
+- grcskills.com/faq/: 29 questions and answers (what it is, who it is for, who wrote it, cost, frameworks, agents, install, client data and safety, stale evidence, policy changes, traceability, ISMS Copilot, updates, contributing), many from questions asked under the launch post. One source in `site/lib/faq.ts` feeds the page and its FAQPage JSON-LD; a test checks they match. FAQ added to the menu, footer, sitemap and llms.txt; `faq` is a reserved author slug (#12).
+- Every install pin moves to `v2026.10.20.2`.
 
 ## v2026.10.20.1
 
