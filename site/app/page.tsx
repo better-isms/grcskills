@@ -53,9 +53,9 @@ export default function Home() {
 
       <section className="section close heygrc-band" aria-labelledby="after">
         <div>
-          <h2 id="after">After the skill, keep it true on each pull request</h2>
+          <h2 id="after">After the skill: evidence on each pull request</h2>
           <p>{HEYGRC_LINE}</p>
-          <p className="two-jobs">Also from us. ISMS Copilot answers framework questions while a skill runs. heyGRC keeps the control true after it, and you pick the frameworks it checks.</p>
+          <p className="two-jobs">Also from us. ISMS Copilot answers framework questions while a skill runs. heyGRC reviews each pull request after it, against the frameworks you pick.</p>
         </div>
         <a className="b2" href={HEYGRC_URL}>heyGRC for GRC teams</a>
       </section>

@@ -6,7 +6,7 @@ import { HEYGRC_URL } from '@/lib/content';
 export default function HeygrcCard({ body, className = '' }: { body: string; className?: string }) {
   return (
     <section className={`card heygrc ${className}`.trim()} aria-labelledby="heygrc">
-      <h2 id="heygrc">Keep this true, pull request by pull request</h2>
+      <h2 id="heygrc">Evidence on each pull request</h2>
       <p>{body}</p>
       <div className="actions">
         <a className="b2 b-sm" href={HEYGRC_URL}>heyGRC for GRC teams</a>
