@@ -37,6 +37,7 @@ const NAV = [
   { href: '/skills/', label: 'Skills' },
   { href: '/#categories', label: 'Categories' },
   { href: '/contribute/', label: 'Contribute' },
+  { href: '/faq/', label: 'FAQ' },
 ];
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -83,6 +84,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <nav className="ft-links" aria-label="Footer">
               <Link href="/skills/">Skills</Link>
               <Link href="/contribute/">Contribute</Link>
+              <Link href="/faq/">FAQ</Link>
               <a href={meta.repoUrl}>GitHub</a>
               <a href="/llms.txt">llms.txt</a>
             </nav>

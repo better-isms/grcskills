@@ -308,3 +308,12 @@ a.tag:hover { background: #e2e7ee; }
 @media (max-width: 359px) {
   .topbar { font-size: 12px; }
 }
+
+/* FAQ */
+.faq-toc ul { list-style: none; margin: 0 0 24px; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 24px; }
+.faq-group { max-width: var(--max); margin: 72px auto 0; }
+.faq-group h2 { margin-bottom: 8px; }
+.faq-item { border-top: 1px solid var(--line); padding: 24px 0; max-width: 72ch; scroll-margin-top: 24px; }
+.faq-item h3 { font-size: 19px; font-weight: 400; margin: 0 0 10px; }
+.faq-item p { color: var(--muted); margin: 0 0 10px; line-height: 1.6; }
+.faq-item p.faq-link { margin: 0; }

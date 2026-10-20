@@ -166,6 +166,7 @@ export function buildLlms({ skills, tag }) {
     '## Optional',
     '',
     `- [Contribute a skill](${SITE_URL}/contribute/): interview-driven submission with your own agent`,
+    `- [FAQ](${SITE_URL}/faq/): cost, agents, frameworks, data and safety, updates, contributing`,
     `- [Repository](${REPO_URL}): AGENTS.md explains install, run and submit`,
     '',
   ].join('\n');
@@ -245,7 +246,7 @@ export async function main() {
   write('public/build.json', `${JSON.stringify({ sha, tag, builtAt: meta.builtAt, skills: skills.length }, null, 2)}\n`);
 
   const urls = [
-    ['/', allDates], ['/skills/', allDates], ['/contribute/', allDates],
+    ['/', allDates], ['/skills/', allDates], ['/contribute/', allDates], ['/faq/', allDates],
     ...skills.map((s) => [`/skill/${s.slug}/`, s.dateModified]),
     ...skills.flatMap((s) => s.references.map((r) => [`/skill/${s.slug}/${r.slug}/`, s.dateModified])),
     ...authors.filter((a) => a.skills.length).map((a) => [`/${a.slug}/`, a.dateModified]),

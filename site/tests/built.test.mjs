@@ -32,7 +32,7 @@ test('every skill, reference, author, category and framework page exists', opts,
   for (const a of content.authors.filter((x) => x.skills.length)) assert.ok(fs.existsSync(path.join(out, a.slug, 'index.html')), `author ${a.slug}`);
   for (const c of content.categories.filter((x) => x.count)) assert.ok(fs.existsSync(path.join(out, 'category', c.slug, 'index.html')), `category ${c.slug}`);
   for (const f of content.frameworks.filter((x) => x.count)) assert.ok(fs.existsSync(path.join(out, 'framework', f.tag, 'index.html')), `framework ${f.tag}`);
-  for (const p of ['index.html', 'skills/index.html', 'contribute/index.html', '404.html', 'llms.txt', 'sitemap.xml', 'robots.txt', 'build.json', 'search-index.json', 'og.png', 'favicon.ico', 'favicon.svg']) {
+  for (const p of ['index.html', 'skills/index.html', 'contribute/index.html', 'faq/index.html', '404.html', 'llms.txt', 'sitemap.xml', 'robots.txt', 'build.json', 'search-index.json', 'og.png', 'favicon.ico', 'favicon.svg']) {
     assert.ok(fs.existsSync(path.join(out, p)), p);
   }
   assert.equal(files(out, (p) => p.includes(`${path.sep}_none${path.sep}`)).length, 0, 'placeholder pages removed');
@@ -111,6 +111,29 @@ test('stance copy: no "practitioner methods" jargon; llms.txt says people decide
   for (const rel of ['index.html', 'contribute/index.html', 'llms.txt']) assert.doesNotMatch(read(rel), /practitioner methods?/i, rel);
   assert.ok(read('llms.txt').includes('Skills support practitioners: they draft and prepare, people decide.'));
   assert.ok(read('contribute/index.html').includes('Publish your method, under your name'));
+});
+
+test('faq: FAQPage JSON-LD matches the visible questions and answers; links resolve; no em dashes', opts, () => {
+  const html = read('faq/index.html');
+  const ld = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].flatMap((m) => [].concat(JSON.parse(m[1])));
+  const faq = ld.find((n) => n['@type'] === 'FAQPage');
+  assert.ok(faq, 'FAQPage node');
+  assert.equal(faq.url, 'https://grcskills.com/faq/');
+  const text = decode(html.replace(/<script[\s\S]*?<\/script>/g, '').replace(/<[^>]+>/g, ' ')).replace(/\s+/g, ' ');
+  assert.ok(faq.mainEntity.length >= 20, `${faq.mainEntity.length} questions`);
+  for (const q of faq.mainEntity) {
+    assert.ok(text.includes(q.name), `visible question: ${q.name}`);
+    for (const para of q.acceptedAnswer.text.split(/(?<=[.:])\s(?=[A-Z"])/)) assert.ok(text.includes(para.trim()), `visible answer part: ${para.slice(0, 60)}`);
+  }
+  assert.doesNotMatch(html, /\u2014/, 'no em dash');
+  assert.ok(text.includes(content.meta.tag), 'install answer pins the current release');
+  for (const m of html.matchAll(/href="(\/[^"#]*)"/g)) {
+    const rel = m[1].replace(/^\//, '');
+    if (rel.includes('.')) continue;
+    assert.ok(fs.existsSync(path.join(out, rel, 'index.html')), `internal link ${m[1]}`);
+  }
+  assert.ok(read('sitemap.xml').includes('<loc>https://grcskills.com/faq/</loc>'), 'faq in sitemap');
+  assert.ok(read('llms.txt').includes('https://grcskills.com/faq/'), 'faq in llms.txt');
 });
 
 test('skill pages: a "Where you decide" block from the skill\'s own rules, near the top', opts, () => {
