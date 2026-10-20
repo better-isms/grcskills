@@ -85,6 +85,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Link href="/contribute/">Contribute</Link>
               <a href={meta.repoUrl}>GitHub</a>
               <a href="/llms.txt">llms.txt</a>
+              <Link href="/privacy/">Privacy</Link>
             </nav>
             <a className="by" href={COPILOT_FOOTER_URL}>by ISMS Copilot</a>
           </div>
