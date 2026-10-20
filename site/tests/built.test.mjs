@@ -246,7 +246,7 @@ const HEYGRC_SKILLS = ['secure-development-policy-from-pipeline', 'change-manage
 const HEYGRC_LISTS = ['category/evidence/index.html', 'category/policies/index.html', 'framework/cra/index.html'];
 const heygrcCard = (html) => /<section class="card heygrc[^"]*"/.test(html);
 
-test('heyGRC: home band, footer on every page, card on exactly 4 skill pages and 3 list pages', opts, () => {
+test('heyGRC: home band, card on exactly 4 skill pages and 3 list pages, footer keeps only the Copilot line', opts, () => {
   const home = read('index.html');
   const band = home.match(/<section class="section close heygrc-band"[\s\S]*?<\/section>/)?.[0];
   assert.ok(band, 'home band');
@@ -254,7 +254,7 @@ test('heyGRC: home band, footer on every page, card on exactly 4 skill pages and
   assert.ok(home.indexOf('id="back"') < home.indexOf('heygrc-band') && home.indexOf('heygrc-band') < home.indexOf('id="find"'), 'band sits after What comes back');
   for (const rel of pages()) {
     const ft = read(rel).match(/<footer class="ft">[\s\S]*?<\/footer>/)?.[0] ?? '';
-    assert.ok(ft.includes(`<a class="also" href="${HEYGRC}">Also from us: heyGRC`), `${rel}: footer link`);
+    assert.ok(!/heygrc/i.test(ft), `${rel}: footer has no heyGRC line (the top bar replaces it)`);
     assert.ok(ft.includes('>by ISMS Copilot</a>'), `${rel}: Copilot footer link unchanged`);
   }
   for (const s of content.skills) {
@@ -278,4 +278,44 @@ test('heyGRC links carry no query string or fragment, and no image loads from he
     }
     assert.doesNotMatch(html, /src="https?:\/\/[^"]*heygrc\.com/, `${path.relative(out, f)}: image from heygrc.com`);
   }
+});
+
+// heyGRC announcement bar above the nav (founder pick 2026-10-20).
+const TOPBAR_LONG = 'From the grcskills team: heyGRC checks each pull request against your frameworks.';
+const TOPBAR_SHORT = 'heyGRC: evidence on each pull request.';
+
+test('top bar: exactly one per page, first in body after the skip link, before the nav', opts, () => {
+  for (const f of htmlFiles()) {
+    const rel = path.relative(out, f);
+    if (rel.startsWith('_')) continue;
+    const html = fs.readFileSync(f, 'utf8');
+    assert.equal(html.match(/<div class="topbar"/g)?.length, 1, `${rel}: one bar`);
+    const body = html.slice(html.indexOf('<body'));
+    // Next may put an empty hidden div first; nothing visible precedes the skip link.
+    assert.match(body, /^<body[^>]*>(?:<div hidden="">(?:<!--[^>]*-->)*<\/div>)?<a class="skip" href="#main">Skip to content<\/a><div class="topbar"/, `${rel}: bar right after the skip link`);
+    const bar = body.match(/<div class="topbar"[\s\S]*?<\/div>/)[0];
+    assert.ok(body.indexOf(bar) < body.indexOf('<header class="nav"'), `${rel}: bar before the nav`);
+    const links = [...bar.matchAll(/href="([^"]*)"/g)].map((m) => decode(m[1]));
+    assert.deepEqual(links, [HEYGRC], `${rel}: one link, exactly ${HEYGRC}`);
+    const text = decode(bar.replace(/<[^>]+>/g, ''));
+    assert.ok(text.includes(TOPBAR_LONG) && text.includes(TOPBAR_SHORT) && text.includes('See how'), `${rel}: copy`);
+    assert.match(bar, /<button type="button" class="tb-x" data-topbar-dismiss="" aria-label="Dismiss heyGRC announcement">/, `${rel}: close button`);
+    assert.match(html.slice(0, html.indexOf('<body')), /<script src="\/topbar\.js"><\/script>/, `${rel}: topbar.js in head`);
+  }
+});
+
+test('top bar: copy at most 90 characters with the link, no em dash; topbar.js shipped and keyed to TOPBAR.id', opts, () => {
+  for (const c of [TOPBAR_LONG, TOPBAR_SHORT]) {
+    assert.ok(`${c} See how`.length <= 90, `${c.length + 8} characters: ${c}`);
+    assert.ok(!c.includes('\u2014'));
+  }
+  const js = read('topbar.js');
+  const src = fs.readFileSync(path.join(site, 'lib', 'content.ts'), 'utf8');
+  const id = src.match(/TOPBAR = \{\s*id: '([^']+)'/)?.[1];
+  assert.ok(id, 'TOPBAR.id in lib/content.ts');
+  assert.ok(js.includes(`var ID = '${id}';`), 'topbar.js stores TOPBAR.id');
+  assert.ok(js.includes("var KEY = 'grcskills-topbar-dismissed';"));
+  assert.equal(js.match(/localStorage\.setItem/g)?.length, 1, 'one write, the dismissal flag');
+  assert.doesNotMatch(js, /fetch|XMLHttpRequest|sendBeacon|document\.cookie/, 'no network, no cookies');
+  assert.ok(src.includes(`long: '${TOPBAR_LONG}'`) && src.includes(`short: '${TOPBAR_SHORT}'`), 'test copy matches lib/content.ts');
 });

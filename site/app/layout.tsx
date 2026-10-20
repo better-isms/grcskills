@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { Inter_Tight, JetBrains_Mono } from 'next/font/google';
 import Link from 'next/link';
 import { Analytics } from '@vercel/analytics/next';
-import { COPILOT_FOOTER_URL, HEYGRC_URL, meta, SITE_URL } from '@/lib/content';
+import { COPILOT_FOOTER_URL, HEYGRC_URL, meta, SITE_URL, TOPBAR } from '@/lib/content';
 import { HOME_DESCRIPTION, HOME_TITLE, pageMeta } from '@/lib/seo';
 import './globals.css';
 
@@ -41,9 +41,26 @@ const NAV = [
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${sans.variable} ${mono.variable}`}>
+    // suppressHydrationWarning: public/topbar.js sets data-topbar on <html>
+    // before React hydrates.
+    <html lang="en" className={`${sans.variable} ${mono.variable}`} suppressHydrationWarning>
+      <head>
+        {/* Same-origin and parser-blocking on purpose: it must run before the
+            bar renders so a dismissed bar never flashes (CSP script-src 'self'). */}
+        <script src="/topbar.js" />
+      </head>
       <body>
         <a className="skip" href="#main">Skip to content</a>
+        <div className="topbar" role="region" aria-label="Announcement">
+          <p className="tb-msg">
+            <span className="tb-long">{TOPBAR.long}</span>
+            <span className="tb-short">{TOPBAR.short}</span>{' '}
+            <a href={HEYGRC_URL}>{TOPBAR.link}<span aria-hidden="true"> &rarr;</span></a>
+          </p>
+          <button type="button" className="tb-x" data-topbar-dismiss="" aria-label={TOPBAR.dismiss}>
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
         <header className="nav">
           <Link className="wm" href="/">grcskills</Link>
           <nav className="links" aria-label="Main">
@@ -70,7 +87,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <a href="/llms.txt">llms.txt</a>
             </nav>
             <a className="by" href={COPILOT_FOOTER_URL}>by ISMS Copilot</a>
-            <a className="also" href={HEYGRC_URL}>Also from us: heyGRC, compliance in your pull requests</a>
           </div>
           <p className="ft-note">
             ISO, IEC, AICPA, SOC 2, PCI DSS, NIST and other framework names appear only as tags saying which framework a skill relates to; they belong to their owners. grcskills is not affiliated with, endorsed by or sponsored by any standards body or regulator, and the skills contain no text from the standards.

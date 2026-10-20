@@ -37,6 +37,24 @@ code, pre, kbd { font-family: var(--mono); }
 .skip { position: absolute; left: -9999px; top: 8px; background: var(--card); padding: 8px 14px; border-radius: 999px; z-index: 10; }
 .skip:focus { left: 16px; }
 
+/* heyGRC announcement bar: one line, fixed height, server-rendered so it never
+   shifts the page. public/topbar.js sets data-topbar on <html>: "off" hides the
+   bar, "on" shows the close button (without JS there is no close button). */
+.topbar { display: flex; align-items: center; justify-content: center; gap: 12px; height: 40px; padding: 0 48px;
+  position: relative; background: #4D4CD7; color: #fff; font-size: 14px; line-height: 1.2; }
+.tb-msg { margin: 0; min-width: 0; display: flex; align-items: center; gap: .4em; white-space: nowrap; }
+.tb-long, .tb-short { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.tb-msg a { flex: none; color: #fff; font-weight: 500; text-decoration: underline; text-underline-offset: 3px; }
+.tb-short { display: none; }
+.tb-long { display: block; }
+.tb-x { display: none; position: absolute; right: 8px; top: 50%; transform: translateY(-50%); width: 32px; height: 32px;
+  align-items: center; justify-content: center; border: 0; border-radius: 999px; background: transparent; color: #fff;
+  font-size: 22px; line-height: 1; padding: 0; }
+.tb-x:hover { background: rgba(255, 255, 255, .16); }
+.topbar :focus-visible { outline-color: #fff; outline-offset: 2px; }
+html[data-topbar="on"] .tb-x { display: inline-flex; }
+html[data-topbar="off"] .topbar { display: none; }
+
 /* Header */
 .nav { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 22px var(--gutter); }
 .wm { font-weight: 500; font-size: 19px; letter-spacing: -.03em; text-decoration: none; }
@@ -246,6 +264,9 @@ a.tag:hover { background: #e2e7ee; }
 
 @media (max-width: 860px) {
   :root { --gutter: 16px; }
+  .topbar { height: 36px; font-size: 13px; padding: 0 44px 0 16px; justify-content: flex-start; }
+  .tb-long { display: none; }
+  .tb-short { display: block; }
   .nav { padding: 16px var(--gutter); }
   .links { display: none; }
   .menu { display: block; }
@@ -283,4 +304,7 @@ a.tag:hover { background: #e2e7ee; }
 .skill-grid > .aside { grid-column: 2; grid-row: 1; }
 @media (max-width: 860px) {
   .skill-grid > .prose, .skill-grid > .aside { grid-column: auto; grid-row: auto; }
+}
+@media (max-width: 359px) {
+  .topbar { font-size: 12px; }
 }
