@@ -81,6 +81,13 @@ export const featuredSkill = () => getSkill(FEATURED_SLUG) ?? skills[0];
 
 export const copilotUrl = (slug: string) => `https://www.ismscopilot.com/mcp?ref=grcskills-${slug}`;
 export const COPILOT_FOOTER_URL = 'https://www.ismscopilot.com/?ref=grcskills-footer';
+// ISMS Copilot, the GRC specialist an agent calls while a skill runs (founder
+// ask 2026-10-20). Every claim in COPILOT_* copy is from ismscopilot.com/mcp.
+// Each placement carries its own ref so the funnel can tell them apart.
+export const COPILOT_MCP_ENDPOINT = 'https://account.ismscopilot.com/v1/account/mcp';
+export const COPILOT_HOME_URL = copilotUrl('home');
+export const COPILOT_NAV_URL = copilotUrl('nav');
+export const COPILOT_LINE = 'The skills are the steps. When a framework question comes up, your AI can ask ISMS Copilot and get the answer with the clause number, not a guess from memory. You check that number before you sign.';
 
 // heyGRC, from the same team: reviews each pull request against the frameworks
 // the customer picks, after a skill has run. heyGRC measures by page path, so the link carries no query

@@ -4,6 +4,8 @@ Release tags are `vYYYY.MM.DD[.n]`. Installers and the Claude Code plugin consum
 
 ## Unreleased
 
+- ISMS Copilot, the GRC specialist your AI calls, gets its own place: a home band after "What comes back" with the connect URL and a copy button, a "Connect your AI" menu link, a clearer note under "Run with ISMS Copilot" on every skill page, and an FAQ answer on how to connect. Each link carries its own `ref=grcskills-*`. The heyGRC bar, home band and cards are unchanged.
+
 ## v2026.10.20.2
 
 - grcskills.com/faq/: 29 questions and answers (what it is, who it is for, who wrote it, cost, frameworks, agents, install, client data and safety, stale evidence, policy changes, traceability, ISMS Copilot, updates, contributing), many from questions asked under the launch post. One source in `site/lib/faq.ts` feeds the page and its FAQPage JSON-LD; a test checks they match. FAQ added to the menu, footer, sitemap and llms.txt; `faq` is a reserved author slug (#12).

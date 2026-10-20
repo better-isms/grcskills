@@ -317,3 +317,8 @@ a.tag:hover { background: #e2e7ee; }
 .faq-item h3 { font-size: 19px; font-weight: 400; margin: 0 0 10px; }
 .faq-item p { color: var(--muted); margin: 0 0 10px; line-height: 1.6; overflow-wrap: break-word; }
 .faq-item p.faq-link { margin: 0; }
+
+/* ISMS Copilot band on the home page, before the heyGRC band */
+.copilot-band { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+.copilot-band .quiet { color: var(--muted-2); font-size: 15px; }
+@media (max-width: 860px) { .copilot-band { grid-template-columns: 1fr; gap: 28px; } }

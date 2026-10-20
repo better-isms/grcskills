@@ -4,7 +4,7 @@ import CopyButton from '@/components/CopyButton';
 import JsonLd from '@/components/JsonLd';
 import SearchBox from '@/components/SearchBox';
 import SkillCard from '@/components/SkillCard';
-import { categories, featuredSkill, HEYGRC_LINE, HEYGRC_URL, meta, SITE_URL, skills, toRow } from '@/lib/content';
+import { categories, COPILOT_HOME_URL, COPILOT_LINE, COPILOT_MCP_ENDPOINT, featuredSkill, HEYGRC_LINE, HEYGRC_URL, meta, SITE_URL, skills, toRow } from '@/lib/content';
 import { HOME_DESCRIPTION, HOME_H1, HOME_SUBLINE, HOME_TITLE, pageMeta } from '@/lib/seo';
 
 export const metadata: Metadata = pageMeta({
@@ -49,6 +49,25 @@ export default function Home() {
           </ul>
         </div>
         {featured && <SkillCard skill={featured} />}
+      </section>
+
+      <section className="section copilot-band" aria-labelledby="specialist">
+        <div>
+          <h2 id="specialist">While a skill runs: the GRC specialist your AI calls</h2>
+          <p>{COPILOT_LINE}</p>
+          <p className="quiet">Optional. The skills work without it, and they never send it file contents, secrets, personal data or evidence.</p>
+        </div>
+        <div className="pcard">
+          <p className="lbl">Add this URL to your AI once</p>
+          <pre>{COPILOT_MCP_ENDPOINT}</pre>
+          <div className="prow">
+            <small>Claude and ChatGPT: sign in and approve. Cursor and Codex: a personal access token. Every ISMS Copilot plan, Free included.</small>
+            <div className="ctas">
+              <CopyButton text={COPILOT_MCP_ENDPOINT} label="Copy the URL" className="b2" />
+              <a className="b1" href={COPILOT_HOME_URL}>Connect your AI</a>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section className="section close heygrc-band" aria-labelledby="after">
