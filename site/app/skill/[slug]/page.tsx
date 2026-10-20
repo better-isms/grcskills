@@ -2,10 +2,11 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import Breadcrumbs from '@/components/Breadcrumbs';
+import HeygrcCard from '@/components/HeygrcCard';
 import InstallPicker from '@/components/InstallPicker';
 import JsonLd from '@/components/JsonLd';
 import Row from '@/components/Row';
-import { copilotUrl, frameworkLabel, getAuthor, getSkill, githubUrl, installCommands, meta, relatedTo, skills, toRow } from '@/lib/content';
+import { copilotUrl, frameworkLabel, getAuthor, getSkill, githubUrl, HEYGRC_SKILLS, installCommands, meta, relatedTo, skills, toRow } from '@/lib/content';
 import { skillLd } from '@/lib/ld';
 import { pageMeta } from '@/lib/seo';
 
@@ -39,6 +40,7 @@ export default async function SkillPage({ params }: Props) {
   const author = getAuthor(s.author);
   const cmd = installCommands(s.slug);
   const related = relatedTo(s);
+  const heygrc = Object.hasOwn(HEYGRC_SKILLS, s.slug) ? HEYGRC_SKILLS[s.slug] : undefined;
   return (
     <div className="page">
       <Breadcrumbs items={[{ name: 'Skills', href: '/skills/' }, { name: s.categoryLabel, href: `/category/${s.category}/` }, { name: s.title, href: `/skill/${s.slug}/` }]} />
@@ -83,6 +85,8 @@ export default async function SkillPage({ params }: Props) {
             </div>
             <p className="quiet">ISMS Copilot answers framework questions for this skill. Optional; the skill works without it.</p>
           </section>
+
+          {heygrc && <HeygrcCard body={heygrc} />}
 
           {author && (
             <section className="card" aria-labelledby="author">

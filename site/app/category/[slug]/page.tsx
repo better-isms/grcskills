@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import HeygrcCard from '@/components/HeygrcCard';
 import ListPage from '@/components/ListPage';
-import { categories, getCategory, skillsInCategory } from '@/lib/content';
+import { categories, getCategory, skillsInCategory, HEYGRC_LINE, HEYGRC_LIST_PATHS } from '@/lib/content';
 import { firstSentence } from '@/lib/text';
 import { pageMeta } from '@/lib/seo';
 
@@ -35,6 +36,7 @@ export default async function CategoryPage({ params }: Props) {
       crumbs={[{ name: 'Skills', href: '/skills/' }, { name: c.label, href: `/category/${c.slug}/` }]}
       list={list}
       path={`/category/${c.slug}/`}
+      after={HEYGRC_LIST_PATHS.includes(`/category/${c.slug}/`) ? <HeygrcCard body={HEYGRC_LINE} className="list-card" /> : undefined}
     />
   );
 }

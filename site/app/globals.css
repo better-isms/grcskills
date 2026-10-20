@@ -167,6 +167,13 @@ a.tag:hover { background: #e2e7ee; }
 .card p { margin: 0; }
 .card .quiet { font-size: 13px; color: var(--muted-2); margin-top: 10px; }
 .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+/* heyGRC, from the same team: one small touch of its violet, nothing more. */
+.heygrc { border-left: 4px solid #4D4CD7; }
+.heygrc p { color: var(--ink-2); font-size: 15px; }
+.heygrc .quiet { font-size: 13px; color: var(--muted-2); }
+.list-card { max-width: 720px; margin-top: 40px; }
+.heygrc-band { border-left: 4px solid #4D4CD7; padding-left: 28px; }
+.heygrc-band p.two-jobs { margin-top: 12px; font-size: 15px; color: var(--muted-2); }
 
 .picker .tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
 .tab { border: 1px solid var(--line); background: transparent; border-radius: 999px; padding: 6px 14px; font-size: 13.5px; color: var(--muted); }
@@ -268,6 +275,7 @@ a.tag:hover { background: #e2e7ee; }
   .prose h2 { font-size: 23px; margin-top: 36px; }
   .ft { margin-top: 88px; }
   .ft .by { margin-left: 0; width: 100%; }
+  .heygrc-band { padding-left: 18px; }
   .pills legend { float: none; width: 100%; margin-bottom: 2px; }
 }
 

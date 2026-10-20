@@ -81,6 +81,22 @@ export const featuredSkill = () => getSkill(FEATURED_SLUG) ?? skills[0];
 
 export const copilotUrl = (slug: string) => `https://www.ismscopilot.com/mcp?ref=grcskills-${slug}`;
 export const COPILOT_FOOTER_URL = 'https://www.ismscopilot.com/?ref=grcskills-footer';
+
+// heyGRC, from the same team: keeps a control true on each pull request after
+// a skill has run. heyGRC measures by page path, so the link carries no query
+// string (founder decisions X3 and X4, 2026-10-20).
+export const HEYGRC_URL = 'https://heygrc.com/for/grc-teams';
+// The only skill pages that show the heyGRC card: the ones whose output lives
+// in pull requests. Any other skill page shows none.
+export const HEYGRC_SKILLS: Record<string, string> = {
+  'secure-development-policy-from-pipeline': 'Your policy now says how code ships. heyGRC checks each pull request against the frameworks you pick and cites the control it touches, so the policy stays true after today.',
+  'change-management-evidence-sampling': 'Your sample shows how past changes went. heyGRC checks each pull request as it opens and leaves the evidence on it, so the next sample starts from records.',
+  'policy-gap-review-against-practice': 'Once policy and practice match, keep them matched. heyGRC checks each pull request and gives you the evidence, with the control it touches cited.',
+  'grc-setup-review': 'Your review names what to fix. For the controls that live in code, heyGRC checks each pull request and gives you the evidence.',
+};
+// List pages that show the same card, by path.
+export const HEYGRC_LIST_PATHS = ['/category/evidence/', '/category/policies/', '/framework/cra/'];
+export const HEYGRC_LINE = 'Your policy says every change is reviewed. heyGRC checks each pull request and gives you the evidence, with the control it touches cited.';
 export const githubUrl = (repoPath: string) => `${meta.repoUrl}/blob/${meta.tag}/${repoPath}`;
 export const githubFolderUrl = (repoPath: string) => `${meta.repoUrl}/tree/${meta.tag}/${repoPath.replace(/\/SKILL\.md$/, '')}`;
 export const relatedTo = (s: Skill) => s.related.map(getSkill).filter((x): x is Skill => Boolean(x));
