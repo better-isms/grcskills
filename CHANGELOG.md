@@ -4,7 +4,10 @@ Release tags are `vYYYY.MM.DD[.n]`. Installers and the Claude Code plugin consum
 
 ## Unreleased
 
-- grcskills.com shows a one-line heyGRC bar above the menu on every page ("From the grcskills team: heyGRC checks each pull request against your frameworks. See how"; a shorter line on phones). A visitor can close it and it stays closed: one flag in the browser's localStorage, written only on that click, nothing sent anywhere. It replaces the footer heyGRC line; the home band and the skill and list page cards stay.
+## v2026.10.20.1
+
+- grcskills.com shows a one-line heyGRC bar above the menu on every page ("From the grcskills team: heyGRC checks each pull request against your frameworks. See how"; a shorter line on phones). A visitor can close it and it stays closed: one flag in the browser's localStorage, written only on that click, nothing sent anywhere. It replaces the footer heyGRC line; the home band and the skill and list page cards stay (#9).
+- Every install pin moves to `v2026.10.20.1`.
 
 ## v2026.10.20
 
