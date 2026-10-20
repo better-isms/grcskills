@@ -32,7 +32,7 @@ test('every skill, reference, author, category and framework page exists', opts,
   for (const a of content.authors.filter((x) => x.skills.length)) assert.ok(fs.existsSync(path.join(out, a.slug, 'index.html')), `author ${a.slug}`);
   for (const c of content.categories.filter((x) => x.count)) assert.ok(fs.existsSync(path.join(out, 'category', c.slug, 'index.html')), `category ${c.slug}`);
   for (const f of content.frameworks.filter((x) => x.count)) assert.ok(fs.existsSync(path.join(out, 'framework', f.tag, 'index.html')), `framework ${f.tag}`);
-  for (const p of ['index.html', 'skills/index.html', 'contribute/index.html', '404.html', 'llms.txt', 'sitemap.xml', 'robots.txt', 'build.json', 'search-index.json', 'og.png', 'favicon.ico', 'favicon.svg']) {
+  for (const p of ['index.html', 'skills/index.html', 'contribute/index.html', 'privacy/index.html', '404.html', 'llms.txt', 'sitemap.xml', 'robots.txt', 'build.json', 'search-index.json', 'og.png', 'favicon.ico', 'favicon.svg']) {
     assert.ok(fs.existsSync(path.join(out, p)), p);
   }
   assert.equal(files(out, (p) => p.includes(`${path.sep}_none${path.sep}`)).length, 0, 'placeholder pages removed');
@@ -318,4 +318,11 @@ test('top bar: copy at most 90 characters with the link, no em dash; topbar.js s
   assert.equal(js.match(/localStorage\.setItem/g)?.length, 1, 'one write, the dismissal flag');
   assert.doesNotMatch(js, /fetch|XMLHttpRequest|sendBeacon|document\.cookie/, 'no network, no cookies');
   assert.ok(src.includes(`long: '${TOPBAR_LONG}'`) && src.includes(`short: '${TOPBAR_SHORT}'`), 'test copy matches lib/content.ts');
+});
+
+test('privacy page: names cookieless Vercel Web Analytics and is linked from the footer', opts, () => {
+  const page = read('privacy/index.html');
+  assert.ok(page.includes('Vercel Web Analytics, which does not use cookies'));
+  assert.ok(page.includes('https://trust.ismscopilot.com/privacy-policy'));
+  assert.ok(read('index.html').includes('href="/privacy/"'));
 });
