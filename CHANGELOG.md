@@ -4,6 +4,8 @@ Release tags are `vYYYY.MM.DD[.n]`. Installers and the Claude Code plugin consum
 
 ## Unreleased
 
+- grcskills.com/faq/: 29 questions and answers (what it is, who it is for, who wrote it, cost, frameworks, agents, install, client data and safety, stale evidence, policy changes, traceability, ISMS Copilot, updates, contributing), many from questions asked under the launch post. One source in `site/lib/faq.ts` feeds the page and its FAQPage JSON-LD; a test checks they match. FAQ added to the menu, footer, sitemap and llms.txt; `faq` is a reserved author slug.
+
 ## v2026.10.20.1
 
 - grcskills.com shows a one-line heyGRC bar above the menu on every page ("From the grcskills team: heyGRC checks each pull request against your frameworks. See how"; a shorter line on phones). A visitor can close it and it stays closed: one flag in the browser's localStorage, written only on that click, nothing sent anywhere. It replaces the footer heyGRC line; the home band and the skill and list page cards stay (#9).
