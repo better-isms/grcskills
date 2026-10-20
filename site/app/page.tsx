@@ -4,7 +4,7 @@ import CopyButton from '@/components/CopyButton';
 import JsonLd from '@/components/JsonLd';
 import SearchBox from '@/components/SearchBox';
 import SkillCard from '@/components/SkillCard';
-import { categories, featuredSkill, meta, SITE_URL, skills, toRow } from '@/lib/content';
+import { categories, featuredSkill, HEYGRC_LINE, HEYGRC_URL, meta, SITE_URL, skills, toRow } from '@/lib/content';
 import { HOME_DESCRIPTION, HOME_H1, HOME_SUBLINE, HOME_TITLE, pageMeta } from '@/lib/seo';
 
 export const metadata: Metadata = pageMeta({
@@ -49,6 +49,15 @@ export default function Home() {
           </ul>
         </div>
         {featured && <SkillCard skill={featured} />}
+      </section>
+
+      <section className="section close heygrc-band" aria-labelledby="after">
+        <div>
+          <h2 id="after">After the skill: evidence on each pull request</h2>
+          <p>{HEYGRC_LINE}</p>
+          <p className="two-jobs">Also from us. ISMS Copilot answers framework questions while a skill runs. heyGRC reviews each pull request after it, against the frameworks you pick.</p>
+        </div>
+        <a className="b2" href={HEYGRC_URL}>heyGRC for GRC teams</a>
       </section>
 
       <section className="section find" aria-labelledby="find">

@@ -3,7 +3,8 @@ import JsonLd from './JsonLd';
 import Row from './Row';
 import { SITE_URL, toRow, type Skill } from '@/lib/content';
 
-export default function ListPage({ title, lead, intro, crumbs, list, path, listHeading }: { title: string; lead: React.ReactNode; intro?: string; crumbs: Crumb[]; list: Skill[]; path: string; listHeading?: string }) {
+// `after` renders below the list (the heyGRC card on a few list pages).
+export default function ListPage({ title, lead, intro, crumbs, list, path, listHeading, after }: { title: string; lead: React.ReactNode; intro?: string; crumbs: Crumb[]; list: Skill[]; path: string; listHeading?: string; after?: React.ReactNode }) {
   return (
     <div className="page">
       <Breadcrumbs items={crumbs} />
@@ -18,6 +19,7 @@ export default function ListPage({ title, lead, intro, crumbs, list, path, listH
       ) : (
         <p className="empty">No skills here yet.</p>
       )}
+      {after}
       <JsonLd
         data={{
           '@context': 'https://schema.org',

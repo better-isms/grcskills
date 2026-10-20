@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import HeygrcCard from '@/components/HeygrcCard';
 import ListPage from '@/components/ListPage';
-import { frameworks, getFramework, skillsWithFramework } from '@/lib/content';
+import { frameworks, getFramework, skillsWithFramework, HEYGRC_LINE, HEYGRC_LIST_PATHS } from '@/lib/content';
 import { firstSentence } from '@/lib/text';
 import { pageMeta } from '@/lib/seo';
 
@@ -40,6 +41,7 @@ export default async function FrameworkPage({ params }: Props) {
       crumbs={[{ name: 'Skills', href: '/skills/' }, { name: f.label, href: `/framework/${f.tag}/` }]}
       list={list}
       path={`/framework/${f.tag}/`}
+      after={HEYGRC_LIST_PATHS.includes(`/framework/${f.tag}/`) ? <HeygrcCard body={HEYGRC_LINE} className="list-card" /> : undefined}
     />
   );
 }

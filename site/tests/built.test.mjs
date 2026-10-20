@@ -239,3 +239,43 @@ test('vercel.json CSP: strict script-src, no unsafe-inline or unsafe-eval for sc
   assert.equal(all.find((h) => h.key === 'X-Content-Type-Options').value, 'nosniff');
   assert.equal(all.find((h) => h.key === 'Referrer-Policy').value, 'strict-origin-when-cross-origin');
 });
+
+// heyGRC cross-promotion (founder decisions X3 and X4, 2026-10-20).
+const HEYGRC = 'https://heygrc.com/for/grc-teams';
+const HEYGRC_SKILLS = ['secure-development-policy-from-pipeline', 'change-management-evidence-sampling', 'policy-gap-review-against-practice', 'grc-setup-review'];
+const HEYGRC_LISTS = ['category/evidence/index.html', 'category/policies/index.html', 'framework/cra/index.html'];
+const heygrcCard = (html) => /<section class="card heygrc[^"]*"/.test(html);
+
+test('heyGRC: home band, footer on every page, card on exactly 4 skill pages and 3 list pages', opts, () => {
+  const home = read('index.html');
+  const band = home.match(/<section class="section close heygrc-band"[\s\S]*?<\/section>/)?.[0];
+  assert.ok(band, 'home band');
+  assert.ok(band.includes(`href="${HEYGRC}"`), 'home band links to heyGRC');
+  assert.ok(home.indexOf('id="back"') < home.indexOf('heygrc-band') && home.indexOf('heygrc-band') < home.indexOf('id="find"'), 'band sits after What comes back');
+  for (const rel of pages()) {
+    const ft = read(rel).match(/<footer class="ft">[\s\S]*?<\/footer>/)?.[0] ?? '';
+    assert.ok(ft.includes(`<a class="also" href="${HEYGRC}">Also from us: heyGRC`), `${rel}: footer link`);
+    assert.ok(ft.includes('>by ISMS Copilot</a>'), `${rel}: Copilot footer link unchanged`);
+  }
+  for (const s of content.skills) {
+    const html = read(`skill/${s.slug}/index.html`);
+    assert.equal(heygrcCard(html), HEYGRC_SKILLS.includes(s.slug), `${s.slug}: heyGRC card only on the listed skills`);
+    if (HEYGRC_SKILLS.includes(s.slug)) {
+      const aside = html.match(/<aside class="aside"[\s\S]*?<\/aside>/)?.[0] ?? '';
+      assert.ok(aside.indexOf('id="install"') < aside.indexOf('id="heygrc"'), `${s.slug}: card under the Install card`);
+    }
+  }
+  for (const rel of pages().filter((r) => r.startsWith('category/') || r.startsWith('framework/'))) {
+    assert.equal(heygrcCard(read(rel)), HEYGRC_LISTS.includes(rel), `${rel}: heyGRC card only on the listed pages`);
+  }
+});
+
+test('heyGRC links carry no query string or fragment, and no image loads from heygrc.com', opts, () => {
+  for (const f of htmlFiles()) {
+    const html = fs.readFileSync(f, 'utf8');
+    for (const m of html.matchAll(/(?:href|src)="(https?:\/\/[^"]*heygrc\.com[^"]*)"/g)) {
+      assert.equal(decode(m[1]), HEYGRC, `${path.relative(out, f)}: ${m[1]}`);
+    }
+    assert.doesNotMatch(html, /src="https?:\/\/[^"]*heygrc\.com/, `${path.relative(out, f)}: image from heygrc.com`);
+  }
+});
