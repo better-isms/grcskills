@@ -58,7 +58,7 @@ export default function Report() {
 
           <h2 id="send">How to send it</h2>
           <p>Email <a href={MAILTO}>{REPORT_EMAIL}</a>. The link opens a message with the fields above already laid out. If you prefer GitHub, you can send the same information privately through a <a href={`${meta.repoUrl}/security/advisories/new`}>private GitHub advisory</a>; please do not put personal details in a public issue.</p>
-          <p>We confirm that we received your notice, then review it promptly, carefully and objectively, and decide whether to act on it (for example by correcting or removing the content and cutting a new release). We tell you our decision without undue delay, with the reasons and how you can contest it. We may also tell the contributor what we removed and why.</p>
+          <p>We review each notice promptly, carefully and objectively, and decide whether to act on it (for example by correcting or removing the content and cutting a new release). If you give us your email address, we confirm that we received your notice and tell you our decision without undue delay, with the reasons and how you can contest it. We may also tell the contributor what we removed and why.</p>
         </div>
       </section>
 

@@ -373,5 +373,5 @@ test('report: DSA notice page is built, linked, in the sitemap, with a CRLF pref
   assert.match(html, /href="mailto:privacy@ismscopilot\.com\?subject=[^"]+&amp;body=[^"]*%0D%0A/, 'prefilled mailto with CRLF line breaks');
   assert.ok(read('index.html').includes('href="/report/"'), 'footer links the report page');
   assert.ok(read('sitemap.xml').includes('<loc>https://grcskills.com/report/</loc>'), 'report in sitemap');
-  assert.doesNotMatch(html, /—/, 'no em dash on report');
+  assert.doesNotMatch(html, /\u2014/, 'no em dash on report');
 });
