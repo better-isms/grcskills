@@ -4,6 +4,8 @@ Release tags are `vYYYY.MM.DD[.n]`. Installers and the Claude Code plugin consum
 
 ## Unreleased
 
+- grcskills.com/report/: how to report illegal content or a copyright issue (EU Digital Services Act Art. 16 notices, Art. 12 point of contact), with a prefilled email and a private GitHub advisory as the two channels. Linked from the footer, listed in the sitemap, mentioned in the README; `report` is a reserved author slug.
+
 ## v2026.10.20.3
 
 - ISMS Copilot, the GRC specialist your AI calls, gets its own place: a home band after "What comes back" with the connect URL and a copy button, a "Connect your AI" menu link, a clearer note under "Run with ISMS Copilot" on every skill page, and an FAQ answer on how to connect. Each link carries its own `ref=grcskills-*`. The heyGRC bar, home band and cards are unchanged (#14).

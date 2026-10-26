@@ -124,6 +124,8 @@ assets/                     README banner, social preview, demo run
 
 Authors can ask for a correction to their profile or skill, or for removal, by opening an issue (or a private security advisory if it is sensitive). Maintainers act on it promptly; a removed author's profile and skills leave the next release.
 
+To report illegal content or a copyright issue (EU Digital Services Act notices included), see [grcskills.com/report](https://grcskills.com/report/): it lists what to include and how to send it privately.
+
 ## Credits and notices
 
 By [ISMS Copilot](https://www.ismscopilot.com/mcp?ref=grcskills-readme), maintained by Better ISMS. MIT licensed ([LICENSE](LICENSE)); each skill credits its author.
