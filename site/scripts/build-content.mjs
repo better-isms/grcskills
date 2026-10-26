@@ -246,7 +246,7 @@ export async function main() {
   write('public/build.json', `${JSON.stringify({ sha, tag, builtAt: meta.builtAt, skills: skills.length }, null, 2)}\n`);
 
   const urls = [
-    ['/', allDates], ['/skills/', allDates], ['/contribute/', allDates], ['/faq/', allDates],
+    ['/', allDates], ['/skills/', allDates], ['/contribute/', allDates], ['/faq/', allDates], ['/report/', allDates],
     ...skills.map((s) => [`/skill/${s.slug}/`, s.dateModified]),
     ...skills.flatMap((s) => s.references.map((r) => [`/skill/${s.slug}/${r.slug}/`, s.dateModified])),
     ...authors.filter((a) => a.skills.length).map((a) => [`/${a.slug}/`, a.dateModified]),

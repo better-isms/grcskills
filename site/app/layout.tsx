@@ -87,6 +87,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Link href="/skills/">Skills</Link>
               <Link href="/contribute/">Contribute</Link>
               <Link href="/faq/">FAQ</Link>
+              <Link href="/report/">Report content</Link>
               <a href={meta.repoUrl}>GitHub</a>
               <a href="/llms.txt">llms.txt</a>
             </nav>

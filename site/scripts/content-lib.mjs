@@ -59,7 +59,7 @@ export const FRAMEWORK_LABELS = {
 // Author slugs become top-level routes (/<author-slug>/), so they must not
 // shadow a site route or a generated file.
 export const RESERVED_SLUGS = new Set([
-  'skill', 'skills', 'category', 'categories', 'framework', 'frameworks', 'contribute', 'faq', 'about',
+  'skill', 'skills', 'category', 'categories', 'framework', 'frameworks', 'contribute', 'faq', 'report', 'about',
   'search', 'api', 'llms', 'sitemap', 'robots', 'build', 'og', 'favicon', 'inline', 'static',
   'assets', 'fonts', 'legal', 'privacy', 'terms', 'security', 'admin', 'login', 'index', '404',
 ]);
