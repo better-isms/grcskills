@@ -16,18 +16,18 @@ const BODY = [
   '',
   'Why the content is illegal or infringes your rights (for copyright: the work and the rights you hold):',
   '',
-  'Your name:',
-  'Your email:',
+  'Your name (optional for notices about child sexual abuse offences):',
+  'Your email (optional for notices about child sexual abuse offences):',
   '',
   'I confirm, in good faith, that the information and allegations in this notice are accurate and complete.',
   '',
-].join('\n');
+].join('\r\n');
 const MAILTO = `mailto:${REPORT_EMAIL}?subject=${encodeURIComponent(SUBJECT)}&body=${encodeURIComponent(BODY)}`;
 
 const FIELDS = [
   'The exact URL of the content (a skill page, an author page, or a file on GitHub).',
   'A clear explanation of why you believe the content is illegal or infringes your rights. For copyright, identify the work and the rights you hold.',
-  'Your name and email address.',
+  'Your name and email address. You may leave these out if your notice concerns child sexual abuse material or another offence covered by Articles 3 to 7 of Directive 2011/93/EU.',
   'A statement that you believe, in good faith, that the information and allegations in your notice are accurate and complete.',
 ];
 
@@ -58,7 +58,7 @@ export default function Report() {
 
           <h2 id="send">How to send it</h2>
           <p>Email <a href={MAILTO}>{REPORT_EMAIL}</a>. The link opens a message with the fields above already laid out. If you prefer GitHub, you can send the same information privately through a <a href={`${meta.repoUrl}/security/advisories/new`}>private GitHub advisory</a>; please do not put personal details in a public issue.</p>
-          <p>We review each notice, act on it (for example by correcting or removing the content and cutting a new release), and reply to you with our decision. We may also tell the contributor what we removed and why.</p>
+          <p>We confirm that we received your notice, then review it promptly, carefully and objectively, and decide whether to act on it (for example by correcting or removing the content and cutting a new release). We tell you our decision without undue delay, with the reasons and how you can contest it. We may also tell the contributor what we removed and why.</p>
         </div>
       </section>
 

@@ -364,3 +364,14 @@ test('top bar: copy at most 90 characters with the link, no em dash; topbar.js s
   assert.doesNotMatch(js, /fetch|XMLHttpRequest|sendBeacon|document\.cookie/, 'no network, no cookies');
   assert.ok(src.includes(`long: '${TOPBAR_LONG}'`) && src.includes(`short: '${TOPBAR_SHORT}'`), 'test copy matches lib/content.ts');
 });
+
+test('report: DSA notice page is built, linked, in the sitemap, with a CRLF prefilled mailto', opts, () => {
+  const html = read('report/index.html');
+  for (const field of ['exact URL', 'Your name and email address', 'good faith', 'Article 16', 'Article 12', 'Directive 2011/93/EU', 'how you can contest it']) {
+    assert.ok(html.includes(field), `report page mentions ${field}`);
+  }
+  assert.match(html, /href="mailto:privacy@ismscopilot\.com\?subject=[^"]+&amp;body=[^"]*%0D%0A/, 'prefilled mailto with CRLF line breaks');
+  assert.ok(read('index.html').includes('href="/report/"'), 'footer links the report page');
+  assert.ok(read('sitemap.xml').includes('<loc>https://grcskills.com/report/</loc>'), 'report in sitemap');
+  assert.doesNotMatch(html, /—/, 'no em dash on report');
+});
