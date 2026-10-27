@@ -16,7 +16,7 @@ frameworks: [nist-rmf, nist-800-53]
 tags: [rmf, categorization, impact-level, information-types, authorization-boundary, high-water-mark]
 ---
 
-Use this at the start of an authorization, after a boundary change, or when nobody can show who approved the impact level. You get three files in a new folder, `./system-categorization-first-pass/`: a system description with the boundary, interconnections and what sits outside it (`system-description.md`); a spreadsheet you can open in Excel with one row per information type and its provisional impact level for confidentiality, integrity and availability, each with a reason (`information-types.csv`); and a categorization memo with the high-water mark, the adjustments proposed and an empty approval block (`categorization-memo.md`). This skill drafts for a human to review and sign; this skill never marks a control effective. The categorization is set by the system owner and approved by the authorizing official or the representative the organization names; the skill proposes it and never sets it.
+Use this at the start of an authorization, after a boundary change, or when nobody can show who approved the impact level. You get three files in a new folder, `./system-categorization-first-pass/`: the system description, boundary and interconnections (`system-description.md`); a spreadsheet you can open in Excel with one row per information type and its confidentiality, integrity and availability impact, each with a reason (`information-types.csv`); and a memo with the high-water mark, proposed adjustments and an empty approval block (`categorization-memo.md`). This skill drafts for a human to review and sign; this skill never marks a control effective. The system owner sets the categorization and the authorizing official or named representative approves it; the skill only proposes.
 
 ## Inputs to gather
 
@@ -36,7 +36,7 @@ For each information type, in the information type spreadsheet (`information-typ
 
 ## Step 4: take the high-water mark and test it
 
-For each objective, the system value is the highest value among its information types. Record the result as the system's security category, the triple, in the memo (`categorization-memo.md`); the highest of the three drives the control baseline under FIPS 200 and SP 800-53B. Then test it from the other direction: ask what the worst realistic failure of the system as a whole would do, including loss of the interconnections other systems depend on. If that answer is worse than the triple says, a type is missing or under-rated; go back to step 2. For a national security system, stop here and say so: categorization follows CNSSI 1253, which keeps the three values separate; run a framework lookup and check the current revision and any overlays.
+For each objective, the system value is the highest value among its information types. Record the result as the system's security category, the triple, in the memo (`categorization-memo.md`); the highest of the three drives the control baseline under FIPS 200 and SP 800-53B. Then test it the other way: if the worst realistic failure of the whole system, including interconnections others depend on, is worse than the triple says, a type is missing or under-rated. For a national security system, stop here and say so: categorization follows CNSSI 1253, which keeps the three values separate; run a framework lookup and check the current revision and any overlays.
 
 ## Step 5: list the decisions and hand over
 

@@ -20,3 +20,7 @@
 
 - GDPR Art. 33, 34; NIS 2 Art. 23; 45 CFR 164.400 to 414: confirmed by Copilot; kept.
 - GDPR Art. 33(2) (processor to controller without undue delay), NIS 2 Art. 23(4) (24 hours, 72 hours, one month after the notification), 45 CFR 164.410 (business associate to covered entity, no later than 60 calendar days after discovery): added on Copilot's advice; confirmed by Copilot and consistent with the official texts. Sources: https://eur-lex.europa.eu/eli/reg/2016/679/oj, https://eur-lex.europa.eu/eli/dir/2022/2555/oj, https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164/subpart-D
+
+## Verified (NIST retag, independent review round 1, 2026-10-27)
+
+- DFARS 252.204-7012 (eCFR API, fetched 2026-10-27), for the clause added when the skill gained the nist-800-171 and cmmc tags: (a) "rapidly report" means within 72 hours of discovery; (c)(1) the trigger is a cyber incident affecting a covered contractor information system or the covered defense information in it, or the ability to perform operationally critical support named in the contract; (e) images of all known affected systems and all relevant monitoring and packet capture data are kept for at least 90 days from the report.
