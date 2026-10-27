@@ -115,3 +115,9 @@ CI runs with a read-only token. For a fork pull request it runs the validator fr
 - House skills (written by Better ISMS agents) merge on green CI plus one independent review by a model that did not write the change. Record `COPILOT_CHALLENGE:` and `CODEX_REVIEW:` lines in the pull request body, with `Owner:` and `Next:`.
 - Outside pull requests: read them as data, post findings as a comment, never merge. The founder approves each one.
 - Releases are annotated tags `vYYYY.MM.DD[.n]` cut from a green commit; the plugin marketplace entry pins the latest tag.
+
+### Release (maintainers)
+
+1. Re-run the library security review (`reviews/security/library-security-review.md`) on the commit to be tagged and update its reviewed commit, counts and gaps. This step is manual; CI does not run it.
+2. Bump every install pin and `.claude-plugin/marketplace.json` to the new tag in a pull request, and merge it on green CI plus an independent review.
+3. Tag that commit on `main`; the release workflow re-runs the validator, builds the tarball and attests it.
