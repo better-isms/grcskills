@@ -11,7 +11,7 @@ description: |
   writes a 30-day plan to files in a grc-setup-review folder. Read-only on everything else.
 summary: "The 10 grcskills that fit your setup, an audit of what is broken, duplicated or missing, and a 30-day plan, written to files."
 category: gap-readiness
-frameworks: [general, iso27001, soc2, gdpr, nis2, dora, iso42001, eu-ai-act]
+frameworks: [general, iso27001, soc2, gdpr, nis2, dora, iso42001, eu-ai-act, nist-800-53, nist-rmf, nist-800-171, cmmc]
 tags: [onboarding, prioritisation, planning, readiness]
 ---
 

@@ -49,6 +49,8 @@ export const FRAMEWORK_LABELS = {
   dora: 'DORA',
   'eu-ai-act': 'EU AI Act',
   cra: 'Cyber Resilience Act',
+  'nist-800-53': 'NIST SP 800-53',
+  'nist-rmf': 'NIST RMF',
   'nist-800-171': 'NIST SP 800-171',
   cmmc: 'CMMC',
   hipaa: 'HIPAA',
@@ -402,9 +404,12 @@ export function loadContent(repoRoot, { gitRef = 'main' } = {}) {
   const categories = Object.entries(CATEGORIES).map(([slug, label]) => ({
     slug, label, count: skills.filter((s) => s.category === slug).length,
   }));
+  // A framework tag no skill carries yet stays valid for contributors but is
+  // left out of the site (list pages, filters, framework pages, sitemap,
+  // og images), so the site never shows an empty shelf.
   const frameworks = FRAMEWORKS.map((tag) => ({
     tag, label: FRAMEWORK_LABELS[tag] ?? tag, count: skills.filter((s) => s.frameworks.includes(tag)).length,
-  }));
+  })).filter((f) => f.count > 0);
 
   return { authors, skills, categories, frameworks };
 }

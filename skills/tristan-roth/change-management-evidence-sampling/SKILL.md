@@ -11,7 +11,7 @@ description: |
   the exceptions as facts.
 summary: "A change management test before the auditor runs one: the production change population, sampled approvals and segregation of duties gaps."
 category: evidence
-frameworks: [soc2, iso27001]
+frameworks: [soc2, iso27001, nist-800-53, nist-800-171, cmmc]
 tags: [change-management, sampling, segregation-of-duties, ci-cd, pull-requests]
 ---
 

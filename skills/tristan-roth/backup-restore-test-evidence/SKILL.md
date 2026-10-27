@@ -10,7 +10,7 @@ description: |
   produces a signed-off test record with the issues found and their owners.
 summary: "A restore test plan with success criteria set in advance, then a write-up that proves backups recover within your RTO and RPO."
 category: evidence
-frameworks: [iso27001, soc2, dora, hipaa]
+frameworks: [iso27001, soc2, dora, hipaa, nist-800-53]
 tags: [backup, restore-test, disaster-recovery, rto, rpo]
 ---
 

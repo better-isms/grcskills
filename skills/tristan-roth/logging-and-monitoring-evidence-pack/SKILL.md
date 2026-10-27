@@ -10,7 +10,7 @@ description: |
   writes an evidence pack with the gaps stated plainly.
 summary: "A logging and monitoring evidence pack: log coverage and retention per system, the alert rules that matter, and proof an alert was handled."
 category: evidence
-frameworks: [iso27001, soc2, nis2]
+frameworks: [iso27001, soc2, nis2, nist-800-53, nist-800-171, cmmc]
 tags: [logging, monitoring, alerting, siem, detection]
 ---
 

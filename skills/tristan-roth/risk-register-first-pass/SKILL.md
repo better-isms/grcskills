@@ -10,7 +10,7 @@ description: |
   treatments, and writes a CSV register plus a notes file of assumptions and questions for owners.
 summary: "A first risk register of 20 to 40 company-specific scenarios, drafted from your own material, with owners and scores to confirm."
 category: risk
-frameworks: [iso27001, soc2, nis2, dora, general]
+frameworks: [iso27001, soc2, nis2, dora, general, nist-rmf, nist-800-53, nist-800-171]
 tags: [risk-assessment, risk-register, risk-treatment]
 ---
 
