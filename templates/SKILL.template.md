@@ -41,8 +41,9 @@ Template notes (delete this comment block in your copy):
   sampled and the source each was traced to, what was changed or rejected, one item the draft did
   not flag and what checking it showed (even "no issue"), decision, date and draft version
   reviewed. Add the rule "NEVER fill in the Review record; the approver completes it." When the
-  signed artefact is a spreadsheet, the pair goes in its companion notes file, which names the
-  spreadsheet and version approved.
+  signed artefact is a spreadsheet, the pair goes in its companion notes file, which says it
+  travels with that spreadsheet and whose Review record names the exact spreadsheet file and the
+  version or date approved.
 - Replace every <angle-bracket hint>, then run: node tools/validate.mjs
 -->
 

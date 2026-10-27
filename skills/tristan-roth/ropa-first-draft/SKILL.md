@@ -17,7 +17,7 @@ tags: [ropa, records-of-processing, data-mapping, legal-basis, retention]
 
 Use this when there is no record, when the record is a system inventory with a privacy heading, or after new products, markets or vendors changed the processing. You get two or three files in a new folder, `./ropa-first-draft/`: a spreadsheet you can open in Excel listing everything the company does with personal data for its own purposes, one row per activity with its data, people, legal basis and retention (`ropa-controller.csv`); a second spreadsheet for the data the company handles on behalf of customers, only if it does (`ropa-processor.csv`); and a short note of open questions per team (`ropa-notes.md`). This skill drafts for a human to review and sign; this skill never marks a control effective. Legal bases and retention periods are decisions for the controller's privacy lead or counsel; the agent proposes them.
 
-End `ropa-notes.md` with `## Not checked`: what this run did not read or could not open, what it assumed and what it did not verify, specific to this run. Then add a blank `## Review record` for the approver: reviewer role and competence basis, items sampled and the source each was traced to, what was changed or rejected, one item the draft did not flag and what checking it showed, decision, date and draft version reviewed. `ropa-notes.md` is the review companion of the spreadsheets and travels with them; the Review record names each file and the version or date approved.
+End `ropa-notes.md` with `## Not checked`: what this run did not read or could not open, what it assumed and did not verify, specific to this run. Then add a blank `## Review record` for the approver: reviewer role and competence basis, items sampled and the source each was traced to, what was changed or rejected, one item the draft did not flag and what checking it showed, decision, date and draft version reviewed. `ropa-notes.md` is the review companion of `ropa-controller.csv` (and `ropa-processor.csv` when written) and travels with them; the Review record names each of those files and the version or date approved.
 
 ## Inputs to gather
 
@@ -50,7 +50,7 @@ If the company processes personal data for customers keep a separate record, the
 - Every purpose in the privacy notice appears in the record and the reverse; list mismatches.
 - Every transfer marked "unknown" becomes an open question with an owner and a date; no transfer should continue past the review without a documented mechanism.
 - Activities with special category data, large-scale monitoring, profiling or new technology go on a list of DPIA screening candidates, each with the trigger that put it there.
-- Write the open questions per owner role in the notes file (`ropa-notes.md`), so each team confirms in one short session. Name the role that maintains the record and a review date per team; the supervisory authority can ask for it at any time.
+- Write the open questions per owner role in the notes file (`ropa-notes.md`), so each team confirms in one session. Name the role that maintains the record and a review date per team; the supervisory authority can ask for it at any time.
 
 The general exemption for organisations under 250 employees is narrow: it does not apply when processing is more than occasional, carries risk, or involves special category data or criminal offence data.
 
