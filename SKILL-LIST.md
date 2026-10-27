@@ -32,7 +32,7 @@ Excluded sources: any Probo skill text, any internal audit skill or client engag
 | 11 | risk-to-control-traceability-check | Risk to control traceability check | Check that every treated risk points to controls and every applicable control traces back to a risk or obligation | iso27001, iso42001 | PL iso-27001-risk-assessment-prompts | written |
 | 12 | privacy-and-ai-control-applicability | Privacy and AI control applicability | Extend the applicability statement with the additional privacy or AI management controls and their justifications | iso27701, iso42001 | PL iso-27701-privacy-management-prompt-library, iso-42001-ai-management-prompt-library | written |
 
-## risk (6)
+## risk (7)
 
 | # | Slug | Title | Job | Frameworks | Source | Status |
 |---|---|---|---|---|---|---|
@@ -42,8 +42,9 @@ Excluded sources: any Probo skill text, any internal audit skill or client engag
 | 16 | risk-acceptance-memo | Risk acceptance memo | Draft the one-page decision record a risk owner signs to accept a residual risk, with expiry and conditions | general, iso27001, dora | PL iso-27001-risk-assessment-prompts | written |
 | 17 | risk-register-hygiene-review | Risk register hygiene review | Find stale, duplicated, unowned and mis-scored risks in an existing register and propose fixes | general, iso27001, soc2 | UC risk-assessment-iso-27001; PL iso-27001-audit-preparation-prompts | written |
 | 18 | ict-risk-framework-check | ICT risk framework check | Check a financial entity's ICT risk management setup against its DORA obligations and list the gaps | dora | PL dora-compliance-prompt-library; UC risk-assessment-dora | written |
+| 62 | system-categorization-first-pass | System categorization first pass | Draft the RMF categorization: boundary, information types, impact levels with reasons and the high-water mark, for a named official to approve | nist-rmf, nist-800-53 | Launch post feedback (added after launch) | written |
 
-## audit (7)
+## audit (8)
 
 | # | Slug | Title | Job | Frameworks | Source | Status |
 |---|---|---|---|---|---|---|
@@ -54,6 +55,7 @@ Excluded sources: any Probo skill text, any internal audit skill or client engag
 | 23 | nonconformity-root-cause-and-corrective-action | Nonconformity root cause and corrective action | Answer an audit finding with correction, root cause, extent check, actions and an effectiveness check | iso27001, iso27701, iso42001, soc2, general | PL iso-27001-audit-preparation-prompts (post-audit prompts) | written |
 | 24 | management-review-pack | Management review pack | Assemble the inputs, metrics and decisions leadership needs for the management review, and draft the minutes | iso27001, iso27701, iso42001 | PL iso-27001-audit-preparation-prompts (management system evidence) | written |
 | 61 | ai-draft-challenge-review | AI draft challenge review | Challenge an AI-drafted GRC artefact before signing: trace samples to sources, test an unflagged item, fill the Review record | general, iso27001, soc2, iso42001 | Launch post feedback (added after launch) | written |
+| 64 | poam-first-draft | Plan of action and milestones draft | Turn findings and scans into a plan of action with dated milestones, owners and flagged vague or overdue items | nist-800-53, nist-rmf, nist-800-171, cmmc | Launch post feedback (added after launch) | written |
 
 ## evidence (6)
 
@@ -77,7 +79,7 @@ Excluded sources: any Probo skill text, any internal audit skill or client engag
 | 35 | subprocessor-register-update | Subprocessor register update | Keep the subprocessor list complete and current, with locations, transfers and customer notice duties | gdpr, iso27701 | PL gdpr-prompt-library-overview, iso-27701-privacy-management-prompt-library | written |
 | 36 | ict-third-party-register | ICT third-party register | Build or refresh the register of ICT third-party arrangements a financial entity keeps under DORA | dora | PL dora-compliance-prompt-library | written |
 
-## policies (6)
+## policies (7)
 
 | # | Slug | Title | Job | Frameworks | Source | Status |
 |---|---|---|---|---|---|---|
@@ -87,6 +89,7 @@ Excluded sources: any Probo skill text, any internal audit skill or client engag
 | 40 | policy-review-cycle-refresh | Policy review cycle refresh | Run the periodic policy review: what changed, who approves, version history, communication to staff | general, iso27001, soc2 | PL iso-27001-documentation-and-reporting-prompts | written |
 | 41 | document-consistency-check | Document consistency check | Find contradictions across policies, procedures and registers (retention, severity scales, roles, review cycles) | general | UC document-consistency | written |
 | 42 | secure-development-policy-from-pipeline | Secure development policy from the pipeline | Write the secure development policy from what the repositories and pipeline already enforce | iso27001, soc2, cra | PL secure-development-lifecycle-prompts, devsecops-and-automation-prompts | written |
+| 63 | ssp-control-implementation-statements | SSP control implementation statements | Draft system security plan statements per control id from real evidence, with origination, parameters and unproven claims flagged | nist-800-53, nist-rmf, nist-800-171, cmmc | Launch post feedback (added after launch) | written |
 
 ## privacy (6)
 
@@ -127,12 +130,12 @@ Excluded sources: any Probo skill text, any internal audit skill or client engag
 |---|---|---|
 | gap-readiness | 6 | 6 |
 | statement-of-applicability | 6 | 6 |
-| risk | 6 | 6 |
-| audit | 7 | 7 |
+| risk | 7 | 7 |
+| audit | 8 | 8 |
 | evidence | 6 | 6 |
 | vendors | 6 | 6 |
-| policies | 6 | 6 |
+| policies | 7 | 7 |
 | privacy | 6 | 6 |
 | ai-systems | 6 | 6 |
 | incidents-continuity | 6 | 6 |
-| **Total** | **61** | **61** |
+| **Total** | **64** | **64** |
