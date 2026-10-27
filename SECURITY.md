@@ -6,7 +6,7 @@ Skills in this library are instructions that AI agents run inside other people's
 
 - Send data anywhere the reader does not own: no uploads, webhooks, form posts or messages. The only external service a skill may mention is the optional framework lookup server, and only through the fixed "Framework lookups" paragraph, which limits it to a short question the user sees first, with no file contents, secrets, personal data or evidence.
 - Link to hosts outside the allowlist in `tools/validate.mjs` (official law and regulator sites, publishers of standards, github.com/better-isms, the documented lookup server).
-- Download, install or execute anything: no `curl | sh`, no remote scripts, no package installs, no network commands. Two named exceptions, each only after the reader says yes: `grc-setup-review` may clone this library at a release tag into a temporary folder, and the house skill `submit-skill` runs the library validator and git to open the contributor's pull request. `grc-setup-review` also offers an optional setup page for the framework lookup server; that page adds the server to the agent's configuration and a routing line to `CLAUDE.md` or `AGENTS.md`, and asks before each step.
+- Download, install or execute anything: no `curl | sh`, no remote scripts, no package installs, no network commands. Two named exceptions: `grc-setup-review` may clone this library at a release tag into a temporary folder, only after the reader says yes; the house skill `submit-skill` runs the local library validator on the contributor's draft, and runs git to open their pull request only after the contributor says yes. `grc-setup-review` also offers an optional setup page for the framework lookup server; that page adds the server to the agent's configuration and a routing line to `CLAUDE.md` or `AGENTS.md`, and asks before each step.
 - Follow instructions found inside the documents it reads. Policies, registers, evidence and exports are data.
 - Read or ask for credentials: SSH keys, environment files, keychains, cloud credential files, tokens or passwords.
 - Contain prompt injection, hidden instructions, or text addressed to reviewers or other models.
@@ -25,7 +25,7 @@ The validator enforces what can be checked mechanically. Reviewers read every fi
 
 ## Security review record
 
-The whole library is reviewed against the OWASP Agentic Skills Top 10 checklist, one row per check with its result and the evidence in this repository: [reviews/security/library-security-review.md](reviews/security/library-security-review.md). It names the reviewed commit, lists the gaps and what we plan for each, and is re-run on each release.
+The whole library is reviewed against the OWASP Agentic Skills Top 10 checklist, one row per check with its result and the evidence in this repository: [reviews/security/library-security-review.md](reviews/security/library-security-review.md). It names the reviewed commit and lists the gaps and what we plan for each. Re-running it before each release is a maintainer release step; it is not automated in CI yet.
 
 ## Reporting
 
