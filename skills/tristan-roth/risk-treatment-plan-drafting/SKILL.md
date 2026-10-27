@@ -17,7 +17,7 @@ tags: [risk-treatment, treatment-plan, roadmap, residual-risk]
 
 Use this after the register is scored and owners have chosen a treatment option for each risk above the acceptance threshold. You get two files in a new folder, `./risk-treatment-plan-drafting/`: a spreadsheet you can open in Excel with one line per action (who does it, by when, what it costs and what record proves it is done) (`treatment-plan.csv`), and a short note with the open questions for owners and what does not fit the budget (`plan-notes.md`). This skill drafts for a human to review and sign; this skill never marks a control effective. Owners approve their own lines; the skill never approves a plan or a budget.
 
-End `plan-notes.md` with `## Not checked`: what this run did not read or could not open, what it assumed and what it did not verify, specific to this run. Then add a blank `## Review record` for the approver: reviewer role and competence basis, items sampled and the source each was traced to, what was changed or rejected, one item the draft did not flag and what checking it showed, decision, date and draft version reviewed.
+End `plan-notes.md` with `## Not checked`: what this run did not read or could not open, what it assumed and what it did not verify, specific to this run. Then add a blank `## Review record` for the approver: reviewer role and competence basis, items sampled and the source each was traced to, what was changed or rejected, one item the draft did not flag and what checking it showed, decision, date and draft version reviewed. `plan-notes.md` is the review companion of `treatment-plan.csv` and travels with it; the Review record names `treatment-plan.csv` and the version or date approved.
 
 ## Inputs to gather
 

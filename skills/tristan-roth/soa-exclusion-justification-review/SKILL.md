@@ -17,7 +17,7 @@ tags: [soa, exclusions, justification, audit-readiness]
 
 Use this before every certification or surveillance audit, and whenever the scope, the product or the supplier list changes. You get two files in a new folder, `./soa-exclusion-justification-review/`: a spreadsheet you can open in Excel with one row per control the company says does not apply, the tests it passed or failed, a verdict and a better-worded reason (`exclusion-review.csv`), and a short note summarising what should change and the questions for each owner (`review-notes.md`). This skill drafts for a human to review and sign; this skill never marks a control effective. Reversing or keeping an exclusion is the approver's decision.
 
-End `review-notes.md` with `## Not checked`: what this run did not read or could not open, what it assumed and what it did not verify, specific to this run. Then add a blank `## Review record` for the approver: reviewer role and competence basis, items sampled and the source each was traced to, what was changed or rejected, one item the draft did not flag and what checking it showed, decision, date and draft version reviewed.
+End `review-notes.md` with `## Not checked`: what this run did not read or could not open, what it assumed and what it did not verify, specific to this run. Then add a blank `## Review record` for the approver: reviewer role and competence basis, items sampled and the source each was traced to, what was changed or rejected, one item the draft did not flag and what checking it showed, decision, date and draft version reviewed. `review-notes.md` is the review companion of `exclusion-review.csv` and travels with it; the Review record names `exclusion-review.csv` and the version or date approved.
 
 ## Inputs to gather
 

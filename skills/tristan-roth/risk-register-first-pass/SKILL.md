@@ -16,7 +16,7 @@ tags: [risk-assessment, risk-register, risk-treatment]
 
 Use this when there is no register, or when the register is a generic list that would fit any company. You get two files in a new folder, `./risk-register-first-pass/`: a spreadsheet you can open in Excel listing 20 to 40 risks specific to the company, each with an owner, scores and a proposed treatment (`risk-register.csv`), and a short notes document with the scoring rules, the reasoning behind the top scores and the questions for each owner (`risk-notes.md`). This skill drafts for a human to review and sign; this skill never marks a control effective. Risk acceptance is a decision for named owners, never for the agent.
 
-End `risk-notes.md` with `## Not checked`: what this run did not read or could not open, what it assumed and what it did not verify, specific to this run. Then add a blank `## Review record` for the approver: reviewer role and competence basis, items sampled and the source each was traced to, what was changed or rejected, one item the draft did not flag and what checking it showed, decision, date and draft version reviewed.
+End `risk-notes.md` with `## Not checked`: what this run did not read or could not open, what it assumed and what it did not verify, specific to this run. Then add a blank `## Review record` for the approver: reviewer role and competence basis, items sampled and the source each was traced to, what was changed or rejected, one item the draft did not flag and what checking it showed, decision, date and draft version reviewed. `risk-notes.md` is the review companion of `risk-register.csv` and travels with it; the Review record names `risk-register.csv` and the version or date approved.
 
 ## Inputs to gather
 

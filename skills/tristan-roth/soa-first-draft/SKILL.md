@@ -17,7 +17,7 @@ tags: [soa, applicability, risk-treatment, control-selection]
 
 Use this after the risk assessment and treatment plan exist, not before: an applicability statement written first is a guess dressed as a decision. You get two files in a new folder, `./soa-first-draft/`: a draft statement of applicability as a spreadsheet you can open in Excel, one row per control saying whether it applies, why, how far along it is and where the proof sits (`soa.csv`), and a short note with the status scale, the mismatches found and the questions for owners (`soa-notes.md`). This skill drafts for a human to review and sign; this skill never marks a control effective. Control selection is a management decision; the agent proposes it.
 
-End `soa-notes.md` with `## Not checked`: what this run did not read or could not open, what it assumed and what it did not verify, specific to this run. Then add a blank `## Review record` for the approver: reviewer role and competence basis, items sampled and the source each was traced to, what was changed or rejected, one item the draft did not flag and what checking it showed, decision, date and draft version reviewed.
+End `soa-notes.md` with `## Not checked`: what this run did not read or could not open, what it assumed and what it did not verify, specific to this run. Then add a blank `## Review record` for the approver: reviewer role and competence basis, items sampled and the source each was traced to, what was changed or rejected, one item the draft did not flag and what checking it showed, decision, date and draft version reviewed. `soa-notes.md` is the review companion of `soa.csv` and travels with it; the Review record names `soa.csv` and the version or date approved.
 
 ## Inputs to gather
 

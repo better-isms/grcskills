@@ -17,7 +17,7 @@ tags: [ropa, records-of-processing, data-mapping, legal-basis, retention]
 
 Use this when there is no record, when the record is a system inventory with a privacy heading, or after new products, markets or vendors changed the processing. You get two or three files in a new folder, `./ropa-first-draft/`: a spreadsheet you can open in Excel listing everything the company does with personal data for its own purposes, one row per activity with its data, people, legal basis and retention (`ropa-controller.csv`); a second spreadsheet for the data the company handles on behalf of customers, only if it does (`ropa-processor.csv`); and a short note of open questions per team (`ropa-notes.md`). This skill drafts for a human to review and sign; this skill never marks a control effective. Legal bases and retention periods are decisions for the controller's privacy lead or counsel; the agent proposes them.
 
-End `ropa-notes.md` with `## Not checked`: what this run did not read or could not open, what it assumed and what it did not verify, specific to this run. Then add a blank `## Review record` for the approver: reviewer role and competence basis, items sampled and the source each was traced to, what was changed or rejected, one item the draft did not flag and what checking it showed, decision, date and draft version reviewed.
+End `ropa-notes.md` with `## Not checked`: what this run did not read or could not open, what it assumed and what it did not verify, specific to this run. Then add a blank `## Review record` for the approver: reviewer role and competence basis, items sampled and the source each was traced to, what was changed or rejected, one item the draft did not flag and what checking it showed, decision, date and draft version reviewed. `ropa-notes.md` is the review companion of the spreadsheets and travels with them; the Review record names each file and the version or date approved.
 
 ## Inputs to gather
 
@@ -25,11 +25,11 @@ Read before asking: the system and application inventory, the vendor list and si
 
 ## Step 1: list activities by purpose, not by system
 
-A processing activity is a purpose with its data, people and systems: "payroll", "recruiting", "customer support tickets", "product analytics", "newsletter", "fraud screening". One system can serve several activities; one activity can span several systems. List the activities team by team. A company of 20 to 300 people usually lands at 15 to 40 controller activities. Fewer than 10 means purposes have been lumped ("business operations"); split them where the legal basis, retention or data subjects differ.
+A processing activity is a purpose with its data, people and systems: "payroll", "recruiting", "product analytics", "newsletter". One system can serve several activities; one activity can span several systems. List the activities team by team. A company of 20 to 300 people usually lands at 15 to 40 controller activities. Fewer than 10 means purposes have been lumped ("business operations"); split them where the legal basis, retention or data subjects differ.
 
 ## Step 2: fill each row
 
-Use Article 30 of the GDPR as the backbone and add the columns the rest of the programme needs. Per activity, one row of the controller spreadsheet (`ropa-controller.csv`):
+Use Article 30 of the GDPR as the backbone, plus the columns the programme needs. Per activity, one row of the controller spreadsheet (`ropa-controller.csv`):
 
 - Purpose in one plain sentence, owner role, and whether the company is controller, joint controller or processor for it. A joint controller row points to its Article 26 arrangement, or the missing arrangement becomes an open question.
 - Data subject categories and personal data categories. Flag special category data (Article 9) and criminal offence data (Article 10) in their own column.
@@ -42,7 +42,7 @@ Use Article 30 of the GDPR as the backbone and add the columns the rest of the p
 
 ## Step 3: draft the processor record if it applies
 
-If the company processes personal data for customers (a software provider hosting customer data, for example), keep a separate record, the processor spreadsheet (`ropa-processor.csv`), organised by service: categories of processing done for customers, sub-processors, transfers, and security measures. The customer list stays in the contract system.
+If the company processes personal data for customers keep a separate record, the processor spreadsheet (`ropa-processor.csv`), organised by service: categories of processing done for customers, sub-processors, transfers, and security measures. The customer list stays in the contract system.
 
 ## Step 4: cross-check and collect questions
 

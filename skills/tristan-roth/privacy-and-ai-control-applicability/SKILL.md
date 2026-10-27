@@ -17,7 +17,7 @@ tags: [soa, privacy, ai-management, controller, processor, applicability]
 
 Use this when a privacy or AI extension is added to an existing security management system, and again when a new product, processing activity or AI system enters scope. You get two files in a new folder, `./privacy-and-ai-control-applicability/`: a spreadsheet you can open in Excel listing each extra privacy or AI control, whether it applies and why, in the same layout as your existing applicability statement (`soa-extension.csv`), and notes recording the company's role for each processing activity and AI system, with open questions (`role-and-scope-notes.md`). This skill drafts for a human to review and sign; this skill never marks a control effective. Role decisions with legal effect are confirmed by the company's privacy or legal owner.
 
-End `role-and-scope-notes.md` with `## Not checked`: what this run did not read or could not open, what it assumed and what it did not verify, specific to this run. Then add a blank `## Review record` for the approver: reviewer role and competence basis, items sampled and the source each was traced to, what was changed or rejected, one item the draft did not flag and what checking it showed, decision, date and draft version reviewed.
+End `role-and-scope-notes.md` with `## Not checked`: what this run did not read or could not open, what it assumed and what it did not verify, specific to this run. Then add a blank `## Review record` for the approver: reviewer role and competence basis, items sampled and the source each was traced to, what was changed or rejected, one item the draft did not flag and what checking it showed, decision, date and draft version reviewed. `role-and-scope-notes.md` is the review companion of `soa-extension.csv` and travels with it; the Review record names `soa-extension.csv` and the version or date approved.
 
 ## Inputs to gather
 
@@ -25,9 +25,9 @@ For privacy: the records of processing, data processing agreements (both directi
 
 ## Step 1: settle roles, activity by activity
 
-**Privacy.** For each processing activity, decide whether the company determines why and how the data is processed (controller), processes it only on a customer's instructions (processor), decides jointly with a partner (joint controller, which needs a GDPR Article 26 arrangement), or holds different roles across different activities. Base each decision on the contract and on what actually happens, not the preferred label. Patterns to check: every employer is a controller for staff data; marketing lists, product analytics and support tooling are usually controller activities even for a company that sells a processor service; using customer data to improve the product moves that use towards controller.
+**Privacy.** For each processing activity, decide whether the company determines why and how the data is processed (controller), processes it only on a customer's instructions (processor), decides jointly with a partner (joint controller, which needs a GDPR Article 26 arrangement), or holds different roles across different activities. Base each decision on the contract and on what actually happens. Patterns to check: every employer is a controller for staff data; marketing lists, product analytics and support tooling are usually controller activities even for a company that sells a processor service; using customer data to improve the product moves that use towards controller.
 
-**AI.** For each AI system, record what the company does with it: develops or trains a model, builds a system on a third-party model (prompts, retrieval, tools, fine-tuning), supplies AI components to others, or uses an AI tool internally. One company often holds several roles across systems. Building a product feature on a hosted model is more than use. Where the EU AI Act may apply, record the likely provider or deployer classification per system as a flag for the legal owner, not a determination.
+**AI.** For each AI system, record what the company does with it: develops or trains a model, builds a system on a third-party model (prompts, retrieval, tools, fine-tuning), supplies AI components to others, or uses an AI tool internally. Building a product feature on a hosted model is more than use. Where the EU AI Act may apply, record the likely provider or deployer classification per system as a flag for the legal owner, not a determination.
 
 Write the role table in the notes (`role-and-scope-notes.md`) with the source for each decision.
 
@@ -41,7 +41,7 @@ For each candidate control record: control id (bare identifier), included or exc
 
 ## Step 4: connect to the security statement
 
-Many additional controls are delivered by practices the security statement already covers. Then reference the security control id and its evidence instead of creating a parallel record, and note what the extension adds on top (purpose limitation, transparency to individuals, impact on affected people, data quality for models). Check for contradictions between the two statements; an excluded security control that a privacy or AI control depends on is a defect to raise.
+Where practices the security statement already covers deliver an additional control, reference the security control id and its evidence instead of creating a parallel record, and note what the extension adds on top (purpose limitation, transparency to individuals, impact on affected people, data quality for models). Check for contradictions between the two statements; an excluded security control that a privacy or AI control depends on is a defect to raise.
 
 ## Step 5: write the extension
 
