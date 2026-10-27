@@ -2,10 +2,11 @@
 
 Release tags are `vYYYY.MM.DD[.n]`. Installers and the Claude Code plugin consume tags, not `main`.
 
-## Unreleased
+## v2026.10.27.1
 
 - "Is it safe to install?" opens the library security review, linked from the README and a new FAQ answer: skills are plain text and nothing runs on install, what every skill says it never does, the two skills that run a command, and that your agent's own sandbox still applies.
 - New GitHub issue form "This skill got something wrong": pick the skill, say what it did and what it should do instead, and confirm client names, personal data and real evidence are removed. The FAQ answer on wrong output links to it; maintainers regenerate its skill list when skills are added or renamed.
+- Every install pin moves to `v2026.10.27.1`.
 
 ## v2026.10.27
 

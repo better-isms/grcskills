@@ -230,6 +230,10 @@ Status per recommendation below, at `690016c`. R1, R3, R4 and R7 are done (R7 as
 - **R7 Cadence (5.6, 7.4, 9.5).** Re-run this review before each release and update the reviewed commit. Status: done as a documented manual step (AGENTS.md, "Release (maintainers)", step 1); CI automation open.
 - **R8 Repository hardening (2.1, 4.12, 7.2, 9.3, B2-2, B3-1).** Options for the maintainer: run validation in a separate read-only job before the release job that holds write permissions, bind admins to branch protection, add a tag ruleset, require signed commits, run CodeQL and a GitHub Actions linter. Each is a judgment call; none blocks use.
 
+## Re-run 2026-10-27 for v2026.10.27.1
+
+No skill, validator, plugin or manifest file changed since v2026.10.27 (`git diff ba77cda` on `skills/`, `tools/`, `plugin/`, `.claude-plugin/` is empty apart from the release `ref` in `.claude-plugin/marketplace.json`). This release adds the "Is it safe to install?" section above, a README line, an FAQ answer and a GitHub issue form for skill feedback. Results unchanged: 22 pass, 34 partial, 4 gap, 21 not applicable.
+
 ## Re-run 2026-10-27 for v2026.10.27
 
 Re-run on `690016c` (base of `v2026.10.27`) as step 1 of "Release (maintainers)" in AGENTS.md, delta-focused against the first run at `acbe47e`.

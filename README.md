@@ -4,7 +4,7 @@
   <img alt="grcskills. Open GRC skills for AI agents. It does the legwork. You make the calls." src="assets/banner-light.svg" width="100%">
 </picture>
 
-[![License: MIT](https://img.shields.io/badge/license-MIT-0f172a?style=flat-square)](LICENSE) [![Release v2026.10.27](https://img.shields.io/badge/release-v2026.10.27-0f172a?style=flat-square)](https://github.com/better-isms/grcskills/releases/tag/v2026.10.27) [![64 skills](https://img.shields.io/badge/skills-64-0f172a?style=flat-square)](https://grcskills.com/skills/) [![Agent Skills format](https://img.shields.io/badge/format-Agent%20Skills%20(SKILL.md)-0f172a?style=flat-square)](AGENTS.md) [![Works with Claude Code, Codex and Cursor](https://img.shields.io/badge/works%20with-Claude%20Code%20%7C%20Codex%20%7C%20Cursor-0f172a?style=flat-square)](#install) [![By ISMS Copilot](https://img.shields.io/badge/by-ISMS%20Copilot-0f172a?style=flat-square)](https://www.ismscopilot.com/mcp?ref=grcskills-readme)
+[![License: MIT](https://img.shields.io/badge/license-MIT-0f172a?style=flat-square)](LICENSE) [![Release v2026.10.27.1](https://img.shields.io/badge/release-v2026.10.27.1-0f172a?style=flat-square)](https://github.com/better-isms/grcskills/releases/tag/v2026.10.27.1) [![64 skills](https://img.shields.io/badge/skills-64-0f172a?style=flat-square)](https://grcskills.com/skills/) [![Agent Skills format](https://img.shields.io/badge/format-Agent%20Skills%20(SKILL.md)-0f172a?style=flat-square)](AGENTS.md) [![Works with Claude Code, Codex and Cursor](https://img.shields.io/badge/works%20with-Claude%20Code%20%7C%20Codex%20%7C%20Cursor-0f172a?style=flat-square)](#install) [![By ISMS Copilot](https://img.shields.io/badge/by-ISMS%20Copilot-0f172a?style=flat-square)](https://www.ismscopilot.com/mcp?ref=grcskills-readme)
 
 # Open GRC skills for AI agents.
 
@@ -51,17 +51,17 @@ The prompt carries no version: [grcskills.com/llms.txt](https://grcskills.com/ll
 
 ## Install
 
-Every install path is pinned to a release tag (`v2026.10.27`). Releases are immutable and carry a build provenance attestation; `main` is the integration branch and is not an install source.
+Every install path is pinned to a release tag (`v2026.10.27.1`). Releases are immutable and carry a build provenance attestation; `main` is the integration branch and is not an install source.
 
 ```bash
 # the whole library, with an interactive picker (skills.sh)
-npx skills add better-isms/grcskills#v2026.10.27
+npx skills add better-isms/grcskills#v2026.10.27.1
 
 # one skill
-npx skills add better-isms/grcskills#v2026.10.27 --skill risk-register-first-pass
+npx skills add better-isms/grcskills#v2026.10.27.1 --skill risk-register-first-pass
 
 # see what is there
-npx skills add better-isms/grcskills#v2026.10.27 --list
+npx skills add better-isms/grcskills#v2026.10.27.1 --list
 ```
 
 The `#<tag>` suffix makes the skills CLI clone that tag instead of the default branch. Add `-a claude-code`, `-a cursor` or `-a codex` to target one agent.
@@ -69,7 +69,7 @@ The `#<tag>` suffix makes the skills CLI clone that tag instead of the default b
 **Clone** the release tag:
 
 ```bash
-git clone --branch v2026.10.27 https://github.com/better-isms/grcskills
+git clone --branch v2026.10.27.1 https://github.com/better-isms/grcskills
 ```
 
 **Claude Code plugin** (every skill plus the optional framework lookup server):
