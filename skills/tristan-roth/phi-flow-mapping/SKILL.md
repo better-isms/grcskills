@@ -25,7 +25,7 @@ Read the system inventory, architecture and integration diagrams, the vendor lis
 
 ## Step 1: define what counts
 
-Write down the health data categories in scope (clinical, billing, sensitive categories such as mental health) and which identifiers make data identifiable. Note what the company treats as de-identified and how. HIPAA recognises two methods (45 CFR 164.514(b)): expert determination, or safe harbor, which needs evidence of both parts: the listed identifiers removed, including those of relatives, employers and household members, and no actual knowledge that what remains could identify the person (HHS de-identification guidance). Data only "masked" or "anonymised" by internal convention stays in scope until one method is shown in full. Teams often miss dates and ages over 89, and a re-identification code may not be derived from the identifiers (164.514(c)). Flag any flow carrying records from a federally assisted substance use disorder program: 42 CFR Part 2 adds stricter consent and redisclosure rules, so counsel reviews those flows.
+Write down the health data categories in scope (clinical, billing, sensitive categories such as mental health) and which identifiers make data identifiable. Note what the company treats as de-identified and how. HIPAA recognises two methods (45 CFR 164.514(b)): expert determination, or safe harbor, which needs evidence of both parts: the listed identifiers removed, including those of relatives, employers and household members, and no actual knowledge that what remains could identify the person (HHS de-identification guidance). Teams often miss dates and ages over 89, and a re-identification code may not be derived from the identifiers (164.514(c)). Flag any flow carrying records from a federally assisted substance use disorder program: 42 CFR Part 2 adds stricter consent and redisclosure rules, so counsel reviews those flows.
 
 ## Step 2: trace each flow through five stages
 
@@ -43,8 +43,8 @@ Record each system or flow in the inventory spreadsheet (`phi-inventory.csv`): i
 
 For each row, record what protects it, with the evidence path:
 
-- Access: who can reach it, how access is granted and reviewed, and whether it is the minimum necessary.
-- Encryption at rest and in transit. Mark data in a store or flow that is not encrypted or destroyed by a method HHS recognises as unsecured (45 CFR 164.402). Whether an incident involving unsecured PHI is notifiable depends on the 164.402 exceptions and a documented four-factor assessment of the probability of compromise, made by the privacy or security owner.
+- Access: who can reach it, how access is granted and reviewed, and whether it is minimum necessary.
+- Encryption at rest and in transit. Mark data in a store or flow that is not encrypted or destroyed by a method HHS recognises as unsecured (45 CFR 164.402). Breach notification duties apply to unsecured PHI. An impermissible use or disclosure is presumed a breach unless a 164.402 exception applies or a documented assessment of at least four factors shows a low probability of compromise; the entity may also notify without one. The privacy or security owner makes that call.
 - Audit logging, integrity and backup: access logged and read, changes tracked, restores tested.
 - External flows: the business associate agreement in place, or the reason none is needed; for a business associate, the subcontractor agreements that flow the same terms down. For disclosures outside treatment, payment and operations (research, public health, legal requests), name the log that supports an accounting of disclosures (45 CFR 164.528). A cloud provider storing health data is generally a business associate even when it cannot read it; the conduit exception is narrow.
 
@@ -56,7 +56,7 @@ In the diagrams file (`flows.md`), draw one text diagram per product or process,
 
 ## What good looks like
 
-- The best practitioner looks first at the copies nobody designed: logs, error tracking, analytics, support attachments, test databases and staff AI use, where unprotected health data most often sits.
+- The best practitioner looks first at the copies nobody designed (logs, error trackers, test databases, staff AI use), where unprotected health data most often sits.
 - The common mistake is a diagram of the intended architecture with one box for "the database". The tell: no logs, backups, exports or vendors on the map, and no row marked as a copy. Design documents show where data should be; a scan shows where it is.
 - Good output lets the security officer answer "where is our ePHI, who can reach it, and who outside the company receives it" from one inventory.
 

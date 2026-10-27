@@ -42,3 +42,8 @@
 
 - 45 CFR 164.402 (exceptions and four-factor probability of compromise assessment): confirmed by Copilot, stated as fact; kept. Source: https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164
 - 45 CFR 164.514(b): confirmed again by Copilot; kept.
+
+### Codex round 1 fix (2026-10-27)
+
+- Breach wording corrected after independent review: notification duties apply to unsecured PHI; an impermissible use or disclosure is presumed a breach unless a 164.402 exception applies or a documented assessment of at least four factors shows a low probability of compromise; the entity may notify without the assessment.
+- Verified: 45 CFR 164.402 read on ecfr.gov (eCFR renderer, current text): the presumption of breach, the three exclusions (good-faith workforce access, inadvertent internal disclosure, recipient could not retain), the four factors (nature and extent of PHI, unauthorized person, actually acquired or viewed, extent mitigated) and the definition of unsecured PHI (not unusable, unreadable or indecipherable per HHS guidance) all match. "May notify without the assessment" is not stated in the section; it follows from the presumption (the entity can accept the presumption and notify), so it is kept as a consequence, not a quote.
