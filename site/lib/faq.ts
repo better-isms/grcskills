@@ -145,8 +145,9 @@ export function faqGroups(tag: string, count: number): FaqGroup[] {
           a: [
             'No. A skill may never upload or send data, download or run code, read credentials or link outside an allowlist (official law, regulator and standards sites, plus this project on GitHub). The validator rejects what it can check mechanically on every pull request, and maintainers read every file before a release.',
             'The one prompt makes two network calls, both visible to you: it reads grcskills.com/llms.txt and clones the pinned release into a .grcskills folder. The optional ISMS Copilot lookup is the only other one, and you see each question first.',
+            'The whole library is reviewed against the OWASP Agentic Skills Top 10 checklist, one row per check with its result, its evidence and any gap. Maintainers re-run it before each release; that step is not automated yet.',
           ],
-          link: { href: `${REPO}/blob/main/SECURITY.md`, label: 'Read SECURITY.md' },
+          link: { href: `${REPO}/blob/main/reviews/security/library-security-review.md`, label: 'Read the security review' },
         },
         {
           id: 'supply-chain',
