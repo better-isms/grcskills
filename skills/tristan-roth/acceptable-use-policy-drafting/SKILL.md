@@ -16,7 +16,7 @@ tags: [acceptable-use, ai-usage, byod, remote-work, awareness]
 
 Use this when there is no acceptable use policy, or when the current one predates AI tools, remote work or personal devices. You get three documents in a new folder, `./acceptable-use-policy-drafting/`: the staff policy itself, two to three pages in plain language (`acceptable-use-policy.md`); a note of the choices leadership made and how people really work today, for the people who own the policy rather than staff (`decisions.md`); and five quiz questions to check that a colleague understood it after one read (`comprehension-check.md`). This skill drafts for a human to review and sign; this skill never marks a control effective. HR and leadership approve the policy, and HR or legal confirm anything touching employment terms or monitoring.
 
-End `decisions.md` with `## Not checked`: what this run did not read or could not open, what it assumed and what it did not verify, specific to this run. Then add a blank `## Review record` for the approver: reviewer role and competence basis, items sampled and the source each was traced to, what was changed or rejected, one item the draft did not flag and what checking it showed, decision, date and draft version reviewed.
+End `acceptable-use-policy.md` with `## Not checked`: what this run did not read or could not open, what it assumed and what it did not verify, specific to this run. Then add a blank `## Review record` for the approver: reviewer role and competence basis, items sampled and the source each was traced to, what was changed or rejected, one item the draft did not flag and what checking it showed, decision, date and draft version reviewed.
 
 ## Inputs to gather
 

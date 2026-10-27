@@ -17,7 +17,7 @@ tags: [management-review, leadership, metrics, minutes, decisions]
 
 Use this for each scheduled review, typically once or twice a year, and for an extra review after a major incident or a large change. You get four files in a new folder, `./management-review-pack/`: a two to four page briefing leadership reads before the meeting (`pre-read.md`); the meeting agenda, decisions first (`agenda.md`); a minutes template with blanks for what leadership decides (`minutes-draft.md`); and a spreadsheet you can open in Excel tracking every action, its owner and due date (`actions.csv`). This skill drafts for a human to review and sign; this skill never marks a control effective. Leadership makes the decisions; the minutes record what they decided, never what the skill proposed.
 
-End `pre-read.md` with `## Not checked`: what this run did not read or could not open, what it assumed and what it did not verify, specific to this run. Then add a blank `## Review record` for the approver: reviewer role and competence basis, items sampled and the source each was traced to, what was changed or rejected, one item the draft did not flag and what checking it showed, decision, date and draft version reviewed.
+End `minutes-draft.md` with `## Not checked`: what this run did not read or could not open, what it assumed and what it did not verify, specific to this run. Then add a blank `## Review record` for the approver: reviewer role and competence basis, items sampled and the source each was traced to, what was changed or rejected, one item the draft did not flag and what checking it showed, decision, date and draft version reviewed.
 
 ## Inputs to gather
 

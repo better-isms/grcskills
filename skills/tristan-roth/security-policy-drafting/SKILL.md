@@ -17,7 +17,7 @@ tags: [policy-drafting, information-security-policy, policy-set, governance]
 
 Use this for a first policy set, or to replace a template pack that nobody follows. You get a set of draft documents in a new folder, `./security-policy-drafting/`: a one-page map of which policies exist, who owns each and who reads it (`policy-map.md`); the main security policy, two to four pages for every employee (`top-level-policy.md`); one short policy per topic, such as access or backups, in a subfolder (`topics/`); and a list of the commitments leadership must decide on before signing (`open-decisions.md`). This skill drafts for a human to review and sign; this skill never marks a control effective. Leadership approves the policies; the agent never does.
 
-End `open-decisions.md` with `## Not checked`: what this run did not read or could not open, what it assumed and what it did not verify, specific to this run. Then add a blank `## Review record` for the approver: reviewer role and competence basis, items sampled and the source each was traced to, what was changed or rejected, one item the draft did not flag and what checking it showed, decision, date and draft version reviewed.
+End `top-level-policy.md` and each topic policy with `## Not checked`: what this run did not read or could not open, what it assumed and what it did not verify, specific to this run. Then add a blank `## Review record` for the approver: reviewer role and competence basis, items sampled and the source each was traced to, what was changed or rejected, one item the draft did not flag and what checking it showed, decision, date and draft version reviewed.
 
 ## Inputs to gather
 

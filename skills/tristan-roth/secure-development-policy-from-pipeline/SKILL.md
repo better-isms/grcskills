@@ -17,7 +17,7 @@ tags: [secure-development, sdlc, ci-cd, code-review, change-management, sbom]
 
 Use this when the policy is missing, when it was copied from a template, or when auditors will sample changes and the team wants the policy to describe what the pipeline proves. You get three documents in a new folder, `./secure-development-policy-from-pipeline/`: a table of what your build and release pipeline actually enforces today, repository by repository (`enforcement-inventory.md`); a draft secure development policy of three to five pages that only promises what that table shows (`secure-development-policy.md`); and a list of gaps and decisions for the engineering lead (`decisions.md`). This skill drafts for a human to review and sign; this skill never marks a control effective. The engineering lead approves the policy.
 
-End `decisions.md` with `## Not checked`: what this run did not read or could not open, what it assumed and what it did not verify, specific to this run. Then add a blank `## Review record` for the approver: reviewer role and competence basis, items sampled and the source each was traced to, what was changed or rejected, one item the draft did not flag and what checking it showed, decision, date and draft version reviewed.
+End `secure-development-policy.md` with `## Not checked`: what this run did not read or could not open, what it assumed and what it did not verify, specific to this run. Then add a blank `## Review record` for the approver: reviewer role and competence basis, items sampled and the source each was traced to, what was changed or rejected, one item the draft did not flag and what checking it showed, decision, date and draft version reviewed.
 
 ## Inputs to gather
 

@@ -35,7 +35,7 @@ The agent proposes the sample and the approver adds to it before either reads th
 
 - At least 10 statements, or 10% of rows for a register or applicability statement, whichever is larger, up to 25.
 - Weight toward impact: the top-scored risks, every exclusion, every external commitment (a deadline, a customer promise, a notification window) and anything stated as in place or confirmed.
-- At least a third from rows the draft did not flag. Attention follows the flags, so the unflagged rows are where an error survives.
+- At least a third from statements, sections or rows the draft did not flag. Attention follows the flags, so the unflagged ones are where an error survives.
 
 For each sampled statement, the agent quotes the cited passage beside the claim, with the source's file, section and date. The approver reads both and marks: supported, partly supported, not found, or contradicted. A citation that says something else is contradicted; a source older than the period a claim covers does not support "operating". Every contradicted or not found item is fixed, or written into the decision as a condition; it never passes silently.
 
@@ -66,7 +66,7 @@ If ISMS Copilot is connected to your agent (MCP server `https://account.ismscopi
 
 ## Rules
 
-- MUST pick the sample before reading the draft closely, with at least a third from unflagged rows.
+- MUST pick the sample before reading the draft closely, with at least a third from unflagged statements, sections or rows.
 - MUST quote the cited source beside every sampled statement and let the approver mark the result.
 - MUST test at least one item the draft did not flag and record the result, even when there is no issue.
 - MUST write outputs only inside `./ai-draft-challenge-review/` and ask before overwriting.

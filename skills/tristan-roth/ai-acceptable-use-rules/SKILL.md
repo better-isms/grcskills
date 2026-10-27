@@ -17,7 +17,7 @@ tags: [ai-policy, acceptable-use, generative-ai, shadow-ai, ai-literacy]
 
 Use this when the company has no AI rules, or has a ban nobody follows. You get three files in a new folder, `./ai-acceptable-use-rules/`: the staff rules for using AI tools, two pages with a red, amber, green guide to what data may go where (`ai-use-rules.md`); a spreadsheet you can open in Excel listing every AI tool as approved, approved for public information only, or not approved, with the reason (`approved-tools.csv`); and a short plan for announcing the rules and training each team (`rollout-notes.md`). This skill drafts for a human to review and sign; this skill never marks a control effective. The rules take effect only when the policy owner approves and publishes them.
 
-End `rollout-notes.md` with `## Not checked`: what this run did not read or could not open, what it assumed and what it did not verify, specific to this run. Then add a blank `## Review record` for the approver: reviewer role and competence basis, items sampled and the source each was traced to, what was changed or rejected, one item the draft did not flag and what checking it showed, decision, date and draft version reviewed.
+End `ai-use-rules.md` with `## Not checked`: what this run did not read or could not open, what it assumed and what it did not verify, specific to this run. Then add a blank `## Review record` for the approver: reviewer role and competence basis, items sampled and the source each was traced to, what was changed or rejected, one item the draft did not flag and what checking it showed, decision, date and draft version reviewed.
 
 ## Inputs to gather
 
