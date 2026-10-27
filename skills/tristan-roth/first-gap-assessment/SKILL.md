@@ -11,7 +11,7 @@ description: |
   items first.
 summary: "A first gap assessment against your chosen framework: what exists, rated by evidence, and a gap register with the long-lead items first."
 category: gap-readiness
-frameworks: [general, iso27001, soc2, hipaa, nis2, iso42001]
+frameworks: [general, iso27001, soc2, hipaa, nis2, iso42001, nist-800-53, nist-800-171, cmmc]
 tags: [gap-analysis, baseline, readiness, prioritisation]
 ---
 
@@ -31,7 +31,7 @@ For a health data regime, settle the company's role first (covered entity, busin
 
 ## Step 1: build the assessment list from the source, not from memory
 
-The rows of the register are the items of the target framework. Take them from the reader's licensed copy of the standard, the official legal text, the criteria document the reader holds, or the control list in their compliance platform. Use bare identifiers and the reader's own short description; never copy requirement text into the register. If no source is available, stop and ask the reader for one, or run a framework lookup per area. Add a row for every management or governance element as well as every control: companies fail first-time audits on the missing management loop (no internal review, no measured objectives) more often than on a missing technical control. Give the risk assessment, the risk treatment plan with owners, and the statement of applicability with its justifications a row each: they are the first artefacts an auditor samples.
+The rows of the register are the items of the target framework. Take them from the reader's licensed copy of the standard, the official legal text, the criteria document the reader holds, or the control list in their compliance platform. Use bare identifiers and the reader's own short description; never copy requirement text into the register. If no source is available, stop and ask the reader for one, or run a framework lookup per area. Add a row for every management or governance element as well as every control: companies fail first-time audits on the missing management loop (no internal review, no measured objectives) more often than on a missing technical control. Give the risk assessment, the risk treatment plan with owners, and the statement of applicability with its justifications a row each: they are the first artefacts an auditor samples. For a NIST SP 800-171 or CMMC target, give the system security plan and the plan of action and milestones a row each as well.
 
 ## Step 2: rate each row on evidence
 

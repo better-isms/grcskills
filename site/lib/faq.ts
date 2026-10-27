@@ -54,7 +54,7 @@ export function faqGroups(tag: string, count: number): FaqGroup[] {
           id: 'frameworks',
           q: 'Which frameworks does it cover?',
           a: [
-            'Skills are tagged with the frameworks they relate to: ISO 27001, ISO 27701, ISO 42001, SOC 2, PCI DSS, GDPR, NIS 2, DORA, the EU AI Act, the Cyber Resilience Act, HIPAA, NIST CSF, plus general skills that fit any programme.',
+            'Skills are tagged with the frameworks they relate to: ISO 27001, ISO 27701, ISO 42001, SOC 2, PCI DSS, GDPR, NIS 2, DORA, the EU AI Act, the Cyber Resilience Act, HIPAA, NIST CSF, NIST SP 800-53, NIST RMF, NIST SP 800-171 and CMMC, plus general skills that fit any programme.',
             'A skill is one piece of work, not one framework. A risk register skill serves ISO 27001 and SOC 2 alike.',
           ],
           link: { href: '/skills/', label: 'Browse all skills by framework' },

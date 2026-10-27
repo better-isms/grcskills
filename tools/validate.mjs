@@ -45,7 +45,7 @@ export const CATEGORIES = {
 
 export const FRAMEWORKS = [
   'iso27001', 'iso27701', 'iso42001', 'soc2', 'pci-dss', 'gdpr', 'nis2', 'dora',
-  'eu-ai-act', 'cra', 'nist-800-171', 'cmmc', 'hipaa', 'nist-csf', 'general',
+  'eu-ai-act', 'cra', 'nist-800-53', 'nist-rmf', 'nist-800-171', 'cmmc', 'hipaa', 'nist-csf', 'general',
 ];
 // Public law: articles may be cited, with requirement wording, when the skill
 // carries one of these tags.
@@ -202,7 +202,9 @@ const INJECTION = [
 // IP rule (design doc D3): no framework-specific requirement assertions.
 // A control or clause id with requirement wording within 80 characters is
 // rejected. Article citations are public law and pass when the skill is tagged
-// with a public-law framework.
+// with a public-law framework. NIST publications are US government works, so
+// NIST-tagged skills may name control ids and families (AC-2, the AC family);
+// requirement wording next to an id is still rejected, as for every framework.
 const CONTROL_ID = [
   /\bA\.\d{1,2}(?:\.\d{1,2})?\b/g, // ISO annex style
   /\b\d{1,2}\.\d{1,2}\.\d{1,2}\b/g, // clause or requirement numbers (5.1.2)
@@ -212,6 +214,7 @@ const CONTROL_ID = [
   /\b(?:A1|C1|PI1|P[1-8])\.\d{1,2}\b/g,
   /\b[A-Z]{2}\.L[1-3]-\d/g, // CMMC practice ids
   /\b(?:GV|ID|PR|DE|RS|RC)\.[A-Z]{2}(?:-\d{2})?\b/g, // CSF categories
+  /\b(?:AC|AT|AU|CA|CM|CP|IA|IR|MA|MP|PE|PL|PM|PS|PT|RA|SA|SC|SI|SR)-\d{1,2}(?:\(\d{1,2}\)|\b)/g, // SP 800-53 controls and enhancements
 ];
 const ARTICLE_ID = /\bArt(?:icle|\.)\s*\d{1,3}\b/gi;
 // Design doc D3 (widened after Codex r2 #4 and the scaffold review): requires,

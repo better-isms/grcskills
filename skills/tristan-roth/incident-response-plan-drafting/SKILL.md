@@ -11,7 +11,7 @@ description: |
   a notification decision step, plus a one-page quick reference card.
 summary: "An incident response plan sized to your real team: roles and deputies, a severity scale, a contact tree and one-page playbooks for likely incidents."
 category: incidents-continuity
-frameworks: [iso27001, soc2, hipaa, nis2]
+frameworks: [iso27001, soc2, hipaa, nis2, nist-800-53, nist-800-171, cmmc]
 tags: [incident-response, playbooks, contact-tree, evidence-handling, breach-notification]
 ---
 
@@ -43,7 +43,7 @@ Pick four to six scenarios from the risk register and past incidents, one guide 
 
 ## Step 5: evidence handling and notification
 
-Write how evidence is preserved before containment changes it: images or snapshots, log export before retention rolls over, a chain of custody log with who handled what and when. Then a notification decision step that points to the regimes and contracts that apply: GDPR Art. 33 and 34 for personal data breaches (as a processor for customer data, the duty is to tell each affected customer without undue delay, Art. 33(2), so listing affected customers is a first-hour task), NIS 2 Art. 23 for significant incidents of entities in scope (up to three submissions on separate clocks: early warning within 24 hours, notification within 72 hours, final report within one month of the notification, Art. 23(4)), the HIPAA breach notification rule (45 CFR 164.400 to 414) for unsecured protected health information (a business associate tells the covered entity, at the latest 60 days after discovery, 164.410), and contract clauses. The plan names who makes each decision; the deadlines are worked out per incident with the reporting clock skill. Run a framework lookup for what each certification framework in scope looks for in the plan itself.
+Write how evidence is preserved before containment changes it: images or snapshots, log export before retention rolls over, a chain of custody log with who handled what and when. Then a notification decision step that points to the regimes and contracts that apply: GDPR Art. 33 and 34 for personal data breaches (as a processor for customer data, the duty is to tell each affected customer without undue delay, Art. 33(2), so listing affected customers is a first-hour task), NIS 2 Art. 23 for significant incidents of entities in scope (up to three submissions on separate clocks: early warning within 24 hours, notification within 72 hours, final report within one month of the notification, Art. 23(4)), the HIPAA breach notification rule (45 CFR 164.400 to 414) for unsecured protected health information (a business associate tells the covered entity, at the latest 60 days after discovery, 164.410), the cyber incident reporting clause in US defence contracts (DFARS 252.204-7012, a report to the Department of Defense within 72 hours of discovery, with images of affected systems kept for at least 90 days after the report), and contract clauses. The plan names who makes each decision; the deadlines are worked out per incident with the reporting clock skill. Run a framework lookup for what each certification framework in scope looks for in the plan itself.
 
 ## Step 6: testing and upkeep
 

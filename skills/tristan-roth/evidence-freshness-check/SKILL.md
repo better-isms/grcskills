@@ -10,7 +10,7 @@ description: |
   missing for a recurring activity, and writes an index plus a refresh list per owner.
 summary: "An index of every evidence artefact with its date, owner and period covered, flagging stale, undated and missing items before the auditor does."
 category: evidence
-frameworks: [general, iso27001, soc2]
+frameworks: [general, iso27001, soc2, nist-800-53, nist-800-171, cmmc]
 tags: [evidence, audit-readiness, audit-period, evidence-collection]
 ---
 

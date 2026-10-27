@@ -11,7 +11,7 @@ description: |
   evidence plan where each artefact is collected once.
 summary: "One internal control set in your own words, mapped across your frameworks, so evidence is collected once and the unique gaps stand out."
 category: gap-readiness
-frameworks: [general, iso27001, soc2, nis2, nist-csf, gdpr]
+frameworks: [general, iso27001, soc2, nis2, nist-csf, gdpr, nist-800-53, nist-800-171]
 tags: [framework-mapping, crosswalk, unified-controls, evidence-reuse]
 ---
 

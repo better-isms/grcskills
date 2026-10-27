@@ -10,7 +10,7 @@ description: |
   assigns independent reviewers, defines the decisions to record, and plans the removal follow-up.
 summary: "A ready-to-run access review: systems in scope, account lists reconciled against HR, pre-flagged leavers and admins, and review sheets for managers."
 category: evidence
-frameworks: [iso27001, soc2, hipaa, pci-dss]
+frameworks: [iso27001, soc2, hipaa, pci-dss, nist-800-53, nist-800-171, cmmc]
 tags: [access-review, user-recertification, joiners-leavers, privileged-access]
 ---
 

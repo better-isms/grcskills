@@ -294,6 +294,14 @@ test('requirement wording near a criteria id is rejected', () =>
   expectRule(makeRepo({ skill: skillMd('sample-skill', { frameworks: ['soc2'], steps: `## Step 1: read\n\nCC6.1 must cover logical access. ${filler(30)}` }) }), 'ip-requirement-phrasing'));
 test('a bare control id without requirement wording passes', () =>
   expectClean(makeRepo({ skill: skillMd('sample-skill', { frameworks: ['iso27001'], steps: `## Step 1: read\n\nTag the row with A.5.15 for the lookup. ${filler(30)}` }) })));
+test('a bare 800-53 control id or enhancement passes in a NIST-tagged skill', () =>
+  expectClean(makeRepo({ skill: skillMd('sample-skill', { frameworks: ['nist-800-53', 'nist-rmf'], steps: `## Step 1: read\n\nFile the statement under AC-2 and AC-2(3), and the scan results under the RA family. ${filler(30)}` }) })));
+test('requirement wording within 80 characters of an 800-53 control id is rejected', () =>
+  expectRule(makeRepo({ skill: skillMd('sample-skill', { frameworks: ['nist-800-53'], steps: `## Step 1: read\n\nAC-2 requires account reviews. ${filler(30)}` }) }), 'ip-requirement-phrasing'));
+test('800-53 ids, enhancements included, are matched next to requirement wording', () => {
+  for (const id of ['AC-2', 'AC-2(3)', 'RA-5', 'SR-11', 'PM-9']) assert.ok(requirementFindings(`For ${id} the team must keep a record.`, ['nist-800-53']).length > 0, id);
+  assert.equal(requirementFindings('AC-2 and RA-5 are filed here. '.padEnd(120, 'x') + ' The team must keep a record.', ['nist-800-53']).length, 0);
+});
 test('article citations with requirement wording pass for public law', () =>
   expectClean(makeRepo({ skill: skillMd('sample-skill', { frameworks: ['gdpr'], steps: `## Step 1: read\n\nArt. 33 requires notification within 72 hours. ${filler(30)}` }) })));
 test('article citations with requirement wording fail without a public-law tag', () =>

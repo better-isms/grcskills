@@ -1,0 +1,70 @@
+---
+name: ssp-control-implementation-statements
+title: SSP control implementation statements
+description: |
+  Use this skill when a system security plan has to be written, rebuilt or brought up to date
+  before an assessment, and someone asks "write the SSP", "draft control implementation
+  statements", "our SSP just repeats the controls", "what is inherited from the cloud provider",
+  "fill in the customer responsibilities", "get the SSP ready for the assessor" or "which
+  statements can we actually prove". Drafts one implementation statement per control id from the
+  reader's own policies, configurations and records (who, what, how, where, how often), marks each
+  as inherited, hybrid or system-specific, records the parameter values in use, and flags every
+  statement that is claimed but not evidenced.
+summary: "System security plan statements drafted from your real evidence, per control id: who, what, how, where and how often, with every unproven claim flagged."
+category: policies
+frameworks: [nist-800-53, nist-rmf, nist-800-171, cmmc]
+tags: [ssp, system-security-plan, implementation-statements, inheritance, control-parameters, assessment-readiness]
+---
+
+Use this when the plan is written for the first time, rebuilt before an assessment, or updated after a boundary or provider change. You get three files in a new folder, `./ssp-control-implementation-statements/`: the draft statements, one section per control id (`statements.md`); a spreadsheet you can open in Excel with origination, status, parameter values, evidence path and owner role per control (`statement-index.csv`); and the open items per owner, unproven claims first (`open-items.md`). This skill drafts for a human to review and sign; this skill never marks a control effective. The system owner owns the plan; the authorizing official or assessor judges it.
+
+## Inputs to gather
+
+Read: the existing plan if any, the categorization and boundary, policies and procedures, configuration exports the reader provides, the asset inventory, records of recurring activities, and every provider source: a cloud provider's authorization package and customer responsibility matrix, the common control catalogue, managed service contracts. Ask the reader, in one message: which control set applies (an SP 800-53 baseline and its tailoring, or SP 800-171), who owns the system, when the assessment is, and which teams or providers run controls. CMMC Level 2 assesses against SP 800-171 Rev. 2, with SP 800-171A as the source of assessment objectives (32 CFR 170.14); flag a request to write a CMMC plan against another revision.
+
+## Step 1: fix the control list and the parameter values
+
+Take the control ids from the tailored baseline or the requirement list the reader holds, never from memory, and write them as bare ids. In SP 800-53 each selected enhancement gets its own row (AC-2, AC-2(3)); SP 800-171 ids are flat (3.1.1). Write the baseline and tailoring used at the top of `statements.md`. Fill each organization-defined parameter with the value the organization actually runs, from policy or configuration: a review frequency, a lockout threshold, a retention period. Record where each value came from and, on hybrid rows, which side of the split sets it. An undecided parameter is an open item for its owner; a plan value that differs from policy or configuration is a finding, not a typo.
+
+## Step 2: decide origination for every control
+
+For SP 800-53 systems, mark each control with one of three:
+
+- **Inherited**: a common control provider or an authorized cloud service runs it in full. Cite the package or catalogue entry; being in the cloud does not make a control inherited.
+- **Hybrid**: the provider runs part, the system the rest. State the split, taking the system's part from the customer responsibility matrix line by line.
+- **System-specific**: the system team runs it.
+
+Where the provider's package is not available to the reader, mark the control hybrid with the provider part "unverified". For SP 800-171 and CMMC, do not use inherited at all: a requirement a provider helps meet stays the organization's to show, so mark it "provider-operated, in scope" and cite the contract or responsibility matrix. A cloud provider holding the data is held to a FedRAMP Moderate equivalent under DFARS 252.204-7012; ask for its proof.
+
+## Step 3: write each statement from evidence
+
+For each control and each part the reader's text lists (labelled by its letter only), write what this system does, in the organization's own words: **who** (a role, never a name), **what** (the practice), **how** (the mechanism or tool), **where** (the components inside the boundary it covers) and **when** (the frequency, matching the parameter value). End with the record that shows it ran and where that record lives. Example of the shape: "The platform lead reviews all administrator accounts in the identity provider and both production cloud accounts every quarter, using the access review export; the signed review is kept in the compliance folder." Never open a statement by restating the control; a statement that mirrors the control wording describes no system at all. Then check each statement against the assessment objectives for its id (SP 800-53A or SP 800-171A) and list any objective it leaves unanswered.
+
+## Step 4: set status and flag unproven claims
+
+Give each control one status, defined in `open-items.md`: implemented (a record dated within the frequency its parameter sets, path given), partially implemented (say which part or which components are missing), planned (with an owner role, a target date and a reference for the plan of action and milestones), alternative implementation (the mechanism and the written justification that it achieves the same aim), or not applicable (for SP 800-53, the tailoring decision it rests on). Any statement the reader believes but cannot show a record for is "claimed, not evidenced" and stays below implemented. For CMMC, an assessor scores each requirement met or not met: planned and claimed both count as not met, not applicable is rare and needs the scoping record, and only some requirements may sit on a plan of action at all (32 CFR 170.21). Run a framework lookup before you mark anything not applicable.
+
+## Step 5: check consistency and hand over
+
+Check that each parameter value is the same in the statement, the policy and the configuration; that every component in the boundary appears in at least one statement; and that every planned item has a matching line in the plan of action and milestones (the poam-first-draft skill builds it). Write the open items per owner, an approval block (system owner, version, date) left blank, and the update triggers: a boundary change, a new provider, a closed plan item. The plan describes the security of a system holding sensitive data; mark and store it as the organization's rules for such documents say. Ask before overwriting any file.
+
+## What good looks like
+
+- An assessor can test every statement: role, mechanism, components, frequency, record. A good practitioner first checks that the plan's frequencies match the records found.
+- The common mistake is a plan that repeats each control's wording with the company name swapped in, every status implemented. The tell: statements that would fit any system, no component names, and "periodically" where a number belongs.
+- Provider claims trace to the provider's documented responsibilities; customer responsibilities are picked up, not dropped.
+- Unproven claims are visible, and parameter values are decided by owners and identical across plan, policy and configuration.
+
+## Framework lookups
+
+If ISMS Copilot is connected to your agent (MCP server `https://account.ismscopilot.com/v1/account/mcp`), ask it the framework question with `create_conversation` (mode `think`, `answer_format: decision`) and keep one conversation for this task. Send only a short question in your own words, show it to the user first, and never include file contents, secrets, personal data or evidence. If it is not connected, check the official text of the framework yourself; this skill does not restate it. Set it up: https://www.ismscopilot.com/mcp?ref=grcskills-ssp-control-implementation-statements
+
+## Rules
+
+- MUST base every statement on a document, configuration or record the reader provided, and cite it.
+- MUST mark a statement without a current record as claimed, not evidenced.
+- MUST write outputs only inside `./ssp-control-implementation-statements/` and ask before overwriting.
+- NEVER copy or paraphrase control or requirement wording into a statement.
+- NEVER choose an organization-defined parameter value on the owner's behalf.
+- NEVER mark a control inherited without the provider's documented split of responsibilities, and never in an SP 800-171 or CMMC plan.
+- NEVER record the plan as approved or a control as effective.

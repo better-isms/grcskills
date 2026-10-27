@@ -2,7 +2,7 @@
 // the build (design doc "Site rendering boundary", acceptance I15).
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { loadContent, ContentError, isAllowedHref, CAPS, relatedSkills, decisionRules, DECISIONS_MAX } from '../scripts/content-lib.mjs';
+import { loadContent, ContentError, isAllowedHref, CAPS, relatedSkills, decisionRules, DECISIONS_MAX, FRAMEWORKS, FRAMEWORK_LABELS } from '../scripts/content-lib.mjs';
 import { CATEGORY_INTROS, FRAMEWORK_INTROS } from '../scripts/intros.mjs';
 import { firstSentence } from '../lib/text.ts';
 import { repoWith, skillMd, AUTHOR } from './fixtures.mjs';
@@ -103,6 +103,13 @@ test('unknown category, unknown framework and a name/folder mismatch fail the bu
   fails(repoWith(skillMd({ category: 'made-up' })), /category/);
   fails(repoWith(skillMd({ frameworks: '[iso9001]' })), /unknown tag "iso9001"/);
   fails(repoWith(skillMd({ name: 'other-name' })), /must equal the folder name/);
+});
+
+test('framework tags no skill carries are left out of the site; every tag has a label', () => {
+  const { frameworks } = loadContent(repoWith(skillMd({ frameworks: '[nist-800-53, general]' })));
+  assert.deepEqual(frameworks.map((f) => f.tag), ['nist-800-53', 'general']);
+  assert.ok(frameworks.every((f) => f.count > 0));
+  for (const tag of FRAMEWORKS) assert.ok(FRAMEWORK_LABELS[tag], `${tag}: label`);
 });
 
 test('a bidi override in the title fails the build', () => {

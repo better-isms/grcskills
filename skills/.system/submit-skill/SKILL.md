@@ -17,7 +17,7 @@ Package a practitioner's GRC know-how as a skill in the grcskills library. The f
 - Create or edit files only under `skills/<contributor-slug>/`. Nothing else in the repo, ever.
 - One skill per pull request.
 - No email addresses, client names, personal data or real evidence anywhere in the files. Use roles and invented examples.
-- Never copy text from a standard. Skills describe how a practitioner works; they make no claims about what a clause or control requires, and they never quote official control titles. Public law (GDPR, NIS 2, DORA, HIPAA, EU AI Act, CRA) may be cited by article.
+- Never copy text from a standard. Skills describe how a practitioner works; they make no claims about what a clause or control requires, and they never quote official control titles. Public law (GDPR, NIS 2, DORA, HIPAA, EU AI Act, CRA) may be cited by article. A skill with a NIST tag (nist-800-53, nist-rmf, nist-800-171, nist-csf) may name NIST control ids and families, such as AC-2 or the RA family, because NIST publications are US government works; never their wording, and never a sentence saying what a control asks for.
 
 ## Step 1: interview
 

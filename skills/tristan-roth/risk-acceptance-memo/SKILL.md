@@ -11,7 +11,7 @@ description: |
   triggers that reopen it, with a signature block for the person who holds the authority.
 summary: "A one-page risk acceptance record: the risk, options considered, compensating measures, conditions, expiry and a signature block for the right authority."
 category: risk
-frameworks: [general, iso27001, dora]
+frameworks: [general, iso27001, dora, nist-rmf]
 tags: [risk-acceptance, risk-exception, decision-record, residual-risk]
 ---
 
@@ -35,7 +35,7 @@ If the case is one of these, stop and say which.
 
 ## Step 2: confirm who may sign
 
-Check that the method defines acceptance criteria and state which one this case meets; a method without criteria is a finding to raise first. Look up the residual score in the method's acceptance ladder and name the role that may accept at that level. If the proposer is below that level, the memo goes to the higher role. Any impact-5 risk goes to leadership whatever its likelihood. For a financial entity under DORA, ICT risk acceptance sits inside a framework for which the management body is accountable (Article 5); make sure the memo reaches that body or the delegate its framework names.
+Check that the method defines acceptance criteria and state which one this case meets; a method without criteria is a finding to raise first. Look up the residual score in the method's acceptance ladder and name the role that may accept at that level. If the proposer is below that level, the memo goes to the higher role. Any impact-5 risk goes to leadership whatever its likelihood. For a financial entity under DORA, ICT risk acceptance sits inside a framework for which the management body is accountable (Article 5); make sure the memo reaches that body or the delegate its framework names. For a system under the NIST Risk Management Framework, the authorizing official owns the decision to accept the system's remaining risk; route the memo to that official, and link it to the plan of action and milestones item it covers.
 
 ## Step 3: write the memo
 

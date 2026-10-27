@@ -12,7 +12,7 @@ description: |
   checklist file the auditor fills in during fieldwork.
 summary: "A working internal audit checklist for one area, built from your own documents: a question, a record to inspect, a sample and a pass criterion per test."
 category: audit
-frameworks: [iso27001, iso42001, gdpr, nis2, dora]
+frameworks: [iso27001, iso42001, gdpr, nis2, dora, nist-800-53, nist-800-171, cmmc]
 tags: [internal-audit, audit-checklist, sampling, fieldwork]
 ---
 

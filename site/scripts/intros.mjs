@@ -47,6 +47,14 @@ export const FRAMEWORK_INTROS = {
     'The EU AI Act (Regulation (EU) 2024/1689) sorts AI systems by risk, prohibits some practices and sets obligations for providers and deployers. Its rules apply in stages. These skills cover inventory, classification, impact, vendors and usage rules.',
   cra:
     'The Cyber Resilience Act (Regulation (EU) 2024/2847) sets cybersecurity rules for products with digital elements sold in the EU. Its obligations apply in stages until December 2027. One skill relates to it so far: a secure development policy written from your pipeline.',
+  'nist-800-53':
+    'NIST SP 800-53 is the catalogue of security and privacy controls that NIST publishes for information systems and organisations. US federal agencies apply it under FISMA, and FedRAMP builds on it. These skills cover categorisation, system security plan statements, plans of action and milestones, and the evidence an assessor samples.',
+  'nist-rmf':
+    'The NIST Risk Management Framework (SP 800-37) takes a system through seven steps: prepare, categorise, select, implement, assess, authorise and monitor. An authorising official decides whether the remaining risk is acceptable and signs the authorisation. These skills draft the categorisation, the plan statements and the plan of action and milestones for that decision.',
+  'nist-800-171':
+    'NIST SP 800-171 covers how non-federal organisations protect Controlled Unclassified Information (CUI) in their own systems. US government contracts, defence contracts in particular, pass it down to contractors and their suppliers. These skills cover the system security plan, the plan of action and milestones, and the access, logging, change and incident evidence an assessor looks at.',
+  cmmc:
+    'CMMC, the Cybersecurity Maturity Model Certification, is the US Department of Defense programme that checks how contractors protect FCI and CUI. Level 2 builds on NIST SP 800-171 and is assessed by the contractor itself or by an accredited third party, as the contract says. These skills cover the plan, the open items and the evidence an assessment looks at.',
   hipaa:
     'HIPAA is the US law whose Privacy, Security and Breach Notification Rules govern protected health information. They apply to covered entities and their business associates. These skills cover health data flows, access reviews, backups, policies and incident reporting.',
   'nist-csf':

@@ -11,7 +11,7 @@ description: |
   every score.
 summary: "Supplier tiers that size the review effort: the full vendor population from finance, single sign-on and contracts, scored on data, access and dependency."
 category: vendors
-frameworks: [general, iso27001, soc2, dora, nis2]
+frameworks: [general, iso27001, soc2, dora, nis2, nist-800-53]
 tags: [vendor-risk, third-party-risk, supplier-management, tiering]
 ---
 
