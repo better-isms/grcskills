@@ -2,7 +2,7 @@
 
 Release tags are `vYYYY.MM.DD[.n]`. Installers and the Claude Code plugin consume tags, not `main`.
 
-## Unreleased
+## v2026.10.27
 
 - Every skill's main output now ends with a `## Not checked` section written for that run: what it did not read or could not open, what it assumed and what it did not verify. The validator requires every skill to say so; the template, AGENTS.md, CONTRIBUTING.md and the submit-skill interview carry the rule.
 - 27 skills whose output someone signs or approves (policies, registers, applicability statements, assessments, plans, memos, corrective actions) also end the file the person signs or approves (or, where the signed artefact is a spreadsheet, its companion notes file, which names the spreadsheet and version approved) with a blank `## Review record` for the approver: reviewer role and competence basis, items sampled and the source each was traced to, what changed or was rejected, one item the draft did not flag and what checking it showed, decision, date and draft version reviewed. The skills never fill it in. Working files such as evidence indexes or questionnaire triage do not get one.
@@ -19,6 +19,8 @@ Release tags are `vYYYY.MM.DD[.n]`. Installers and the Claude Code plugin consum
 - Skills tagged with a NIST framework may name NIST control ids and families (AC-2, the RA family), because NIST publications are US government works. They still never copy control wording, and the validator rejects requirement wording next to an 800-53 id as it does for every other framework.
 - 14 existing skills now also carry NIST SP 800-53, NIST RMF, NIST SP 800-171 or CMMC tags where their method serves those practitioners (risk method, risk register, risk acceptance, incident response plan, access review, logging, change sampling, evidence freshness, internal audit checklist, vendor tiering, gap assessment, overlap map, setup review, restore tests). Three gained one sentence for the NIST case: who accepts risk under the RMF, the 72-hour DoD incident report in defence contracts, and the plan and open-items rows in a first gap assessment.
 - grcskills.com hides any framework tag no skill carries yet, so no filter or framework page shows an empty shelf. The FAQ lists the new frameworks.
+- Security review re-run on the release commit: 64 skills, all seven validator probes now rejected, counts unchanged (22 pass, 34 partial, 4 gap, 21 not applicable); reviewed commit and evidence updated in `reviews/security/library-security-review.md`.
+- Every install pin moves to `v2026.10.27`.
 
 ## v2026.10.20.3
 
