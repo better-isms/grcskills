@@ -20,6 +20,7 @@ Release tags are `vYYYY.MM.DD[.n]`. Installers and the Claude Code plugin consum
 - 14 existing skills now also carry NIST SP 800-53, NIST RMF, NIST SP 800-171 or CMMC tags where their method serves those practitioners (risk method, risk register, risk acceptance, incident response plan, access review, logging, change sampling, evidence freshness, internal audit checklist, vendor tiering, gap assessment, overlap map, setup review, restore tests). Three gained one sentence for the NIST case: who accepts risk under the RMF, the 72-hour DoD incident report in defence contracts, and the plan and open-items rows in a first gap assessment.
 - grcskills.com hides any framework tag no skill carries yet, so no filter or framework page shows an empty shelf. The FAQ lists the new frameworks.
 - Security review re-run on the release commit: 64 skills, all seven validator probes now rejected, counts unchanged (22 pass, 34 partial, 4 gap, 21 not applicable); reviewed commit and evidence updated in `reviews/security/library-security-review.md`.
+- The system security plan skill never copies secrets, keys or tokens from configuration exports (found by the security review re-run).
 - Every install pin moves to `v2026.10.27`.
 
 ## v2026.10.20.3
