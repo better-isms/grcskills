@@ -20,3 +20,31 @@
 
 - 45 CFR 164.514(b): confirmed by Copilot (safe harbor (b)(2), expert determination (b)(1)); kept.
 - Added from Copilot's reply, stated as fact there: 45 CFR 164.514(c), 164.402, 164.528 and 42 CFR Part 2. Sources: https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164 and https://www.ecfr.gov/current/title-42/chapter-I/subchapter-A/part-2
+
+## Re-challenge: scan report input and Not checked (2026-10-27)
+
+- Conversation: eafeea20-017c-4979-82bd-107aa235cb22 (ISMS Copilot, mode think, answer_format decision)
+- Verdicts: Q1 PASS, Q2 PASS (two wording fixes), Q3 PASS (gaps added)
+
+### Fixes applied
+
+1. Breach text says "unsecured PHI" (not "unsecured data") and names the 164.402 exceptions plus the documented four-factor assessment of the probability of compromise.
+2. Scan limits: a scan shows presence on its date only; no finding is not proof of absence; free text, attachments and stores the report did not cover (backups, logs, test copies, vendor-held data) stay "assumed".
+3. "Assumed (not scanned)" stores go into the gap list as candidates for the owner's next scan, not only as caveats.
+4. Shortened de-identification summary confirmed accurate (164.514(b)(1) expert determination, (b)(2) safe harbor including relatives, employers and household members, and the actual-knowledge condition).
+
+### Fixes declined
+
+- Safe harbor retention detail (year-only dates, three-digit ZIP rule, 90+ ages): left to the framework lookup to keep the spine within limits; the skill still flags dates and ages over 89.
+- Six-year retention of the scan report: evidence retention is the reader's; the skill cites the report and stores nothing.
+
+### Citations
+
+- 45 CFR 164.402 (exceptions and four-factor probability of compromise assessment): confirmed by Copilot, stated as fact; kept. Source: https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164
+- 45 CFR 164.514(b): confirmed again by Copilot; kept.
+
+### Codex round 1 fix (2026-10-27)
+
+- Breach wording corrected after independent review: notification duties apply to unsecured PHI; an impermissible use or disclosure is presumed a breach unless a 164.402 exception applies or a documented assessment of at least four factors shows a low probability of compromise; the entity may notify without the assessment.
+- Verified: 45 CFR 164.402 read on ecfr.gov (eCFR renderer, current text): the presumption of breach, the three exclusions (good-faith workforce access, inadvertent internal disclosure, recipient could not retain), the four factors (nature and extent of PHI, unauthorized person, actually acquired or viewed, extent mitigated) and the definition of unsecured PHI (not unusable, unreadable or indecipherable per HHS guidance) all match. "May notify without the assessment" is not stated in the section; it follows from the presumption (the entity can accept the presumption and notify), so it is kept as a consequence, not a quote.
+- Codex round 2 fix: the optional discovery or scan report is used only if it is metadata only (store, field, data type, counts) or redacted; a report showing matched values or record excerpts goes back for a redacted export (same in ropa-first-draft). No citation added.

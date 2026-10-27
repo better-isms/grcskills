@@ -1,6 +1,6 @@
 # Seed skill list
 
-The 60 job-level skills of the launch seed, 6 per category, all written, all credited to `tristan-roth`. Frameworks are tags; no skill is a framework copy of another. Slugs and titles carry no standards-body names.
+The 60 job-level skills of the launch seed, 6 per category, plus skills added after launch, all written, all credited to `tristan-roth`. Frameworks are tags; no skill is a framework copy of another. Slugs and titles carry no standards-body names.
 
 Status: **written** means the skill is in `skills/` and passes `node tools/validate.mjs`. Each batch of about 10 went through the IP check, the framework accuracy challenge and an independent second-model review before merge.
 
@@ -43,7 +43,7 @@ Excluded sources: any Probo skill text, any internal audit skill or client engag
 | 17 | risk-register-hygiene-review | Risk register hygiene review | Find stale, duplicated, unowned and mis-scored risks in an existing register and propose fixes | general, iso27001, soc2 | UC risk-assessment-iso-27001; PL iso-27001-audit-preparation-prompts | written |
 | 18 | ict-risk-framework-check | ICT risk framework check | Check a financial entity's ICT risk management setup against its DORA obligations and list the gaps | dora | PL dora-compliance-prompt-library; UC risk-assessment-dora | written |
 
-## audit (6)
+## audit (7)
 
 | # | Slug | Title | Job | Frameworks | Source | Status |
 |---|---|---|---|---|---|---|
@@ -53,6 +53,7 @@ Excluded sources: any Probo skill text, any internal audit skill or client engag
 | 22 | auditor-interview-prep | Auditor interview prep | Brief process owners on what the auditor will ask, which records to show and how to answer what they do not know | iso27001, soc2, general | PL iso-27001-audit-preparation-prompts (auditor interview preparation) | written |
 | 23 | nonconformity-root-cause-and-corrective-action | Nonconformity root cause and corrective action | Answer an audit finding with correction, root cause, extent check, actions and an effectiveness check | iso27001, iso27701, iso42001, soc2, general | PL iso-27001-audit-preparation-prompts (post-audit prompts) | written |
 | 24 | management-review-pack | Management review pack | Assemble the inputs, metrics and decisions leadership needs for the management review, and draft the minutes | iso27001, iso27701, iso42001 | PL iso-27001-audit-preparation-prompts (management system evidence) | written |
+| 61 | ai-draft-challenge-review | AI draft challenge review | Challenge an AI-drafted GRC artefact before signing: trace samples to sources, test an unflagged item, fill the Review record | general, iso27001, soc2, iso42001 | Launch post feedback (added after launch) | written |
 
 ## evidence (6)
 
@@ -127,11 +128,11 @@ Excluded sources: any Probo skill text, any internal audit skill or client engag
 | gap-readiness | 6 | 6 |
 | statement-of-applicability | 6 | 6 |
 | risk | 6 | 6 |
-| audit | 6 | 6 |
+| audit | 7 | 7 |
 | evidence | 6 | 6 |
 | vendors | 6 | 6 |
 | policies | 6 | 6 |
 | privacy | 6 | 6 |
 | ai-systems | 6 | 6 |
 | incidents-continuity | 6 | 6 |
-| **Total** | **60** | **60** |
+| **Total** | **61** | **61** |
