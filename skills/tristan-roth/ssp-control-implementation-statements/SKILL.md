@@ -35,7 +35,7 @@ Mark each control with one of four:
 - **System-specific**: the system team runs it.
 - **Undetermined**: a provider plays a part but no document shows the split yet. It stays here, not hybrid or inherited, until the split is evidenced.
 
-For CMMC, assessors check that the provider's responsibility matrix is current and covers every requirement it performs, test the inheritance claims and may interview provider staff (CMMC Assessment Process, sections 2.17 to 2.19). A cloud offering that stores, processes or transmits CUI shows either a FedRAMP Moderate authorization on the FedRAMP Marketplace or a complete, current FedRAMP Moderate equivalency body of evidence (sections 2.20 and 2.21).
+For CMMC, assessors check that the provider's responsibility matrix is current and covers every requirement it performs, test the inheritance claims and may interview provider staff (CMMC Assessment Process, sections 2.17 to 2.19). A cloud offering that stores, processes or transmits CUI shows either a FedRAMP Moderate authorization on the FedRAMP Marketplace or a FedRAMP Moderate equivalency body of evidence that is complete, intact and within its review period (sections 2.20 and 2.21).
 
 ## Step 3: write each statement from evidence
 
@@ -43,7 +43,7 @@ For each control and each part the reader's text lists (labelled by its letter o
 
 ## Step 4: set status and flag unproven claims
 
-Give each control one status, defined in `open-items.md`: implemented (evidence fit for the assessment objective, path given: a configuration export, an examined document, a test result, or a record dated within its frequency where the control recurs), partially implemented (say which part or which components are missing), planned (with an owner role, a target date and a reference for the plan of action and milestones), alternative implementation (the mechanism and the written justification that it achieves the same aim), or not applicable (for SP 800-53, the tailoring decision it rests on). A statement with no such evidence is "claimed, not evidenced" and stays below implemented. CMMC findings are met, not met or not applicable (32 CFR 170.24): planned and claimed count as not met, and an objective assessed not applicable counts as met, so record the fact behind each.
+Give each control one status, defined in `open-items.md`: implemented (evidence fit for the assessment objective, path given: a configuration export, an examined document, a test result, a recorded interview with the person who performs it, or a record dated within its frequency where the control recurs), partially implemented (say which part or which components are missing), planned (with an owner role, a target date and a reference for the plan of action and milestones), alternative implementation (the mechanism and the written justification that it achieves the same aim), or not applicable (for SP 800-53, the tailoring decision it rests on). A statement with no such evidence is "claimed, not evidenced" and stays below implemented. CMMC findings are met, not met or not applicable (32 CFR 170.24): planned and claimed count as not met, and an objective assessed not applicable counts as met, so record the fact behind each.
 
 ## Step 5: check consistency and hand over
 
