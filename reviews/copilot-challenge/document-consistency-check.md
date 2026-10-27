@@ -19,3 +19,27 @@
 ## Citations
 
 - None in the skill. Nothing verified or removed.
+
+## Re-challenge: since-last-run mode (2026-10-27)
+
+- Conversation: 7e61fc98-4473-496e-a1b9-bbab164c964f (ISMS Copilot, mode think, answer_format decision)
+- Verdicts: Q1 PASS, Q2 PASS (with fixes), Q3 FAIL on the first draft of the mode; the five gaps are fixed below
+
+### Fixes applied
+
+1. The mode first reconciles the document set against the previous index: added, retired and renamed documents.
+2. Content that changed without a new approval is flagged as a finding in itself.
+3. Consumers widened: treatment plan lines and review minutes alongside register entries, applicability lines, policy statements and recorded decisions.
+4. Open conflicts and the previous Not checked items carry forward until closed.
+5. Matching rule made deterministic: by document, section and value, not by loose wording.
+6. Wording: an affected decision goes to its owner to reconfirm; the tool never calls a decision invalid.
+7. Single-source wording corrected: each value has one owner document and every other mention cites it.
+
+### Fixes declined
+
+- Certification body notification flag: the skill is tagged `general`; routing changes to their owner covers it without naming a scheme.
+- Clause references in the reply: not copied (IP rule).
+
+### Citations
+
+- None added. Nothing to verify.

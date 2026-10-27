@@ -176,6 +176,7 @@ export function faqGroups(tag: string, count: number): FaqGroup[] {
           q: 'What about stale evidence, like last year\'s screenshot?',
           a: [
             'There is a skill for exactly this. The evidence freshness check reads the date inside each artefact (the clock on the screenshot, the report header), never the file date, and flags what is stale, undated or outside the audit period. Run it four to eight weeks before fieldwork, early enough to fix gaps by running the activity.',
+            'When evidence or a policy changes after a register was drafted, the since-last-run mode of the document consistency check lists which entries rest on the changed source.',
           ],
           link: { href: '/skill/evidence-freshness-check/', label: 'Evidence freshness check' },
         },
@@ -183,7 +184,8 @@ export function faqGroups(tag: string, count: number): FaqGroup[] {
           id: 'policy-change',
           q: 'When a policy changes, does anything flag what needs a second look?',
           a: [
-            'Not automatically today. You rerun the document consistency check: it reads policies, procedures and registers side by side and lists every place two of them disagree, with a fix for each owner.',
+            'Yes, when you rerun the document consistency check. In its since-last-run mode it reads the previous run, finds which documents changed (by version, approval date and the values inside them, not file dates) and lists every register entry, applicability line, policy statement and signed decision that rests on a changed fact, with the source that changed and the owner who takes the second look.',
+            'Nothing runs in the background and there is no tracking service: you rerun it when a document changes and before each review cycle.',
           ],
           link: { href: '/skill/document-consistency-check/', label: 'Document consistency check' },
         },
@@ -192,13 +194,16 @@ export function faqGroups(tag: string, count: number): FaqGroup[] {
           q: 'Is the judgment not formed while you gather the evidence?',
           a: [
             'A lot of it is. That is why the drafts are not a summary to sign. Many skills cite the file or answer behind each finding, and the gap assessment and risk skills mark what is claimed but not evidenced, so the expert goes into the evidence where it matters.',
+            'Every draft also ends with a Not checked section: what that run did not read, assumed or did not verify, so attention does not only follow the flags. Drafts someone signs end with a blank Review record: who reviewed it and on what competence, what they sampled against which source, what they changed, one item the draft did not flag that they tested, the decision and the version reviewed. The skill never fills it in. The AI draft challenge review skill is the reviewer\'s checklist for completing it.',
           ],
+          link: { href: '/skill/ai-draft-challenge-review/', label: 'AI draft challenge review' },
         },
         {
           id: 'traceability',
           q: 'How do I keep the link between evidence, findings and decisions over time?',
           a: [
-            'Each draft is a plain file in your folder, and many skills cite the file behind each finding. Keep those drafts in the same version control as your evidence, and add your decision next to each one. grcskills does not run a tracking system of its own today.',
+            'Each draft is a plain file in your folder, and many skills cite the file behind each finding. Signed drafts carry a Review record that names the version reviewed, the sources sampled and the decision, so source, finding and human decision sit in one file. Keep those files in the same version control as your evidence.',
+            'When a source changes later, the since-last-run mode of the document consistency check lists the entries and recorded decisions that need a second look. grcskills does not run a tracking system of its own.',
           ],
         },
         {
@@ -212,7 +217,8 @@ export function faqGroups(tag: string, count: number): FaqGroup[] {
           id: 'scanner',
           q: 'Can a skill look inside files, like a sensitive data scanner?',
           a: [
-            'Not today. Skills never download or run code, so none ships a scanner. Some skills also stay out of the data on purpose: the health data flow mapping skill never opens patient records, even to confirm a field holds health data. It maps where health data enters, moves and rests from schemas, field names and configuration, and calls out the copies nobody designed (logs, support tickets, test databases) for an owner to check.',
+            'No. Skills never download or run code, so none ships a scanner. Some skills also stay out of the data on purpose: the health data flow mapping skill never opens patient records, even to confirm a field holds health data. It maps where health data enters, moves and rests from schemas, field names and configuration, and calls out the copies nobody designed (logs, support tickets, test databases) for an owner to check.',
+            'If you already have a data discovery or scan report, the health data flow mapping and processing record skills read it and mark each data store confirmed by scan or assumed (not scanned), so the map says which rows show where data is and which show where it should be.',
           ],
           link: { href: '/skill/phi-flow-mapping/', label: 'Health data flow mapping' },
         },

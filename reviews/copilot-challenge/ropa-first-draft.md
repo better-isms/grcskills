@@ -19,3 +19,16 @@
 ## Citations
 
 - GDPR Articles 6, 9, 10, 30 confirmed by Copilot; kept. Article 30(5) exemption limbs and Article 26 confirmed in Copilot's reply; Article 26 added. Source: https://eur-lex.europa.eu/eli/reg/2016/679/oj
+
+## Re-challenge: scan report input (2026-10-27)
+
+- Conversation: eafeea20-017c-4979-82bd-107aa235cb22 (shared with phi-flow-mapping; the ROPA reuse was part of the same question)
+- Verdict: Q2 PASS for the GDPR reuse (no misstatement; the basis column supports accountability and keeping the record current)
+
+### Fixes applied
+
+1. The scan report's date is noted, so record updates can be scheduled from it.
+
+### Citations
+
+- None added. Nothing to verify.

@@ -17,6 +17,8 @@ tags: [vendor-risk, due-diligence, security-questionnaire, assurance-reports]
 
 Use this for one supplier at a time, sized to its tier. You get three short documents in a new folder per supplier, `./vendor-security-questionnaire-triage/<supplier>/`: a one-page verdict on the supplier's answers with a proposed decision (`triage.md`), a draft list of follow-up questions for the business owner to send (`follow-up-questions.md`), and the list of things your own company must do for the supplier's protections to work (`our-obligations.md`). This skill drafts for a human to review and sign; this skill never marks a control effective. The business owner and the security lead decide whether to proceed.
 
+End `triage.md` with `## Not checked`: what this run did not read or could not open, what it assumed and what it did not verify, specific to this run.
+
 ## Inputs to gather
 
 Read the supplier's completed questionnaire, any assurance report or certificate with its scope statement, a penetration test summary if offered, their data processing agreement and subprocessor list, and their public security documentation. From the company side, read the supplier's tier and the reasons for it. Ask the reader, in one message: what data the company will send, how the service connects (single sign-on, API keys, network access), which features will be used, and the deadline for a decision.
