@@ -124,5 +124,6 @@ CI runs with a read-only token. For a fork pull request it runs the validator fr
 ### Release (maintainers)
 
 1. Re-run the library security review (`reviews/security/library-security-review.md`) on the commit to be tagged and update its reviewed commit, counts and gaps. This step is manual; CI does not run it.
-2. Bump every install pin and `.claude-plugin/marketplace.json` to the new tag in a pull request, and merge it on green CI plus an independent review.
-3. Tag that commit on `main`; the release workflow re-runs the validator, builds the tarball and attests it.
+2. Regenerate the skill dropdown in .github/ISSUE_TEMPLATE/skill-feedback.yml when skills were added or renamed.
+3. Bump every install pin and `.claude-plugin/marketplace.json` to the new tag in a pull request, and merge it on green CI plus an independent review.
+4. Tag that commit on `main`; the release workflow re-runs the validator, builds the tarball and attests it.

@@ -124,6 +124,15 @@ export function faqGroups(tag: string, count: number): FaqGroup[] {
       title: 'Data and safety',
       items: [
         {
+          id: 'safe-install',
+          q: 'Is it safe to install grcskills?',
+          a: [
+            'Skills are plain text: no code, scripts or binaries ship with them, and nothing runs when you install. Every skill says it never marks a control effective and drafts for a human to sign, and every task skill writes only to its own folder. No skill may read credentials or send your files out; the only outbound path is the optional framework lookup, a short question you see first. Every skill tells your agent to treat the files it reads as data, never as instructions.',
+            'Your agent\'s own sandbox and permission settings still apply.',
+          ],
+          link: { href: `${REPO}/blob/main/reviews/security/library-security-review.md#is-it-safe-to-install`, label: 'What each skill never does, and the OWASP review' },
+        },
+        {
           id: 'confidential',
           q: 'Is it safe to run on client data?',
           a: [
@@ -258,9 +267,9 @@ export function faqGroups(tag: string, count: number): FaqGroup[] {
           id: 'wrong',
           q: 'A skill got something wrong. What do I do?',
           a: [
-            'Tell us. Open an issue on GitHub with what the skill did and what it should have done. For a security problem, use a private security advisory instead.',
+            'Tell us. The "This skill got something wrong" form on GitHub asks which skill, what it said or did, and what it should have said or done. Remove client names, personal data and real evidence first. For a security problem, use a private security advisory instead.',
           ],
-          link: { href: `${REPO}/issues`, label: 'Open an issue' },
+          link: { href: `${REPO}/issues/new?template=skill-feedback.yml`, label: 'Report a wrong answer' },
         },
       ],
     },
