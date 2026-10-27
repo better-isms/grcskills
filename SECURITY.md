@@ -22,6 +22,10 @@ The validator enforces what can be checked mechanically. Reviewers read every fi
 - Outside pull requests may only change `skills/<their-author>/`.
 - Installers consume release tags. The release workflow runs only on a tag that is on `main`, re-runs the validator, builds a tarball of `skills/`, `plugin/` and `.claude-plugin/`, attaches it to the release and creates a build provenance attestation (`gh attestation verify <tarball> -R better-isms/grcskills`). The Claude Code plugin pins a tag, and its MCP entry holds only a public URL; sign-in happens at first use and can be declined.
 
+## Security review record
+
+The whole library is reviewed against the OWASP Agentic Skills Top 10 checklist, one row per check with its result and the evidence in this repository: [reviews/security/library-security-review.md](reviews/security/library-security-review.md). It names the reviewed commit, lists the gaps and what we plan for each, and is re-run on each release.
+
 ## Reporting
 
 Found a skill that does something it should not, or a way past review? Report it privately through a [GitHub security advisory](https://github.com/better-isms/grcskills/security/advisories/new). Please do not open a public issue for a security report.

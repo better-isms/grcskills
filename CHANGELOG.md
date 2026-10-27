@@ -5,6 +5,7 @@ Release tags are `vYYYY.MM.DD[.n]`. Installers and the Claude Code plugin consum
 ## Unreleased
 
 - grcskills.com/report/: how to report illegal content or a copyright issue (EU Digital Services Act Art. 16 notices, Art. 12 point of contact), with a prefilled email and a private GitHub advisory as the two channels. Linked from the footer, listed in the sitemap, mentioned in the README; `report` is a reserved author slug.
+- Security review record: the whole library (60 skills, validator, CI, release pipeline, plugin manifest, site) checked against the OWASP Agentic Skills Top 10 checklist, one row per check with result and evidence, gaps and recommendations, in `reviews/security/library-security-review.md`. Linked from SECURITY.md and the FAQ answer on running code and sending data; re-run on each release.
 
 ## v2026.10.20.3
 
