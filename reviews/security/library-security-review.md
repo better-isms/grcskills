@@ -232,7 +232,7 @@ Status per recommendation below, at `690016c`. R1, R3, R4 and R7 are done (R7 as
 
 ## Re-run 2026-10-27 for v2026.10.27.1
 
-No skill, validator, plugin or manifest file changed since v2026.10.27 (`git diff ba77cda` on `skills/`, `tools/`, `plugin/`, `.claude-plugin/` is empty). This release adds the "Is it safe to install?" section above, a README line, an FAQ answer and a GitHub issue form for skill feedback. Results unchanged: 22 pass, 34 partial, 4 gap, 21 not applicable.
+No skill, validator, plugin or manifest file changed since v2026.10.27 (`git diff ba77cda` on `skills/`, `tools/`, `plugin/`, `.claude-plugin/` is empty apart from the release `ref` in `.claude-plugin/marketplace.json`). This release adds the "Is it safe to install?" section above, a README line, an FAQ answer and a GitHub issue form for skill feedback. Results unchanged: 22 pass, 34 partial, 4 gap, 21 not applicable.
 
 ## Re-run 2026-10-27 for v2026.10.27
 
