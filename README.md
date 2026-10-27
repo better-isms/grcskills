@@ -101,6 +101,8 @@ Your agent interviews you, packages the skill, runs `node tools/validate.mjs` an
 
 A skill runs inside other people's environments, so each one is a security boundary. The validator rejects network commands, credential paths, links outside an allowlist, prompt injection and text from the standards; maintainers review every file before a release. Installed copies cannot be revoked remotely, which is why installs are pinned to reviewed release tags. Report a problem privately through a [security advisory](https://github.com/better-isms/grcskills/security/advisories/new). Details: [SECURITY.md](SECURITY.md).
 
+Is it safe to install? Skills are plain text and nothing runs on install: [what each skill never does, and the OWASP review](reviews/security/library-security-review.md#is-it-safe-to-install).
+
 ## Layout
 
 ```

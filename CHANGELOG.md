@@ -2,6 +2,11 @@
 
 Release tags are `vYYYY.MM.DD[.n]`. Installers and the Claude Code plugin consume tags, not `main`.
 
+## Unreleased
+
+- "Is it safe to install?" opens the library security review, linked from the README and a new FAQ answer: skills are plain text and nothing runs on install, what every skill says it never does, the two skills that run a command, and that your agent's own sandbox still applies.
+- New GitHub issue form "This skill got something wrong": pick the skill, say what it did and what it should do instead, and confirm client names, personal data and real evidence are removed. The FAQ answer on wrong output links to it; maintainers regenerate its skill list when skills are added or renamed.
+
 ## v2026.10.27
 
 - Every skill's main output now ends with a `## Not checked` section written for that run: what it did not read or could not open, what it assumed and what it did not verify. The validator requires every skill to say so; the template, AGENTS.md, CONTRIBUTING.md and the submit-skill interview carry the rule.

@@ -1,0 +1,110 @@
+name: This skill got something wrong
+description: Tell us where a skill's output was wrong or missed something, and what it should say or do instead.
+title: "[skill-name] "
+labels: [skill-feedback]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for telling us. Describe the skill's behaviour only: do not paste client names, personal data, real evidence or text copied from a standard.
+        For a security problem, use a [private security advisory](https://github.com/better-isms/grcskills/security/advisories/new) instead of this form.
+  # Regenerate this list from skills/*/*/SKILL.md (folder names, .system excluded)
+  # when skills are added or renamed: AGENTS.md, "Release (maintainers)".
+  - type: dropdown
+    id: skill
+    attributes:
+      label: Which skill?
+      description: The skill folder name. Put it in the title too, in place of skill-name.
+      options:
+        - acceptable-use-policy-drafting
+        - access-review-campaign-prep
+        - ai-acceptable-use-rules
+        - ai-act-risk-classification
+        - ai-draft-challenge-review
+        - ai-impact-assessment
+        - ai-management-system-scope
+        - ai-system-inventory
+        - ai-vendor-due-diligence
+        - auditor-interview-prep
+        - auditor-sample-preparation
+        - backup-restore-test-evidence
+        - bcp-tabletop-design
+        - business-impact-analysis
+        - change-management-evidence-sampling
+        - control-owner-raci
+        - customer-security-questionnaire-answers
+        - data-subject-request-procedure
+        - document-consistency-check
+        - dpa-security-annex-review
+        - dpia-screening
+        - evidence-freshness-check
+        - evidence-request-list-builder
+        - first-gap-assessment
+        - grc-setup-review
+        - ict-risk-framework-check
+        - ict-third-party-register
+        - incident-response-plan-drafting
+        - incident-severity-triage
+        - internal-audit-checklist-from-scope
+        - internal-audit-programme-planning
+        - logging-and-monitoring-evidence-pack
+        - management-review-pack
+        - multi-framework-overlap-map
+        - nis2-entity-applicability-check
+        - nonconformity-root-cause-and-corrective-action
+        - phi-flow-mapping
+        - poam-first-draft
+        - policy-gap-review-against-practice
+        - policy-review-cycle-refresh
+        - post-incident-review
+        - privacy-and-ai-control-applicability
+        - privacy-notice-gap-check
+        - regulatory-incident-reporting-clock
+        - risk-acceptance-memo
+        - risk-method-drafting
+        - risk-register-first-pass
+        - risk-register-hygiene-review
+        - risk-to-control-traceability-check
+        - risk-treatment-plan-drafting
+        - ropa-first-draft
+        - scope-statement-drafting
+        - secure-development-policy-from-pipeline
+        - security-policy-drafting
+        - soa-exclusion-justification-review
+        - soa-first-draft
+        - soa-status-reconciliation
+        - ssp-control-implementation-statements
+        - stage-1-readiness-walk
+        - subprocessor-register-update
+        - system-categorization-first-pass
+        - transfer-impact-assessment
+        - vendor-security-questionnaire-triage
+        - vendor-tiering
+    validations:
+      required: true
+  - type: textarea
+    id: what-it-did
+    attributes:
+      label: What did it say or do?
+      description: The part of the output, or the step, that was wrong. Paraphrase or redact anything sensitive.
+    validations:
+      required: true
+  - type: textarea
+    id: what-instead
+    attributes:
+      label: What should it say or do instead?
+      description: What a good practitioner would have written or done, and why.
+    validations:
+      required: true
+  - type: input
+    id: context
+    attributes:
+      label: Framework and context (optional)
+      placeholder: e.g. ISO 27001 surveillance audit, SaaS, 40 people
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: Confirmation
+      options:
+        - label: I removed client names, personal data and real evidence
+          required: true
