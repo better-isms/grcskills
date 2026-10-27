@@ -13,7 +13,7 @@
 5. Each statement is checked against the assessment objectives for its id (SP 800-53A or SP 800-171A), with unanswered objectives listed.
 6. Hybrid rows record which side of the split sets each parameter value.
 7. Not applicable in SP 800-53 rests on the tailoring decision; alternative implementation records the written justification.
-8. "Current" defined: a record dated within the frequency its parameter sets.
+8. Implemented means evidence fit for the assessment objective: a configuration export, an examined document, a test result, or a record dated within its frequency where the control recurs (Codex round 2, finding 3, replacing the earlier "dated record for every control").
 9. The plan itself is marked and stored under the organization's rules for sensitive documents.
 
 ## Fixes declined
@@ -32,3 +32,10 @@
 
 - CMMC Assessment Process v2.0 (cyberab.org PDF, text extracted and read): 2.17, the assessment team checks the provider's customer responsibility matrix is current and covers all in-scope requirements performed wholly, partially or jointly by the provider; 2.18, interview of provider staff, plus examine and test methods on the inheritance claims in the matrix; 2.19, a provider holding its own CMMC certificate means less effort, and inherited requirements are still confirmed as maintained; 2.20 and 2.21, FedRAMP Moderate offerings confirmed on the FedRAMP Marketplace, or equivalency per DoD CIO policy. Copilot's "no inheritance under CMMC" is contradicted and was removed.
 - 32 CFR 170.24 (eCFR API, fetched 2026-10-27): met and not met findings; a plan of action is no substitute for a completed requirement; an objective assessed not applicable is equivalent to met; 5, 3 and 1 point values.
+
+## Verified (independent review round 2, 2026-10-27)
+
+- CMMC Assessment Process v2.0 (cyberab.org PDF, text read): 2.20, a FedRAMP Moderate authorization is confirmed on the FedRAMP Marketplace; 2.21 and 2.21.1, a cloud offering not FedRAMP authorized can meet the FedRAMP Moderate equivalency, and the assessment team checks that its body of evidence is complete, intact and within its periodicity. The skill now names both paths (Codex round 2, finding 1).
+- DFARS 252.204-7012 (b)(2)(ii)(D) (eCFR API, read in round 1): the cloud check applies to a provider that stores, processes or transmits covered defense information; the skill limits it to offerings that store, process or transmit CUI.
+- CMMC Assessment Process v2.0, 2.6: assessors use the three methods of examine, interview and test as outlined in SP 800-171A. The skill no longer demands a dated recurring record for every control (Codex round 2, finding 3). The csrc.nist.gov landing pages for SP 800-53A Rev. 5 and SP 800-171A do not name the methods in their abstracts; the CAP text is the source used.
+- 32 CFR 170.24 (eCFR API, read in round 1): findings are met, not met or not applicable, and an objective assessed not applicable is equivalent to met. The skill states all three (Codex round 2, finding 4).

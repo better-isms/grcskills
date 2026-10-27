@@ -16,15 +16,15 @@ frameworks: [nist-800-53, nist-rmf, nist-800-171, cmmc]
 tags: [ssp, system-security-plan, implementation-statements, inheritance, control-parameters, assessment-readiness]
 ---
 
-Use this when the plan is first written, rebuilt before an assessment, or updated after a boundary or provider change. You get three files in a new folder, `./ssp-control-implementation-statements/`: the draft statements, one section per control id (`statements.md`); a spreadsheet you can open in Excel with origination, status, parameter values, evidence path and owner role per control (`statement-index.csv`); and the open items per owner, unproven claims first (`open-items.md`). This skill drafts for a human to review and sign; this skill never marks a control effective. The system owner owns the plan; the authorizing official or assessor judges it.
+Use this to write, rebuild or update the plan. You get three files in a new folder, `./ssp-control-implementation-statements/`: the draft statements, one section per control id (`statements.md`); a spreadsheet you can open in Excel with origination, status, parameter values, evidence path and owner role per control (`statement-index.csv`); and the open items per owner, unproven claims first (`open-items.md`). This skill drafts for a human to review and sign; this skill never marks a control effective. The system owner owns the plan; the authorizing official or assessor judges it.
 
 ## Inputs to gather
 
-Read: the existing plan, the categorization and boundary, policies and procedures, configuration exports the reader provides, the asset inventory, records of recurring activities, and every provider source: authorization packages, customer responsibility matrices, the common control catalogue, managed service contracts. Ask the reader, in one message: which control set applies (an SP 800-53 baseline and its tailoring, or SP 800-171), who owns the system, when the assessment is, and which teams or providers run controls. CMMC Level 2 assesses against SP 800-171 Rev. 2, with SP 800-171A as the source of assessment objectives (32 CFR 170.14); flag a request to write a CMMC plan against another revision.
+Read: the existing plan, the categorization and boundary, policies, procedures, configuration exports the reader provides, the asset inventory, activity records, and every provider source (authorization packages, responsibility matrices, common control catalogue, service contracts). Ask the reader, in one message: which control set applies (an SP 800-53 baseline and its tailoring, or SP 800-171), who owns the system, when the assessment is, and which teams or providers run controls. CMMC Level 2 assesses against SP 800-171 Rev. 2, with SP 800-171A as the source of assessment objectives (32 CFR 170.14); flag a CMMC plan written against another revision.
 
 ## Step 1: fix the control list and the parameter values
 
-Take the control ids from the tailored baseline or the requirement list the reader holds, never from memory, and write them as bare ids. In SP 800-53 each selected enhancement gets its own row (AC-2, AC-2(3)); SP 800-171 ids are flat (3.1.1). Write the baseline and tailoring used at the top of `statements.md`. Fill each organization-defined parameter with the value the organization actually runs, from policy or configuration: a review frequency, a lockout threshold, a retention period. Record where each value came from and, on hybrid rows, which side of the split sets it. An undecided parameter is an open item for its owner; a plan value that differs from policy or configuration is a finding, not a typo.
+Take the control ids from the tailored baseline or the requirement list the reader holds, never from memory, and write them as bare ids. In SP 800-53 each selected enhancement gets its own row (AC-2, AC-2(3)); SP 800-171 ids are flat (3.1.1). Write the baseline and tailoring used at the top of `statements.md`. Fill each organization-defined parameter with the value actually run, from policy or configuration (a review frequency, a lockout threshold). Record where each value came from and, on hybrid rows, which side of the split sets it. An undecided parameter is an open item for its owner; a plan value that differs from policy or configuration is a finding, not a typo.
 
 ## Step 2: decide origination for every control
 
@@ -35,7 +35,7 @@ Mark each control with one of four:
 - **System-specific**: the system team runs it.
 - **Undetermined**: a provider plays a part but no document shows the split yet. It stays here, not hybrid or inherited, until the split is evidenced.
 
-For CMMC, assessors check that the provider's responsibility matrix is current and covers every requirement it performs, test the inheritance claims, and confirm a FedRAMP Moderate cloud offering on the marketplace (CMMC Assessment Process, sections 2.17 to 2.21); provider staff may be interviewed.
+For CMMC, assessors check that the provider's responsibility matrix is current and covers every requirement it performs, test the inheritance claims and may interview provider staff (CMMC Assessment Process, sections 2.17 to 2.19). A cloud offering that stores, processes or transmits CUI shows either a FedRAMP Moderate authorization on the FedRAMP Marketplace or a complete, current FedRAMP Moderate equivalency body of evidence (sections 2.20 and 2.21).
 
 ## Step 3: write each statement from evidence
 
@@ -43,15 +43,15 @@ For each control and each part the reader's text lists (labelled by its letter o
 
 ## Step 4: set status and flag unproven claims
 
-Give each control one status, defined in `open-items.md`: implemented (a record dated within the frequency its parameter sets, path given), partially implemented (say which part or which components are missing), planned (with an owner role, a target date and a reference for the plan of action and milestones), alternative implementation (the mechanism and the written justification that it achieves the same aim), or not applicable (for SP 800-53, the tailoring decision it rests on). Any statement the reader believes but cannot show a record for is "claimed, not evidenced" and stays below implemented. For CMMC, assessors score met or not met (32 CFR 170.24): planned and claimed count as not met, and an objective marked not applicable counts as met, so record the fact behind each one.
+Give each control one status, defined in `open-items.md`: implemented (evidence fit for the assessment objective, path given: a configuration export, an examined document, a test result, or a record dated within its frequency where the control recurs), partially implemented (say which part or which components are missing), planned (with an owner role, a target date and a reference for the plan of action and milestones), alternative implementation (the mechanism and the written justification that it achieves the same aim), or not applicable (for SP 800-53, the tailoring decision it rests on). A statement with no such evidence is "claimed, not evidenced" and stays below implemented. CMMC findings are met, not met or not applicable (32 CFR 170.24): planned and claimed count as not met, and an objective assessed not applicable counts as met, so record the fact behind each.
 
 ## Step 5: check consistency and hand over
 
-Check that each parameter value is the same in the statement, the policy and the configuration; that every component in the boundary appears in at least one statement; and that every planned item has a matching line in the plan of action and milestones (the poam-first-draft skill builds it). Write the open items per owner, an approval block (system owner, version, date) left blank, and the update triggers: a boundary change, a new provider, a closed plan item. Mark and store the plan under the organization's rules for sensitive documents. Ask before overwriting any file.
+Check that parameter values match across statement, policy and configuration; that every boundary component appears in a statement; and that every planned item has a line in the plan of action and milestones (the poam-first-draft skill builds it). Write the open items per owner, an approval block (system owner, version, date) left blank, and the update triggers: a boundary change, a new provider, a closed plan item. Mark and store the plan under the organization's rules for sensitive documents. Ask before overwriting any file.
 
 ## What good looks like
 
-- An assessor can test every statement: role, mechanism, components, frequency, record. A good practitioner first checks that the plan's frequencies match the records found.
+- An assessor can test every statement by examining, interviewing or testing (SP 800-53A, SP 800-171A). A good practitioner first checks that the plan's frequencies match the records found.
 - The common mistake is a plan that repeats each control's wording with the company name swapped in, every status implemented. The tell: statements that would fit any system, no component names, and "periodically" where a number belongs.
 - Provider claims trace to the provider's documented responsibilities; customer responsibilities are picked up, not dropped.
 - Unproven claims are visible, and parameter values are decided by owners and identical across plan, policy and configuration.
@@ -63,7 +63,7 @@ If ISMS Copilot is connected to your agent (MCP server `https://account.ismscopi
 ## Rules
 
 - MUST base every statement on a document, configuration or record the reader provided, and cite it.
-- MUST mark a statement without a current record as claimed, not evidenced.
+- MUST mark a statement without evidence fit for its assessment objective as claimed, not evidenced.
 - MUST write outputs only inside `./ssp-control-implementation-statements/` and ask before overwriting.
 - NEVER copy or paraphrase control or requirement wording into a statement.
 - NEVER choose an organization-defined parameter value on the owner's behalf.

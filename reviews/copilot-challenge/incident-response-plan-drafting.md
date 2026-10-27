@@ -24,3 +24,7 @@
 ## Verified (NIST retag, independent review round 1, 2026-10-27)
 
 - DFARS 252.204-7012 (eCFR API, fetched 2026-10-27), for the clause added when the skill gained the nist-800-171 and cmmc tags: (a) "rapidly report" means within 72 hours of discovery; (c)(1) the trigger is a cyber incident affecting a covered contractor information system or the covered defense information in it, or the ability to perform operationally critical support named in the contract; (e) images of all known affected systems and all relevant monitoring and packet capture data are kept for at least 90 days from the report.
+
+## Verified (NIST retag, independent review round 2, 2026-10-27)
+
+- DFARS 252.204-7012 (c)(1), as read in round 1: the third trigger is an incident affecting the contractor's ability to perform contract requirements designated as operationally critical support and identified in the contract. The skill's clause now says "the ability to perform contract requirements designated as operationally critical support" (Codex round 2, finding 2).
