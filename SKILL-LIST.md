@@ -79,7 +79,7 @@ Excluded sources: any Probo skill text, any internal audit skill or client engag
 | 35 | subprocessor-register-update | Subprocessor register update | Keep the subprocessor list complete and current, with locations, transfers and customer notice duties | gdpr, iso27701 | PL gdpr-prompt-library-overview, iso-27701-privacy-management-prompt-library | written |
 | 36 | ict-third-party-register | ICT third-party register | Build or refresh the register of ICT third-party arrangements a financial entity keeps under DORA | dora | PL dora-compliance-prompt-library | written |
 
-## policies (7)
+## policies (8)
 
 | # | Slug | Title | Job | Frameworks | Source | Status |
 |---|---|---|---|---|---|---|
@@ -90,6 +90,7 @@ Excluded sources: any Probo skill text, any internal audit skill or client engag
 | 41 | document-consistency-check | Document consistency check | Find contradictions across policies, procedures and registers (retention, severity scales, roles, review cycles) | general | UC document-consistency | written |
 | 42 | secure-development-policy-from-pipeline | Secure development policy from the pipeline | Write the secure development policy from what the repositories and pipeline already enforce | iso27001, soc2, cra | PL secure-development-lifecycle-prompts, devsecops-and-automation-prompts | written |
 | 63 | ssp-control-implementation-statements | SSP control implementation statements | Draft system security plan statements per control id from real evidence, with origination, parameters and unproven claims flagged | nist-800-53, nist-rmf, nist-800-171, cmmc | Launch post feedback (added after launch) | written |
+| 65 | isms-document-cleanup | ISMS document clean-up | Rewrite a policy, procedure, applicability statement or register so it reads cleanly for an auditor, keeping every fact, with a change list | general | Founder ISMS clean-up practice | written |
 
 ## privacy (6)
 
@@ -134,8 +135,8 @@ Excluded sources: any Probo skill text, any internal audit skill or client engag
 | audit | 8 | 8 |
 | evidence | 6 | 6 |
 | vendors | 6 | 6 |
-| policies | 7 | 7 |
+| policies | 8 | 8 |
 | privacy | 6 | 6 |
 | ai-systems | 6 | 6 |
 | incidents-continuity | 6 | 6 |
-| **Total** | **64** | **64** |
+| **Total** | **65** | **65** |
