@@ -12,7 +12,7 @@ A skill is text that an AI agent follows inside someone else's environment, with
 
 ## Summary
 
-- **Reviewed commit:** `e418034` on `main`, the base of release `v2026.10.30` (the release pull request changes only install pins, the CHANGELOG, the README count, the skill feedback form and this record; no skill, validator, plugin or workflow file). Previous run: `690016c` (`v2026.10.27`). First run: `acbe47e` (release `v2026.10.20.3`); what changed since is under the Re-run sections below.
+- **Reviewed commit:** `e418034` on `main`, the base of release `v2026.10.30` (the release pull request changes only install pins, including the `ref` in `.claude-plugin/marketplace.json`, the CHANGELOG, the README count, the skill feedback form and this record; no skill, validator, workflow, `.claude-plugin/plugin.json` or `plugin/` file). Previous run: `690016c` (`v2026.10.27`). First run: `acbe47e` (release `v2026.10.20.3`); what changed since is under the Re-run sections below.
 - **Checklist:** OWASP Agentic Skills Top 10 (AST10), "Skill Security Assessment Checklist". Details under [Checklist used](#checklist-used).
 - **Result over 81 checks:** 22 pass, 34 partial, 4 gap, 21 not applicable to a library of text skills (mostly runtime isolation, which belongs to the agent that runs the skill).
 - **Gaps:** no recorded dynamic (sandboxed) test run of every skill (1.5, 8.5); no enforced permission manifest, a limit of the Agent Skills format, so nothing is opt-in at the manifest level either (3.1, 4.3).
@@ -111,7 +111,7 @@ Result values: **pass**, **partial**, **gap**, **n/a** (not applicable to a libr
 | 3.5 | Per-skill scoped credentials | n/a | Skills use no credentials; the MCP uses the reader's own sign-in; `plugin/.mcp.json` may hold only `type` and `url` (`validate.mjs:798-824`) | None |
 | 3.6 | Identity file writes flagged | partial | Flagged here (1.6) and in SECURITY.md (R3); not yet stated in the skill itself | R2 |
 | 3.7 | Network allowlist, default deny | pass | `url-allowlist` with `ALLOWED_HOSTS` and path-scoped GitHub (`validate.mjs:110-127`); `copilot-url` keeps product URLs to the template and one named setup URL (`validate.mjs:507-520`) | Reader: runtime egress control is yours |
-| 3.8 | No credential store access | partial | The `security-credentials` rule (`validate.mjs:149-154`) rejects any mention of a sensitive path (`.ssh`, `.env`, keychain and others) outside a `NEVER` rule line; it does not require a rule. 15 of 65 skills carry a `NEVER` line on secrets, tokens or credential files; the other 49 name no credential source but say nothing explicit. `ssp-control-implementation-statements`, which reads configuration exports, got its line in this release | Reader: deny credential paths in the agent's permission settings |
+| 3.8 | No credential store access | partial | The `security-credentials` rule (`validate.mjs:149-154`) rejects any mention of a sensitive path (`.ssh`, `.env`, keychain and others) outside a `NEVER` rule line; it does not require a rule. 15 of 65 skills carry a `NEVER` line on secrets, tokens or credential files; the other 50 name no credential source but say nothing explicit. `ssp-control-implementation-statements`, which reads configuration exports, got its line in this release | Reader: deny credential paths in the agent's permission settings |
 
 ### AST04 Insecure metadata (high)
 
@@ -238,7 +238,7 @@ Re-run on `e418034` (base of `v2026.10.30`) as step 1 of "Release (maintainers)"
 - **Scan of the new skill (method 3):** 0 non-ASCII, invisible or control characters, 0 HTML (the two angle-bracket hits are folder placeholders in code spans), 0 code fences, 0 base64-like runs; no host other than the lookup template; no network or shell command; it names its own output folder (`./isms-document-cleanup/`) and carries the data line. It reads documents the reader points to and writes a clean copy and a change list there; it never edits the source document and handles no credentials.
 - **Validator at `e418034`:** 65 skills pass all checks; 182 tests pass. The validator is unchanged since `v2026.10.27`, so the seven-probe result stands.
 - **Present-tense evidence updated** to `e418034`: 65 skills, 67 files, 65 challenge records, 237 `NEVER` lines, 65 skills using the lookup template (rows 1.2, 3.1, 3.3, 3.4, 3.8, 4.1, 8.1, B1-3, R4 and methods 1 to 3). The new skill has no credential `NEVER` line because it reads no configuration (15 of 65 skills carry one). No result changed.
-- **Tagged commit:** the tag is cut on the release merge commit only if `git diff e418034 <merge commit> -- skills tools plugin .github/workflows` is empty and `.claude-plugin/marketplace.json` changes only its `ref`, so the tagged library is the reviewed one.
+- **Tagged commit:** the tag is cut on the release merge commit only if `git diff e418034 <merge commit> -- skills tools plugin .github/workflows .claude-plugin/plugin.json` is empty and `.claude-plugin/marketplace.json` changes only its `ref`, so the tagged library is the reviewed one.
 - **Counts:** unchanged, 22 pass, 34 partial, 4 gap, 21 not applicable.
 
 ## Re-run 2026-10-27 for v2026.10.27.1
