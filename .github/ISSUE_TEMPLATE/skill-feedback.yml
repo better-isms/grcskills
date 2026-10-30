@@ -47,6 +47,7 @@ body:
         - incident-severity-triage
         - internal-audit-checklist-from-scope
         - internal-audit-programme-planning
+        - isms-document-cleanup
         - logging-and-monitoring-evidence-pack
         - management-review-pack
         - multi-framework-overlap-map

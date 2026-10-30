@@ -230,6 +230,15 @@ Status per recommendation below, at `690016c`. R1, R3, R4 and R7 are done (R7 as
 - **R7 Cadence (5.6, 7.4, 9.5).** Re-run this review before each release and update the reviewed commit. Status: done as a documented manual step (AGENTS.md, "Release (maintainers)", step 1); CI automation open.
 - **R8 Repository hardening (2.1, 4.12, 7.2, 9.3, B2-2, B3-1).** Options for the maintainer: run validation in a separate read-only job before the release job that holds write permissions, bind admins to branch protection, add a tag ruleset, require signed commits, run CodeQL and a GitHub Actions linter. Each is a judgment call; none blocks use.
 
+## Re-run 2026-10-30 for v2026.10.30
+
+Re-run on `e418034` (base of `v2026.10.30`) as step 1 of "Release (maintainers)" in AGENTS.md, delta-focused against `v2026.10.27.1`.
+
+- **What changed in the library:** one new skill, `isms-document-cleanup` (#24), with a Copilot challenge record. `git diff v2026.10.27.1 e418034` on `skills/`, `tools/`, `plugin/`, `.claude-plugin/` and `.github/workflows/` touches only that skill's SKILL.md. No validator, CI, release pipeline, plugin or manifest change apart from the release `ref` in `.claude-plugin/marketplace.json`.
+- **Scan of the new skill (method 3):** 0 non-ASCII, invisible or control characters, 0 HTML (the two angle-bracket hits are folder placeholders in code spans), 0 code fences, 0 base64-like runs; no host other than the lookup template; no network or shell command; it names its own output folder (`./isms-document-cleanup/`) and carries the data line. It reads documents the reader points to and writes a clean copy and a change list there; it never edits the source document and handles no credentials.
+- **Validator at `e418034`:** 65 skills pass all checks; 182 tests pass. The validator is unchanged since `v2026.10.27`, so the seven-probe result stands.
+- **Counts:** unchanged, 22 pass, 34 partial, 4 gap, 21 not applicable.
+
 ## Re-run 2026-10-27 for v2026.10.27.1
 
 No skill, validator, plugin or manifest file changed since v2026.10.27 (`git diff ba77cda` on `skills/`, `tools/`, `plugin/`, `.claude-plugin/` is empty apart from the release `ref` in `.claude-plugin/marketplace.json`). This release adds the "Is it safe to install?" section above, a README line, an FAQ answer and a GitHub issue form for skill feedback. Results unchanged: 22 pass, 34 partial, 4 gap, 21 not applicable.
