@@ -2,6 +2,13 @@
 
 Release tags are `vYYYY.MM.DD[.n]`. Installers and the Claude Code plugin consume tags, not `main`.
 
+## v2026.10.30
+
+- New skill `isms-document-cleanup` (policies): makes an ISMS document read like a competent person wrote it for an auditor without losing a fact. It writes a clean version, a change list (before, after, why) and, for detail that belongs elsewhere, the text to add to the receiving document. A fact ledger checks that every number, date, owner and commitment survives. The scope statement and existing revision rows are never changed, contract and legal commitments stay as written unless their owner clears a change, and completed records only get a correction note.
+- README and SKILL-LIST count 65 skills; the skill feedback form lists the new skill.
+- Security review re-run on the release commit: one new skill, validator unchanged, counts unchanged.
+- Every install pin moves to `v2026.10.30`.
+
 ## v2026.10.27.1
 
 - "Is it safe to install?" opens the library security review, linked from the README and a new FAQ answer: skills are plain text and nothing runs on install, what every skill says it never does, the two skills that run a command, and that your agent's own sandbox still applies.
