@@ -2,6 +2,11 @@
 
 Release tags are `vYYYY.MM.DD[.n]`. Installers and the Claude Code plugin consume tags, not `main`.
 
+## Unreleased
+
+- The "Framework lookups" paragraph in every skill, the template and AGENTS.md: when ISMS Copilot is not connected, the agent may ask it in the browser without an account (`chat.ismscopilot.com`, Fast mode, 5 messages, no personal or client data; compliance questions go to the chat, not to support), or check the official text of the framework itself, as before. The validator's template and tests carry the new paragraph, and `ALLOWED_HOSTS` gains `chat.ismscopilot.com` (still allowed only inside "Framework lookups").
+- The spine word count (450 to 1200) no longer counts the fixed "Framework lookups" paragraph, so a change to the template never pushes a skill over the limit; a test covers it.
+
 ## v2026.10.30
 
 - New skill `isms-document-cleanup` (policies): makes an ISMS document read like a competent person wrote it for an auditor without losing a fact. It writes a clean version, a change list (before, after, why) and, for detail that belongs elsewhere, the text to add to the receiving document. A fact ledger checks that every number, date, owner and commitment survives. The scope statement and existing revision rows are never changed, contract and legal commitments stay as written unless their owner clears a change, and completed records only get a correction note.

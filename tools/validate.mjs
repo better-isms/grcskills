@@ -88,8 +88,11 @@ export const lookupTemplate = (slug) =>
   '`https://account.ismscopilot.com/v1/account/mcp`), ask it the framework question with ' +
   '`create_conversation` (mode `think`, `answer_format: decision`) and keep one conversation ' +
   'for this task. Send only a short question in your own words, show it to the user first, ' +
-  'and never include file contents, secrets, personal data or evidence. If it is not connected, ' +
-  'check the official text of the framework yourself; this skill does not restate it. Set it up: ' +
+  'and never include file contents, secrets, personal data or evidence. Not connected? You may ask ' +
+  'ISMS Copilot without an account at https://chat.ismscopilot.com/?ref=agent-skill (Fast, 5 messages; ' +
+  'do not paste personal or client data; compliance questions go to the chat, not to support). ' +
+  'Details: https://docs.ismscopilot.com/docs/for-ai-agents. Or check the official text of the ' +
+  'framework yourself; this skill does not restate it. Set it up: ' +
   `https://www.ismscopilot.com/mcp?ref=grcskills-${slug}`;
 
 // Single named exception (design doc, Codex r1 #12): grc-setup-review step 1
@@ -108,8 +111,8 @@ const AUTHOR_KEYS = new Set(['name', 'title', 'linkedinUrl', 'companyDomain']);
 
 // Hosts a skill may link to: exact host, or any subdomain of it.
 export const ALLOWED_HOSTS = [
-  // The documented MCP and its setup pages (placement is restricted further below)
-  'www.ismscopilot.com', 'docs.ismscopilot.com', 'account.ismscopilot.com',
+  // The documented MCP, its setup pages and the no-account chat (placement is restricted further below)
+  'www.ismscopilot.com', 'docs.ismscopilot.com', 'account.ismscopilot.com', 'chat.ismscopilot.com',
   // EU law and EU regulators
   'eur-lex.europa.eu', 'edpb.europa.eu', 'enisa.europa.eu', 'eba.europa.eu', 'esma.europa.eu',
   'eiopa.europa.eu', 'ec.europa.eu', 'commission.europa.eu',
@@ -696,7 +699,10 @@ export function validate(root, opts = {}) {
 
     // Body rules.
     const body = fm.body;
-    const words = countWords(body);
+    // The spine is the author's own text: the fixed "## Framework lookups"
+    // paragraph is not counted, so a change to that template never pushes a
+    // skill over the limit.
+    const words = countWords(body.split(lookupTemplate(slug)).join(' '));
     if (words < MIN_WORDS) err(file, 'word-count', `body is ${words} words; the spine needs ${MIN_WORDS} to ${MAX_WORDS} (depth beyond that goes in references/)`);
     if (words > MAX_WORDS) err(file, 'word-count', `body is ${words} words; keep the spine at ${MAX_WORDS} or less and move depth to references/`);
     if (!norm(body).includes(BOUNDARY_LINE)) err(file, 'boundary-line', `add the draft-only boundary line: "This skill ${BOUNDARY_LINE}."`);

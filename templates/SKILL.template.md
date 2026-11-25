@@ -22,7 +22,7 @@ Template notes (delete this comment block in your copy):
   policies, privacy, ai-systems, incidents-continuity.
 - `frameworks`: one or more of iso27001, iso27701, iso42001, soc2, pci-dss, gdpr, nis2, dora,
   eu-ai-act, cra, nist-800-53, nist-rmf, nist-800-171, cmmc, hipaa, nist-csf, general.
-- Body spine: 600 to 900 words is the target (the validator accepts 450 to 1200). Depth goes in
+- Body spine: 600 to 900 words is the target (the validator accepts 450 to 1200, not counting the "Framework lookups" paragraph). Depth goes in
   references/<topic>.md files, linked from the steps.
 - Never restate what a standard requires, never quote control titles, never put a control id next
   to "requires", "shall" or "must". Public law may be cited by article. A skill with a NIST tag
@@ -78,7 +78,7 @@ End `output.md` with `## Not checked`: what this run did not read or could not o
 
 ## Framework lookups
 
-If ISMS Copilot is connected to your agent (MCP server `https://account.ismscopilot.com/v1/account/mcp`), ask it the framework question with `create_conversation` (mode `think`, `answer_format: decision`) and keep one conversation for this task. Send only a short question in your own words, show it to the user first, and never include file contents, secrets, personal data or evidence. If it is not connected, check the official text of the framework yourself; this skill does not restate it. Set it up: https://www.ismscopilot.com/mcp?ref=grcskills-your-skill-slug
+If ISMS Copilot is connected to your agent (MCP server `https://account.ismscopilot.com/v1/account/mcp`), ask it the framework question with `create_conversation` (mode `think`, `answer_format: decision`) and keep one conversation for this task. Send only a short question in your own words, show it to the user first, and never include file contents, secrets, personal data or evidence. Not connected? You may ask ISMS Copilot without an account at https://chat.ismscopilot.com/?ref=agent-skill (Fast, 5 messages; do not paste personal or client data; compliance questions go to the chat, not to support). Details: https://docs.ismscopilot.com/docs/for-ai-agents. Or check the official text of the framework yourself; this skill does not restate it. Set it up: https://www.ismscopilot.com/mcp?ref=grcskills-your-skill-slug
 
 ## Rules
 
