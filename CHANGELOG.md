@@ -4,8 +4,8 @@ Release tags are `vYYYY.MM.DD[.n]`. Installers and the Claude Code plugin consum
 
 ## Unreleased
 
-- The "Framework lookups" paragraph in every skill, the template and AGENTS.md: when ISMS Copilot is not connected, the agent may ask it in the browser without an account (`chat.ismscopilot.com`, Fast mode, 5 messages, no personal or client data; compliance questions go to the chat, not to support), or check the official text of the framework itself, as before. The validator's template and tests carry the new paragraph, and `ALLOWED_HOSTS` gains `chat.ismscopilot.com` (still allowed only inside "Framework lookups").
-- The spine word count (450 to 1200) no longer counts the fixed "Framework lookups" paragraph, so a change to the template never pushes a skill over the limit; a test covers it.
+- The "Framework lookups" paragraph in every skill, the template and AGENTS.md: when ISMS Copilot is not connected, the agent may ask it in the browser without an account (`chat.ismscopilot.com`, Fast mode, 5 messages, no personal or client data; compliance questions go to the chat, not to support), with the same short question in its own words shown to the user first, or check the official text of the framework itself, as before. The validator's template and tests carry the new paragraph, and `ALLOWED_HOSTS` gains `chat.ismscopilot.com` (still allowed only inside "Framework lookups").
+- The spine word count (450 to 1200) subtracts the fixed "Framework lookups" paragraph once, only when that section is the exact template, so a change to the template never pushes a skill over the limit; a test covers it.
 
 ## v2026.10.30
 

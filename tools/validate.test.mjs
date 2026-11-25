@@ -190,6 +190,21 @@ test('the fixed lookups paragraph does not count toward the spine', () => {
   expectClean(makeRepo({ skill: md }));
   assert.ok(countWords(md.split('\n---\n').slice(1).join('\n---\n')) > 1200);
 });
+test('an altered lookups paragraph is counted in full toward the spine', () => {
+  // Same largest passing filler; a one-word change to the template stops the subtraction.
+  let n = 30;
+  while (validate(makeRepo({ skill: skillMd('sample-skill', { fillerSentences: n + 1 }) })).problems.length === 0) n += 1;
+  const altered = lookupTemplate('sample-skill').replace('show it to the user first, ', 'show it to the user first please, ');
+  const root = makeRepo({ skill: skillMd('sample-skill', { fillerSentences: n, lookups: `## Framework lookups\n\n${altered}` }) });
+  expectRule(root, 'section-lookups');
+  expectRule(root, 'word-count');
+});
+test('a duplicated lookups paragraph is counted toward the spine', () => {
+  let n = 30;
+  while (validate(makeRepo({ skill: skillMd('sample-skill', { fillerSentences: n + 1 }) })).problems.length === 0) n += 1;
+  const twice = `## Framework lookups\n\n${lookupTemplate('sample-skill')}\n\n${lookupTemplate('sample-skill')}`;
+  expectRule(makeRepo({ skill: skillMd('sample-skill', { fillerSentences: n, lookups: twice }) }), 'word-count');
+});
 test('Rules must be last', () =>
   expectRule(makeRepo({ skill: skillMd('sample-skill', { order: (s) => [s.steps, s.rules, s.good, s.lookups] }) }), 'section-rules'));
 test('every rule starts with MUST or NEVER', () =>

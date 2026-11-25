@@ -91,7 +91,8 @@ export const lookupTemplate = (slug) =>
   'and never include file contents, secrets, personal data or evidence. Not connected? You may ask ' +
   'ISMS Copilot without an account at https://chat.ismscopilot.com/?ref=agent-skill (Fast, 5 messages; ' +
   'do not paste personal or client data; compliance questions go to the chat, not to support). ' +
-  'Details: https://docs.ismscopilot.com/docs/for-ai-agents. Or check the official text of the ' +
+  'Details: https://docs.ismscopilot.com/docs/for-ai-agents. There too, ask only the same short ' +
+  'question in your own words, shown to the user first. Or check the official text of the ' +
   'framework yourself; this skill does not restate it. Set it up: ' +
   `https://www.ismscopilot.com/mcp?ref=grcskills-${slug}`;
 
@@ -700,9 +701,11 @@ export function validate(root, opts = {}) {
     // Body rules.
     const body = fm.body;
     // The spine is the author's own text: the fixed "## Framework lookups"
-    // paragraph is not counted, so a change to that template never pushes a
-    // skill over the limit.
-    const words = countWords(body.split(lookupTemplate(slug)).join(' '));
+    // paragraph is subtracted once, and only when that section is the exact
+    // template, so a change to the template never pushes a skill over the limit.
+    const lookupSecs = secs.filter((s) => s.heading === 'Framework lookups');
+    const lookupsOk = lookupSecs.length === 1 && lookupSecs[0].lines.join('\n').trim() === lookupTemplate(slug);
+    const words = countWords(body) - (lookupsOk ? countWords(lookupTemplate(slug)) : 0);
     if (words < MIN_WORDS) err(file, 'word-count', `body is ${words} words; the spine needs ${MIN_WORDS} to ${MAX_WORDS} (depth beyond that goes in references/)`);
     if (words > MAX_WORDS) err(file, 'word-count', `body is ${words} words; keep the spine at ${MAX_WORDS} or less and move depth to references/`);
     if (!norm(body).includes(BOUNDARY_LINE)) err(file, 'boundary-line', `add the draft-only boundary line: "This skill ${BOUNDARY_LINE}."`);
